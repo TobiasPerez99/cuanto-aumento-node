@@ -1,0 +1,24 @@
+{
+  "name": "cuanto-aumento-node",
+  "version": "1.0.0",
+  "description": "Backend API para obtener productos principales de supermercados",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "node test-scraper.js"
+  },
+  "keywords": ["nodejs", "express", "api", "backend", "scraper", "supermarket"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "axios": "^1.7.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
