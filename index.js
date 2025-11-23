@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import { getCarrefourMainProducts } from './scrapers/carrefour.js';
+import { getDiscoMainProducts } from './scrapers/disco.js';
 
 // Configurar variables de entorno
 dotenv.config();
@@ -18,9 +19,12 @@ app.use(express.urlencoded({ extended: true }));
 app.get('/', (req, res) => {
   res.json({
     message: '🛒 Cuanto Aumento - Scraper de Productos Principales',
-    description: 'Obtiene los ~200 productos principales de Carrefour',
+    description: 'API para obtener productos de supermercados',
     timestamp: new Date().toISOString(),
-    endpoint: 'GET /products - Obtener productos principales de Carrefour'
+    endpoints: [
+      'GET /products/carrefour - Obtener productos de Carrefour',
+      'GET /products/disco - Obtener productos de Disco (MAESTRO)'
+    ]
   });
 });
 
@@ -32,31 +36,39 @@ app.get('/health', (req, res) => {
   });
 });
 
-// 🎯 ENDPOINT PRINCIPAL - Productos principales del supermercado
-app.get('/products', async (req, res) => {
+// 🎯 ENDPOINT CARREFOUR
+app.get('/products/carrefour', async (req, res) => {
   try {
-    console.log('🚀 Iniciando obtención de productos principales de Carrefour...');
-    console.log('⏳ Esto tomará aproximadamente 2 minutos...\n');
-    
+    console.log('🚀 Iniciando obtención de productos de Carrefour...');
     const result = await getCarrefourMainProducts();
-    
     if (result.success) {
-      console.log(`✅ Completado: ${result.totalProducts} productos obtenidos\n`);
       res.json(result);
     } else {
-      console.log('❌ Error obteniendo productos\n');
       res.status(500).json(result);
     }
-    
   } catch (error) {
-    console.error('❌ Error en endpoint principal:', error);
-    res.status(500).json({
-      success: false,
-      error: 'Error interno del servidor',
-      message: error.message,
-      timestamp: new Date().toISOString()
-    });
+    res.status(500).json({ error: error.message });
   }
+});
+
+// 🎯 ENDPOINT DISCO (MAESTRO)
+app.get('/products/disco', async (req, res) => {
+  try {
+    console.log('🚀 Iniciando obtención de productos de Disco (MAESTRO)...');
+    const result = await getDiscoMainProducts();
+    if (result.success) {
+      res.json(result);
+    } else {
+      res.status(500).json(result);
+    }
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Mantener compatibilidad con ruta anterior (redirecciona a Carrefour por defecto)
+app.get('/products', async (req, res) => {
+  res.redirect('/products/carrefour');
 });
 
 // Manejo de rutas no encontradas
