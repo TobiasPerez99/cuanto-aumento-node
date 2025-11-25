@@ -8,15 +8,15 @@ async function runPopulation() {
   console.log('🚀 Iniciando población de base de datos...');
   const startTime = Date.now();
 
-  // 1. Ejecutar Disco (Maestro)
-  console.log('\n📦 PASO 1: Obteniendo productos de Disco (MAESTRO)...');
+  // 1. Ejecutar Carrefour
+  console.log('\n📦 PASO 1: Obteniendo productos de Carrefour...');
   try {
-    const discoResult = await getDiscoMainProducts();
-    if (!discoResult.success) {
-      console.error('❌ Error en Disco:', discoResult.error);
+    const carrefourResult = await getCarrefourMainProducts();
+    if (!carrefourResult.success) {
+      console.error('❌ Error en Carrefour:', carrefourResult.error);
     }
   } catch (error) {
-    console.error('❌ Excepción en Disco:', error);
+    console.error('❌ Excepción en Carrefour:', error);
   }
 
   /* // 2. Ejecutar Carrefour

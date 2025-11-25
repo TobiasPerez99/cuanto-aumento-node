@@ -48,7 +48,8 @@ async function saveDiscoProduct(product, supermarketId) {
         brand: product.brand,
         image_url: product.image,
         images: product.images,
-        category: product.categories && product.categories.length > 0 ? product.categories[0] : null
+        category: product.categories && product.categories.length > 0 ? product.categories[0] : null,
+        product_url: product.link
       }, { onConflict: 'ean' });
 
     if (productError) {
@@ -63,6 +64,7 @@ async function saveDiscoProduct(product, supermarketId) {
         product_ean: product.ean,
         supermarket_id: supermarketId,
         price: product.price,
+        product_url: product.link,
         scraped_at: new Date().toISOString()
       });
 

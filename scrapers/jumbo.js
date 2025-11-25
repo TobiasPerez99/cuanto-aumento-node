@@ -29,13 +29,13 @@ const MAIN_PRODUCT_CATEGORIES = [
   'Cuidado Capilar', 'Cuidado de la Piel', 'Cuidado Oral', 'Cuidado Personal', 'Farmacia'
 ];
 
-const BASE_URL = 'https://www.carrefour.com.ar';
+const BASE_URL = 'https://www.jumbo.com.ar';
 
 /**
- * Lógica específica de guardado para Carrefour (FOLLOWER)
+ * Lógica específica de guardado para Jumbo (FOLLOWER)
  * Solo guarda precio si el producto ya existe en DB
  */
-async function saveCarrefourProduct(product, supermarketId) {
+async function saveJumboProduct(product, supermarketId) {
   try {
     // 1. Verificar si el producto existe en nuestra DB (Maestro)
     const { data: existingProduct, error: findError } = await supabase
@@ -48,7 +48,7 @@ async function saveCarrefourProduct(product, supermarketId) {
       return { saved: false, reason: 'not_in_master' };
     }
 
-    // 2. Guardar precio
+    // 2. Insertar Precio
     const { error: priceError } = await supabase
       .from('prices')
       .insert({
@@ -74,12 +74,11 @@ async function saveCarrefourProduct(product, supermarketId) {
 /**
  * 🎯 FUNCIÓN PRINCIPAL
  */
-export async function getCarrefourMainProducts() {
+export async function getJumboMainProducts() {
   return await scrapeVtexSupermarket({
-    supermarketName: 'Carrefour',
+    supermarketName: 'Jumbo',
     baseUrl: BASE_URL,
     categories: MAIN_PRODUCT_CATEGORIES,
-    onProductFound: saveCarrefourProduct,
-    count: 50,
+    onProductFound: saveJumboProduct
   });
 }

@@ -1,12 +1,12 @@
-// test-carrefour.js
+// test-jumbo.js
 import 'dotenv/config';
-import { getCarrefourMainProducts } from './scrapers/carrefour.js';
+import { getJumboMainProducts } from '../scrapers/jumbo.js';
 
 async function test() {
   try {
-    console.log('🚀 Iniciando test del scraper de Carrefour...\n');
+    console.log('🚀 Iniciando test del scraper de Jumbo...\n');
     
-    const result = await getCarrefourMainProducts();
+    const result = await getJumboMainProducts();
     
     console.log('\n📊 RESUMEN FINAL:');
     console.log(`✅ Éxito: ${result.totalProducts} productos obtenidos`);
@@ -15,15 +15,20 @@ async function test() {
     
     // Mostrar algunos ejemplos de productos
     if (result.products && result.products.length > 0) {
-      console.log('\n🎯 EJEMPLOS DE PRODUCTOS:');
+      console.log('\n🎯 EJEMPLOS DE PRODUCTOS CON EAN:');
       console.log('='.repeat(50));
       
       // Mostrar los primeros 3 productos como ejemplo
       const exampleCount = Math.min(3, result.products.length);
       
       for (let i = 0; i < exampleCount; i++) {
+        const p = result.products[i];
         console.log(`\n📦 PRODUCTO ${i + 1}:`);
-        console.log(JSON.stringify(result.products[i], null, 2));
+        console.log(`   🆔 EAN: ${p.ean || '❌ NO ENCONTRADO'}`); // Destacar el EAN
+        console.log(`   📝 Nombre: ${p.name}`);
+        console.log(`   🔗 URL: ${p.link}`);
+        console.log(`   💰 Precio: $${p.price}`);
+        console.log(`   🏷️  Marca: ${p.brand}`);
         console.log('-'.repeat(40));
       }
       
@@ -42,23 +47,10 @@ async function test() {
         .sort(([,a], [,b]) => b - a)
         .slice(0, 5);
       
-      console.log('🏷️  Top 5 marcas:');
+      console.log('🏷️  Top 5 marcas encontradas:');
       topBrands.forEach(([brand, count]) => {
         console.log(`   • ${brand}: ${count} productos`);
       });
-      
-      // Mostrar rango de precios
-      const prices = result.products
-        .map(p => p.price)
-        .filter(p => p && p > 0)
-        .sort((a, b) => a - b);
-      
-      if (prices.length > 0) {
-        console.log(`\n💰 Rango de precios:`);
-        console.log(`   • Mínimo: $${prices[0]}`);
-        console.log(`   • Máximo: $${prices[prices.length - 1]}`);
-        console.log(`   • Promedio: $${Math.round(prices.reduce((a, b) => a + b, 0) / prices.length)}`);
-      }
     }
     
   } catch (error) {

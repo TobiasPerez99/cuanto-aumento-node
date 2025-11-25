@@ -1,5 +1,5 @@
-import { getDiscoMainProducts } from './scrapers/disco.js';
-import { getCarrefourMainProducts } from './scrapers/carrefour.js';
+import { getDiscoMainProducts } from '../scrapers/disco.js';
+import { getCarrefourMainProducts } from '../scrapers/carrefour.js';
 import dotenv from 'dotenv';
 
 dotenv.config();

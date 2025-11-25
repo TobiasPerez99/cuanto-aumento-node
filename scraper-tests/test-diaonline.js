@@ -1,12 +1,12 @@
-// test-disco.js
+// test-diaonline.js
 import 'dotenv/config';
-import { getDiscoMainProducts } from './scrapers/disco.js';
+import { getDiaMainProducts } from '../scrapers/diaonline.js';
 
 async function test() {
   try {
-    console.log('🚀 Iniciando test del scraper de Disco (MAESTRO)...\n');
+    console.log('🚀 Iniciando test del scraper de Dia...\n');
     
-    const result = await getDiscoMainProducts();
+    const result = await getDiaMainProducts();
     
     console.log('\n📊 RESUMEN FINAL:');
     console.log(`✅ Éxito: ${result.totalProducts} productos obtenidos`);
@@ -26,6 +26,7 @@ async function test() {
         console.log(`\n📦 PRODUCTO ${i + 1}:`);
         console.log(`   🆔 EAN: ${p.ean || '❌ NO ENCONTRADO'}`); // Destacar el EAN
         console.log(`   📝 Nombre: ${p.name}`);
+        console.log(`   🔗 URL: ${p.link}`);
         console.log(`   💰 Precio: $${p.price}`);
         console.log(`   🏷️  Marca: ${p.brand}`);
         console.log('-'.repeat(40));
