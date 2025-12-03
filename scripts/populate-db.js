@@ -33,15 +33,17 @@ const SCRAPERS = {
 // Obtener qué scraper ejecutar desde argumentos
 const args = process.argv.slice(2);
 const targetScraper = args[0]; // ej: "disco", "carrefour", "all"
+const mode = args[1] || 'categories'; // "categories" (default) o "eans"
 
 async function runScraper(key, scraper) {
   const label = scraper.isMaster ? `${scraper.name} (MAESTRO)` : scraper.name;
   console.log(`\n${'='.repeat(50)}`);
-  console.log(`📦 Ejecutando: ${label}`);
+  console.log(`📦 Ejecutando: ${label} [MODO: ${mode.toUpperCase()}]`);
   console.log('='.repeat(50));
   
   try {
-    const result = await scraper.fn();
+    // Pasamos el modo a la función del scraper
+    const result = await scraper.fn(mode);
     if (result.success) {
       console.log(`✅ ${scraper.name}: ${result.totalProducts} productos, ${result.savedProducts} guardados`);
       return { success: true, ...result };

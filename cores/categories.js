@@ -45,3 +45,6 @@ export const GENERAL_CATEGORIES = [
   'perfumeria'
 ];
 
+export const productEans = process.env.PRODUCT_EANS
+  ? JSON.parse(process.env.PRODUCT_EANS)
+  : [];

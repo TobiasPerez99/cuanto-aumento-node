@@ -87,7 +87,7 @@ export async function scrapeVtexSupermarket({ supermarketName, baseUrl, categori
     
     // Pequeña pausa para no saturar
     if (i < categories.length - 1) {
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      await new Promise(resolve => setTimeout(resolve, 200));
     }
   }
   const uniqueProducts = Array.from(allProducts.values());
