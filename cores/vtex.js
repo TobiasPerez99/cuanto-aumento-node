@@ -189,14 +189,16 @@ function normalizeProduct(rawProduct, baseUrl, source) {
     return null;
   }
   
-  if (!rawProduct.items[0].images || rawProduct.items[0].images.length === 0) {
+  const item = rawProduct.items[0]; // Tomamos el primer item (SKU) por defecto
+  
+  if (!item.images || item.images.length === 0) {
     return null;
   }
   if (!rawProduct.priceRange || !rawProduct.priceRange.sellingPrice) {
     return null;
   }
   // Intentar extraer EAN
-  let ean = rawProduct.items[0].ean;
+  let ean = item.ean;
   
   // Si no hay EAN, descartamos el producto
   if (!ean) {
@@ -204,21 +206,58 @@ function normalizeProduct(rawProduct, baseUrl, source) {
   }
   
   // Extraer todas las imágenes
-  const images = rawProduct.items[0].images.map(img => img.imageUrl);
+  const images = item.images.map(img => img.imageUrl);
+
+  // Precios
+  const sellingPrice = rawProduct.priceRange.sellingPrice.lowPrice;
+  const listPrice = rawProduct.priceRange.listPrice?.lowPrice || sellingPrice;
+
+  // Calculo de precio de referencia (ej: precio x litro)
+  // VTEX suele devolver measurementUnit y unitMultiplier en el item
+  let referencePrice = null;
+  let referenceUnit = item.measurementUnit; // ej: 'un', 'kg', 'lt'
+
+  if (item.unitMultiplier && item.unitMultiplier > 0) {
+    // Si el sellingPrice es por la unidad de venta (ej: botella 1.5L sale $1500)
+    // y el unitMultiplier es 1.5, el precio por litro sería 1500 / 1.5 = 1000.
+    // OJO: Depende de cómo venga el precio en VTEX, a veces el precio ya es por unidad. 
+    // Pero usualmente priceRange es el precio del "bulto".
+    referencePrice = sellingPrice / item.unitMultiplier;
+  }
+
+  // Stock / Disponibilidad
+  // VTEX suele tener commertialOffer.AvailableQuantity o sellers[0].commertialOffer.AvailableQuantity
+  // Pero aquí estamos usando el objeto 'product' de búsqueda, que tiene estructura simplificada a veces.
+  // Usamos el flag commertialOffer del primer vendedor si existe.
+  let isAvailable = true;
+  const seller = item.sellers?.find(s => s.sellerDefault) || item.sellers?.[0];
+  if (seller && seller.commertialOffer) {
+     isAvailable = seller.commertialOffer.AvailableQuantity > 0;
+  }
+  
   return {
     ean: ean,
-    id: rawProduct.productId,
+    external_id: rawProduct.productId, // ID de producto en VTEX
     source: source,
     name: rawProduct.productName,
     link: `${baseUrl}/${rawProduct.linkText}/p`,
-    image: images[0], // Mantener compatibilidad
-    images: images,   // Array con todas las imágenes
-    price: rawProduct.priceRange.sellingPrice.lowPrice,
-    listPrice: rawProduct.priceRange.listPrice?.lowPrice || rawProduct.priceRange.sellingPrice.lowPrice,
+    image: images[0],
+    images: images,
+    
+    // Campos de precios normalizados
+    price: sellingPrice,
+    list_price: listPrice,
+    reference_price: referencePrice,
+    reference_unit: referenceUnit,
+    
+    is_available: isAvailable,
+
+    // Mantenemos compatibilidad con campos viejos si es necesario, 
+    // o simplemente devolvemos este objeto enriquecido.
     brand: rawProduct.brand,
     categories: rawProduct.categories,
     description: rawProduct.description,
-    unavailable: false
+    unavailable: !isAvailable // Deprecated, prefer is_available
   };
 }
 /**

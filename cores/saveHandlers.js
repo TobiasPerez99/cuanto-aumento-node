@@ -25,20 +25,42 @@ export async function saveMasterProduct(product, supermarketId) {
       return { saved: false, reason: 'db_error' };
     }
 
-    // 2. Insertar Precio
-    const { error: priceError } = await supabase
-      .from('prices')
-      .insert({
+    // 2. Upsert en Supermarket Products (Estado Actual)
+    const { data: spData, error: spError } = await supabase
+      .from('supermarket_products')
+      .upsert({
         product_ean: product.ean,
         supermarket_id: supermarketId,
-        price: product.price,
+        external_id: product.external_id,
         product_url: product.link,
+        price: product.price,
+        list_price: product.list_price,
+        reference_price: product.reference_price,
+        reference_unit: product.reference_unit,
+        is_available: product.is_available,
+        last_checked_at: new Date().toISOString()
+      }, { onConflict: 'product_ean, supermarket_id' })
+      .select('id')
+      .single();
+
+    if (spError) {
+      console.error(`❌ Error guardando supermarket_product para ${product.ean}:`, spError.message);
+      return { saved: false, reason: 'db_error' };
+    }
+
+    // 3. Insertar Historial de Precio (Log)
+    const { error: historyError } = await supabase
+      .from('price_history')
+      .insert({
+        supermarket_product_id: spData.id,
+        price: product.price,
+        list_price: product.list_price,
         scraped_at: new Date().toISOString()
       });
 
-    if (priceError) {
-      console.error(`❌ Error guardando precio para ${product.ean}:`, priceError.message);
-      return { saved: false, reason: 'db_error' };
+    if (historyError) {
+      // No fallamos todo el proceso si falla el historial, pero lo logueamos
+      console.error(`Error guardando historial para ${product.ean}:`, historyError.message);
     }
 
     return { saved: true };
@@ -65,20 +87,41 @@ export async function saveFollowerProduct(product, supermarketId) {
       return { saved: false, reason: 'not_in_master' };
     }
 
-    // 2. Insertar Precio
-    const { error: priceError } = await supabase
-      .from('prices')
-      .insert({
+    // 2. Upsert en Supermarket Products (Estado Actual)
+    const { data: spData, error: spError } = await supabase
+      .from('supermarket_products')
+      .upsert({
         product_ean: product.ean,
         supermarket_id: supermarketId,
-        price: product.price,
+        external_id: product.external_id,
         product_url: product.link,
+        price: product.price,
+        list_price: product.list_price,
+        reference_price: product.reference_price,
+        reference_unit: product.reference_unit,
+        is_available: product.is_available,
+        last_checked_at: new Date().toISOString()
+      }, { onConflict: 'product_ean, supermarket_id' })
+      .select('id')
+      .single();
+
+    if (spError) {
+      console.error(`❌ Error guardando supermarket_product para ${product.ean}:`, spError.message);
+      return { saved: false, reason: 'db_error' };
+    }
+
+    // 3. Insertar Historial de Precio (Log)
+    const { error: historyError } = await supabase
+      .from('price_history')
+      .insert({
+        supermarket_product_id: spData.id,
+        price: product.price,
+        list_price: product.list_price,
         scraped_at: new Date().toISOString()
       });
 
-    if (priceError) {
-      console.error(`❌ Error guardando precio para ${product.ean}:`, priceError.message);
-      return { saved: false, reason: 'db_error' };
+    if (historyError) {
+      console.error(`⚠️ Error guardando historial para ${product.ean}:`, historyError.message);
     }
 
     return { saved: true };

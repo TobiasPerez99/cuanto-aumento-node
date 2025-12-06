@@ -11,7 +11,7 @@ let client = null;
 if (supabaseUrl && supabaseKey) {
   client = createClient(supabaseUrl, supabaseKey);
 } else {
-  console.warn('⚠️ Advertencia: SUPABASE_URL o SUPABASE_KEY no configurados. La base de datos no estará disponible.');
+  console.warn('Supabase variables not configured');
 }
 
 export const supabase = client;
