@@ -1,8 +1,5 @@
-/**
- * Categorías compartidas entre supermercados
- */
 
-// Categorías detalladas (usadas por Disco, Carrefour, Jumbo)
+
 export const DETAILED_CATEGORIES = [
   // ALMACÉN
   'Aceites y Vinagres', 'Aderezos', 'Arroz y Legumbres', 'Conservas', 
@@ -30,7 +27,7 @@ export const DETAILED_CATEGORIES = [
   'Cuidado Capilar', 'Cuidado de la Piel', 'Cuidado Oral', 'Cuidado Personal', 'Farmacia'
 ];
 
-// Categorías generales (usadas por Vea, Dia, Masonline, Farmacity)
+
 export const GENERAL_CATEGORIES = [
   'almacen',
   'bebidas', 

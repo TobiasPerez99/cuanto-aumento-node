@@ -1,12 +1,9 @@
 import { supabase } from '../config/supabase.js';
 
-/**
- * Guarda producto como MAESTRO (upsert producto + insert precio)
- * Usado por el supermercado principal que define el catálogo
- */
+
 export async function saveMasterProduct(product, supermarketId) {
   try {
-    // 1. Upsert Producto (Maestro)
+    
     const { error: productError } = await supabase
       .from('products')
       .upsert({
@@ -25,7 +22,6 @@ export async function saveMasterProduct(product, supermarketId) {
       return { saved: false, reason: 'db_error' };
     }
 
-    // 2. Upsert en Supermarket Products (Estado Actual)
     const { data: spData, error: spError } = await supabase
       .from('supermarket_products')
       .upsert({
@@ -48,7 +44,6 @@ export async function saveMasterProduct(product, supermarketId) {
       return { saved: false, reason: 'db_error' };
     }
 
-    // 3. Insertar Historial de Precio (Log)
     const { error: historyError } = await supabase
       .from('price_history')
       .insert({
@@ -59,7 +54,6 @@ export async function saveMasterProduct(product, supermarketId) {
       });
 
     if (historyError) {
-      // No fallamos todo el proceso si falla el historial, pero lo logueamos
       console.error(`Error guardando historial para ${product.ean}:`, historyError.message);
     }
 
@@ -70,13 +64,9 @@ export async function saveMasterProduct(product, supermarketId) {
   }
 }
 
-/**
- * Guarda solo el precio si el producto existe en el maestro
- * Usado por supermercados secundarios
- */
 export async function saveFollowerProduct(product, supermarketId) {
   try {
-    // 1. Verificar si el producto existe en nuestra DB (Maestro)
+    
     const { data: existingProduct, error: findError } = await supabase
       .from('products')
       .select('ean')
@@ -87,7 +77,6 @@ export async function saveFollowerProduct(product, supermarketId) {
       return { saved: false, reason: 'not_in_master' };
     }
 
-    // 2. Upsert en Supermarket Products (Estado Actual)
     const { data: spData, error: spError } = await supabase
       .from('supermarket_products')
       .upsert({
@@ -110,7 +99,6 @@ export async function saveFollowerProduct(product, supermarketId) {
       return { saved: false, reason: 'db_error' };
     }
 
-    // 3. Insertar Historial de Precio (Log)
     const { error: historyError } = await supabase
       .from('price_history')
       .insert({
