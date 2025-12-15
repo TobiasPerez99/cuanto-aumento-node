@@ -1,0 +1,34 @@
+name: Scrape Disco Once
+
+on:
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: 'Motivo de la ejecución'
+        required: false
+        default: 'Ejecución manual única'
+
+jobs:
+  scrape-disco:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 6 horas máximo
+    
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Ejecutar Scraper Disco
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+          VTEX_SHA256_HASH: ${{ secrets.VTEX_SHA256_HASH }}
+        run: npm run scrape:disco
