@@ -1,61 +1,73 @@
-import { supabase } from '../config/supabase.js';
+import { prisma } from '../config/prisma.js';
 
 
 export async function saveMasterProduct(product, supermarketId) {
   try {
-    
-    const { error: productError } = await supabase
-      .from('products')
-      .upsert({
+    // 1. Upsert product (master catalog)
+    await prisma.product.upsert({
+      where: { ean: product.ean },
+      update: {
+        name: product.name,
+        description: product.description || product.name,
+        brand: product.brand,
+        imageUrl: product.image,
+        images: product.images,
+        category: product.categories && product.categories.length > 0 ? product.categories[0] : null,
+        productUrl: product.link
+      },
+      create: {
         ean: product.ean,
         name: product.name,
         description: product.description || product.name,
         brand: product.brand,
-        image_url: product.image,
+        imageUrl: product.image,
         images: product.images,
         category: product.categories && product.categories.length > 0 ? product.categories[0] : null,
-        product_url: product.link
-      }, { onConflict: 'ean' });
+        productUrl: product.link
+      }
+    });
 
-    if (productError) {
-      console.error(`❌ Error guardando producto ${product.ean}:`, productError.message);
-      return { saved: false, reason: 'db_error' };
-    }
-
-    const { data: spData, error: spError } = await supabase
-      .from('supermarket_products')
-      .upsert({
-        product_ean: product.ean,
-        supermarket_id: supermarketId,
-        external_id: product.external_id,
-        product_url: product.link,
+    // 2. Upsert supermarket_product and get ID
+    const supermarketProduct = await prisma.supermarketProduct.upsert({
+      where: {
+        productEan_supermarketId: {
+          productEan: product.ean,
+          supermarketId: supermarketId,
+        },
+      },
+      update: {
+        externalId: product.external_id,
+        productUrl: product.link,
         price: product.price,
-        list_price: product.list_price,
-        reference_price: product.reference_price,
-        reference_unit: product.reference_unit,
-        is_available: product.is_available,
-        last_checked_at: new Date().toISOString()
-      }, { onConflict: 'product_ean, supermarket_id' })
-      .select('id')
-      .single();
-
-    if (spError) {
-      console.error(`❌ Error guardando supermarket_product para ${product.ean}:`, spError.message);
-      return { saved: false, reason: 'db_error' };
-    }
-
-    const { error: historyError } = await supabase
-      .from('price_history')
-      .insert({
-        supermarket_product_id: spData.id,
+        listPrice: product.list_price,
+        referencePrice: product.reference_price,
+        referenceUnit: product.reference_unit,
+        isAvailable: product.is_available,
+        lastCheckedAt: new Date(),
+      },
+      create: {
+        productEan: product.ean,
+        supermarketId: supermarketId,
+        externalId: product.external_id,
+        productUrl: product.link,
         price: product.price,
-        list_price: product.list_price,
-        scraped_at: new Date().toISOString()
-      });
+        listPrice: product.list_price,
+        referencePrice: product.reference_price,
+        referenceUnit: product.reference_unit,
+        isAvailable: product.is_available,
+        lastCheckedAt: new Date(),
+      },
+    });
 
-    if (historyError) {
-      console.error(`Error guardando historial para ${product.ean}:`, historyError.message);
-    }
+    // 3. Insert price history
+    await prisma.priceHistory.create({
+      data: {
+        supermarketProductId: supermarketProduct.id,
+        price: product.price,
+        listPrice: product.list_price,
+        scrapedAt: new Date(),
+      },
+    });
 
     return { saved: true };
   } catch (error) {
@@ -66,51 +78,57 @@ export async function saveMasterProduct(product, supermarketId) {
 
 export async function saveFollowerProduct(product, supermarketId) {
   try {
-    
-    const { data: existingProduct, error: findError } = await supabase
-      .from('products')
-      .select('ean')
-      .eq('ean', product.ean)
-      .single();
+    // 1. Check if product exists in master catalog
+    const existingProduct = await prisma.product.findUnique({
+      where: { ean: product.ean },
+      select: { ean: true }, // Only fetch EAN for efficiency
+    });
 
-    if (findError || !existingProduct) {
+    if (!existingProduct) {
       return { saved: false, reason: 'not_in_master' };
     }
 
-    const { data: spData, error: spError } = await supabase
-      .from('supermarket_products')
-      .upsert({
-        product_ean: product.ean,
-        supermarket_id: supermarketId,
-        external_id: product.external_id,
-        product_url: product.link,
+    // 2. Upsert supermarket_product (same as saveMasterProduct)
+    const supermarketProduct = await prisma.supermarketProduct.upsert({
+      where: {
+        productEan_supermarketId: {
+          productEan: product.ean,
+          supermarketId: supermarketId,
+        },
+      },
+      update: {
+        externalId: product.external_id,
+        productUrl: product.link,
         price: product.price,
-        list_price: product.list_price,
-        reference_price: product.reference_price,
-        reference_unit: product.reference_unit,
-        is_available: product.is_available,
-        last_checked_at: new Date().toISOString()
-      }, { onConflict: 'product_ean, supermarket_id' })
-      .select('id')
-      .single();
-
-    if (spError) {
-      console.error(`❌ Error guardando supermarket_product para ${product.ean}:`, spError.message);
-      return { saved: false, reason: 'db_error' };
-    }
-
-    const { error: historyError } = await supabase
-      .from('price_history')
-      .insert({
-        supermarket_product_id: spData.id,
+        listPrice: product.list_price,
+        referencePrice: product.reference_price,
+        referenceUnit: product.reference_unit,
+        isAvailable: product.is_available,
+        lastCheckedAt: new Date(),
+      },
+      create: {
+        productEan: product.ean,
+        supermarketId: supermarketId,
+        externalId: product.external_id,
+        productUrl: product.link,
         price: product.price,
-        list_price: product.list_price,
-        scraped_at: new Date().toISOString()
-      });
+        listPrice: product.list_price,
+        referencePrice: product.reference_price,
+        referenceUnit: product.reference_unit,
+        isAvailable: product.is_available,
+        lastCheckedAt: new Date(),
+      },
+    });
 
-    if (historyError) {
-      console.error(`⚠️ Error guardando historial para ${product.ean}:`, historyError.message);
-    }
+    // 3. Insert price history
+    await prisma.priceHistory.create({
+      data: {
+        supermarketProductId: supermarketProduct.id,
+        price: product.price,
+        listPrice: product.list_price,
+        scrapedAt: new Date(),
+      },
+    });
 
     return { saved: true };
   } catch (error) {
@@ -118,4 +136,3 @@ export async function saveFollowerProduct(product, supermarketId) {
     return { saved: false, reason: 'exception' };
   }
 }
-

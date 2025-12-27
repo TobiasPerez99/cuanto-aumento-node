@@ -1,0 +1,80 @@
+// Prisma Schema para MySQL
+// Migración desde Supabase (PostgreSQL) a MySQL
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// Catálogo maestro de productos
+model Product {
+  ean         String   @id @db.VarChar(20)
+  name        String   @db.VarChar(500)
+  description String?  @db.Text
+  brand       String?  @db.VarChar(200)
+  imageUrl    String?  @map("image_url") @db.VarChar(1000)
+  images      Json?
+  category    String?  @db.VarChar(200)
+  productUrl  String?  @map("product_url") @db.VarChar(1000)
+
+  supermarketProducts SupermarketProduct[]
+
+  @@index([category])
+  @@index([brand])
+  @@index([name])
+  @@map("products")
+}
+
+// Directorio de supermercados
+model Supermarket {
+  id   Int    @id @default(autoincrement())
+  name String @unique @db.VarChar(100)
+
+  supermarketProducts SupermarketProduct[]
+
+  @@map("supermarkets")
+}
+
+// Precios por supermercado
+model SupermarketProduct {
+  id             Int       @id @default(autoincrement())
+  productEan     String    @map("product_ean") @db.VarChar(20)
+  supermarketId  Int       @map("supermarket_id")
+  externalId     String?   @map("external_id") @db.VarChar(100)
+  productUrl     String?   @map("product_url") @db.VarChar(1000)
+  price          Decimal?  @db.Decimal(10, 2)
+  listPrice      Decimal?  @map("list_price") @db.Decimal(10, 2)
+  referencePrice Decimal?  @map("reference_price") @db.Decimal(10, 2)
+  referenceUnit  String?   @map("reference_unit") @db.VarChar(50)
+  isAvailable    Boolean   @default(true) @map("is_available")
+  lastCheckedAt  DateTime? @map("last_checked_at")
+
+  product      Product         @relation(fields: [productEan], references: [ean], onDelete: Cascade)
+  supermarket  Supermarket     @relation(fields: [supermarketId], references: [id], onDelete: Cascade)
+  priceHistory PriceHistory[]
+
+  @@unique([productEan, supermarketId])
+  @@index([supermarketId])
+  @@index([isAvailable])
+  @@index([lastCheckedAt])
+  @@map("supermarket_products")
+}
+
+// Historial de precios
+model PriceHistory {
+  id                   Int      @id @default(autoincrement())
+  supermarketProductId Int      @map("supermarket_product_id")
+  price                Decimal  @db.Decimal(10, 2)
+  listPrice            Decimal? @map("list_price") @db.Decimal(10, 2)
+  scrapedAt            DateTime @default(now()) @map("scraped_at")
+
+  supermarketProduct SupermarketProduct @relation(fields: [supermarketProductId], references: [id], onDelete: Cascade)
+
+  @@index([supermarketProductId])
+  @@index([scrapedAt])
+  @@map("price_history")
+}

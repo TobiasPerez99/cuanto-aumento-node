@@ -1,30 +1,23 @@
 import axios from 'axios';
-import { supabase } from '../config/supabase.js';
+import { prisma } from '../config/prisma.js';
 /**
  * Obtiene o crea el ID del supermercado
  */
 async function getSupermarketId(name) {
-  // Intentar buscar
-  const { data, error } = await supabase
-    .from('supermarkets')
-    .select('id')
-    .eq('name', name)
-    .single();
-  if (data) return data.id;
-  // Si no existe, crear
-  console.log(`⚠️ Supermercado '${name}' no encontrado, creando...`);
-  const { data: newData, error: insertError } = await supabase
-    .from('supermarkets')
-    .insert([{ name: name }])
-    .select()
-    .single();
-    
-  if (insertError) {
-    console.error('Error creando supermercado:', insertError);
+  try {
+    // Find or create supermarket (atomic operation)
+    const supermarket = await prisma.supermarket.upsert({
+      where: { name },
+      update: {}, // No updates needed if exists
+      create: { name },
+      select: { id: true },
+    });
+
+    return supermarket.id;
+  } catch (error) {
+    console.error('Error creating/finding supermarket:', error);
     return null;
   }
-  
-  return newData.id;
 }
 /**
  * Función genérica para scrapear un supermercado VTEX
@@ -41,13 +34,13 @@ export async function scrapeVtexSupermarket({ supermarketName, baseUrl, categori
   
   // Obtener ID del supermercado
   let supermarketId = null;
-  if (supabase) {
+  if (prisma) {
     supermarketId = await getSupermarketId(supermarketName);
     if (!supermarketId) {
       return { success: false, error: `No se pudo obtener el ID del supermercado ${supermarketName}` };
     }
   } else {
-    console.warn('⚠️ Supabase no disponible. Saltando guardado en DB.');
+    console.warn('⚠️ Prisma no disponible. Saltando guardado en DB.');
   }
   console.log(`📋 Buscando en ${categories.length} categorías`);
   
