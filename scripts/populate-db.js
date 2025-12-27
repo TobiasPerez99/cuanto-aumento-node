@@ -23,7 +23,7 @@ import { getFarmacityMainProducts } from '../scrapers/farmacity.js';
 import { sendScrapingNotification } from '../services/slackNotifier.js';
 
 // Configuración de scrapers
-const SCRAPERS = {
+export const SCRAPERS = {
   disco: { fn: getDiscoMainProducts, name: 'Disco', isMaster: true },
   carrefour: { fn: getCarrefourMainProducts, name: 'Carrefour' },
   jumbo: { fn: getJumboMainProducts, name: 'Jumbo' },
@@ -85,7 +85,7 @@ async function runScraper(key, scraper) {
   }
 }
 
-async function runAll() {
+export async function runAll() {
   console.log('🚀 EJECUTANDO TODOS LOS SCRAPERS');
   console.log(`📅 Fecha: ${new Date().toLocaleString('es-AR')}`);
   
@@ -121,7 +121,7 @@ async function runAll() {
   console.log(`\n⏱️  Tiempo total: ${duration} minutos`);
 }
 
-async function runSingle(scraperKey) {
+export async function runSingle(scraperKey) {
   if (!SCRAPERS[scraperKey]) {
     console.error(`❌ Scraper "${scraperKey}" no existe.`);
     console.log('Scrapers disponibles:', Object.keys(SCRAPERS).join(', '));
