@@ -1,4 +1,3 @@
-
 export const DETAILED_CATEGORIES = [
   // Almacen
   "Aceites y Vinagres",
@@ -313,8 +312,35 @@ export const DETAILED_CATEGORIES = [
   "Húmedos",
   "Perros",
   "Secos",
-  "Húmedos"
+  "Húmedos",
 ];
+
+// Get Categories from API
+export async function getCategories() {
+  try {
+    const response = await fetch(process.env.AHORRAPP_CENTRAL_API, {
+      headers: {
+        Authorization: `Bearer ${process.env.AHORRAPP_CENTRAL_API_TOKEN}`,
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    if (data.success === true && Array.isArray(data.data)) {
+      return data.data;
+    } else {
+      console.warn("API response unsuccessful, using fallback categories");
+      return DETAILED_CATEGORIES;
+    }
+  } catch (error) {
+    console.error("Error fetching categories from API:", error.message);
+    return DETAILED_CATEGORIES;
+  }
+}
 
 export const productEans = process.env.PRODUCT_EANS
   ? JSON.parse(process.env.PRODUCT_EANS)

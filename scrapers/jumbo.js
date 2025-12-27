@@ -1,6 +1,6 @@
 import { scrapeVtexSupermarket } from '../cores/vtex.js';
 import { saveFollowerProduct } from '../cores/saveHandlers.js';
-import { DETAILED_CATEGORIES, productEans } from '../cores/categories.js';
+import { getCategories, DETAILED_CATEGORIES, productEans } from '../cores/categories.js';
 
 const BASE_URL = 'https://www.jumbo.com.ar';
 
@@ -12,7 +12,7 @@ export async function getJumboMainProducts(mode = 'categories') {
   return await scrapeVtexSupermarket({
     supermarketName: 'Jumbo',
     baseUrl: BASE_URL,
-    categories: useEans ? productEans : DETAILED_CATEGORIES,
+    categories: useEans ? productEans : await getCategories(),
     onProductFound: saveFollowerProduct,
     count: useEans ? 1 : 50
   });
