@@ -1,6 +1,6 @@
 /**
  * Script para poblar la base de datos con productos de todos los supermercados
- * 
+ *
  * Uso:
  *   npm run scrape:all      - Ejecutar todos los scrapers
  *   npm run scrape:disco    - Solo Disco (MAESTRO)
@@ -8,6 +8,9 @@
  *   etc.
  */
 import dotenv from 'dotenv';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
 dotenv.config();
 
 // Importar todos los scrapers
@@ -38,7 +41,7 @@ const args = process.argv.slice(2);
 const targetScraper = args[0]; // ej: "disco", "carrefour", "all"
 const mode = args[1] || 'categories'; // "categories" (default) o "eans"
 
-async function runScraper(key, scraper) {
+export async function runScraper(key, scraper) {
   const label = scraper.isMaster ? `${scraper.name} (MAESTRO)` : scraper.name;
   console.log(`\n${'='.repeat(50)}`);
   console.log(`📦 Ejecutando: ${label} [MODO: ${mode.toUpperCase()}]`);
@@ -138,7 +141,7 @@ export async function runSingle(scraperKey) {
   console.log(`\n⏱️  Tiempo: ${duration} segundos`);
 }
 
-// Ejecutar
+// Ejecutar solo si el archivo se ejecuta directamente (no cuando se importa)
 async function main() {
   if (!targetScraper || targetScraper === 'all') {
     await runAll();
@@ -148,7 +151,14 @@ async function main() {
   process.exit(0);
 }
 
-main().catch(err => {
-  console.error('❌ Error fatal:', err);
-  process.exit(1);
-});
+// Solo ejecutar si este archivo es el módulo principal
+// En ES modules, verificamos si import.meta.url coincide con el archivo ejecutado
+const __filename = fileURLToPath(import.meta.url);
+const isMainModule = process.argv[1] === __filename;
+
+if (isMainModule) {
+  main().catch(err => {
+    console.error('❌ Error fatal:', err);
+    process.exit(1);
+  });
+}

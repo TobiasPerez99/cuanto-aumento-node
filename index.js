@@ -94,8 +94,5 @@ app.use((error, req, res, next) => {
 // Iniciar servidor
 app.listen(PORT, () => {
   console.log(`\n🚀 Servidor ejecutándose en http://localhost:${PORT}`);
-  console.log(`📦 API Principal: GET /api/products`);
-  console.log(`🔍 Búsqueda: GET /api/products/search?q=...`);
-  console.log(`📊 Categorías: GET /api/categories\n`);
 });
 
