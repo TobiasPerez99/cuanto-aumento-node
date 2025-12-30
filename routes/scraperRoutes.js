@@ -40,14 +40,18 @@ router.post('/scrape/:scraperName', authMiddleware, async (req, res) => {
       });
     }
 
-    // Validate mode
-    const validModes = ['categories', 'eans'];
-    if (!validModes.includes(mode)) {
-      return res.status(400).json({
-        success: false,
-        error: 'Bad Request',
-        message: `Invalid mode "${mode}". Valid options: ${validModes.join(', ')}`
-      });
+    const scraper = SCRAPERS[scraperKey];
+
+    // Validate mode (only for non-bank scrapers)
+    if (scraper.type !== 'bank') {
+      const validModes = ['categories', 'eans'];
+      if (!validModes.includes(mode)) {
+        return res.status(400).json({
+          success: false,
+          error: 'Bad Request',
+          message: `Invalid mode "${mode}". Valid options: ${validModes.join(', ')}`
+        });
+      }
     }
 
     // Check if scraper is already running
@@ -60,7 +64,7 @@ router.post('/scrape/:scraperName', authMiddleware, async (req, res) => {
     }
 
     // Create job
-    const jobId = createJob(scraperKey, SCRAPERS[scraperKey].name);
+    const jobId = createJob(scraperKey, scraper.name);
 
     // Start async execution (fire-and-forget)
     setImmediate(async () => {
@@ -71,7 +75,7 @@ router.post('/scrape/:scraperName', authMiddleware, async (req, res) => {
     res.status(202).json({
       success: true,
       jobId,
-      scraperName: SCRAPERS[scraperKey].name,
+      scraperName: scraper.name,
       status: 'pending',
       message: 'Scraper execution started',
       statusUrl: `/api/scrape/status/${jobId}`

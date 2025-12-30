@@ -15,6 +15,7 @@
     "scrape:dia": "node scripts/populate-db.js dia",
     "scrape:masonline": "node scripts/populate-db.js masonline",
     "scrape:farmacity": "node scripts/populate-db.js farmacity",
+    "scrape:modo": "node scripts/populate-db.js modo",
     "test:vea": "node scraper-tests/test-vea.js",
     "test:jumbo": "node scraper-tests/test-jumbo.js",
     "test:carrefour": "node scraper-tests/test-carrefour.js",

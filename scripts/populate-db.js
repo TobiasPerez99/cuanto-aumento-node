@@ -21,6 +21,7 @@ import { getVeaMainProducts } from '../scrapers/vea.js';
 import { getDiaMainProducts } from '../scrapers/diaonline.js';
 import { getMasonlineMainProducts } from '../scrapers/masonline.js';
 import { getFarmacityMainProducts } from '../scrapers/farmacity.js';
+import { getModoBanks } from '../scrapers/banks/modo_bank.js';
 
 // Importar notificador de Slack
 import { sendScrapingNotification } from '../services/slackNotifier.js';
@@ -34,6 +35,7 @@ export const SCRAPERS = {
   dia: { fn: getDiaMainProducts, name: 'Dia Online' },
   masonline: { fn: getMasonlineMainProducts, name: 'Masonline' },
   farmacity: { fn: getFarmacityMainProducts, name: 'Farmacity' },
+  modo: { fn: getModoBanks, name: 'Modo Banks', type: 'bank' },
 };
 
 // Obtener qué scraper ejecutar desde argumentos
@@ -44,14 +46,23 @@ const mode = args[1] || 'categories'; // "categories" (default) o "eans"
 export async function runScraper(key, scraper) {
   const label = scraper.isMaster ? `${scraper.name} (MAESTRO)` : scraper.name;
   console.log(`\n${'='.repeat(50)}`);
-  console.log(`📦 Ejecutando: ${label} [MODO: ${mode.toUpperCase()}]`);
+
+  // Los scrapers de tipo 'bank' no usan modo
+  if (scraper.type === 'bank') {
+    console.log(`📦 Ejecutando: ${label}`);
+  } else {
+    console.log(`📦 Ejecutando: ${label} [MODO: ${mode.toUpperCase()}]`);
+  }
+
   console.log('='.repeat(50));
 
   const scraperStartTime = Date.now();
 
   try {
-    // Pasamos el modo a la función del scraper
-    const result = await scraper.fn(mode);
+    // Bancos no usan mode, solo supermercados
+    const result = scraper.type === 'bank'
+      ? await scraper.fn()
+      : await scraper.fn(mode);
 
     // Calcular tiempo de ejecución y enviar notificación a Slack
     const executionTime = Date.now() - scraperStartTime;
@@ -63,7 +74,12 @@ export async function runScraper(key, scraper) {
     });
 
     if (result.success) {
-      console.log(`✅ ${scraper.name}: ${result.totalProducts} productos, ${result.savedProducts} guardados`);
+      // Manejar diferencias entre scrapers de bancos y supermercados
+      if (scraper.type === 'bank') {
+        console.log(`✅ ${scraper.name}: ${result.totalBanks} bancos, ${result.savedBanks} guardados`);
+      } else {
+        console.log(`✅ ${scraper.name}: ${result.totalProducts} productos, ${result.savedProducts} guardados`);
+      }
       return { success: true, ...result };
     } else {
       console.error(`❌ Error en ${scraper.name}:`, result.error);
@@ -115,9 +131,17 @@ export async function runAll() {
   
   for (const [key, result] of Object.entries(results)) {
     const status = result.success ? '✅' : '❌';
-    const info = result.success 
-      ? `${result.totalProducts} productos, ${result.savedProducts} guardados`
-      : result.error;
+    let info;
+    if (result.success) {
+      // Manejar diferencias entre scrapers de bancos y supermercados
+      if (SCRAPERS[key].type === 'bank') {
+        info = `${result.totalBanks} bancos, ${result.savedBanks} guardados`;
+      } else {
+        info = `${result.totalProducts} productos, ${result.savedProducts} guardados`;
+      }
+    } else {
+      info = result.error;
+    }
     console.log(`${status} ${SCRAPERS[key].name}: ${info}`);
   }
   

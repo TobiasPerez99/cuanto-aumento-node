@@ -56,7 +56,7 @@ app.get('/', (req, res) => {
         'POST /api/scrape/cleanup - Limpiar jobs antiguos (autenticado)'
       ]
     },
-    scrapers_available: ['disco', 'carrefour', 'jumbo', 'vea', 'dia', 'masonline', 'farmacity']
+    scrapers_available: ['disco', 'carrefour', 'jumbo', 'vea', 'dia', 'masonline', 'farmacity', 'modo']
   });
 });
 
