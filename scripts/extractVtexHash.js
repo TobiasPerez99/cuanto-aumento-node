@@ -21,15 +21,15 @@ console.log('6. Copia la URL completa del request y pégala aquí\n');
 rl.question('🔗 Pega la URL del request: ', (inputUrl) => {
   try {
     const urlObj = new URL(inputUrl.trim());
-    let supermarket = '';
+    let merchant = '';
     let targetFile = '';
 
     // Identificar supermercado
     if (urlObj.hostname.includes('carrefour.com.ar')) {
-      supermarket = 'Carrefour';
+      merchant = 'Carrefour';
       targetFile = 'scrapers/carrefour.js';
     } else if (urlObj.hostname.includes('disco.com.ar')) {
-      supermarket = 'Disco';
+      merchant = 'Disco';
       targetFile = 'scrapers/disco.js';
     } else {
       throw new Error('La URL debe ser de carrefour.com.ar o disco.com.ar');
@@ -54,7 +54,7 @@ rl.question('🔗 Pega la URL del request: ', (inputUrl) => {
       throw new Error('No se encontró el hash sha256Hash en las extensiones');
     }
     
-    console.log(`\n✅ Hash de ${supermarket} extraído exitosamente!`);
+    console.log(`\n✅ Hash de ${merchant} extraído exitosamente!`);
     console.log('========================================');
     console.log(`🔑 VTEX_SHA256_HASH: ${hash}`);
     console.log(`📝 Operation Name detectado: ${operationName}`);

@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a **price tracking API** for Argentine supermarkets. It scrapes product data from multiple supermarket websites (primarily VTEX-based stores), stores pricing history in MySQL via Prisma, and exposes REST endpoints for price comparisons.
+This is a **price tracking API** for Argentine merchants. It scrapes product data from multiple merchant websites (primarily VTEX-based stores), stores pricing history in MySQL via Prisma, and exposes REST endpoints for price comparisons.
 
 **Tech Stack:** Node.js, Express, Prisma (MySQL), Upstash Redis, Axios
 
@@ -69,18 +69,18 @@ Example: `npm run scrape:disco categories` or via API: `POST /api/scrape/disco` 
 
 ### Core Scraping Flow
 
-1. **Scraper files** (`scrapers/*.js`): Thin wrappers that call `scrapeVtexSupermarket()` with config
+1. **Scraper files** (`scrapers/*.js`): Thin wrappers that call `scrapeVtexMerchant()` with config
 2. **VTEX core** (`cores/vtex.js`): Generic VTEX GraphQL scraper
    - Fetches products via `fetchVtexProducts()`
    - Normalizes VTEX response to standard format via `normalizeProduct()`
    - Calls `onProductFound` callback for each product
 3. **Save handlers** (`cores/saveHandlers.js`):
-   - `saveMasterProduct()`: Upserts into `products`, `supermarket_products`, and `price_history`
+   - `saveMasterProduct()`: Upserts into `products`, `merchant_products`, and `price_history`
    - `saveFollowerProduct()`: Only upserts if EAN exists in `products` table
 4. **Database** (`prisma/schema.prisma`):
    - `Product`: Master catalog (keyed by EAN)
-   - `Supermarket`: Supermarket directory
-   - `SupermarketProduct`: Junction table with current prices
+   - `Merchant`: Merchant directory
+   - `MerchantProduct`: Junction table with current prices
    - `PriceHistory`: Historical price snapshots
 
 ### API Routes
@@ -89,7 +89,7 @@ Example: `npm run scrape:disco categories` or via API: `POST /api/scrape/disco` 
 - `GET /api/products` - Paginated product list with current prices
 - `GET /api/products/search?q=...` - Search by name
 - `GET /api/products/:ean` - Product detail with price history
-- `GET /api/products/:ean/cheapest` - Find cheapest supermarket
+- `GET /api/products/:ean/cheapest` - Find cheapest merchant
 - `GET /api/categories` - List all categories
 - `GET /api/stats/categories` - Category statistics
 
@@ -133,13 +133,13 @@ The `normalizeProduct()` function handles VTEX-specific quirks:
 
 1. Create `scrapers/new-store.js`:
 ```javascript
-import { scrapeVtexSupermarket } from '../cores/vtex.js';
+import { scrapeVtexMerchant } from '../cores/vtex.js';
 import { saveFollowerProduct } from '../cores/saveHandlers.js'; // or saveMasterProduct if new master
 
 export async function getNewStoreMainProducts(mode = 'categories') {
   const useEans = mode === 'eans';
-  return await scrapeVtexSupermarket({
-    supermarketName: 'NewStore',
+  return await scrapeVtexMerchant({
+    merchantName: 'NewStore',
     baseUrl: 'https://www.newstore.com.ar',
     categories: useEans ? productEans : DETAILED_CATEGORIES,
     onProductFound: saveFollowerProduct, // or saveMasterProduct

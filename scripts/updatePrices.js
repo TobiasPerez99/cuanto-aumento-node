@@ -7,8 +7,8 @@ dotenv.config();
 
 const prisma = new PrismaClient();
 
-// Configuración de URLs base de los super
-const SUPERMARKET_URLS = {
+// Configuración de URLs base de los comercios
+const MERCHANT_URLS = {
   'Disco': 'https://www.disco.com.ar',
   'Jumbo': 'https://www.jumbo.com.ar',
   'Vea': 'https://www.vea.com.ar',
@@ -84,17 +84,17 @@ async function runPriceUpdater() {
 
   try {
     // A. Obtener un lote de productos "viejos"
-    const productsToUpdate = await prisma.supermarketProduct.findMany({
+    const productsToUpdate = await prisma.merchantProduct.findMany({
       where: {
-        supermarket: { isNot: null }, // Ensure supermarket exists
+        merchant: { isNot: null }, // Ensure merchant exists
       },
       select: {
         id: true,
         externalId: true,
         productEan: true,
         price: true,
-        supermarketId: true,
-        supermarket: {
+        merchantId: true,
+        merchant: {
           select: { name: true },
         },
       },
@@ -128,23 +128,23 @@ async function runPriceUpdater() {
 
     // C. Función para procesar un producto individual
     const processProduct = async (item, index, total) => {
-      const supermarketName = item.supermarket?.name;
-      const baseUrl = SUPERMARKET_URLS[supermarketName];
+      const merchantName = item.merchant?.name;
+      const baseUrl = MERCHANT_URLS[merchantName];
 
       if (!baseUrl) {
-        console.warn(`⚠️ URL no configurada para ${supermarketName} (ID: ${item.supermarketId})`);
+        console.warn(`⚠️ URL no configurada para ${merchantName} (ID: ${item.merchantId})`);
         return { success: false, reason: 'no_url' };
       }
 
       const ean = item.productEan;
 
-      console.log(`[${index + 1}/${total}] 🔍 ${supermarketName} | EAN: ${ean}`);
+      console.log(`[${index + 1}/${total}] 🔍 ${merchantName} | EAN: ${ean}`);
 
       // Consultar API VTEX por EAN
       let newData = null;
 
       if (ean) {
-          newData = await getVtexProductByEan(baseUrl, ean, supermarketName.toLowerCase());
+          newData = await getVtexProductByEan(baseUrl, ean, merchantName.toLowerCase());
           if (newData) {
               console.log(`   ✅ Encontrado - Precio: $${newData.price}`);
           } else {
@@ -161,7 +161,7 @@ async function runPriceUpdater() {
 
         try {
           // Guardar en DB
-          await prisma.supermarketProduct.update({
+          await prisma.merchantProduct.update({
             where: { id: item.id },
             data: {
               lastCheckedAt: new Date(),
@@ -179,7 +179,7 @@ async function runPriceUpdater() {
             console.log(`   💰 Cambio de precio: $${item.price} -> $${newData.price}`);
             await prisma.priceHistory.create({
               data: {
-                supermarketProductId: item.id,
+                merchantProductId: item.id,
                 price: newData.price,
                 listPrice: newData.list_price,
                 scrapedAt: new Date(),
@@ -198,7 +198,7 @@ async function runPriceUpdater() {
       } else {
           // No se encontró el producto por EAN
           console.log(`   ⛔ Marcando como no disponible`);
-          await prisma.supermarketProduct.update({
+          await prisma.merchantProduct.update({
             where: { id: item.id },
             data: {
               isAvailable: false,

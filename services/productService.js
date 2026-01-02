@@ -2,13 +2,13 @@ import { prisma } from '../config/prisma.js';
 
 /**
  * Obtiene lista paginada de productos que tienen precios en supermercados
- * Query desde supermarket_products para mostrar solo productos disponibles
+ * Query desde merchant_products para mostrar solo productos disponibles
  */
 export async function getProducts({ page = 1, limit = 20, sort = 'name' }) {
   const offset = (page - 1) * limit;
 
-  // Fetch supermarket_products with nested relations
-  const supermarketProducts = await prisma.supermarketProduct.findMany({
+  // Fetch merchant_products with nested relations
+  const merchantProducts = await prisma.merchantProduct.findMany({
     where: {
       isAvailable: true,
       price: { not: null },
@@ -18,7 +18,7 @@ export async function getProducts({ page = 1, limit = 20, sort = 'name' }) {
       price: true,
       listPrice: true,
       isAvailable: true,
-      supermarket: {
+      merchant: {
         select: { name: true },
       },
       product: {
@@ -39,7 +39,7 @@ export async function getProducts({ page = 1, limit = 20, sort = 'name' }) {
   // Group by product (application logic - same as original)
   const productsMap = new Map();
 
-  supermarketProducts.forEach(sp => {
+  merchantProducts.forEach(sp => {
     const ean = sp.productEan;
 
     if (!productsMap.has(ean)) {
@@ -56,7 +56,7 @@ export async function getProducts({ page = 1, limit = 20, sort = 'name' }) {
 
     const product = productsMap.get(ean);
     product.prices.push({
-      supermarket: sp.supermarket?.name,
+      merchant: sp.merchant?.name,
       price: Number(sp.price),
       list_price: sp.listPrice ? Number(sp.listPrice) : null,
     });
@@ -82,7 +82,7 @@ export async function getProducts({ page = 1, limit = 20, sort = 'name' }) {
   }));
 
   // Get total count of unique products
-  const totalCount = await prisma.supermarketProduct.groupBy({
+  const totalCount = await prisma.merchantProduct.groupBy({
     by: ['productEan'],
     where: {
       isAvailable: true,
@@ -119,12 +119,12 @@ export async function getProductsByCategory({ category, page = 1, limit = 20 }) 
         brand: true,
         category: true,
         imageUrl: true,
-        supermarketProducts: {
+        merchantProducts: {
           select: {
             price: true,
             listPrice: true,
             isAvailable: true,
-            supermarket: {
+            merchant: {
               select: { name: true },
             },
           },
@@ -144,7 +144,7 @@ export async function getProductsByCategory({ category, page = 1, limit = 20 }) 
 
   // Process products (same logic as original)
   const processedProducts = products.map(product => {
-    const availablePrices = product.supermarketProducts
+    const availablePrices = product.merchantProducts
       .filter(sp => sp.isAvailable && sp.price)
       .map(sp => Number(sp.price));
 
@@ -154,10 +154,10 @@ export async function getProductsByCategory({ category, page = 1, limit = 20 }) 
       brand: product.brand,
       category: product.category,
       image_url: product.imageUrl,
-      prices: product.supermarketProducts
+      prices: product.merchantProducts
         .filter(sp => sp.isAvailable)
         .map(sp => ({
-          supermarket: sp.supermarket?.name,
+          merchant: sp.merchant?.name,
           price: sp.price ? Number(sp.price) : null,
           list_price: sp.listPrice ? Number(sp.listPrice) : null,
         })),
@@ -184,9 +184,9 @@ export async function getProductByEan(ean) {
   const product = await prisma.product.findUnique({
     where: { ean },
     include: {
-      supermarketProducts: {
+      merchantProducts: {
         include: {
-          supermarket: {
+          merchant: {
             select: { id: true, name: true },
           },
           priceHistory: {
@@ -207,8 +207,8 @@ export async function getProductByEan(ean) {
   }
 
   // Format response (same logic as original)
-  const supermarkets = product.supermarketProducts.map(sp => ({
-    name: sp.supermarket?.name,
+  const merchants = product.merchantProducts.map(sp => ({
+    name: sp.merchant?.name,
     price: sp.price ? Number(sp.price) : null,
     list_price: sp.listPrice ? Number(sp.listPrice) : null,
     reference_price: sp.referencePrice ? Number(sp.referencePrice) : null,
@@ -224,7 +224,7 @@ export async function getProductByEan(ean) {
   }));
 
   // Calculate min price
-  const availablePrices = supermarkets
+  const availablePrices = merchants
     .filter(s => s.is_available && s.price)
     .map(s => s.price);
 
@@ -232,7 +232,7 @@ export async function getProductByEan(ean) {
     ? Math.min(...availablePrices)
     : null;
 
-  const cheapestSupermarket = supermarkets.find(
+  const cheapestMerchant = merchants.find(
     s => s.is_available && s.price === minPrice
   );
 
@@ -245,9 +245,9 @@ export async function getProductByEan(ean) {
     images: product.images,
     category: product.category,
     product_url: product.productUrl,
-    supermarkets,
+    merchants,
     min_price: minPrice,
-    cheapest_at: cheapestSupermarket?.name || null,
+    cheapest_at: cheapestMerchant?.name || null,
   };
 }
 
@@ -273,12 +273,12 @@ export async function searchProducts({ query, page = 1, limit = 20 }) {
         brand: true,
         category: true,
         imageUrl: true,
-        supermarketProducts: {
+        merchantProducts: {
           select: {
             price: true,
             listPrice: true,
             isAvailable: true,
-            supermarket: {
+            merchant: {
               select: { name: true },
             },
           },
@@ -293,7 +293,7 @@ export async function searchProducts({ query, page = 1, limit = 20 }) {
 
   // Process products (same logic as getProductsByCategory)
   const processedProducts = products.map(product => {
-    const availablePrices = product.supermarketProducts
+    const availablePrices = product.merchantProducts
       .filter(sp => sp.isAvailable && sp.price)
       .map(sp => Number(sp.price));
 
@@ -303,10 +303,10 @@ export async function searchProducts({ query, page = 1, limit = 20 }) {
       brand: product.brand,
       category: product.category,
       image_url: product.imageUrl,
-      prices: product.supermarketProducts
+      prices: product.merchantProducts
         .filter(sp => sp.isAvailable)
         .map(sp => ({
-          supermarket: sp.supermarket?.name,
+          merchant: sp.merchant?.name,
           price: sp.price ? Number(sp.price) : null,
           list_price: sp.listPrice ? Number(sp.listPrice) : null,
         })),
@@ -358,7 +358,7 @@ export async function getCategories() {
 export async function getCheapestForProduct(ean) {
   const [cheapest, allPrices] = await prisma.$transaction([
     // Get cheapest
-    prisma.supermarketProduct.findFirst({
+    prisma.merchantProduct.findFirst({
       where: {
         productEan: ean,
         isAvailable: true,
@@ -369,14 +369,14 @@ export async function getCheapestForProduct(ean) {
         listPrice: true,
         isAvailable: true,
         productUrl: true,
-        supermarket: {
+        merchant: {
           select: { name: true },
         },
       },
       orderBy: { price: 'asc' },
     }),
     // Get all prices
-    prisma.supermarketProduct.findMany({
+    prisma.merchantProduct.findMany({
       where: {
         productEan: ean,
         isAvailable: true,
@@ -384,7 +384,7 @@ export async function getCheapestForProduct(ean) {
       },
       select: {
         price: true,
-        supermarket: {
+        merchant: {
           select: { name: true },
         },
       },
@@ -402,7 +402,7 @@ export async function getCheapestForProduct(ean) {
   const savingsPercent = ((savings / maxPrice) * 100).toFixed(1);
 
   return {
-    supermarket: cheapest.supermarket?.name,
+    merchant: cheapest.merchant?.name,
     price: cheapestPrice,
     list_price: cheapest.listPrice ? Number(cheapest.listPrice) : null,
     product_url: cheapest.productUrl,
@@ -422,7 +422,7 @@ export async function getCategoryStats() {
     },
     select: {
       category: true,
-      supermarketProducts: {
+      merchantProducts: {
         select: {
           price: true,
           isAvailable: true,
@@ -448,7 +448,7 @@ export async function getCategoryStats() {
 
     categoryStats[cat].product_count++;
 
-    product.supermarketProducts
+    product.merchantProducts
       .filter(sp => sp.isAvailable && sp.price)
       .forEach(sp => {
         categoryStats[cat].prices.push(Number(sp.price));

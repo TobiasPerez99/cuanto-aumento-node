@@ -1,4 +1,4 @@
-import { scrapeVtexSupermarket } from '../cores/vtex.js';
+import { scrapeVtexMerchant } from '../cores/vtex.js';
 import { saveMasterProduct } from '../cores/saveHandlers.js';
 import { DETAILED_CATEGORIES, productEans } from '../cores/categories.js';
 
@@ -9,8 +9,8 @@ const BASE_URL = 'https://www.disco.com.ar';
  */
 export async function getDiscoMainProducts(mode = 'categories') {
   const useEans = mode === 'eans';
-  return await scrapeVtexSupermarket({
-    supermarketName: 'Disco',
+  return await scrapeVtexMerchant({
+    merchantName: 'Disco',
     baseUrl: BASE_URL,
     categories: useEans ? productEans : DETAILED_CATEGORIES,
     onProductFound: saveMasterProduct,

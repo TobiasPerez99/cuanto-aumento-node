@@ -3,41 +3,41 @@ import { prisma } from '../config/prisma.js';
 /**
  * Obtiene o crea el ID del supermercado
  */
-async function getSupermarketId(name) {
+async function getMerchantId(name) {
   try {
-    // Find or create supermarket (atomic operation)
-    const supermarket = await prisma.supermarket.upsert({
+    // Find or create merchant (atomic operation)
+    const merchant = await prisma.merchant.upsert({
       where: { name },
       update: {}, // No updates needed if exists
-      create: { name },
+      create: { name, cuit: null, slug: null },
       select: { id: true },
     });
 
-    return supermarket.id;
+    return merchant.id;
   } catch (error) {
-    console.error('Error creating/finding supermarket:', error);
+    console.error('Error creating/finding merchant:', error);
     return null;
   }
 }
 /**
  * Función genérica para scrapear un supermercado VTEX
  * @param {Object} config - Configuración del scraper
- * @param {string} config.supermarketName - Nombre del supermercado (ej: 'Disco')
+ * @param {string} config.merchantName - Nombre del supermercado (ej: 'Disco')
  * @param {string} config.baseUrl - URL base (ej: 'https://www.disco.com.ar')
  * @param {string[]} config.categories - Lista de categorías a buscar
- * @param {Function} config.onProductFound - Callback async (product, supermarketId) => { saved: boolean, reason?: string }
+ * @param {Function} config.onProductFound - Callback async (product, merchantId) => { saved: boolean, reason?: string }
  * @param {number} [config.count=50] - Cantidad de productos a buscar por query (default: 50)
  */
-export async function scrapeVtexSupermarket({ supermarketName, baseUrl, categories, onProductFound, count = 50 }) {
-  const sourceName = supermarketName.toLowerCase();
-  console.log(`🛒 Iniciando scraper para ${supermarketName}...`);
+export async function scrapeVtexMerchant({ merchantName, baseUrl, categories, onProductFound, count = 50 }) {
+  const sourceName = merchantName.toLowerCase();
+  console.log(`🛒 Iniciando scraper para ${merchantName}...`);
   
   // Obtener ID del supermercado
-  let supermarketId = null;
+  let merchantId = null;
   if (prisma) {
-    supermarketId = await getSupermarketId(supermarketName);
-    if (!supermarketId) {
-      return { success: false, error: `No se pudo obtener el ID del supermercado ${supermarketName}` };
+    merchantId = await getMerchantId(merchantName);
+    if (!merchantId) {
+      return { success: false, error: `No se pudo obtener el ID del supermercado ${merchantName}` };
     }
   } else {
     console.warn('⚠️ Prisma no disponible. Saltando guardado en DB.');
@@ -61,8 +61,8 @@ export async function scrapeVtexSupermarket({ supermarketName, baseUrl, categori
           allProducts.set(product.ean, product);
           
           // Ejecutar lógica específica de guardado si hay conexión
-          if (supermarketId && onProductFound) {
-            const result = await onProductFound(product, supermarketId);
+          if (merchantId && onProductFound) {
+            const result = await onProductFound(product, merchantId);
             if (result === true || result?.saved === true) {
               savedCount++;
             } else if (result?.reason === 'not_in_master') {
@@ -84,7 +84,7 @@ export async function scrapeVtexSupermarket({ supermarketName, baseUrl, categori
     }
   }
   const uniqueProducts = Array.from(allProducts.values());
-  console.log(`\n🎉 Scraping completado para ${supermarketName}:`);
+  console.log(`\n🎉 Scraping completado para ${merchantName}:`);
   console.log(`   📊 Total productos únicos encontrados: ${uniqueProducts.length}`);
   console.log(`   💾 Operaciones exitosas en DB: ${savedCount}`);
   if (skippedCount > 0) {

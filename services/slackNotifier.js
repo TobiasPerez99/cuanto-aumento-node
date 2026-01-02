@@ -3,7 +3,7 @@ dotenv.config();
 
 /**
  * Sends a detailed Slack notification for scraping results
- * @param {Object} result - Scraping result object from scrapeVtexSupermarket
+ * @param {Object} result - Scraping result object from scrapeVtexMerchant
  * @param {Object} options - Additional options (scraperName, isMaster, mode, executionTime)
  */
 export async function sendScrapingNotification(result, options = {}) {

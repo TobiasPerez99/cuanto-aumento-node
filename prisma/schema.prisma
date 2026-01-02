@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "mysql"
-  url      = env("DATABASE_URL_PRODUCTION")
+  url      = "mysql://root:root@localhost/ahorrapp"
 }
 
 model Product {
@@ -17,7 +17,7 @@ model Product {
   category            String?              @db.VarChar(200)
   productUrl          String?              @map("product_url") @db.VarChar(1000)
   created_at          DateTime?            @db.DateTime(0)
-  supermarketProducts SupermarketProduct[]
+  merchantProducts MerchantProduct[]
 
   @@index([category])
   @@index([brand])
@@ -25,18 +25,22 @@ model Product {
   @@map("products")
 }
 
-model Supermarket {
+model Merchant {
   id                  Int                  @id @default(autoincrement())
   name                String               @unique @db.VarChar(100)
-  supermarketProducts SupermarketProduct[]
+  cuit                String?              @db.VarChar(20)
+  slug                String?              @db.VarChar(255)
+  created_at          DateTime?            @default(now()) @db.DateTime(0)
+  updated_at          DateTime?            @updatedAt @db.DateTime(0)
+  merchantProducts MerchantProduct[]
 
-  @@map("supermarkets")
+  @@map("merchants")
 }
 
-model SupermarketProduct {
+model MerchantProduct {
   id             Int            @id @default(autoincrement())
   productEan     String         @map("product_ean") @db.VarChar(20)
-  supermarketId  Int            @map("supermarket_id")
+  merchantId  Int            @map("merchant_id")
   externalId     String?        @map("external_id") @db.VarChar(100)
   productUrl     String?        @map("product_url") @db.VarChar(1000)
   price          Decimal?       @db.Decimal(10, 2)
@@ -47,187 +51,25 @@ model SupermarketProduct {
   lastCheckedAt  DateTime?      @map("last_checked_at")
   priceHistory   PriceHistory[]
   product        Product        @relation(fields: [productEan], references: [ean], onDelete: Cascade)
-  supermarket    Supermarket    @relation(fields: [supermarketId], references: [id], onDelete: Cascade)
+  merchant    Merchant    @relation(fields: [merchantId], references: [id], onDelete: Cascade)
 
-  @@unique([productEan, supermarketId])
-  @@index([supermarketId])
+  @@unique([productEan, merchantId])
+  @@index([merchantId])
   @@index([isAvailable])
   @@index([lastCheckedAt])
-  @@index([productEan], map: "supermarket_products_product_ean_index")
-  @@map("supermarket_products")
+  @@index([productEan], map: "merchant_products_product_ean_index")
+  @@map("merchant_products")
 }
 
 model PriceHistory {
   id                   Int                @id @default(autoincrement())
-  supermarketProductId Int                @map("supermarket_product_id")
+  merchantProductId Int                @map("merchant_product_id")
   price                Decimal            @db.Decimal(10, 2)
   listPrice            Decimal?           @map("list_price") @db.Decimal(10, 2)
   scrapedAt            DateTime           @default(now()) @map("scraped_at")
-  supermarketProduct   SupermarketProduct @relation(fields: [supermarketProductId], references: [id], onDelete: Cascade)
+  merchantProduct   MerchantProduct @relation(fields: [merchantProductId], references: [id], onDelete: Cascade)
 
-  @@index([supermarketProductId])
+  @@index([merchantProductId])
   @@index([scrapedAt])
   @@map("price_history")
-}
-
-model cache {
-  key        String @id @db.VarChar(255)
-  value      String @db.MediumText
-  expiration Int
-}
-
-model cache_locks {
-  key        String @id @db.VarChar(255)
-  owner      String @db.VarChar(255)
-  expiration Int
-}
-
-model failed_jobs {
-  id         BigInt   @id @default(autoincrement()) @db.UnsignedBigInt
-  uuid       String   @unique(map: "failed_jobs_uuid_unique") @db.VarChar(255)
-  connection String   @db.Text
-  queue      String   @db.Text
-  payload    String   @db.LongText
-  exception  String   @db.LongText
-  failed_at  DateTime @default(now()) @db.Timestamp(0)
-}
-
-model job_batches {
-  id             String  @id @db.VarChar(255)
-  name           String  @db.VarChar(255)
-  total_jobs     Int
-  pending_jobs   Int
-  failed_jobs    Int
-  failed_job_ids String  @db.LongText
-  options        String? @db.MediumText
-  cancelled_at   Int?
-  created_at     Int
-  finished_at    Int?
-}
-
-model jobs {
-  id           BigInt @id @default(autoincrement()) @db.UnsignedBigInt
-  queue        String @db.VarChar(255)
-  payload      String @db.LongText
-  attempts     Int    @db.UnsignedTinyInt
-  reserved_at  Int?   @db.UnsignedInt
-  available_at Int    @db.UnsignedInt
-  created_at   Int    @db.UnsignedInt
-
-  @@index([queue], map: "jobs_queue_index")
-}
-
-model migrations {
-  id        Int    @id @default(autoincrement()) @db.UnsignedInt
-  migration String @db.VarChar(255)
-  batch     Int
-}
-
-model password_reset_tokens {
-  email      String    @id @db.VarChar(255)
-  token      String    @db.VarChar(255)
-  created_at DateTime? @db.Timestamp(0)
-}
-
-model promotions {
-  id               Int       @id
-  title            String    @db.VarChar(255)
-  description      String?   @db.Text
-  discount_type    String    @db.VarChar(50)
-  discount_value   Decimal?  @db.Decimal(10, 2)
-  valid_from       DateTime  @db.Date
-  valid_until      DateTime  @db.Date
-  days_of_week     String?   @db.LongText
-  payment_methods  String?   @db.LongText
-  banks            String?   @db.LongText
-  cards            String?   @db.LongText
-  virtual_wallets  String?   @db.LongText
-  supermarkets     String?   @db.LongText
-  max_uses         Int?
-  uses_count       Int       @default(0)
-  min_purchase     Decimal?  @db.Decimal(10, 2)
-  max_discount     Decimal?  @db.Decimal(10, 2)
-  terms_conditions String?   @db.Text
-  image_url        String?   @db.Text
-  is_active        Boolean   @default(true)
-  created_at       DateTime? @db.Timestamp(0)
-  updated_at       DateTime? @db.Timestamp(0)
-
-  @@index([discount_type], map: "promotions_discount_type_index")
-  @@index([is_active], map: "promotions_is_active_index")
-  @@index([valid_from], map: "promotions_valid_from_index")
-  @@index([valid_until], map: "promotions_valid_until_index")
-}
-
-model sessions {
-  id            String  @id @db.VarChar(255)
-  user_id       BigInt? @db.UnsignedBigInt
-  ip_address    String? @db.VarChar(45)
-  user_agent    String? @db.Text
-  payload       String  @db.LongText
-  last_activity Int
-
-  @@index([last_activity], map: "sessions_last_activity_index")
-  @@index([user_id], map: "sessions_user_id_index")
-}
-
-model supermarket_scrapper_categories {
-  id                 BigInt                                             @id @default(autoincrement()) @db.UnsignedBigInt
-  category_name      String                                             @db.VarChar(255)
-  is_master_category supermarket_scrapper_categories_is_master_category @default(False)
-  created_at         DateTime?                                          @db.Timestamp(0)
-  updated_at         DateTime?                                          @db.Timestamp(0)
-}
-
-model users {
-  id                BigInt    @id @default(autoincrement()) @db.UnsignedBigInt
-  name              String    @db.VarChar(255)
-  email             String    @unique(map: "users_email_unique") @db.VarChar(255)
-  email_verified_at DateTime? @db.Timestamp(0)
-  password          String    @db.VarChar(255)
-  remember_token    String?   @db.VarChar(100)
-  created_at        DateTime? @db.Timestamp(0)
-  updated_at        DateTime? @db.Timestamp(0)
-}
-
-model banks {
-  id            BigInt    @id @default(autoincrement()) @db.UnsignedBigInt
-  source_id     String    @db.VarChar(255)
-  name          String    @db.VarChar(255)
-  image         String    @db.VarChar(255)
-  promotion_url String    @db.VarChar(255)
-  bcra_code     String    @unique(map: "banks_bcra_code_unique") @db.VarChar(255)
-  hub_bank_id   String    @db.VarChar(255)
-  on_hub_list   Boolean
-  is_active     Boolean
-  data_source   String    @db.VarChar(255)
-  created_at    DateTime? @db.Timestamp(0)
-  updated_at    DateTime? @db.Timestamp(0)
-
-  @@index([source_id], map: "banks_source_id_index")
-}
-
-model scrapper_processes {
-  id                     BigInt                                   @id @default(autoincrement()) @db.UnsignedBigInt
-  name                   String                                   @db.VarChar(255)
-  description            String                                   @db.VarChar(255)
-  execution_url          String                                   @db.VarChar(255)
-  require_authentication Boolean                                  @default(true)
-  last_execution_status  scrapper_processes_last_execution_status @default(pending)
-  last_execution_at      DateTime?                                @db.Timestamp(0)
-  hash_last_execution    String?                                  @db.VarChar(255)
-  next_execution_at      DateTime?                                @db.Timestamp(0)
-  created_at             DateTime?                                @db.Timestamp(0)
-  updated_at             DateTime?                                @db.Timestamp(0)
-}
-
-enum supermarket_scrapper_categories_is_master_category {
-  True
-  False
-}
-
-enum scrapper_processes_last_execution_status {
-  success
-  error
-  pending
 }

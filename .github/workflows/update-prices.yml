@@ -1,4 +1,4 @@
-name: Update Supermarket Prices
+name: Update Merchant Prices
 
 on:
   schedule:

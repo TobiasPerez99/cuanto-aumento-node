@@ -1,7 +1,12 @@
 import { prisma } from "../config/prisma.js";
 
-export async function saveMasterProduct(product, supermarketId) {
+export async function saveMasterProduct(product, merchantId) {
   try {
+    // Serialize images array to JSON string
+    const imagesJson = product.images && Array.isArray(product.images)
+      ? JSON.stringify(product.images)
+      : null;
+
     // 1. Upsert product (master catalog)
     await prisma.product.upsert({
       where: { ean: product.ean },
@@ -10,7 +15,7 @@ export async function saveMasterProduct(product, supermarketId) {
         description: product.description || product.name,
         brand: product.brand,
         imageUrl: product.image,
-        images: product.images,
+        images: imagesJson,
         category:
           product.categories && product.categories.length > 0
             ? product.categories[0]
@@ -23,7 +28,7 @@ export async function saveMasterProduct(product, supermarketId) {
         description: product.description || product.name,
         brand: product.brand,
         imageUrl: product.image,
-        images: product.images,
+        images: imagesJson,
         category:
           product.categories && product.categories.length > 0
             ? product.categories[0]
@@ -32,12 +37,12 @@ export async function saveMasterProduct(product, supermarketId) {
       },
     });
 
-    // 2. Upsert supermarket_product and get ID
-    const supermarketProduct = await prisma.supermarketProduct.upsert({
+    // 2. Upsert merchant_product and get ID
+    const merchantProduct = await prisma.merchantProduct.upsert({
       where: {
-        productEan_supermarketId: {
+        productEan_merchantId: {
           productEan: product.ean,
-          supermarketId: supermarketId,
+          merchantId: merchantId,
         },
       },
       update: {
@@ -52,7 +57,7 @@ export async function saveMasterProduct(product, supermarketId) {
       },
       create: {
         productEan: product.ean,
-        supermarketId: supermarketId,
+        merchantId: merchantId,
         externalId: product.external_id,
         productUrl: product.link,
         price: product.price,
@@ -67,7 +72,7 @@ export async function saveMasterProduct(product, supermarketId) {
     // 3. Insert price history
     await prisma.priceHistory.create({
       data: {
-        supermarketProductId: supermarketProduct.id,
+        merchantProductId: merchantProduct.id,
         price: product.price,
         listPrice: product.list_price,
         scrapedAt: new Date(),
@@ -81,7 +86,7 @@ export async function saveMasterProduct(product, supermarketId) {
   }
 }
 
-export async function saveFollowerProduct(product, supermarketId) {
+export async function saveFollowerProduct(product, merchantId) {
   try {
     // 1. Check if product exists in master catalog
     const existingProduct = await prisma.product.findUnique({
@@ -93,12 +98,12 @@ export async function saveFollowerProduct(product, supermarketId) {
       return { saved: false, reason: "not_in_master" };
     }
 
-    // 2. Upsert supermarket_product (same as saveMasterProduct)
-    const supermarketProduct = await prisma.supermarketProduct.upsert({
+    // 2. Upsert merchant_product (same as saveMasterProduct)
+    const merchantProduct = await prisma.merchantProduct.upsert({
       where: {
-        productEan_supermarketId: {
+        productEan_merchantId: {
           productEan: product.ean,
-          supermarketId: supermarketId,
+          merchantId: merchantId,
         },
       },
       update: {
@@ -113,7 +118,7 @@ export async function saveFollowerProduct(product, supermarketId) {
       },
       create: {
         productEan: product.ean,
-        supermarketId: supermarketId,
+        merchantId: merchantId,
         externalId: product.external_id,
         productUrl: product.link,
         price: product.price,
@@ -128,7 +133,7 @@ export async function saveFollowerProduct(product, supermarketId) {
     // 3. Insert price history
     await prisma.priceHistory.create({
       data: {
-        supermarketProductId: supermarketProduct.id,
+        merchantProductId: merchantProduct.id,
         price: product.price,
         listPrice: product.list_price,
         scrapedAt: new Date(),
