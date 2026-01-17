@@ -17,11 +17,8 @@ RUN npm ci
 # Copy source code
 COPY . .
 
-# Generate Prisma Client
-RUN npx prisma generate
-
 # Expose port
 EXPOSE 3001
 
-# Start command (Laravel handles migrations)
-CMD ["npm", "start"]
+# Start command (generate Prisma client and start server)
+CMD ["sh", "-c", "npx prisma generate && npm start"]
