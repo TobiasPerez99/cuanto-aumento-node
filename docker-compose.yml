@@ -27,3 +27,4 @@ services:
 
 networks:
   ahorrapp_laravel-production:
+    external: true
