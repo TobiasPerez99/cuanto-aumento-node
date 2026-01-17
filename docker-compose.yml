@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  # Scraper API
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: cuanto-aumento-scraper
+    restart: unless-stopped
+    ports:
+      - "${PORT:-3001}:3001"
+    environment:
+      - NODE_ENV=production
+      - PORT=3001
+      - DATABASE_URL=${DATABASE_URL}
+      - VTEX_SHA256_HASH=${VTEX_SHA256_HASH}
+      - UPSTASH_REDIS_REST_URL=${UPSTASH_REDIS_REST_URL}
+      - UPSTASH_REDIS_REST_TOKEN=${UPSTASH_REDIS_REST_TOKEN}
+      - API_TOKEN=${API_TOKEN}
+      - PRODUCT_EANS=${PRODUCT_EANS}
+      - SLACK_WEBHOOK_URL=${SLACK_WEBHOOK_URL}
+      - WEBHOOK_URL=${WEBHOOK_URL}
+      - JOB_RETENTION_HOURS=${JOB_RETENTION_HOURS:-24}
+    networks:
+      - bridge-communication
+
+networks:
+  bridge-communication:
+    external: true
