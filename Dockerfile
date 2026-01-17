@@ -23,5 +23,5 @@ RUN npx prisma generate
 # Expose port
 EXPOSE 3001
 
-# Start command (will run migrations and start server)
-CMD ["sh", "-c", "npx prisma migrate deploy && npm start"]
+# Start command (Laravel handles migrations)
+CMD ["npm", "start"]
