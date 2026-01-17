@@ -35,7 +35,7 @@ function check_requirements() {
         exit 1
     fi
 
-    if ! command -v docker-compose &> /dev/null; then
+    if ! command -v docker compose &> /dev/null; then
         print_error "Docker Compose no está instalado"
         exit 1
     fi
@@ -71,34 +71,34 @@ EOF
 
 function build() {
     print_info "Construyendo imagen Docker..."
-    docker-compose build
+    docker compose build
     print_success "Imagen construida exitosamente"
 }
 
 function start() {
     print_info "Iniciando servicio..."
-    docker-compose up -d
+    docker compose up -d
     print_success "Servicio iniciado"
 
     sleep 3
     print_info "Verificando estado..."
-    docker-compose ps
+    docker compose ps
 }
 
 function stop() {
     print_info "Deteniendo servicio..."
-    docker-compose down
+    docker compose down
     print_success "Servicio detenido"
 }
 
 function restart() {
     print_info "Reiniciando servicio..."
-    docker-compose restart api
+    docker compose restart api
     print_success "Servicio reiniciado"
 }
 
 function logs() {
-    docker-compose logs -f api
+    docker compose logs -f api
 }
 
 function shell() {
@@ -128,7 +128,7 @@ function status() {
 
     echo ""
     print_info "Logs recientes:"
-    docker-compose logs --tail=20 api
+    docker compose logs --tail=20 api
 }
 
 function full_deploy() {
