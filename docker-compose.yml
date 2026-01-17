@@ -23,8 +23,7 @@ services:
       - WEBHOOK_URL=${WEBHOOK_URL}
       - JOB_RETENTION_HOURS=${JOB_RETENTION_HOURS:-24}
     networks:
-      - bridge-communication
+      - ahorrapp_laravel-production
 
 networks:
-  bridge-communication:
-    external: true
+  ahorrapp_laravel-production:
