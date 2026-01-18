@@ -1,5 +1,3 @@
-version: "3.8"
-
 services:
   # Scraper API
   api:
@@ -23,8 +21,8 @@ services:
       - WEBHOOK_URL=${WEBHOOK_URL}
       - JOB_RETENTION_HOURS=${JOB_RETENTION_HOURS:-24}
     networks:
-      - ahorrapp_laravel-production
+      - development-bridge
 
 networks:
-  ahorrapp_laravel-production:
-    external: true
+  development-bridge:
+    driver: bridge
