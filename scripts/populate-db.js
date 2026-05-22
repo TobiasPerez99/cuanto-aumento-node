@@ -41,9 +41,10 @@ export const SCRAPERS = {
 // Obtener qué scraper ejecutar desde argumentos
 const args = process.argv.slice(2);
 const targetScraper = args[0]; // ej: "disco", "carrefour", "all"
-const mode = args[1] || 'categories'; // "categories" (default) o "eans"
+const DEFAULT_MODE = 'categories';
+const cliMode = args[1] || DEFAULT_MODE; // "categories" (default) o "eans"
 
-export async function runScraper(key, scraper) {
+export async function runScraper(key, scraper, mode = DEFAULT_MODE) {
   const label = scraper.isMaster ? `${scraper.name} (MAESTRO)` : scraper.name;
   console.log(`\n${'='.repeat(50)}`);
 
@@ -104,23 +105,28 @@ export async function runScraper(key, scraper) {
   }
 }
 
-export async function runAll() {
+export async function runAll(mode = DEFAULT_MODE) {
   console.log('🚀 EJECUTANDO TODOS LOS SCRAPERS');
   console.log(`📅 Fecha: ${new Date().toLocaleString('es-AR')}`);
-  
+  console.log(`🔧 Modo: ${mode.toUpperCase()}`);
+
   const startTime = Date.now();
   const results = {};
 
-  // Primero ejecutar el MAESTRO (Disco) para crear productos base
-  console.log('\n⭐ PASO 1: Ejecutando scraper MAESTRO (Disco)...');
-  results.disco = await runScraper('disco', SCRAPERS.disco);
+  // Primero ejecutar el MAESTRO (Disco) para crear productos base.
+  // Es crítico que el MAESTRO termine antes de lanzar los FOLLOWERS:
+  // los followers descartan productos que no existan todavía en el catálogo.
+  const masterEntries = Object.entries(SCRAPERS).filter(([, s]) => s.isMaster);
+  const followerEntries = Object.entries(SCRAPERS).filter(([, s]) => !s.isMaster);
 
-  // Luego ejecutar los demás (FOLLOWERS)
+  console.log('\n⭐ PASO 1: Ejecutando scraper(s) MAESTRO...');
+  for (const [key, scraper] of masterEntries) {
+    results[key] = await runScraper(key, scraper, mode);
+  }
+
   console.log('\n⭐ PASO 2: Ejecutando scrapers FOLLOWERS...');
-  for (const [key, scraper] of Object.entries(SCRAPERS)) {
-    if (key !== 'disco') {
-      results[key] = await runScraper(key, scraper);
-    }
+  for (const [key, scraper] of followerEntries) {
+    results[key] = await runScraper(key, scraper, mode);
   }
 
   // Resumen final
@@ -148,7 +154,7 @@ export async function runAll() {
   console.log(`\n⏱️  Tiempo total: ${duration} minutos`);
 }
 
-export async function runSingle(scraperKey) {
+export async function runSingle(scraperKey, mode = DEFAULT_MODE) {
   if (!SCRAPERS[scraperKey]) {
     console.error(`❌ Scraper "${scraperKey}" no existe.`);
     console.log('Scrapers disponibles:', Object.keys(SCRAPERS).join(', '));
@@ -157,10 +163,10 @@ export async function runSingle(scraperKey) {
 
   console.log(`🚀 EJECUTANDO SCRAPER: ${SCRAPERS[scraperKey].name}`);
   console.log(`📅 Fecha: ${new Date().toLocaleString('es-AR')}`);
-  
+
   const startTime = Date.now();
-  await runScraper(scraperKey, SCRAPERS[scraperKey]);
-  
+  await runScraper(scraperKey, SCRAPERS[scraperKey], mode);
+
   const duration = ((Date.now() - startTime) / 1000).toFixed(2);
   console.log(`\n⏱️  Tiempo: ${duration} segundos`);
 }
@@ -168,9 +174,9 @@ export async function runSingle(scraperKey) {
 // Ejecutar solo si el archivo se ejecuta directamente (no cuando se importa)
 async function main() {
   if (!targetScraper || targetScraper === 'all') {
-    await runAll();
+    await runAll(cliMode);
   } else {
-    await runSingle(targetScraper);
+    await runSingle(targetScraper, cliMode);
   }
   process.exit(0);
 }

@@ -93,15 +93,27 @@ router.post('/scrape/:scraperName', authMiddleware, async (req, res) => {
 
 /**
  * POST /api/scrape/all
- * Execute all scrapers
+ * Execute all scrapers respetando el contrato master/follower:
+ *  1) Corre los MAESTROS (Disco) y espera a que terminen.
+ *  2) Recién entonces lanza los FOLLOWERS en paralelo.
+ * Si arrancamos todo en paralelo, los followers descartan productos que
+ * Disco todavía no creó (reason: "not_in_master") y la corrida queda vacía.
  */
 router.post('/scrape/all', authMiddleware, async (req, res) => {
   try {
     const mode = req.body?.mode || 'categories';
-    const jobs = [];
-    const alreadyRunning = [];
+    const validModes = ['categories', 'eans'];
+
+    if (!validModes.includes(mode)) {
+      return res.status(400).json({
+        success: false,
+        error: 'Bad Request',
+        message: `Invalid mode "${mode}". Valid options: ${validModes.join(', ')}`
+      });
+    }
 
     // Check which scrapers are already running
+    const alreadyRunning = [];
     for (const [key, scraper] of Object.entries(SCRAPERS)) {
       if (isScraperRunning(key)) {
         alreadyRunning.push(scraper.name);
@@ -117,27 +129,43 @@ router.post('/scrape/all', authMiddleware, async (req, res) => {
       });
     }
 
-    // Create jobs for all scrapers
-    for (const [key, scraper] of Object.entries(SCRAPERS)) {
+    // Partir SCRAPERS en maestros y followers preservando el orden de inserción
+    const masterEntries = Object.entries(SCRAPERS).filter(([, s]) => s.isMaster);
+    const followerEntries = Object.entries(SCRAPERS).filter(([, s]) => !s.isMaster);
+
+    // Crear los jobs de antemano para devolver los IDs en la respuesta
+    const jobs = [];
+    const jobMap = {};
+    for (const [key, scraper] of [...masterEntries, ...followerEntries]) {
       const jobId = createJob(key, scraper.name);
+      jobMap[key] = jobId;
       jobs.push({
         jobId,
         scraperName: scraper.name,
         scraperKey: key,
-        status: 'pending'
-      });
-
-      // Start async execution (fire-and-forget)
-      setImmediate(async () => {
-        await executeScraperAsync(jobId, key, mode);
+        status: 'pending',
+        role: scraper.isMaster ? 'master' : 'follower'
       });
     }
+
+    // Orquestador fire-and-forget: maestros secuenciales → followers en paralelo
+    setImmediate(async () => {
+      for (const [key] of masterEntries) {
+        await executeScraperAsync(jobMap[key], key, mode);
+      }
+      await Promise.all(
+        followerEntries.map(([key]) =>
+          executeScraperAsync(jobMap[key], key, mode)
+        )
+      );
+    });
 
     res.status(202).json({
       success: true,
       jobs,
-      message: 'All scrapers queued for execution',
-      totalJobs: jobs.length
+      message: 'All scrapers queued (masters first, then followers in parallel)',
+      totalJobs: jobs.length,
+      mode
     });
 
   } catch (error) {
