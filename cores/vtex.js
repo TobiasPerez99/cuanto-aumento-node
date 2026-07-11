@@ -48,13 +48,24 @@ export async function scrapeVtexMerchant({ merchantName, baseUrl, categories, on
   let successfulQueries = 0;
   let savedCount = 0;
   let skippedCount = 0; // Para contar productos ignorados (ej: no en maestro)
-  
+  let aborted = null;   // Si fetchVtexProducts decide abortar, guardamos el diagnóstico
+
   for (let i = 0; i < categories.length; i++) {
     const category = categories[i];
     console.log(`[${i+1}/${categories.length}] 🔍 Categoría: "${category}"`);
-    
-    const products = await fetchVtexProducts(baseUrl, category, sourceName, count);
-    
+
+    let products = [];
+    try {
+      products = await fetchVtexProducts(baseUrl, category, sourceName, count);
+    } catch (err) {
+      if (err.vtexAbort) {
+        console.error(`🛑 Abortando scraper de ${merchantName}: ${err.message}`);
+        aborted = err;
+        break;
+      }
+      throw err;
+    }
+
     if (products.length > 0) {
       for (const product of products) {
         if (!allProducts.has(product.ean)) {
@@ -87,15 +98,22 @@ export async function scrapeVtexMerchant({ merchantName, baseUrl, categories, on
   console.log(`\n🎉 Scraping completado para ${merchantName}:`);
   console.log(`   📊 Total productos únicos encontrados: ${uniqueProducts.length}`);
   console.log(`   💾 Operaciones exitosas en DB: ${savedCount}`);
+  console.log(`   ✅ Queries exitosas: ${successfulQueries}/${categories.length}`);
   if (skippedCount > 0) {
     console.log(`   ⏭️ Ignorados (ej: no en maestro): ${skippedCount}`);
   }
+  if (aborted) {
+    console.log(`   🛑 Scraper abortado: ${aborted.diag?.kind} — ${aborted.diag?.hint}`);
+  }
   return {
-    success: true,
+    success: !aborted,
+    aborted: aborted ? { kind: aborted.diag?.kind, hint: aborted.diag?.hint, message: aborted.message } : null,
     source: sourceName,
     totalProducts: uniqueProducts.length,
-    savedProducts: savedCount, // Mantenemos nombre genérico, puede ser precios o productos
+    savedProducts: savedCount,
     skippedProducts: skippedCount,
+    successfulQueries,
+    totalQueries: categories.length,
     timestamp: new Date().toISOString(),
     products: uniqueProducts
   };
@@ -271,6 +289,67 @@ export function normalizeProduct(rawProduct, baseUrl, source) {
  * @param {string} source - Nombre de la fuente (ej: 'disco', 'carrefour')
  * @param {number} [count=50] - Cantidad de resultados
  */
+/**
+ * Trunca un string para logs (evita volcar 200KB de HTML en stdout).
+ */
+function truncate(value, max = 500) {
+  if (value == null) return value;
+  const str = typeof value === 'string' ? value : JSON.stringify(value);
+  return str.length > max ? `${str.slice(0, max)}… [truncated ${str.length - max} chars]` : str;
+}
+
+/**
+ * Diagnóstico humano-legible de un error de VTEX.
+ * Devuelve { kind, hint } para que el caller pueda decidir si abortar.
+ *
+ * kinds:
+ *  - 'persisted_query_not_found' → VTEX_SHA256_HASH desactualizado/inválido
+ *  - 'rate_limited'              → la API nos está limitando (429)
+ *  - 'forbidden'                 → bloqueo (WAF / Cloudflare 403)
+ *  - 'http_error'                → otro status no-2xx
+ *  - 'timeout'                   → axios timeout
+ *  - 'network'                   → ENOTFOUND / ECONNRESET / etc.
+ *  - 'graphql_error'             → errors[] genérico
+ *  - 'bad_shape'                 → respuesta 200 pero sin data.productSuggestions
+ *  - 'unknown'
+ */
+function classifyVtexError(error) {
+  // GraphQL error explícito (lanzado por nosotros desde data.errors)
+  if (error.vtexGraphqlError) {
+    const gqlErr = error.vtexGraphqlError;
+    const code = gqlErr?.extensions?.code || gqlErr?.extensions?.exception?.name;
+    if (code === 'PERSISTED_QUERY_NOT_FOUND' || /PersistedQueryNotFound/i.test(gqlErr.message || '')) {
+      return {
+        kind: 'persisted_query_not_found',
+        hint: 'El VTEX_SHA256_HASH está desactualizado o no coincide con el workspace. Ejecutá `node scripts/extractVtexHash.js` para obtener uno nuevo y actualizá la env var.',
+      };
+    }
+    return { kind: 'graphql_error', hint: `errors[0]=${truncate(gqlErr)}` };
+  }
+  if (error.vtexBadShape) {
+    return { kind: 'bad_shape', hint: `Respuesta 200 sin data.productSuggestions. body=${truncate(error.vtexBody)}` };
+  }
+  // Axios
+  if (error.code === 'ECONNABORTED' || /timeout/i.test(error.message)) {
+    return { kind: 'timeout', hint: 'La API tardó >15s en responder.' };
+  }
+  if (error.response) {
+    const status = error.response.status;
+    const bodyPreview = truncate(error.response.data);
+    if (status === 429) return { kind: 'rate_limited', hint: `HTTP 429. body=${bodyPreview}` };
+    if (status === 403) return { kind: 'forbidden', hint: `HTTP 403 (posible WAF/Cloudflare). body=${bodyPreview}` };
+    return { kind: 'http_error', hint: `HTTP ${status}. body=${bodyPreview}` };
+  }
+  if (error.code) {
+    return { kind: 'network', hint: `${error.code} ${error.message}` };
+  }
+  return { kind: 'unknown', hint: error.message };
+}
+
+// Contador por source para detectar fallos sistémicos (mismo error en N queries seguidas).
+const consecutiveErrorCounters = new Map();
+const ABORT_AFTER_CONSECUTIVE = 5;
+
 export async function fetchVtexProducts(baseUrl, query, source, count = 50) {
   // Asegurar que baseUrl no tenga barra al final
   const cleanBaseUrl = baseUrl.endsWith('/') ? baseUrl.slice(0, -1) : baseUrl;
@@ -282,24 +361,66 @@ export async function fetchVtexProducts(baseUrl, query, source, count = 50) {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
         'Accept': 'application/json'
       },
-      timeout: 15000
+      timeout: 15000,
+      validateStatus: () => true, // no tirar excepción por status — lo manejamos abajo
     });
-    const data = response.data;
-    
-    if (data.errors && data.errors.length > 0) {
-      throw new Error(`API Error: ${data.errors[0].message}`);
+
+    // Errores HTTP (4xx/5xx) — los convertimos en una "axios error" equivalente
+    if (response.status < 200 || response.status >= 300) {
+      const httpErr = new Error(`HTTP ${response.status} ${response.statusText || ''}`.trim());
+      httpErr.response = response;
+      throw httpErr;
     }
-    if (!data.data || !data.data.productSuggestions || !data.data.productSuggestions.products) {
-      throw new Error('Estructura de respuesta inesperada de la API');
+
+    const data = response.data;
+
+    if (data && data.errors && data.errors.length > 0) {
+      const gqlErr = data.errors[0];
+      const wrapped = new Error(`API Error: ${gqlErr.message}`);
+      wrapped.vtexGraphqlError = gqlErr;
+      throw wrapped;
+    }
+    if (!data || !data.data || !data.data.productSuggestions || !data.data.productSuggestions.products) {
+      const shapeErr = new Error('Estructura de respuesta inesperada de la API');
+      shapeErr.vtexBadShape = true;
+      shapeErr.vtexBody = data;
+      throw shapeErr;
     }
     const rawProducts = data.data.productSuggestions.products;
-    
+
+    // Query OK → reseteamos contador de fallos para esta source
+    consecutiveErrorCounters.set(source, 0);
+
     const normalizedProducts = rawProducts
       .map(product => normalizeProduct(product, cleanBaseUrl, source))
       .filter(product => product !== null);
     return normalizedProducts;
   } catch (error) {
-    console.error(`❌ Error buscando "${query}" en ${source}:`, error.message);
+    const diag = classifyVtexError(error);
+
+    // Log estructurado: kind + hint + url útil para reproducir
+    console.error(
+      `❌ Error buscando "${query}" en ${source}: [${diag.kind}] ${error.message}` +
+      `\n   ↳ hint: ${diag.hint}` +
+      `\n   ↳ endpoint: ${endpoint}` +
+      (diag.kind === 'persisted_query_not_found'
+        ? `\n   ↳ sha256Hash en uso: ${VTEX_SHA256_HASH ? VTEX_SHA256_HASH.slice(0, 12) + '…' : '(vacío!)'}`
+        : '')
+    );
+
+    // Si el mismo source viene fallando seguido, abortamos: probablemente el hash expiró
+    // o la API nos está bloqueando — no tiene sentido machacar 294 categorías más.
+    const counter = (consecutiveErrorCounters.get(source) || 0) + 1;
+    consecutiveErrorCounters.set(source, counter);
+    if (counter >= ABORT_AFTER_CONSECUTIVE) {
+      const abortErr = new Error(
+        `Abort: ${counter} fallos consecutivos en ${source} (último: ${diag.kind}). ${diag.hint}`
+      );
+      abortErr.vtexAbort = true;
+      abortErr.diag = diag;
+      throw abortErr;
+    }
+
     return [];
   }
 }

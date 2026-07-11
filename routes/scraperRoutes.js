@@ -42,8 +42,9 @@ router.post('/scrape/:scraperName', authMiddleware, async (req, res) => {
 
     const scraper = SCRAPERS[scraperKey];
 
-    // Validate mode (only for non-bank scrapers)
-    if (scraper.type !== 'bank') {
+    // Validate mode (only for scrapers que usan modo; bank/promo/stores no lo usan)
+    const modelessTypes = ['bank', 'promo', 'stores'];
+    if (!modelessTypes.includes(scraper.type)) {
       const validModes = ['categories', 'eans'];
       if (!validModes.includes(mode)) {
         return res.status(400).json({

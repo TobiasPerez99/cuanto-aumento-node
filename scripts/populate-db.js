@@ -22,6 +22,10 @@ import { getDiaMainProducts } from '../scrapers/diaonline.js';
 import { getMasonlineMainProducts } from '../scrapers/masonline.js';
 import { getFarmacityMainProducts } from '../scrapers/farmacity.js';
 import { getModoBanks } from '../scrapers/banks/modo_bank.js';
+import { getMercadoPagoPromotions } from '../scrapers/promos/mercadopago.js';
+import { getPatagoniaPromotions } from '../scrapers/promos/patagonia.js';
+import { getJumboPromotions } from '../scrapers/promos/jumbo_promos.js';
+import { getJumboStores } from '../scrapers/stores/jumbo_stores.js';
 
 // Importar notificador de Slack
 import { sendScrapingNotification } from '../services/slackNotifier.js';
@@ -36,7 +40,14 @@ export const SCRAPERS = {
   masonline: { fn: getMasonlineMainProducts, name: 'Masonline' },
   farmacity: { fn: getFarmacityMainProducts, name: 'Farmacity' },
   modo: { fn: getModoBanks, name: 'Modo Banks', type: 'bank' },
+  mercadopago: { fn: getMercadoPagoPromotions, name: 'MercadoPago Promos', type: 'promo' },
+  patagonia: { fn: getPatagoniaPromotions, name: 'Banco Patagonia Promos', type: 'promo' },
+  jumbopromos: { fn: getJumboPromotions, name: 'Jumbo Promos', type: 'promo' },
+  jumbostores: { fn: getJumboStores, name: 'Jumbo Stores', type: 'stores' },
 };
+
+// Tipos de scraper que NO usan modo y devuelven shapes propios (no {totalProducts})
+const MODELESS_TYPES = ['bank', 'promo', 'stores'];
 
 // Obtener qué scraper ejecutar desde argumentos
 const args = process.argv.slice(2);
@@ -48,8 +59,9 @@ export async function runScraper(key, scraper, mode = DEFAULT_MODE) {
   const label = scraper.isMaster ? `${scraper.name} (MAESTRO)` : scraper.name;
   console.log(`\n${'='.repeat(50)}`);
 
-  // Los scrapers de tipo 'bank' no usan modo
-  if (scraper.type === 'bank') {
+  // Los scrapers de tipo 'bank'/'promo'/'stores' no usan modo
+  const isModeless = MODELESS_TYPES.includes(scraper.type);
+  if (isModeless) {
     console.log(`📦 Ejecutando: ${label}`);
   } else {
     console.log(`📦 Ejecutando: ${label} [MODO: ${mode.toUpperCase()}]`);
@@ -60,8 +72,8 @@ export async function runScraper(key, scraper, mode = DEFAULT_MODE) {
   const scraperStartTime = Date.now();
 
   try {
-    // Bancos no usan mode, solo supermercados
-    const result = scraper.type === 'bank'
+    // Bancos/promos/stores no usan mode, solo supermercados
+    const result = isModeless
       ? await scraper.fn()
       : await scraper.fn(mode);
 
@@ -75,9 +87,13 @@ export async function runScraper(key, scraper, mode = DEFAULT_MODE) {
     });
 
     if (result.success) {
-      // Manejar diferencias entre scrapers de bancos y supermercados
+      // Manejar diferencias entre scrapers de bancos, promos, stores y supermercados
       if (scraper.type === 'bank') {
         console.log(`✅ ${scraper.name}: ${result.totalBanks} bancos, ${result.savedBanks} guardados`);
+      } else if (scraper.type === 'promo') {
+        console.log(`✅ ${scraper.name}: ${result.total} promociones`);
+      } else if (scraper.type === 'stores') {
+        console.log(`✅ ${scraper.name}: ${result.total} sucursales`);
       } else {
         console.log(`✅ ${scraper.name}: ${result.totalProducts} productos, ${result.savedProducts} guardados`);
       }
@@ -139,9 +155,13 @@ export async function runAll(mode = DEFAULT_MODE) {
     const status = result.success ? '✅' : '❌';
     let info;
     if (result.success) {
-      // Manejar diferencias entre scrapers de bancos y supermercados
+      // Manejar diferencias entre scrapers de bancos, promos, stores y supermercados
       if (SCRAPERS[key].type === 'bank') {
         info = `${result.totalBanks} bancos, ${result.savedBanks} guardados`;
+      } else if (SCRAPERS[key].type === 'promo') {
+        info = `${result.total} promociones`;
+      } else if (SCRAPERS[key].type === 'stores') {
+        info = `${result.total} sucursales`;
       } else {
         info = `${result.totalProducts} productos, ${result.savedProducts} guardados`;
       }

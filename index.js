@@ -11,6 +11,7 @@ import './config/redis.js';
 // Importar rutas de la API
 import productRoutes from './routes/productRoutes.js';
 import scraperRoutes from './routes/scraperRoutes.js';
+import dataRoutes from './routes/dataRoutes.js';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -25,6 +26,7 @@ app.use(express.urlencoded({ extended: true }));
 // ============================================
 app.use('/api', productRoutes);
 app.use('/api', scraperRoutes);
+app.use('/api', dataRoutes);
 
 // ============================================
 // 📊 INFO ROUTES
@@ -54,9 +56,13 @@ app.get('/', (req, res) => {
         'GET /api/scrape/running - Listar scrapers en ejecución (autenticado)',
         'GET /api/scrape/stats - Estadísticas de jobs (autenticado)',
         'POST /api/scrape/cleanup - Limpiar jobs antiguos (autenticado)'
+      ],
+      data: [
+        'GET /api/promotions/:source - Promociones de mercadopago|patagonia|jumbo (autenticado)',
+        'GET /api/stores/:source - Sucursales de jumbo (autenticado)'
       ]
     },
-    scrapers_available: ['disco', 'carrefour', 'jumbo', 'vea', 'dia', 'masonline', 'farmacity', 'modo']
+    scrapers_available: ['disco', 'carrefour', 'jumbo', 'vea', 'dia', 'masonline', 'farmacity', 'modo', 'mercadopago', 'patagonia', 'jumbopromos', 'jumbostores']
   });
 });
 
