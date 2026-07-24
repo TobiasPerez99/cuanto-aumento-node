@@ -31,6 +31,16 @@ test('guard anti-anomalía: formatPrice basura cae a listPrice', () => {
   assert.equal(s133.price, 2495);
 });
 
+test('un descuento legítimo (formatPrice = 50% del listPrice) se conserva, no se clobbea', () => {
+  const item = { value: 'Producto en oferta', data: { product_main_ean: 7790000000009, price: [
+    { store: '300', listPrice: 2000, formatPrice: 1000 }, // 50% off — descuento real
+  ] } };
+  const p = normalizeConstructorItem(item);
+  const s = p.storePrices.find((x) => x.code === '300');
+  assert.equal(s.price, 1000);      // formatPrice conservado (no cae a listPrice)
+  assert.equal(s.listPrice, 2000);
+});
+
 test('el mínimo entre sucursales es 2300, NO 29.05', () => {
   const p = normalizeConstructorItem(item);
   const min = Math.min(...p.storePrices.map((s) => s.price));
