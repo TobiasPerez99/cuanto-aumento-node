@@ -15,6 +15,7 @@ import { cacheMiddleware } from '../middlewares/cacheMiddleware.js';
 import { getMercadoPagoPromotions } from '../scrapers/promos/mercadopago.js';
 import { getPatagoniaPromotions } from '../scrapers/promos/patagonia.js';
 import { getJumboPromotions } from '../scrapers/promos/jumbo_promos.js';
+import { getCotoPromotions } from '../scrapers/promos/coto.js';
 import { getJumboStores } from '../scrapers/stores/jumbo_stores.js';
 
 const router = Router();
@@ -27,6 +28,7 @@ const PROMOTION_SOURCES = {
   mercadopago: getMercadoPagoPromotions,
   patagonia: getPatagoniaPromotions,
   jumbo: getJumboPromotions,
+  coto: getCotoPromotions,
 };
 
 const STORE_SOURCES = {

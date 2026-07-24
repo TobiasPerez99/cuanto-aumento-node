@@ -28,7 +28,7 @@
     "test:dia": "node scraper-tests/test-diaonline.js",
     "test:masonline": "node scraper-tests/test-masonline.js",
     "test:farmacity": "node scraper-tests/test-farmacity.js",
-    "test:coto-unit": "node --test scraper-tests/constructor.test.js"
+    "test:coto-unit": "node --test scraper-tests/constructor.test.js scraper-tests/coto-promos.test.js"
   },
   "keywords": [
     "nodejs",

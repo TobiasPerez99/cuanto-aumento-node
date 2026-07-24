@@ -1,0 +1,133 @@
+{
+  "codigoError": "0",
+  "result": {
+    "promocionesDigitales": [
+      {
+        "aplicaCompra": "S",
+        "banco": 76,
+        "@class": "atg.dto.backOffice.DtoPromocion",
+        "classes": null,
+        "codigoError": null,
+        "descripcion": "En un pago con tarjeta de crédito Naranja X o tarjeta Debito Naranja X VISA.",
+        "dias": [
+          {
+            "@class": "atg.dto.backOffice.DtoDia",
+            "codigoError": null,
+            "descripcion": "Martes",
+            "id": 3,
+            "mensajeError": null
+          }
+        ],
+        "diasVigencia": "Martes",
+        "formaPago": 75,
+        "icono": "logo_naranjax2.png",
+        "id": "62",
+        "isDigital": true,
+        "labelTerminos": null,
+        "mensajeError": null,
+        "observacion": "Tope $10.000 por semana para clientes adheridos a Plan Épico de NaranjaX",
+        "textoDescuento": "30% DE DESCUENTO",
+        "tipoTarjetaFidelizada": null,
+        "urlTerminos": null,
+        "vigenciaDesde": null,
+        "vigenciaHasta": null,
+        "wildcard": "N"
+      },
+      {
+        "aplicaCompra": "S",
+        "banco": 76,
+        "@class": "atg.dto.backOffice.DtoPromocion",
+        "classes": null,
+        "codigoError": null,
+        "descripcion": "En un pago con tarjeta de crédito Naranja X o tarjeta Debito Naranja X VISA.",
+        "dias": [
+          {
+            "@class": "atg.dto.backOffice.DtoDia",
+            "codigoError": null,
+            "descripcion": "Martes",
+            "id": 3,
+            "mensajeError": null
+          }
+        ],
+        "diasVigencia": "Martes",
+        "formaPago": 75,
+        "icono": "logo_naranjax2.png",
+        "id": "69",
+        "isDigital": true,
+        "labelTerminos": null,
+        "mensajeError": null,
+        "observacion": "Tope $8.000 por semana para clientes adheridos a Plan Turbo de NaranjaX",
+        "textoDescuento": "25% DE DESCUENTO",
+        "tipoTarjetaFidelizada": null,
+        "urlTerminos": null,
+        "vigenciaDesde": null,
+        "vigenciaHasta": null,
+        "wildcard": "N"
+      }
+    ],
+    "promocionesSucursalesFisicas": [
+      {
+        "aplicaCompra": "S",
+        "banco": 0,
+        "@class": "atg.dto.backOffice.DtoPromocion",
+        "classes": null,
+        "codigoError": null,
+        "descripcion": "En un pago si sos miembro DE NUESTRA COMUNIDAD. Con todos los medios de pago",
+        "dias": [
+          {
+            "@class": "atg.dto.backOffice.DtoDia",
+            "codigoError": null,
+            "descripcion": "Miercoles",
+            "id": 4,
+            "mensajeError": null
+          }
+        ],
+        "diasVigencia": "Miercoles",
+        "formaPago": 5,
+        "icono": "logo_comunidad.png",
+        "id": "115",
+        "isDigital": false,
+        "labelTerminos": null,
+        "mensajeError": null,
+        "observacion": "Siendo miembro de Comunidad Coto - Aplican exclusiones. Ver legales - Sin límite de reintegro.",
+        "textoDescuento": "COMUNIDAD COTO 15%",
+        "tipoTarjetaFidelizada": null,
+        "urlTerminos": null,
+        "vigenciaDesde": null,
+        "vigenciaHasta": null,
+        "wildcard": "N"
+      },
+      {
+        "aplicaCompra": "S",
+        "banco": 0,
+        "@class": "atg.dto.backOffice.DtoPromocion",
+        "classes": null,
+        "codigoError": null,
+        "descripcion": "20% ESPECIAL MARTES",
+        "dias": [
+          {
+            "@class": "atg.dto.backOffice.DtoDia",
+            "codigoError": null,
+            "descripcion": "Martes",
+            "id": 3,
+            "mensajeError": null
+          }
+        ],
+        "diasVigencia": "Martes",
+        "formaPago": 1,
+        "icono": "logo_todos_mediospagos3.png",
+        "id": "123",
+        "isDigital": false,
+        "labelTerminos": null,
+        "mensajeError": null,
+        "observacion": "En un pago con todos los medios de pago. Sin tope de reintegro. Aplican exclusiones. Ver legal.",
+        "textoDescuento": "20% DE DESCUENTO",
+        "tipoTarjetaFidelizada": null,
+        "urlTerminos": null,
+        "vigenciaDesde": null,
+        "vigenciaHasta": null,
+        "wildcard": "N"
+      }
+    ]
+  }
+}
