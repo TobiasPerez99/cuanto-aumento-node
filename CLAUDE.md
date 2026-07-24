@@ -127,6 +127,42 @@ The `normalizeProduct()` function handles VTEX-specific quirks:
 - Uses `seller.commertialOffer.Price` (not `priceRange` which can be incorrect)
 - Calculates reference prices (e.g., price per liter) from `unitMultiplier`
 
+### Scraper de Coto (no-VTEX)
+
+Coto is one of the largest Argentine chains but is **not VTEX** — it uses **Constructor.io** for its product catalog and an ATG (Oracle Commerce) BFF for promotions. It also prices **per store** (its product API returns a `price[]` array keyed by store code), unlike the 7 VTEX merchants which price chain-wide. Design doc: `docs/superpowers/specs/2026-07-23-coto-scraper-design.md` (Laravel repo).
+
+**Product source — Constructor.io (`cores/constructor.js`):**
+- Public browse API, no auth, no Cloudflare: `GET https://ac.cnstrc.com/browse/group_id/{groupId}?key=key_r6xzz4IAoTWcipni&num_results_per_page=...&page=...`.
+- `collectLeafGroupIds(rootGroupId='categoria')` walks the category tree recursively. The API only exposes **one level of children per response**, so discovering a node's children requires browsing that node itself; nodes with no children are leaves.
+- Each leaf is paged independently and capped at `MAX_WINDOW = 10000` results (Constructor.io's browse window limit) — a leaf that hits the cap logs a warning (possible truncation); the fix is splitting that leaf into finer subcategories, not raising the cap.
+- `normalizeConstructorItem(rawItem)` → `{ean, name, brand, image, images, categories, link, storePrices: [{code, price, listPrice, isAvailable}]}`, or `null` if `data.product_main_ean` is missing (same discard-without-EAN rule as `normalizeProduct()` for VTEX). `storePrices` is built from `data.price[]` (one row per store, `store` → `code`) via `resolveStorePrice()`.
+- **`formatPrice` anomaly guard (`resolveStorePrice()`):** Coto's `formatPrice` field is occasionally garbage for a given store (e.g. `formatPrice=29.05` next to `listPrice=2495`). The guard only trusts `formatPrice` when it is **≥ 10% of `listPrice`** (`ANOMALY_RATIO = 0.1`); otherwise it falls back to `listPrice` as the effective price. This only catches "discounts" deeper than 90%, which in practice are always data errors — it never collapses a legitimate discount.
+
+**`scrapers/coto.js`** is a thin wrapper: `getCotoMainProducts()` calls `scrapeConstructorMerchant({merchantName:'Coto', onProductFound: saveCotoProduct})`. `mode` is ignored — Constructor.io always walks the full category tree.
+
+**`saveCotoProduct(product, merchantId)` (`cores/saveHandlers.js`) — follower with per-store dimension:**
+1. **Follower gate:** if `product.ean` isn't in the `products` master catalog, return `{saved:false, reason:'not_in_master'}` (same as every non-Disco VTEX scraper — Coto never creates products).
+2. **Store bootstrap by code:** for each `storePrices[].code`, `ensureStore()` upserts a `merchant_stores` row keyed by `(merchantId, externalReference=code)`, with `name=code` as a placeholder until enrichment. An in-memory `Map` (module-level, per run) caches `code → merchantStoreId` so the same store isn't upserted once per product. On an existing row, the upsert's `update` clause is `{}` — it deliberately never overwrites name/address/coords that were enriched later by `stores:sync coto` or the backoffice.
+3. **Headline = MIN:** picks the cheapest available store row (falls back to all rows if none are marked available) and upserts `merchant_products` with that `price`/`listPrice`, `isAvailable = OR` across stores, plus a `price_history` snapshot — computed directly in Node so there's never a window where the headline is stale relative to the store rows. Laravel's `merchant-store-prices:rollup` (scheduled, idempotent) exists as a reconciler, not the primary path, for Coto.
+4. **Per-store prices:** upserts one `merchant_store_prices` row per `(merchantProductId, merchantStoreId)` with that store's `price`/`listPrice`/`isAvailable`/`lastCheckedAt`.
+5. Wrapped in try/catch → `{saved:false, reason:'exception'}` on any failure, same contract as the other save handlers.
+
+**Promotions — `scrapers/promos/coto.js` (`getCotoPromotions()`), PULL provider:**
+- Source: `GET https://www.coto.com.ar/rest/model/atg/actors/cProfileActor/getPromocionesMulticanal?enviroment=ag&pushSite=CotoDigital` — a plain GET, no session/`_dynSessConf` needed.
+- The response's `result` has **two arrays that share the exact same item shape**: `promocionesDigitales` and `promocionesSucursalesFisicas`; the only semantic difference is the `isDigital` flag. Both are flattened together and normalized.
+- `vigenciaDesde`/`vigenciaHasta` are always `null` in practice — the AI infers real validity from the free-text `diasVigencia`/`dias` fields instead, which are passed through untouched.
+- `normalizeCotoPromotion()` prefixes `external_id` with `d`/`f` (`coto-d-{id}` / `coto-f-{id}`) because digital and physical ids are **not a shared namespace** (both start at low ranges and would otherwise collide).
+- Consumed on the Laravel side by `App\Services\PromotionsProviders\CotoService` (`AbstractScrapperPullProvider`, same pattern as Jumbo/Patagonia) via `GET /api/promotions/coto`. Never throws to the caller — returns `{success:false, ...}` on error.
+
+**Stores enrichment — `scrapers/stores/coto_stores.js`: documented no-op.** `getCotoStores()` always returns `{success:true, source:'coto', total:0, stores:[]}`. This is intentional, not a pending bug:
+- The legacy `/sucursales/` page is a dead marketing landing (Pofo template, one sample coordinate) — discarded as a source.
+- The real per-store data lives behind the SPA's "elegí tu sucursal" selector XHR, which requires deep interaction with the purchase flow to capture and was **not captured** in the spike; guessing at ATG actor endpoints is explicitly out — earlier attempts returned 500.
+- This is not blocking: `saveCotoProduct` already bootstraps `merchant_stores` rows by code (see above), so per-store pricing works from day one. `StoreSyncService::syncMerchant('coto')` can call this endpoint fine; it just has nothing to enrich while it returns an empty list.
+- **Enrichment today is manual**, via Filament (`StoresRelationManager` exposes `latitude`/`longitude`/`phone`) — an operator fills in name/address/coordinates per store from public sources (Google Maps, coto.com.ar) after they're bootstrapped by code.
+- To revisit: capture the real selector XHR (with the purchase flow active, not just page load) and map it to the same contract as `scrapers/stores/jumbo_stores.js`: `{external_reference, name, address, city, province, postal_code, latitude, longitude, phone, opening_hours}`. `external_reference` **must** be the Coto store code (the same one `saveCotoProduct` already persists) so `StoreSyncService`'s upsert-by-`external_reference` enriches the existing bootstrapped rows instead of creating duplicates.
+
+**HARD RULE — Prisma is `generate`-only for the Coto mirror tables, never `migrate`:** `MerchantStore` and `MerchantStorePrice` in `prisma/schema.prisma` are a **mirror** of tables Laravel already owns and migrates (`merchant_stores`, `merchant_store_prices` — part of the per-store-pricing foundation). After editing `prisma/schema.prisma` to add or change these models, run **only** `npx prisma generate` (regenerates the client). **Never** run `npx prisma migrate dev/deploy` against them — Laravel's migrations are the single source of truth for this schema; running a Prisma migration from Node would create a parallel migration history and drift the schema out from under Laravel. Field names/types in the mirror must match the Laravel migration exactly.
+
 ## Important Patterns
 
 ### Adding a New Scraper
