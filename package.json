@@ -20,6 +20,7 @@
     "scrape:mercadopago": "node scripts/populate-db.js mercadopago",
     "scrape:patagonia": "node scripts/populate-db.js patagonia",
     "scrape:jumbostores": "node scripts/populate-db.js jumbostores",
+    "scrape:cotostores": "node scripts/populate-db.js cotostores",
     "extract-hash": "node scripts/extractVtexHash.js",
     "test:vea": "node scraper-tests/test-vea.js",
     "test:jumbo": "node scraper-tests/test-jumbo.js",

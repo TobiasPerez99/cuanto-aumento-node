@@ -27,6 +27,7 @@ import { getMercadoPagoPromotions } from '../scrapers/promos/mercadopago.js';
 import { getPatagoniaPromotions } from '../scrapers/promos/patagonia.js';
 import { getJumboPromotions } from '../scrapers/promos/jumbo_promos.js';
 import { getJumboStores } from '../scrapers/stores/jumbo_stores.js';
+import { getCotoStores } from '../scrapers/stores/coto_stores.js';
 
 // Importar notificador de Slack
 import { sendScrapingNotification } from '../services/slackNotifier.js';
@@ -46,6 +47,7 @@ export const SCRAPERS = {
   patagonia: { fn: getPatagoniaPromotions, name: 'Banco Patagonia Promos', type: 'promo' },
   jumbopromos: { fn: getJumboPromotions, name: 'Jumbo Promos', type: 'promo' },
   jumbostores: { fn: getJumboStores, name: 'Jumbo Stores', type: 'stores' },
+  cotostores: { fn: getCotoStores, name: 'Coto Stores', type: 'stores' },
 };
 
 // Tipos de scraper que NO usan modo y devuelven shapes propios (no {totalProducts})

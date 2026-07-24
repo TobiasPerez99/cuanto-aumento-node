@@ -17,6 +17,7 @@ import { getPatagoniaPromotions } from '../scrapers/promos/patagonia.js';
 import { getJumboPromotions } from '../scrapers/promos/jumbo_promos.js';
 import { getCotoPromotions } from '../scrapers/promos/coto.js';
 import { getJumboStores } from '../scrapers/stores/jumbo_stores.js';
+import { getCotoStores } from '../scrapers/stores/coto_stores.js';
 
 const router = Router();
 
@@ -33,6 +34,7 @@ const PROMOTION_SOURCES = {
 
 const STORE_SOURCES = {
   jumbo: getJumboStores,
+  coto: getCotoStores,
 };
 
 /**
