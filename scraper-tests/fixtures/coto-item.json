@@ -1,0 +1,24 @@
+{
+  "value": "Leche Larga Vida Parcialmente Descremada Liviana 1% La Serenisima 1l",
+  "data": {
+    "id": "prod00251876",
+    "product_main_ean": 7790742363107,
+    "product_brand": "LA SERENISIMA",
+    "image_url": "https://static.cotodigital3.com.ar/sitios/fotos/large/00251800/00251876.jpg",
+    "product_list_price": 2809,
+    "url": "_/R-00251876-00251876-200",
+    "price": [
+      {"store": "092", "listPrice": 2809, "formatPrice": 2809},
+      {"store": "060", "listPrice": 2300, "formatPrice": 2300},
+      {"store": "061", "listPrice": 2750, "formatPrice": 2750},
+      {"store": "133", "listPrice": 2495, "formatPrice": 29.05}
+    ],
+    "groups": [
+      {"group_id": "catv00003266", "display_name": "Leches", "path_list": [
+        {"id": "categoria", "display_name": "Categorias"},
+        {"id": "catv00001255", "display_name": "Frescos"},
+        {"id": "catv00001295", "display_name": "Lácteos"}
+      ]}
+    ]
+  }
+}
