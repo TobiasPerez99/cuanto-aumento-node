@@ -15,6 +15,7 @@
     "scrape:dia": "node scripts/populate-db.js dia",
     "scrape:masonline": "node scripts/populate-db.js masonline",
     "scrape:farmacity": "node scripts/populate-db.js farmacity",
+    "scrape:coto": "node scripts/populate-db.js coto",
     "scrape:modo": "node scripts/populate-db.js modo",
     "scrape:mercadopago": "node scripts/populate-db.js mercadopago",
     "scrape:patagonia": "node scripts/populate-db.js patagonia",

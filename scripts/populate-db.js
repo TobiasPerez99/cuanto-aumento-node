@@ -21,6 +21,7 @@ import { getVeaMainProducts } from '../scrapers/vea.js';
 import { getDiaMainProducts } from '../scrapers/diaonline.js';
 import { getMasonlineMainProducts } from '../scrapers/masonline.js';
 import { getFarmacityMainProducts } from '../scrapers/farmacity.js';
+import { getCotoMainProducts } from '../scrapers/coto.js';
 import { getModoBanks } from '../scrapers/banks/modo_bank.js';
 import { getMercadoPagoPromotions } from '../scrapers/promos/mercadopago.js';
 import { getPatagoniaPromotions } from '../scrapers/promos/patagonia.js';
@@ -39,6 +40,7 @@ export const SCRAPERS = {
   dia: { fn: getDiaMainProducts, name: 'Dia Online' },
   masonline: { fn: getMasonlineMainProducts, name: 'Masonline' },
   farmacity: { fn: getFarmacityMainProducts, name: 'Farmacity' },
+  coto: { fn: getCotoMainProducts, name: 'Coto' },
   modo: { fn: getModoBanks, name: 'Modo Banks', type: 'bank' },
   mercadopago: { fn: getMercadoPagoPromotions, name: 'MercadoPago Promos', type: 'promo' },
   patagonia: { fn: getPatagoniaPromotions, name: 'Banco Patagonia Promos', type: 'promo' },
