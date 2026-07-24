@@ -1,8 +1,16 @@
 // scrapper-script/cores/constructor.js
 import axios from 'axios';
+import { getMerchantId } from './vtex.js';
 
 const AC_BASE = 'https://ac.cnstrc.com';
 const CONSTRUCTOR_KEY = 'key_r6xzz4IAoTWcipni';
+
+const USER_AGENT =
+  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 ' +
+  '(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
+
+const ROOT_GROUP_ID = 'categoria';
+const MAX_WINDOW = 10000; // tope de la ventana de browse de Constructor.io
 
 /**
  * Umbral del guard anti-anomalía: si formatPrice es menor a este ratio del
@@ -70,4 +78,109 @@ export function normalizeConstructorItem(rawItem) {
     link: data.url ? `https://www.coto.com.ar/${String(data.url).replace(/^_\//, '')}` : null,
     storePrices,
   };
+}
+
+/**
+ * GET a la API de browse de Constructor.io. `httpGet` es inyectable para tests.
+ */
+export async function fetchConstructorBrowse(groupId, page = 1, perPage = 200, httpGet = defaultGet) {
+  const url =
+    `${AC_BASE}/browse/group_id/${encodeURIComponent(groupId)}` +
+    `?key=${CONSTRUCTOR_KEY}&num_results_per_page=${perPage}&page=${page}` +
+    `&c=ciojs-client-2.54.0&i=ahorrapp-scraper&s=1&_dt=1`;
+
+  const { data } = await httpGet(url);
+  const r = data?.response ?? {};
+  return { results: r.results ?? [], total: r.total_num_results ?? 0, groups: r.groups ?? [] };
+}
+
+async function defaultGet(url) {
+  return axios.get(url, {
+    headers: { 'User-Agent': USER_AGENT, Accept: 'application/json', Referer: 'https://www.coto.com.ar/' },
+    timeout: 20000,
+  });
+}
+
+/**
+ * Recorre el árbol de categorías desde rootGroupId y devuelve los group_id de
+ * las HOJAS (sin hijos). Se paginan las hojas para mantenerse bajo el tope de
+ * 10k de la ventana de browse.
+ */
+export async function collectLeafGroupIds(rootGroupId = ROOT_GROUP_ID, httpGet = defaultGet) {
+  // Un solo fetch: la API de Constructor.io devuelve el árbol completo anidado
+  // en response.groups[0].children — no hace falta (ni conviene) pedir cada
+  // nodo por separado.
+  const { groups } = await fetchConstructorBrowse(rootGroupId, 1, 1, httpGet);
+  const rootNode = groups.find((g) => g.group_id === rootGroupId) ?? groups[0];
+
+  const leaves = [];
+  const seen = new Set();
+
+  function walk(node) {
+    if (!node || seen.has(node.group_id)) return;
+    seen.add(node.group_id);
+
+    const children = Array.isArray(node.children) ? node.children : [];
+    if (children.length === 0) {
+      leaves.push(node.group_id);
+      return;
+    }
+    for (const child of children) {
+      walk(child);
+    }
+  }
+
+  if (rootNode) walk(rootNode);
+  return leaves;
+}
+
+/**
+ * Scrapea todo el catálogo de un merchant vía Constructor.io: enumera hojas del
+ * árbol, pagina cada una y llama onProductFound(normalized, merchantId) por
+ * producto único (dedup por EAN en el run).
+ */
+export async function scrapeConstructorMerchant({
+  merchantName,
+  onProductFound,
+  rootGroupId = ROOT_GROUP_ID,
+  perPage = 200,
+  httpGet = defaultGet,
+}) {
+  try {
+    const merchantId = await getMerchantId(merchantName);
+    const leaves = await collectLeafGroupIds(rootGroupId, httpGet);
+    console.log(`🗂️  ${leaves.length} categorías hoja para ${merchantName}`);
+
+    const seenEans = new Set();
+    let totalProducts = 0;
+    let savedProducts = 0;
+
+    for (const groupId of leaves) {
+      let page = 1;
+      while (page * perPage <= MAX_WINDOW) {
+        const { results, total } = await fetchConstructorBrowse(groupId, page, perPage, httpGet);
+        if (results.length === 0) break;
+
+        for (const raw of results) {
+          const product = normalizeConstructorItem(raw);
+          if (!product || seenEans.has(product.ean)) continue;
+          seenEans.add(product.ean);
+          totalProducts++;
+          const out = await onProductFound(product, merchantId);
+          if (out?.saved) savedProducts++;
+        }
+
+        if (page * perPage >= total || results.length < perPage) break;
+        page++;
+      }
+      if ((page * perPage) > MAX_WINDOW) {
+        console.warn(`⚠️ Categoría ${groupId} alcanzó el tope de 10k; posible truncado.`);
+      }
+    }
+
+    return { success: true, source: merchantName.toLowerCase(), totalProducts, savedProducts };
+  } catch (error) {
+    console.error(`❌ Error en scrapeConstructorMerchant(${merchantName}):`, error.message);
+    return { success: false, source: (merchantName || '').toLowerCase(), totalProducts: 0, savedProducts: 0, error: error.message };
+  }
 }

@@ -3,7 +3,7 @@ import { prisma } from '../config/prisma.js';
 /**
  * Obtiene o crea el ID del supermercado
  */
-async function getMerchantId(name) {
+export async function getMerchantId(name) {
   try {
     // Find or create merchant (atomic operation)
     const merchant = await prisma.merchant.upsert({
