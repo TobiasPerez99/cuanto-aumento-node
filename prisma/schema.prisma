@@ -90,7 +90,7 @@ model MerchantStore {
   address           String?              @db.Text
   city              String?              @db.VarChar(255)
   province          String?              @db.VarChar(255)
-  postalCode        String?              @map("postal_code") @db.VarChar(255)
+  postalCode        String?              @map("postal_code") @db.VarChar(20)
   latitude          Decimal?             @db.Decimal(10, 7)
   longitude         Decimal?             @db.Decimal(10, 7)
   phone             String?              @db.VarChar(255)
@@ -106,6 +106,7 @@ model MerchantStore {
   @@index([merchantId])
   @@index([city])
   @@index([storeType])
+  @@index([latitude, longitude])
   @@map("merchant_stores")
 }
 
