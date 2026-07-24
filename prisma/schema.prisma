@@ -39,6 +39,7 @@ model Merchant {
   created_at          DateTime?            @default(now()) @db.DateTime(0)
   updated_at          DateTime?            @updatedAt @db.DateTime(0)
   merchantProducts MerchantProduct[]
+  stores           MerchantStore[]
 
   @@map("merchants")
 }
@@ -56,6 +57,7 @@ model MerchantProduct {
   isAvailable    Boolean        @default(true) @map("is_available")
   lastCheckedAt  DateTime?      @map("last_checked_at")
   priceHistory   PriceHistory[]
+  storePrices    MerchantStorePrice[]
   product        Product        @relation(fields: [productEan], references: [ean], onDelete: Cascade)
   merchant    Merchant    @relation(fields: [merchantId], references: [id], onDelete: Cascade)
 
@@ -78,4 +80,48 @@ model PriceHistory {
   @@index([merchantProductId])
   @@index([scrapedAt])
   @@map("price_history")
+}
+
+model MerchantStore {
+  id                Int                  @id @default(autoincrement())
+  merchantId        Int                  @map("merchant_id")
+  name              String?              @db.VarChar(255)
+  externalReference String?              @map("external_reference") @db.VarChar(255)
+  address           String?              @db.Text
+  city              String?              @db.VarChar(255)
+  province          String?              @db.VarChar(255)
+  postalCode        String?              @map("postal_code") @db.VarChar(255)
+  latitude          Decimal?             @db.Decimal(10, 7)
+  longitude         Decimal?             @db.Decimal(10, 7)
+  phone             String?              @db.VarChar(255)
+  openingHours      String?              @map("opening_hours") @db.LongText
+  storeType         String               @default("physical") @map("store_type") @db.VarChar(255)
+  isActive          Boolean              @default(true) @map("is_active")
+  createdAt         DateTime?            @default(now()) @map("created_at") @db.DateTime(0)
+  updatedAt         DateTime?            @updatedAt @map("updated_at") @db.DateTime(0)
+  merchant          Merchant             @relation(fields: [merchantId], references: [id], onDelete: Cascade)
+  storePrices       MerchantStorePrice[]
+
+  @@unique([merchantId, externalReference], map: "merchant_stores_merchant_code_unique")
+  @@index([merchantId])
+  @@index([city])
+  @@index([storeType])
+  @@map("merchant_stores")
+}
+
+model MerchantStorePrice {
+  id                Int             @id @default(autoincrement())
+  merchantProductId Int             @map("merchant_product_id")
+  merchantStoreId   Int             @map("merchant_store_id")
+  price             Decimal?        @db.Decimal(10, 2)
+  listPrice         Decimal?        @map("list_price") @db.Decimal(10, 2)
+  isAvailable       Boolean         @default(true) @map("is_available")
+  lastCheckedAt     DateTime?       @map("last_checked_at")
+  merchantProduct   MerchantProduct @relation(fields: [merchantProductId], references: [id], onDelete: Cascade)
+  merchantStore     MerchantStore   @relation(fields: [merchantStoreId], references: [id], onDelete: Cascade)
+
+  @@unique([merchantProductId, merchantStoreId], map: "msp_product_store_unique")
+  @@index([merchantStoreId])
+  @@index([isAvailable])
+  @@map("merchant_store_prices")
 }
