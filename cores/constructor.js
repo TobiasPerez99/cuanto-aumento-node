@@ -107,30 +107,29 @@ async function defaultGet(url) {
  * 10k de la ventana de browse.
  */
 export async function collectLeafGroupIds(rootGroupId = ROOT_GROUP_ID, httpGet = defaultGet) {
-  // Un solo fetch: la API de Constructor.io devuelve el árbol completo anidado
-  // en response.groups[0].children — no hace falta (ni conviene) pedir cada
-  // nodo por separado.
-  const { groups } = await fetchConstructorBrowse(rootGroupId, 1, 1, httpGet);
-  const rootNode = groups.find((g) => g.group_id === rootGroupId) ?? groups[0];
-
   const leaves = [];
   const seen = new Set();
 
-  function walk(node) {
-    if (!node || seen.has(node.group_id)) return;
-    seen.add(node.group_id);
+  async function walk(groupId) {
+    if (seen.has(groupId)) return;
+    seen.add(groupId);
 
-    const children = Array.isArray(node.children) ? node.children : [];
+    // La API de browse expone solo UN nivel de hijos por respuesta: para
+    // descubrir los hijos de un nodo hay que hacer browse de ESE nodo.
+    const { groups } = await fetchConstructorBrowse(groupId, 1, 1, httpGet);
+    const node = groups.find((g) => g.group_id === groupId) ?? groups[0];
+    const children = node?.children ?? [];
+
     if (children.length === 0) {
-      leaves.push(node.group_id);
+      leaves.push(groupId);
       return;
     }
     for (const child of children) {
-      walk(child);
+      await walk(child.group_id);
     }
   }
 
-  if (rootNode) walk(rootNode);
+  await walk(rootGroupId);
   return leaves;
 }
 
@@ -145,9 +144,10 @@ export async function scrapeConstructorMerchant({
   rootGroupId = ROOT_GROUP_ID,
   perPage = 200,
   httpGet = defaultGet,
+  merchantId,
 }) {
   try {
-    const merchantId = await getMerchantId(merchantName);
+    const resolvedMerchantId = merchantId ?? (await getMerchantId(merchantName));
     const leaves = await collectLeafGroupIds(rootGroupId, httpGet);
     console.log(`🗂️  ${leaves.length} categorías hoja para ${merchantName}`);
 
@@ -166,7 +166,7 @@ export async function scrapeConstructorMerchant({
           if (!product || seenEans.has(product.ean)) continue;
           seenEans.add(product.ean);
           totalProducts++;
-          const out = await onProductFound(product, merchantId);
+          const out = await onProductFound(product, resolvedMerchantId);
           if (out?.saved) savedProducts++;
         }
 

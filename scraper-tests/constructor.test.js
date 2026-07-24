@@ -52,18 +52,16 @@ test('sin EAN devuelve null', () => {
   assert.equal(normalizeConstructorItem(noEan), null);
 });
 
-test('collectLeafGroupIds recorre el árbol hasta las hojas', async () => {
-  // fake httpGet: root tiene 2 hijos; uno es hoja, otro tiene 1 hijo hoja.
+test('collectLeafGroupIds recorre el árbol hasta las hojas (un nivel por respuesta)', async () => {
+  // La API real de Constructor.io anida `children` un solo nivel: para
+  // descubrir los hijos de una categoría hay que hacer browse de ESA
+  // categoría. El fake modela eso: cada group_id devuelve solo sus hijos
+  // directos (sin nietos).
+  const tree = { root: ['A', 'B'], A: [], B: ['B1'], B1: [] };
   const fakeGet = async (url) => {
-    if (url.includes('group_id/root')) {
-      return { data: { response: { total_num_results: 0, results: [], groups: [{
-        group_id: 'root', children: [
-          { group_id: 'A', children: [] },
-          { group_id: 'B', children: [{ group_id: 'B1', children: [] }] },
-        ],
-      }] } } };
-    }
-    return { data: { response: { total_num_results: 0, results: [], groups: [{ group_id: 'x', children: [] }] } } };
+    const gid = decodeURIComponent(url.match(/group_id\/([^?]+)/)[1]);
+    const children = (tree[gid] || []).map((id) => ({ group_id: id }));
+    return { data: { response: { total_num_results: 0, results: [], groups: [{ group_id: gid, children }] } } };
   };
   const leaves = await collectLeafGroupIds('root', fakeGet);
   assert.deepEqual(leaves.sort(), ['A', 'B1']);
@@ -75,14 +73,15 @@ test('scrapeConstructorMerchant pagina y llama onProductFound por producto únic
   item2.data.product_main_ean = 7790000000001;
 
   const fakeGet = async (url) => {
-    const params = new URL(url).searchParams;
-    if (params.get('num_results_per_page') === '1') {
-      // llamada de descubrimiento de árbol (collectLeafGroupIds usa perPage=1):
-      // root sin hijos → es su propia hoja
+    const u = new URL(url);
+    const perPage = Number(u.searchParams.get('num_results_per_page'));
+    if (perPage === 1) {
+      // llamada del árbol (collectLeafGroupIds usa perPage=1): root sin hijos
+      // → es su propia hoja
       return { data: { response: { total_num_results: 2, results: [], groups: [{ group_id: 'root', children: [] }] } } };
     }
-    // páginas de la hoja 'root': page 1 devuelve 2 items, page 2 vacío
-    const page = Number(params.get('page'));
+    // paginación de la hoja 'root': page 1 devuelve 2 items, page 2 vacío
+    const page = Number(u.searchParams.get('page'));
     const results = page === 1 ? [item, item2] : [];
     return { data: { response: { total_num_results: 2, results } } };
   };
@@ -93,6 +92,7 @@ test('scrapeConstructorMerchant pagina y llama onProductFound por producto únic
     rootGroupId: 'root',
     perPage: 200,
     httpGet: fakeGet,
+    merchantId: 999,
     onProductFound: async (p) => { saved.push(p.ean); return { saved: true }; },
   });
 
