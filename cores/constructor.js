@@ -13,15 +13,36 @@ const ROOT_GROUP_ID = 'categoria';
 const MAX_WINDOW = 10000; // tope de la ventana de browse de Constructor.io
 
 /**
- * Umbral del guard anti-anomalía: si formatPrice es menor a este ratio del
- * listPrice, se considera basura (ej. Coto store 133 devuelve 29.05 con
- * listPrice 2495) y se usa listPrice. Solo atrapa "descuentos" > 90%, que en
- * la práctica siempre son errores de datos — nunca colapsa un descuento real.
- */
-const ANOMALY_RATIO = 0.1;
-
-/**
- * Precio efectivo de una fila de sucursal, con guard anti-anomalía.
+ * Precio efectivo de una fila de sucursal.
+ *
+ * ============================================================================
+ * `formatPrice` NO es el precio de venta: es el PRECIO POR UNIDAD DE MEDIDA
+ * ============================================================================
+ *
+ * Es el "precio por litro / por kilo" que la ley argentina obliga a exhibir
+ * junto al precio de góndola (Ley 22.802). Coto lo publica en `formatPrice` y
+ * el precio real en `listPrice`. Verificado contra la API en vivo:
+ *
+ *   Coca-Cola   220 ml  → listPrice 1100  formatPrice 5000     (×1000/220)
+ *   Coca-Cola   473 ml  → listPrice 2500  formatPrice 5285.41  (×1000/473)
+ *   Coca-Cola   1,5 L   → listPrice 3600  formatPrice 2400     (÷1,5)
+ *   Coca-Cola   2,25 L  → listPrice 4845  formatPrice 2153.33  (÷2,25)
+ *
+ * O sea `formatPrice = listPrice / litros`: queda POR ENCIMA en envases chicos
+ * y POR DEBAJO en envases grandes. Coinciden sólo cuando el envase es de 1 L o
+ * 1 kg — y la fixture de los tests era justamente una leche de 1 L, que es la
+ * razón por la que el bug sobrevivió a la suite.
+ *
+ * El código anterior prefería `formatPrice` y trataba la diferencia como un
+ * descuento. Consecuencias medidas sobre la base (BUG-072): de 5255 productos
+ * de Coto con precio de lista, 3557 quedaron MÁS CAROS que la realidad y 528
+ * MÁS BARATOS. Los caros hacían que la ficha anunciara descuentos falsos de
+ * hasta 85%; los baratos son peores todavía, porque la app recomendaba comprar
+ * en Coto a un precio que no existe.
+ *
+ * Por eso acá se usa SIEMPRE `listPrice`. `formatPrice` queda sólo como último
+ * recurso cuando no hay precio de venta, y en ese caso no se reporta como
+ * precio de lista, porque no lo es.
  */
 function resolveStorePrice(row) {
   const list = Number(row.listPrice);
@@ -29,11 +50,11 @@ function resolveStorePrice(row) {
   const hasList = Number.isFinite(list) && list > 0;
   const hasFormat = Number.isFinite(format) && format > 0;
 
-  if (hasFormat && (!hasList || format >= list * ANOMALY_RATIO)) {
-    return { price: format, listPrice: hasList ? list : null };
-  }
   if (hasList) {
     return { price: list, listPrice: list };
+  }
+  if (hasFormat) {
+    return { price: format, listPrice: null };
   }
   return { price: null, listPrice: null };
 }

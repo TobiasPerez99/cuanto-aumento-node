@@ -17,28 +17,54 @@ test('extrae EAN como string y campos básicos', () => {
   assert.ok(p.image.includes('cotodigital'));
 });
 
-test('mapea precios por sucursal usando formatPrice', () => {
+test('mapea precios por sucursal usando listPrice (el precio de venta)', () => {
   const p = normalizeConstructorItem(item);
   const s060 = p.storePrices.find((s) => s.code === '060');
   assert.equal(s060.price, 2300);
   assert.equal(s060.listPrice, 2300);
 });
 
-test('guard anti-anomalía: formatPrice basura cae a listPrice', () => {
+test('ignora formatPrice aunque sea absurdamente bajo', () => {
   const p = normalizeConstructorItem(item);
   const s133 = p.storePrices.find((s) => s.code === '133');
-  // formatPrice 29.05 es basura frente a listPrice 2495 → se usa listPrice.
+  // La sucursal 133 devuelve formatPrice 29.05 con listPrice 2495.
   assert.equal(s133.price, 2495);
 });
 
-test('un descuento legítimo (formatPrice = 50% del listPrice) se conserva, no se clobbea', () => {
-  const item = { value: 'Producto en oferta', data: { product_main_ean: 7790000000009, price: [
-    { store: '300', listPrice: 2000, formatPrice: 1000 }, // 50% off — descuento real
-  ] } };
-  const p = normalizeConstructorItem(item);
-  const s = p.storePrices.find((x) => x.code === '300');
-  assert.equal(s.price, 1000);      // formatPrice conservado (no cae a listPrice)
-  assert.equal(s.listPrice, 2000);
+/*
+ * BUG-072 — `formatPrice` es el precio POR UNIDAD DE MEDIDA (por litro/kilo) que
+ * exige exhibir la Ley 22.802, no el precio de venta. Los tres casos de abajo son
+ * respuestas reales de la API de Coto.
+ *
+ * La fixture del resto de los tests es una leche de 1 L, el único envase donde
+ * ambos campos coinciden: por eso el bug sobrevivió a la suite durante meses.
+ */
+const filaCoto = (listPrice, formatPrice) => ({
+  value: 'Producto', data: { product_main_ean: 7790000000009, price: [{ store: '300', listPrice, formatPrice }] },
+});
+
+test('BUG-072: en envase chico formatPrice queda MUY por encima y no debe usarse', () => {
+  // Coca-Cola 220 ml: 1100 el envase, 5000 el litro.
+  const p = normalizeConstructorItem(filaCoto(1100, 5000));
+  assert.equal(p.storePrices[0].price, 1100);
+});
+
+test('BUG-072: en envase grande formatPrice queda por DEBAJO y tampoco debe usarse', () => {
+  // Coca-Cola 2,25 L: 4845 el envase, 2153.33 el litro. Este caso es el peligroso:
+  // usar formatPrice hacía que la app recomendara comprar a un precio inexistente.
+  const p = normalizeConstructorItem(filaCoto(4845, 2153.33));
+  assert.equal(p.storePrices[0].price, 4845);
+});
+
+test('BUG-072: enjuague de 250 ml — el caso testigo del reporte', () => {
+  const p = normalizeConstructorItem(filaCoto(6275.99, 25103.96));
+  assert.equal(p.storePrices[0].price, 6275.99);
+});
+
+test('sin listPrice cae a formatPrice, pero no lo reporta como precio de lista', () => {
+  const p = normalizeConstructorItem(filaCoto(null, 1800));
+  assert.equal(p.storePrices[0].price, 1800);
+  assert.equal(p.storePrices[0].listPrice, null);
 });
 
 test('el mínimo entre sucursales es 2300, NO 29.05', () => {
