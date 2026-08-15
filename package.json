@@ -19,6 +19,7 @@
     "scrape:modo": "node scripts/populate-db.js modo",
     "scrape:mercadopago": "node scripts/populate-db.js mercadopago",
     "scrape:patagonia": "node scripts/populate-db.js patagonia",
+    "scrape:santander": "node scripts/populate-db.js santander",
     "scrape:jumbostores": "node scripts/populate-db.js jumbostores",
     "scrape:cotostores": "node scripts/populate-db.js cotostores",
     "extract-hash": "node scripts/extractVtexHash.js",
@@ -29,7 +30,8 @@
     "test:dia": "node scraper-tests/test-diaonline.js",
     "test:masonline": "node scraper-tests/test-masonline.js",
     "test:farmacity": "node scraper-tests/test-farmacity.js",
-    "test:coto-unit": "node --test scraper-tests/constructor.test.js scraper-tests/coto-promos.test.js scraper-tests/coto-stores.test.js"
+    "test:coto-unit": "node --test scraper-tests/constructor.test.js scraper-tests/coto-promos.test.js scraper-tests/coto-stores.test.js",
+    "test:santander-unit": "node --test scraper-tests/santander-promos.test.js"
   },
   "keywords": [
     "nodejs",
@@ -49,6 +51,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
+    "puppeteer-core": "^25.7.0",
     "uuid": "^13.0.0"
   },
   "devDependencies": {

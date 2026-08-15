@@ -16,6 +16,7 @@ import { getMercadoPagoPromotions } from '../scrapers/promos/mercadopago.js';
 import { getPatagoniaPromotions } from '../scrapers/promos/patagonia.js';
 import { getJumboPromotions } from '../scrapers/promos/jumbo_promos.js';
 import { getCotoPromotions } from '../scrapers/promos/coto.js';
+import { getSantanderPromotions } from '../scrapers/promos/santander.js';
 import { getJumboStores } from '../scrapers/stores/jumbo_stores.js';
 import { getCotoStores } from '../scrapers/stores/coto_stores.js';
 
@@ -30,6 +31,7 @@ const PROMOTION_SOURCES = {
   patagonia: getPatagoniaPromotions,
   jumbo: getJumboPromotions,
   coto: getCotoPromotions,
+  santander: getSantanderPromotions,
 };
 
 const STORE_SOURCES = {

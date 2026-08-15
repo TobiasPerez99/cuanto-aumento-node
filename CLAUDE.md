@@ -167,6 +167,18 @@ Coto is one of the largest Argentine chains but is **not VTEX** — it uses **Co
 
 **HARD RULE — Prisma is `generate`-only for the Coto mirror tables, never `migrate`:** `MerchantStore` and `MerchantStorePrice` in `prisma/schema.prisma` are a **mirror** of tables Laravel already owns and migrates (`merchant_stores`, `merchant_store_prices` — part of the per-store-pricing foundation). After editing `prisma/schema.prisma` to add or change these models, run **only** `npx prisma generate` (regenerates the client). **Never** run `npx prisma migrate dev/deploy` against them — Laravel's migrations are the single source of truth for this schema; running a Prisma migration from Node would create a parallel migration history and drift the schema out from under Laravel. Field names/types in the mirror must match the Laravel migration exactly.
 
+### Scraper de promociones de Banco Santander (Puppeteer + BFF)
+
+`scrapers/promos/santander.js` (`getSantanderPromotions()`), PULL provider consumido por Laravel vía `GET /api/promotions/santander` (`App\Services\PromotionsProviders\SantanderService`).
+
+- **Fuente:** la SPA https://www.santander.com.ar/personas/beneficios consume un BFF JSON público del mismo origen: `GET /bff-benefits/brands?limit=500&page=N` (lista de ~644 marcas, `{items, totalItems}`) y `GET /bff-benefits/brands/{id}` (las publicaciones/beneficios vigentes de esa marca, ya estructurados: `customerDiscount`, `topAmount`, flags booleanos por día + `fullWeek`, `interestFreeFees` + `initialQuote`/`finalQuote`, `startDatePublication`/`endDatePublication`, `legal`/`additionalText` en HTML, `benefitType`/`paymentType`/`paymentMethod`).
+- **⚠️ Por qué Puppeteer y no axios:** el WAF de Santander hace fingerprinting TLS y deja COLGADA (sin respuesta, ni siquiera error HTTP) cualquier conexión que no venga de un browser real — curl y axios quedan en timeout. El scraper abre la página UNA vez con Chromium headless (`puppeteer-core`) y todas las llamadas al BFF se hacen con `fetch()` DENTRO del contexto de la página (`page.evaluate`), mismo origen y mismo TLS. NO scrapea el DOM: el markup (styled-components) cambia por build, el BFF es estable.
+- **Chromium:** `puppeteer-core` no descarga browser. En Docker, el Dockerfile instala `chromium` vía apk y setea `PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser`; en dev local sin esa env var cae al Chrome instalado (`channel: 'chrome'`).
+- **Flujo:** goto beneficios (networkidle2) → probe con reintentos al BFF → paginar brands → detalle por marca con concurrencia 5 y pausa de 100ms entre lotes → normalizar → dedupe por `external_id`. Corrida completa ≈ 90s; el endpoint `/api/promotions/santander` cachea 6h en Redis, y el `ScrapperClient` de Laravel usa timeout 300s para este provider (`SantanderService::clientTimeout()`).
+- **Contrato:** `external_id = san-{publicationId}`, `start_date`/`end_date` en `YYYY-MM-DD` (los usa el filtro de overlap mensual de `AbstractScrapperPullProvider`), `dias` en español (flags booleanos; sin flags o `fullWeek` ⇒ los 7 días), HTML de `legal`/`additionalText` limpiado con `stripHtml()` (legales capados a 4000 chars). Nunca lanza al caller: `{success:false, ...}` ante error global; una marca que falla no aborta el lote.
+- **Origen:** adaptación de la entrega de Prácticas Profesionalizantes de Thiago Coro (2026-08), que validó la necesidad de browser real; su scraping de DOM por click se reemplazó por el BFF.
+- Fixture: `scraper-tests/fixtures/santander-brand.json` (snapshot real del BFF); unit tests `npm run test:santander-unit` (normalización pura, sin red).
+
 ## Important Patterns
 
 ### Adding a New Scraper
