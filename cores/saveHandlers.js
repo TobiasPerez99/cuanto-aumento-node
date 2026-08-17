@@ -1,4 +1,5 @@
 import { prisma } from "../config/prisma.js";
+import { storeRowsWithinBand } from "./priceBand.js";
 
 export async function saveMasterProduct(product, merchantId) {
   try {
@@ -228,10 +229,22 @@ export async function saveCotoProduct(product, merchantId) {
       return { saved: false, reason: 'no_prices' };
     }
 
-    // Headline = MIN entre sucursales (disponibles si las hay).
-    const minRow = source.reduce((min, s) => (s.price < min.price ? s : min), source[0]);
+    // Headline = MIN entre sucursales, pero SOLO entre las que están dentro de la banda.
+    //
+    // El MIN crudo dejaba que una sola fila con basura definiera el precio publicado: 31 de
+    // 33 sucursales decían $3.859,99 para la misma pasta dental y el headline salía $53,76.
+    // La banda tiene que dar el mismo resultado que la del lado Laravel
+    // (App\Services\Prices\PricePlausibility::storeRowsWithinBand) — si se toca una, tocar
+    // la otra, porque Laravel reconcilia esto mismo en merchant-store-prices:rollup.
+    const candidates = storeRowsWithinBand(source);
+    const minRow = candidates.reduce((min, s) => (s.price < min.price ? s : min), candidates[0]);
     const headlinePrice = minRow.price;
     const headlineList = minRow.listPrice;
+
+    // Precio por unidad de medida de la sucursal que define el headline, para que el
+    // "precio por litro" sea coherente con el precio que se publica (Ley 22.802).
+    const headlineReference = minRow.referencePrice ?? null;
+    const referenceUnit = product.referenceUnit ?? null;
 
     const merchantProduct = await prisma.merchantProduct.upsert({
       where: { productEan_merchantId: { productEan: product.ean, merchantId } },
@@ -239,6 +252,8 @@ export async function saveCotoProduct(product, merchantId) {
         productUrl: product.link,
         price: headlinePrice,
         listPrice: headlineList,
+        referencePrice: headlineReference,
+        referenceUnit,
         isAvailable: available.length > 0,
         lastCheckedAt: new Date(),
       },
@@ -248,6 +263,8 @@ export async function saveCotoProduct(product, merchantId) {
         productUrl: product.link,
         price: headlinePrice,
         listPrice: headlineList,
+        referencePrice: headlineReference,
+        referenceUnit,
         isAvailable: available.length > 0,
         lastCheckedAt: new Date(),
       },

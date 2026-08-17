@@ -50,13 +50,73 @@ function resolveStorePrice(row) {
   const hasList = Number.isFinite(list) && list > 0;
   const hasFormat = Number.isFinite(format) && format > 0;
 
+  // `formatPrice` no sirve como precio de venta, pero SÍ es exactamente el dato que la
+  // Ley 22.802 obliga a exhibir: el precio por unidad de medida. Se venía descartando
+  // (DATA-001) teniendo las columnas donde guardarlo, y es lo que habilita comparar
+  // "precio por litro" entre presentaciones distintas.
+  const referencePrice = hasFormat ? format : null;
+
   if (hasList) {
-    return { price: list, listPrice: list };
+    return { price: list, listPrice: list, referencePrice };
   }
   if (hasFormat) {
-    return { price: format, listPrice: null };
+    return { price: format, listPrice: null, referencePrice };
   }
-  return { price: null, listPrice: null };
+  return { price: null, listPrice: null, referencePrice: null };
+}
+
+/** Tamaños en el nombre del producto: "1,5 L", "500 g", "220 ml", "2 kg". */
+const MEDIDA_RE = /(\d+(?:[.,]\d+)?)\s*(ml|cc|lts?|litros?|kgs?|kilos?|grs?|gramos?|g|l)\b/i;
+
+/**
+ * Tamaño del envase expresado en la unidad base (litros o kilos), leído del nombre.
+ *
+ * @returns {{cantidad: number, unidad: 'L'|'kg'}|null}
+ */
+export function parsePackSize(name) {
+  const match = MEDIDA_RE.exec(String(name ?? ''));
+  if (!match) {
+    return null;
+  }
+
+  const cantidad = Number(match[1].replace(',', '.'));
+  if (!Number.isFinite(cantidad) || cantidad <= 0) {
+    return null;
+  }
+
+  const unidad = match[2].toLowerCase();
+
+  if (/^(ml|cc)$/.test(unidad)) return { cantidad: cantidad / 1000, unidad: 'L' };
+  if (/^(l|lts?|litros?)$/.test(unidad)) return { cantidad, unidad: 'L' };
+  if (/^(g|grs?|gramos?)$/.test(unidad)) return { cantidad: cantidad / 1000, unidad: 'kg' };
+  if (/^(kgs?|kilos?)$/.test(unidad)) return { cantidad, unidad: 'kg' };
+
+  return null;
+}
+
+/**
+ * Unidad del precio de referencia — y, de paso, su propia verificación.
+ *
+ * La API no dice en qué unidad está `formatPrice`; lo que sí se sabe es que
+ * `formatPrice = listPrice / tamaño`. Así que el tamaño se lee del nombre y se contrasta
+ * contra el que implican los dos precios: si coinciden, la unidad leída es la correcta y
+ * el dato queda validado por construcción. Si no coinciden —nombre raro, envase múltiple,
+ * precio inconsistente— se devuelve null y la columna queda vacía, que es mejor que
+ * rotular un número con una unidad inventada.
+ */
+export function resolveReferenceUnit(name, listPrice, referencePrice) {
+  const medida = parsePackSize(name);
+  const lista = Number(listPrice);
+  const referencia = Number(referencePrice);
+
+  if (!medida || !Number.isFinite(lista) || !Number.isFinite(referencia) || referencia <= 0) {
+    return null;
+  }
+
+  const tamanoImplicito = lista / referencia;
+  const desvio = Math.abs(tamanoImplicito - medida.cantidad) / medida.cantidad;
+
+  return desvio <= 0.05 ? medida.unidad : null;
 }
 
 /**
@@ -70,19 +130,29 @@ export function normalizeConstructorItem(rawItem) {
     return null;
   }
 
+  const nombre = rawItem.value ?? data.sku_display_name ?? null;
+
   const priceRows = Array.isArray(data.price) ? data.price : [];
   const storePrices = priceRows
     .filter((row) => row && row.store != null)
     .map((row) => {
-      const { price, listPrice } = resolveStorePrice(row);
+      const { price, listPrice, referencePrice } = resolveStorePrice(row);
       return {
         code: String(row.store),
         price,
         listPrice,
+        referencePrice,
         isAvailable: price !== null,
       };
     })
     .filter((sp) => sp.price !== null);
+
+  // La unidad es del producto, no de la sucursal: se resuelve una vez con la primera fila
+  // que tenga los dos precios.
+  const filaConReferencia = storePrices.find((sp) => sp.referencePrice != null && sp.listPrice != null);
+  const referenceUnit = filaConReferencia
+    ? resolveReferenceUnit(nombre, filaConReferencia.listPrice, filaConReferencia.referencePrice)
+    : null;
 
   const image = data.image_url || data.product_large_image_url || data.product_medium_image_url || null;
   const categories = Array.isArray(data.groups)
@@ -91,13 +161,14 @@ export function normalizeConstructorItem(rawItem) {
 
   return {
     ean: String(eanRaw),
-    name: rawItem.value ?? data.sku_display_name ?? null,
+    name: nombre,
     brand: data.product_brand ?? null,
     image,
     images: image ? [image] : [],
     categories,
     link: data.url ? `https://www.coto.com.ar/${String(data.url).replace(/^_\//, '')}` : null,
     storePrices,
+    referenceUnit,
   };
 }
 

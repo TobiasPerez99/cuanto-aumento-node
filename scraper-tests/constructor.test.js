@@ -4,7 +4,8 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
-import { normalizeConstructorItem, collectLeafGroupIds, scrapeConstructorMerchant } from '../cores/constructor.js';
+import { normalizeConstructorItem, collectLeafGroupIds, scrapeConstructorMerchant, parsePackSize, resolveReferenceUnit } from '../cores/constructor.js';
+import { storeRowsWithinBand } from '../cores/priceBand.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const item = JSON.parse(readFileSync(join(__dirname, 'fixtures/coto-item.json'), 'utf8'));
@@ -124,4 +125,66 @@ test('scrapeConstructorMerchant pagina y llama onProductFound por producto únic
 
   assert.equal(res.success, true);
   assert.deepEqual(saved.sort(), ['7790000000001', '7790742363107']);
+});
+
+test('guarda formatPrice como precio de referencia en vez de descartarlo', () => {
+  const p = normalizeConstructorItem(item);
+  const s060 = p.storePrices.find((s) => s.code === '060');
+
+  // No es el precio de venta —eso ya lo cubre el test de arriba— pero es el precio por
+  // unidad de medida que la Ley 22.802 obliga a exhibir, y se venía tirando (DATA-001).
+  assert.ok(s060.referencePrice > 0);
+});
+
+test('la unidad de referencia se valida contra el tamaño del nombre', () => {
+  const p = normalizeConstructorItem(item);
+
+  // El nombre dice "1l" y en la fixture formatPrice === listPrice, o sea tamaño 1 L:
+  // los dos coinciden, así que la unidad se puede afirmar.
+  assert.equal(p.referenceUnit, 'L');
+});
+
+test('parsePackSize normaliza a la unidad base', () => {
+  assert.deepEqual(parsePackSize('Gaseosa Cola 2,25 L'), { cantidad: 2.25, unidad: 'L' });
+  assert.deepEqual(parsePackSize('Coca-Cola 220 ml'), { cantidad: 0.22, unidad: 'L' });
+  assert.deepEqual(parsePackSize('Yerba con palo 500 g'), { cantidad: 0.5, unidad: 'kg' });
+  assert.equal(parsePackSize('Papel Higienico Higienol x 4'), null);
+});
+
+test('no rotula la unidad cuando el nombre y los precios no coinciden', () => {
+  // El nombre dice 1 L y los precios implican 1 L (2000/2000): coinciden.
+  assert.equal(resolveReferenceUnit('Leche 1 L', 2000, 2000), 'L');
+
+  // El nombre dice 1 L pero los precios implican 2 L (2000/1000): no se inventa nada.
+  assert.equal(resolveReferenceUnit('Leche 1 L', 2000, 1000), null);
+
+  // Sin medida en el nombre no hay contra qué validar.
+  assert.equal(resolveReferenceUnit('Producto sin medida', 2000, 1000), null);
+});
+
+test('storeRowsWithinBand descarta la sucursal fuera de banda', () => {
+  const filas = [
+    { code: 'a', price: 53.76 },
+    { code: 'b', price: 3709.99 },
+    { code: 'c', price: 3859.99 },
+  ];
+
+  const dentro = storeRowsWithinBand(filas);
+
+  assert.equal(dentro.length, 2);
+  assert.ok(!dentro.some((f) => f.code === 'a'));
+});
+
+test('storeRowsWithinBand no descarta una dispersión razonable', () => {
+  const filas = [
+    { code: 'a', price: 1800 },
+    { code: 'b', price: 2000 },
+    { code: 'c', price: 2200 },
+  ];
+
+  assert.equal(storeRowsWithinBand(filas).length, 3);
+});
+
+test('storeRowsWithinBand devuelve la única fila cuando hay una sola', () => {
+  assert.deepEqual(storeRowsWithinBand([{ code: 'a', price: 10 }]), [{ code: 'a', price: 10 }]);
 });
