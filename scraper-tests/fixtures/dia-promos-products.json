@@ -1,0 +1,2239 @@
+[
+  {
+    "productId": "300183",
+    "productName": "Agua De Mesa Benedictino Sin Gas 1,5 Lt.",
+    "brand": "BENEDICTINO",
+    "brandId": 2000427,
+    "brandImageUrl": null,
+    "linkText": "agua-de-mesa-benedictino-sin-gas-15-lt-300183",
+    "productReference": "7790895647772",
+    "productReferenceCode": null,
+    "categoryId": "168",
+    "productTitle": "",
+    "releaseDate": "2023-11-18T00:00:00Z",
+    "clusterHighlights": {
+      "632": "Exclusivo Online"
+    },
+    "productClusters": {
+      "567": "Todas las Ofertas",
+      "569": "Especial Verano",
+      "632": "Exclusivo Online",
+      "1231": "folleto1",
+      "1531": "rein",
+      "6324": "promos s37",
+      "7094": "2do al 50 s51",
+      "7143": "Especial dias de verano",
+      "7152": "Alimentos y Bebidas s01",
+      "7198": "Armate la Picada s02",
+      "7210": "Alimentos y Bebidas s02",
+      "7220": "Hasta 2x1",
+      "7263": "Alimentos y Bebidas s03",
+      "7290": "Especial Bebidas s04",
+      "7307": "Alimentos y Bebidas s04",
+      "7370": "Alimentos y Bebidas s05",
+      "7385": "Ofertas de la semana s05",
+      "7399": "Carnaval de Precios s06",
+      "7414": "Alimentos y Bebidas s06",
+      "7440": "Especial Stockeate s07",
+      "7441": "Bebidas sin alcohol s07",
+      "7458": "Alimentos y Bebidas s07",
+      "7479": "Arma tu Picada s08",
+      "7489": "Alimentos y Bebidas s08",
+      "7502": "2da al 50% s08",
+      "7532": "Alimentos y Bebidas s09",
+      "7635": "Alimentos y Bebidas s12",
+      "7658": "Alimentos y Bebidas s13",
+      "7685": "Bebidas seleccionadas s14",
+      "7691": "Alimentos y Bebidas s14",
+      "7721": "Aguas puras y saborizadas s15",
+      "7722": "Especial Bebidas s15",
+      "7730": "Alimentos y Bebidas s15",
+      "7731": "Destacado Alimentos y Bebidas s15",
+      "7770": "Arma tu Picada s16",
+      "7773": "Alimentos y Bebidas s16",
+      "7839": "Bebidas seleccionadas s18",
+      "7849": "Alimentos y Bebidas s18",
+      "7866": "Ver mas mas vendidos s18",
+      "8033": "Bebidas s21",
+      "8043": "Alimentos y Bebidas s21",
+      "8052": "2do al 50% s21",
+      "8053": "Mas Destacados s21",
+      "8084": "Aguas y Jugos s22",
+      "8088": "Alimentos y Bebidas s22",
+      "8091": "Mas Destacados s22",
+      "8310": "Alimentos y Bebidas s26",
+      "8366": "Alimentos y Bebidas s27",
+      "8370": "Hasta 2x1 s27",
+      "8393": "2do al 50% s27",
+      "8551": "Especial Vacaciones de Invierno s30",
+      "8556": "Bebidas s30",
+      "8573": "Alimentos y Bebidas s30",
+      "8580": "Hasta 2x1 s30",
+      "8591": "2do al 50% s30",
+      "8676": "Alimentos y Bebidas s32",
+      "8684": "Bebidas seleccionadas s32",
+      "8702": "Hasta 2x1 s32",
+      "8899": "Alimentos y Bebidas s36",
+      "8903": "Hasta 2x1 s36",
+      "8936": "Descuentos que florecen s37",
+      "8962": "2do al 50% s37",
+      "8965": "Bebidas DP s37",
+      "9078": "Alimentos y Bebidas s40",
+      "9106": "Bebidas DP s40",
+      "9110": "Especial Stockeate s41",
+      "9129": "Alimentos y Bebidas s41",
+      "9211": "Ofertas Dia",
+      "9833": "Gaseosa y Aguas s03",
+      "9843": "Alimentos y Bebidas s03",
+      "9853": "Coca Cola S03",
+      "9857": "Especial Bebidas s04",
+      "9877": "Alimentos y bebidas s04",
+      "10062": "Alimentos y Bebidas s08",
+      "10289": "Alimentos y Bebidas S13",
+      "10327": "Coca cola s14",
+      "10410": "Alimentos y bebidas s16",
+      "10438": "Alimentos y Bebidas s17",
+      "10446": "Especial Bebidas s17",
+      "10526": "Campeones de la Previa",
+      "10550": "Bebidas HS 2026",
+      "10674": "Bebidas Mayo",
+      "10686": "Alimentos y Bebidas s21",
+      "10701": "2do al 50% s21",
+      "10799": "2do al 50% fijo",
+      "10863": "Especial Dia del Padre s25",
+      "10882": "Alimentos y Bebidas s25",
+      "10918": "SD s26",
+      "10927": "alimentos y bebidas s26",
+      "10944": "2do al 70% fijo",
+      "10965": "Bebidas s27",
+      "10983": "Partido 3 de Julio Argentina",
+      "10986": "Alimentos y bebidas s27",
+      "10992": "Bebidas s27",
+      "11054": "Bebidas s29",
+      "11078": "Alimentos y bebidas s29",
+      "11096": "Especial Festival de Precios s30",
+      "11108": "Bebidas s30",
+      "11130": "Alimentos y Bebidas s30",
+      "11261": "Bebidas s35"
+    },
+    "searchableClusters": {
+      "632": "Exclusivo Online",
+      "10526": "Campeones de la Previa"
+    },
+    "categories": [
+      "/Bebidas/Aguas/Aguas sin gas/",
+      "/Bebidas/Aguas/",
+      "/Bebidas/"
+    ],
+    "categoriesIds": [
+      "/164/165/168/",
+      "/164/165/",
+      "/164/"
+    ],
+    "link": "https://diaonline.supermercadosdia.com.ar/agua-de-mesa-benedictino-sin-gas-15-lt-300183/p",
+    "PrecioPorUnd": [
+      "1600.00"
+    ],
+    "UnidaddeMedida": [
+      "1 LT"
+    ],
+    "IVA": [
+      "21"
+    ],
+    "InternalTax": [
+      "4,17"
+    ],
+    "FOOD": [
+      "PrecioPorUnd",
+      "UnidaddeMedida",
+      "IVA",
+      "InternalTax"
+    ],
+    "items": [
+      {
+        "itemId": "300183",
+        "name": "Agua De Mesa Benedictino Sin Gas 1,5 Lt.",
+        "nameComplete": "Agua De Mesa Benedictino Sin Gas 1,5 Lt.",
+        "complementName": "",
+        "ean": "7790895647772",
+        "referenceId": [
+          {
+            "Key": "RefId",
+            "Value": "300183"
+          }
+        ],
+        "measurementUnit": "un",
+        "unitMultiplier": 1,
+        "modalType": null,
+        "isKit": false,
+        "images": [
+          {
+            "imageId": "338755",
+            "imageLabel": null,
+            "imageTag": "<img src=\"~/arquivos/ids/338755-#width#-#height#/Agua-De-Mesa-Benedictino-Sin-Gas-15-Lt-_1.jpg?v=638677892830670000\" width=\"#width#\" height=\"#height#\" alt=\"Agua-De-Mesa-Benedictino-Sin-Gas-15-Lt-_1\" id=\"\" />",
+            "imageUrl": "https://ardiaprod.vteximg.com.br/arquivos/ids/338755/Agua-De-Mesa-Benedictino-Sin-Gas-15-Lt-_1.jpg?v=638677892830670000",
+            "imageText": "Agua-De-Mesa-Benedictino-Sin-Gas-15-Lt-_1",
+            "imageLastModified": "2024-11-21T12:34:43.0670000Z"
+          }
+        ],
+        "sellers": [
+          {
+            "sellerId": "1",
+            "sellerName": "Supermercados DIA",
+            "addToCartLink": "https://diaonline.supermercadosdia.com.ar/checkout/cart/add?sku=300183&qty=1&seller=1&sc=1&price=240000&cv=_&sc=1",
+            "sellerDefault": true,
+            "commertialOffer": {
+              "DeliverySlaSamplesPerRegion": {
+                "0": {
+                  "DeliverySlaPerTypes": [],
+                  "Region": null
+                }
+              },
+              "Installments": [
+                {
+                  "Value": 2400,
+                  "InterestRate": 0,
+                  "TotalValuePlusInterestRate": 2400,
+                  "NumberOfInstallments": 1,
+                  "PaymentSystemName": "American Express",
+                  "PaymentSystemGroupName": "creditCardPaymentGroup",
+                  "Name": "American Express à vista"
+                },
+                {
+                  "Value": 2400,
+                  "InterestRate": 0,
+                  "TotalValuePlusInterestRate": 2400,
+                  "NumberOfInstallments": 1,
+                  "PaymentSystemName": "Visa",
+                  "PaymentSystemGroupName": "creditCardPaymentGroup",
+                  "Name": "Visa à vista"
+                }
+              ],
+              "DiscountHighLight": [],
+              "Teasers": [
+                {
+                  "<Name>k__BackingField": "2do al 70%",
+                  "<GeneralValues>k__BackingField": {},
+                  "<Conditions>k__BackingField": {
+                    "<MinimumQuantity>k__BackingField": 2,
+                    "<Parameters>k__BackingField": []
+                  },
+                  "<Effects>k__BackingField": {
+                    "<Parameters>k__BackingField": []
+                  }
+                }
+              ],
+              "PromotionTeasers": [
+                {
+                  "Name": "2do al 70%",
+                  "GeneralValues": {},
+                  "Conditions": {
+                    "MinimumQuantity": 2,
+                    "Parameters": []
+                  },
+                  "Effects": {
+                    "Parameters": []
+                  }
+                }
+              ],
+              "BuyTogether": [],
+              "Price": 2400,
+              "ListPrice": 2400,
+              "PriceWithoutDiscount": 2400,
+              "FullSellingPrice": 2400,
+              "PriceToken": "eyJhbGciOiJFUzI1NiIsImtpZCI6ImQwYjJhNDFlLTg3M2YtNDhkMS1hOWMzLTBmZWJlNjZmNDljYiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InByaWNlIjoyNDAwMDAsInByaWNlV2l0aG91dERpc2NvdW50IjoyNDAwMDAsInNlbGxlciI6IjEiLCJpZCI6IjMwMDE4MyIsImFjY291bnROYW1lIjoiZGlhaW8iLCJzYWxlc0NoYW5uZWwiOiIxIn0sImV4cCI6MTc4NzMyNDQyMSwiaWF0IjoxNzg3MzIyNjIxLCJqdGkiOiJkM2E0ZWE4MC1jMzliLTRiZmUtYjA0NC05ODQzM2U5OTYzMGEiLCJpc3MiOiJzZXNzaW9uL2RhdGEtc2lnbmVyIn0.OsdLn-vVlJTHKt9YWtM0qOy0sbo4LZXymvGfq4lekywEOcZYBBZ0B-42ZXQO7o4vOgkcLQIeiFFj6rkAYxv__g",
+              "PriceValidUntil": "2027-08-21T00:00:00Z",
+              "AvailableQuantity": 67,
+              "IsAvailable": true,
+              "Tax": 0,
+              "DeliverySlaSamples": [
+                {
+                  "DeliverySlaPerTypes": [],
+                  "Region": null
+                }
+              ],
+              "GetInfoErrorMessage": null
+            }
+          }
+        ],
+        "estimatedDateArrival": null
+      }
+    ]
+  },
+  {
+    "productId": "307157",
+    "productName": "Jabon Liquido Palmolive Kids 220 Ml.",
+    "brand": "PALMOLIVE",
+    "brandId": 473,
+    "brandImageUrl": null,
+    "linkText": "jabon-liquido-palmolive-kids-220-ml-307157",
+    "productReference": "7509546676425",
+    "productReferenceCode": null,
+    "categoryId": "65",
+    "productTitle": "",
+    "releaseDate": "2025-10-28T00:00:00Z",
+    "clusterHighlights": {
+      "632": "Exclusivo Online"
+    },
+    "productClusters": {
+      "567": "Todas las Ofertas",
+      "632": "Exclusivo Online",
+      "1531": "rein",
+      "5121": "Hot Sale 2025",
+      "5638": "Super Despiertos",
+      "7220": "Hasta 2x1",
+      "7892": "Colgate HS 2025",
+      "7957": "Hasta 2do al 80 HS 2025",
+      "8115": "Especial Stockeate s23",
+      "8145": "30% s28",
+      "8146": "Hasta 2x1 s28",
+      "8215": "Perfumeria DP6",
+      "8283": "Hasta 2x1 s25",
+      "8370": "Hasta 2x1 s27",
+      "8384": "Hasta 30% s27",
+      "8463": "Especial Bebes DP s28",
+      "8480": "Especial Bebes s28",
+      "8482": "Cuidado del Bebe s28",
+      "8510": "Hasta 2x1 s29",
+      "8522": "2do al 70% s29",
+      "8539": "Jabones s29",
+      "8633": "Hasta 2x1 s31",
+      "8668": "Todo para tu Bebe s31",
+      "8702": "Hasta 2x1 s32",
+      "8711": "2do al 70% s32",
+      "8718": "Bebes y Niños DP8",
+      "8903": "Hasta 2x1 s36",
+      "8906": "30% s36",
+      "9093": "2do al 70% s40",
+      "9110": "Especial Stockeate s41",
+      "9150": "Nutri Milk S41",
+      "9211": "Ofertas Dia",
+      "9334": "CM 25 Colgate",
+      "9360": "Cybermonday 2025",
+      "9373": "Cuidado del Bebe Cyber 25",
+      "9699": "25% Categoria Semana 52",
+      "9795": "Palmolive s04",
+      "9859": "Perfumeria y Limpieza s04",
+      "9882": "Bebes y ninos s04",
+      "9949": "Bebes y ninos s05",
+      "9992": "Palmolive s07",
+      "10009": "Carnaval s07",
+      "10359": "2do al 70% ReCargado",
+      "10363": "Dia Recargado",
+      "10523": "Hot Sale 2026",
+      "10526": "Campeones de la Previa",
+      "10543": "Perfumeria y Limpieza s19",
+      "10558": "Bebes y Niños HS 2026",
+      "10572": "Folleto s19",
+      "10584": "Colgate HS 2026",
+      "10633": "Perfumería y Limpieza HotSale 2026",
+      "10642": "Jabones HS 2026",
+      "10684": "Mas Destacados s21",
+      "10686": "Alimentos y Bebidas s21",
+      "10698": "25% Categoria s21",
+      "10703": "Hasta 45% s21",
+      "10719": "Cuidado del bebe s22",
+      "10764": "Especial Stockeate s23",
+      "10789": "Perfumeria y Limpieza s23",
+      "10796": "2do al 80%",
+      "10798": "2do al 70% s23",
+      "10807": "Destacado 2do al 70% s23",
+      "10918": "SD s26",
+      "10933": "2do al 70% s26",
+      "10980": "Perfumeria y Limpieza s26",
+      "11041": "Palmolive",
+      "11057": "Cuidado del bebe s29",
+      "11096": "Especial Festival de Precios s30",
+      "11172": "Stockeate s32",
+      "11205": "Perfumeria y Limpieza App s32",
+      "11231": "Ver mas - Hasta 2x1 fijo"
+    },
+    "searchableClusters": {
+      "632": "Exclusivo Online",
+      "9360": "Cybermonday 2025",
+      "10523": "Hot Sale 2026",
+      "10526": "Campeones de la Previa"
+    },
+    "categories": [
+      "/Bebés y Niños/Cuidado del Bebé/Cremas y jabones/",
+      "/Bebés y Niños/Cuidado del Bebé/",
+      "/Bebés y Niños/"
+    ],
+    "categoriesIds": [
+      "/53/63/65/",
+      "/53/63/",
+      "/53/"
+    ],
+    "link": "https://diaonline.supermercadosdia.com.ar/jabon-liquido-palmolive-kids-220-ml-307157/p",
+    "PrecioPorUnd": [
+      "25250.00"
+    ],
+    "UnidaddeMedida": [
+      "1 Kg"
+    ],
+    "FOOD": [
+      "PrecioPorUnd",
+      "UnidaddeMedida"
+    ],
+    "items": [
+      {
+        "itemId": "307157",
+        "name": "Jabon Liquido Palmolive Kids 220 Ml.",
+        "nameComplete": "Jabon Liquido Palmolive Kids 220 Ml.",
+        "complementName": "",
+        "ean": "7509546676425",
+        "referenceId": [
+          {
+            "Key": "RefId",
+            "Value": "307157"
+          }
+        ],
+        "measurementUnit": "un",
+        "unitMultiplier": 1,
+        "modalType": null,
+        "isKit": false,
+        "images": [
+          {
+            "imageId": "361234",
+            "imageLabel": "",
+            "imageTag": "<img src=\"~/arquivos/ids/361234-#width#-#height#/Jabon-Liquido-Palmolive-Kids-220-Ml-_1.jpg?v=638972737240700000\" width=\"#width#\" height=\"#height#\" alt=\"\" id=\"\" />",
+            "imageUrl": "https://ardiaprod.vteximg.com.br/arquivos/ids/361234/Jabon-Liquido-Palmolive-Kids-220-Ml-_1.jpg?v=638972737240700000",
+            "imageText": null,
+            "imageLastModified": "2025-10-28T18:42:04.0700000Z"
+          }
+        ],
+        "sellers": [
+          {
+            "sellerId": "1",
+            "sellerName": "Supermercados DIA",
+            "addToCartLink": "https://diaonline.supermercadosdia.com.ar/checkout/cart/add?sku=307157&qty=1&seller=1&sc=1&price=555500&cv=_&sc=1",
+            "sellerDefault": true,
+            "commertialOffer": {
+              "DeliverySlaSamplesPerRegion": {
+                "0": {
+                  "DeliverySlaPerTypes": [],
+                  "Region": null
+                }
+              },
+              "Installments": [
+                {
+                  "Value": 5555,
+                  "InterestRate": 0,
+                  "TotalValuePlusInterestRate": 5555,
+                  "NumberOfInstallments": 1,
+                  "PaymentSystemName": "American Express",
+                  "PaymentSystemGroupName": "creditCardPaymentGroup",
+                  "Name": "American Express à vista"
+                },
+                {
+                  "Value": 5555,
+                  "InterestRate": 0,
+                  "TotalValuePlusInterestRate": 5555,
+                  "NumberOfInstallments": 1,
+                  "PaymentSystemName": "Visa",
+                  "PaymentSystemGroupName": "creditCardPaymentGroup",
+                  "Name": "Visa à vista"
+                }
+              ],
+              "DiscountHighLight": [],
+              "Teasers": [
+                {
+                  "<Name>k__BackingField": "3x2 ",
+                  "<GeneralValues>k__BackingField": {},
+                  "<Conditions>k__BackingField": {
+                    "<MinimumQuantity>k__BackingField": 3,
+                    "<Parameters>k__BackingField": []
+                  },
+                  "<Effects>k__BackingField": {
+                    "<Parameters>k__BackingField": []
+                  }
+                }
+              ],
+              "PromotionTeasers": [
+                {
+                  "Name": "3x2 ",
+                  "GeneralValues": {},
+                  "Conditions": {
+                    "MinimumQuantity": 3,
+                    "Parameters": []
+                  },
+                  "Effects": {
+                    "Parameters": []
+                  }
+                }
+              ],
+              "BuyTogether": [],
+              "Price": 5555,
+              "ListPrice": 5555,
+              "PriceWithoutDiscount": 5555,
+              "FullSellingPrice": 5555,
+              "PriceToken": "eyJhbGciOiJFUzI1NiIsImtpZCI6IjkxZjA4MTQ0LWM1Y2EtNDlmZS1iOGI4LTAxYzE1NjhlMjFiMCIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InByaWNlIjo1NTU1MDAsInByaWNlV2l0aG91dERpc2NvdW50Ijo1NTU1MDAsInNlbGxlciI6IjEiLCJpZCI6IjMwNzE1NyIsImFjY291bnROYW1lIjoiZGlhaW8iLCJzYWxlc0NoYW5uZWwiOiIxIn0sImV4cCI6MTc4NzMyNDQyMSwiaWF0IjoxNzg3MzIyNjIxLCJqdGkiOiI3MzdkNzk3OS04ZWRjLTQ0MmMtOGE5Yy1iMTk1ZWY1MmVlMDYiLCJpc3MiOiJzZXNzaW9uL2RhdGEtc2lnbmVyIn0.rZfw1emmUIg_FmxcaYX2sH38DACKMp73KPzZuYHGrBDlwIZT_i2cU8n6YG4wXlqNnEsxhIVWSyeb-VqTJp-OBQ",
+              "PriceValidUntil": "2027-08-21T14:30:21Z",
+              "AvailableQuantity": 58,
+              "IsAvailable": true,
+              "Tax": 0,
+              "DeliverySlaSamples": [
+                {
+                  "DeliverySlaPerTypes": [],
+                  "Region": null
+                }
+              ],
+              "GetInfoErrorMessage": null
+            }
+          }
+        ],
+        "estimatedDateArrival": null
+      }
+    ]
+  },
+  {
+    "productId": "19355",
+    "productName": "Gaseosa Sprite Lima-Limón 500 Ml.",
+    "brand": "SPRITE",
+    "brandId": 52,
+    "brandImageUrl": null,
+    "linkText": "gaseosa-sprite-lima-limon-500-ml-19355",
+    "productReference": "7790895000829",
+    "productReferenceCode": null,
+    "categoryId": "188",
+    "productTitle": "",
+    "releaseDate": "2019-08-23T00:00:00Z",
+    "clusterHighlights": {
+      "632": "Exclusivo Online"
+    },
+    "productClusters": {
+      "567": "Todas las Ofertas",
+      "569": "Especial Verano",
+      "632": "Exclusivo Online",
+      "805": "Ofertas Bebidas",
+      "1531": "rein",
+      "2296": "Bebidas Seleccionadas",
+      "2544": "Almacen y Bebidas DP3",
+      "7143": "Especial dias de verano",
+      "7144": "Bebidas seleccionadas s01",
+      "7152": "Alimentos y Bebidas s01",
+      "7197": "Gaseosas s02",
+      "7198": "Armate la Picada s02",
+      "7210": "Alimentos y Bebidas s02",
+      "7220": "Hasta 2x1",
+      "7251": "Gaseosas s03",
+      "7263": "Alimentos y Bebidas s03",
+      "7290": "Especial Bebidas s04",
+      "7291": "3x2 en Gaseosas s04",
+      "7300": "Facebook 1 s04",
+      "7307": "Alimentos y Bebidas s04",
+      "7317": "3x2 Gaseosas s04",
+      "7336": "Gaseosas seleccionadas s05",
+      "7370": "Alimentos y Bebidas s05",
+      "7385": "Ofertas de la semana s05",
+      "7399": "Carnaval de Precios s06",
+      "7403": "Gaseosas s06",
+      "7414": "Alimentos y Bebidas s06",
+      "7436": "Gaseosas seleccionadas s07",
+      "7440": "Especial Stockeate s07",
+      "7441": "Bebidas sin alcohol s07",
+      "7458": "Alimentos y Bebidas s07",
+      "7466": "Anti SanValentin",
+      "7476": "Gaseosas s08",
+      "7489": "Alimentos y Bebidas s08",
+      "7500": "Facebook 2 s08",
+      "7503": "3x2 Gaseosas s08",
+      "7521": "Gaseosas s09",
+      "7532": "Alimentos y Bebidas s09",
+      "7587": "Bebidas sin alcohol s11",
+      "7589": "Gaseosas todas las marcas s11",
+      "7590": "Facebook 1 s11",
+      "7594": "Alimentos y Bebidas s11",
+      "7635": "Alimentos y Bebidas s12",
+      "7658": "Alimentos y Bebidas s13",
+      "7679": "Gaseosas seleccionadas s14",
+      "7685": "Bebidas seleccionadas s14",
+      "7691": "Alimentos y Bebidas s14",
+      "7726": "Gaseosas todas las marcas s15",
+      "7767": "Especial Pascuas s16",
+      "7768": "Gaseosas s16",
+      "7770": "Arma tu Picada s16",
+      "7773": "Alimentos y Bebidas s16",
+      "7798": "Bebidas seleccionadas s17",
+      "7802": "Alimentos y Bebidas s17",
+      "7839": "Bebidas seleccionadas s18",
+      "7849": "Alimentos y Bebidas s18",
+      "7866": "Ver mas mas vendidos s18",
+      "7927": "2do al 50 Gaseosas s19",
+      "7955": "gaseosas semana 19",
+      "7980": "Gaseosas seleccionadas s20",
+      "7996": "Gaseosas HS 2025",
+      "8013": "Bebidas no Alcoholicas mailing 2025",
+      "8024": "Gaseosas s21",
+      "8027": "Especial Patrio s21",
+      "8033": "Bebidas s21",
+      "8043": "Alimentos y Bebidas s21",
+      "8053": "Mas Destacados s21",
+      "8069": "Bebidas No Alcoholicas s22",
+      "8088": "Alimentos y Bebidas s22",
+      "8091": "Mas Destacados s22",
+      "8098": "Exclusivo Online - carousel",
+      "8102": "Super Despiertos",
+      "8113": "Aguas y Gaseosas s23",
+      "8115": "Especial Stockeate s23",
+      "8135": "Alimentos y Bebidas s23",
+      "8140": "Mas Destacados s23",
+      "8146": "Hasta 2x1 s28",
+      "8158": "Bebidas s23",
+      "8191": "Gaseosas seleccionadas s24",
+      "8196": "Especial Cervezas y Picadas s24",
+      "8205": "Alimentos y Bebidas s24",
+      "8216": "Gaseosas DP6",
+      "8220": "Mas Destacados s24",
+      "8310": "Alimentos y Bebidas s26",
+      "8325": "Gaseosas s26",
+      "8343": "Gaseosas s26",
+      "8361": "Gaseosas s27",
+      "8366": "Alimentos y Bebidas s27",
+      "8370": "Hasta 2x1 s27",
+      "8432": "Gaseosas seleccionadas s28",
+      "8433": "Especial Patrio s28",
+      "8442": "Alimentos y Bebidas s28",
+      "8465": "Gaseosas DP s28",
+      "8474": "Arma tu Picada DP s28",
+      "8489": "Gaseosas s29",
+      "8491": "Especial Juntada con Amigos s29",
+      "8506": "Alimentos y Bebidas s29",
+      "8510": "Hasta 2x1 s29",
+      "8556": "Bebidas s30",
+      "8573": "Alimentos y Bebidas s30",
+      "8580": "Hasta 2x1 s30",
+      "8600": "Gaseosas s30",
+      "8628": "Alimentos y Bebidas s31",
+      "8635": "35% s31",
+      "8676": "Alimentos y Bebidas s32",
+      "8684": "Bebidas seleccionadas s32",
+      "8702": "Hasta 2x1 s32",
+      "8710": "2do al 50% s34",
+      "8740": "Especial Stockeate s33",
+      "8742": "Bebidas s33",
+      "8745": "Alimentos y Bebidas s33",
+      "8749": "Hasta 2x1 s33",
+      "8779": "Jugos y Gaseosas s33",
+      "8780": "Gaseosas s33",
+      "8797": "Gaseosas s34",
+      "8807": "Alimentos y Bebidas s34",
+      "8811": "Hasta 2x1 s34",
+      "8827": "Bebidas y Congelados s34",
+      "8849": "Alimentos y Bebidas s35",
+      "8853": "Hasta 2x1 s35",
+      "9196": "Especial Cervezas y Picadas s43",
+      "9204": "Bebidas s43",
+      "9215": "Gaseosas s43",
+      "9216": "Alimentos y Bebidas s43",
+      "9231": "Facebook1 s43",
+      "9233": "2do al 50% s43",
+      "9401": "Especial Cervezas y Picadas s46",
+      "9406": "Gaseosas s46",
+      "9429": "Alimentos y Bebidas s46",
+      "9711": "Especial Verano 2026",
+      "9712": "Bebidas s01",
+      "9721": "Alimentos y Bebidas s01",
+      "9733": "Almacen y bebidas s1",
+      "9748": "Picada s02",
+      "9750": "Bebidas s02",
+      "9764": "Alimentos y bebidas s02",
+      "9766": "Especial Arma Tu Picada s02",
+      "9771": "Gaseosas s02",
+      "9833": "Gaseosa y Aguas s03",
+      "9843": "Alimentos y Bebidas s03",
+      "9906": "Gaseosas s05",
+      "9929": "Alimentos y Bebidas s05",
+      "9955": "Bebidas",
+      "9963": "Gaseosas s06",
+      "9971": "Especial Srockeate s06",
+      "9978": "Alimentos y bebidas s06",
+      "10009": "Carnaval s07",
+      "10025": "Almacen y bebidas s07",
+      "10045": "folleto 35 s07",
+      "10056": "Especial Vuelta al cole s08",
+      "10062": "Alimentos y Bebidas s08",
+      "10117": "Alimentos y Bebidas s09",
+      "10127": "Bebidas s09",
+      "10134": "coca s09",
+      "10140": "Gaseosas s09",
+      "10146": "Bebidas Marzo",
+      "10155": "Alimentos y Bebidas s10",
+      "10174": "Gaseosas s10",
+      "10200": "Gaseosas s11",
+      "10215": "Alimentos y Bebidas s11",
+      "10240": "Bebidas s12",
+      "10262": "Alimentos y bebidas s12",
+      "10266": "Alimentos y Bebidas s12",
+      "10280": "Jugos y Gaseosas s12",
+      "10289": "Alimentos y Bebidas S13",
+      "10327": "Coca cola s14",
+      "10725": "Exclusivo Online 2",
+      "11231": "Ver mas - Hasta 2x1 fijo",
+      "11261": "Bebidas s35"
+    },
+    "searchableClusters": {
+      "632": "Exclusivo Online",
+      "10725": "Exclusivo Online 2"
+    },
+    "categories": [
+      "/Bebidas/Gaseosas/Lima limón/",
+      "/Bebidas/Gaseosas/",
+      "/Bebidas/"
+    ],
+    "categoriesIds": [
+      "/164/185/188/",
+      "/164/185/",
+      "/164/"
+    ],
+    "link": "https://diaonline.supermercadosdia.com.ar/gaseosa-sprite-lima-limon-500-ml-19355/p",
+    "PrecioPorUnd": [
+      "3802.00"
+    ],
+    "UnidaddeMedida": [
+      "1 LT"
+    ],
+    "IVA": [
+      "21"
+    ],
+    "InternalTax": [
+      "4,2"
+    ],
+    "FOOD": [
+      "PrecioPorUnd",
+      "UnidaddeMedida",
+      "IVA",
+      "InternalTax"
+    ],
+    "items": [
+      {
+        "itemId": "19355",
+        "name": "Gaseosa Sprite Lima-Limón 500 Ml.",
+        "nameComplete": "Gaseosa Sprite Lima-Limón 500 Ml.",
+        "complementName": "",
+        "ean": "7790895000829",
+        "referenceId": [
+          {
+            "Key": "RefId",
+            "Value": "19355"
+          }
+        ],
+        "measurementUnit": "un",
+        "unitMultiplier": 1,
+        "modalType": "",
+        "isKit": false,
+        "images": [
+          {
+            "imageId": "307612",
+            "imageLabel": null,
+            "imageTag": "<img src=\"~/arquivos/ids/307612-#width#-#height#/Gaseosa-Sprite-LimaLimon-500-Ml-_1.jpg?v=638599332480500000\" width=\"#width#\" height=\"#height#\" alt=\"Gaseosa-Sprite-LimaLimon-500-Ml-_1\" id=\"\" />",
+            "imageUrl": "https://ardiaprod.vteximg.com.br/arquivos/ids/307612/Gaseosa-Sprite-LimaLimon-500-Ml-_1.jpg?v=638599332480500000",
+            "imageText": "Gaseosa-Sprite-LimaLimon-500-Ml-_1",
+            "imageLastModified": "2024-08-22T14:20:48.0500000Z"
+          }
+        ],
+        "sellers": [
+          {
+            "sellerId": "1",
+            "sellerName": "Supermercados DIA",
+            "addToCartLink": "https://diaonline.supermercadosdia.com.ar/checkout/cart/add?sku=19355&qty=1&seller=1&sc=1&price=190100&cv=_&sc=1",
+            "sellerDefault": true,
+            "commertialOffer": {
+              "DeliverySlaSamplesPerRegion": {
+                "0": {
+                  "DeliverySlaPerTypes": [],
+                  "Region": null
+                }
+              },
+              "Installments": [
+                {
+                  "Value": 1901,
+                  "InterestRate": 0,
+                  "TotalValuePlusInterestRate": 1901,
+                  "NumberOfInstallments": 1,
+                  "PaymentSystemName": "American Express",
+                  "PaymentSystemGroupName": "creditCardPaymentGroup",
+                  "Name": "American Express à vista"
+                },
+                {
+                  "Value": 1901,
+                  "InterestRate": 0,
+                  "TotalValuePlusInterestRate": 1901,
+                  "NumberOfInstallments": 1,
+                  "PaymentSystemName": "Visa",
+                  "PaymentSystemGroupName": "creditCardPaymentGroup",
+                  "Name": "Visa à vista"
+                }
+              ],
+              "DiscountHighLight": [],
+              "Teasers": [
+                {
+                  "<Name>k__BackingField": "6x4",
+                  "<GeneralValues>k__BackingField": {},
+                  "<Conditions>k__BackingField": {
+                    "<MinimumQuantity>k__BackingField": 6,
+                    "<Parameters>k__BackingField": []
+                  },
+                  "<Effects>k__BackingField": {
+                    "<Parameters>k__BackingField": []
+                  }
+                }
+              ],
+              "PromotionTeasers": [
+                {
+                  "Name": "6x4",
+                  "GeneralValues": {},
+                  "Conditions": {
+                    "MinimumQuantity": 6,
+                    "Parameters": []
+                  },
+                  "Effects": {
+                    "Parameters": []
+                  }
+                }
+              ],
+              "BuyTogether": [],
+              "Price": 1901,
+              "ListPrice": 1901,
+              "PriceWithoutDiscount": 1901,
+              "FullSellingPrice": 1901,
+              "PriceToken": "eyJhbGciOiJFUzI1NiIsImtpZCI6ImE4NDVhNGI5LTQyNzctNDljMS1iYmVkLTI2MDI0ZjQxZGJjZiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InByaWNlIjoxOTAxMDAsInByaWNlV2l0aG91dERpc2NvdW50IjoxOTAxMDAsInNlbGxlciI6IjEiLCJpZCI6IjE5MzU1IiwiYWNjb3VudE5hbWUiOiJkaWFpbyIsInNhbGVzQ2hhbm5lbCI6IjEifSwiZXhwIjoxNzg3MzI0NDIxLCJpYXQiOjE3ODczMjI2MjEsImp0aSI6IjAzNTRlOWUxLTFkZGUtNDdjYS1iMGQ3LWU2ZWNjNDhkYmM0MiIsImlzcyI6InNlc3Npb24vZGF0YS1zaWduZXIifQ.l9d2q0Td-vXcTpIhtBU_9KlTb0R9NCta4dMIahmVFcoQKj_4P9i7ELu9ZpJWzdMEj2F3aXwCflAGVFZZbTZEWQ",
+              "PriceValidUntil": "2027-08-21T00:00:00Z",
+              "AvailableQuantity": 106,
+              "IsAvailable": true,
+              "Tax": 0,
+              "DeliverySlaSamples": [
+                {
+                  "DeliverySlaPerTypes": [],
+                  "Region": null
+                }
+              ],
+              "GetInfoErrorMessage": null
+            }
+          }
+        ],
+        "estimatedDateArrival": null
+      }
+    ]
+  },
+  {
+    "productId": "305365",
+    "productName": "Agua De Mesa Benedictino Con Gas 1,5 Lt.",
+    "brand": "BENEDICTINO",
+    "brandId": 2000427,
+    "brandImageUrl": null,
+    "linkText": "agua-de-mesa-benedictino-con-gas-15-lt-305365",
+    "productReference": "7790895648861",
+    "productReferenceCode": null,
+    "categoryId": "167",
+    "productTitle": "",
+    "releaseDate": "2024-11-14T00:00:00Z",
+    "clusterHighlights": {
+      "632": "Exclusivo Online"
+    },
+    "productClusters": {
+      "567": "Todas las Ofertas",
+      "569": "Especial Verano",
+      "632": "Exclusivo Online",
+      "1231": "folleto1",
+      "1531": "rein",
+      "7220": "Hasta 2x1",
+      "7479": "Arma tu Picada s08",
+      "7489": "Alimentos y Bebidas s08",
+      "7502": "2da al 50% s08",
+      "7532": "Alimentos y Bebidas s09",
+      "7635": "Alimentos y Bebidas s12",
+      "7658": "Alimentos y Bebidas s13",
+      "7659": "Destacado Alimentos y Bebidas s13",
+      "7685": "Bebidas seleccionadas s14",
+      "7691": "Alimentos y Bebidas s14",
+      "7692": "Destacado Alimentos y Bebidas s14",
+      "7721": "Aguas puras y saborizadas s15",
+      "7722": "Especial Bebidas s15",
+      "7729": "Destacado Especial Bebidas s15",
+      "7730": "Alimentos y Bebidas s15",
+      "7770": "Arma tu Picada s16",
+      "7773": "Alimentos y Bebidas s16",
+      "7785": "Destacado Almacen y Bebidas s16",
+      "7839": "Bebidas seleccionadas s18",
+      "7849": "Alimentos y Bebidas s18",
+      "7866": "Ver mas mas vendidos s18",
+      "8033": "Bebidas s21",
+      "8043": "Alimentos y Bebidas s21",
+      "8052": "2do al 50% s21",
+      "8053": "Mas Destacados s21",
+      "8084": "Aguas y Jugos s22",
+      "8088": "Alimentos y Bebidas s22",
+      "8091": "Mas Destacados s22",
+      "8310": "Alimentos y Bebidas s26",
+      "8366": "Alimentos y Bebidas s27",
+      "8370": "Hasta 2x1 s27",
+      "8386": "Destacado Hasta 2x1 s27",
+      "8393": "2do al 50% s27",
+      "8551": "Especial Vacaciones de Invierno s30",
+      "8556": "Bebidas s30",
+      "8573": "Alimentos y Bebidas s30",
+      "8580": "Hasta 2x1 s30",
+      "8591": "2do al 50% s30",
+      "8676": "Alimentos y Bebidas s32",
+      "8684": "Bebidas seleccionadas s32",
+      "8702": "Hasta 2x1 s32",
+      "8899": "Alimentos y Bebidas s36",
+      "8903": "Hasta 2x1 s36",
+      "8936": "Descuentos que florecen s37",
+      "8962": "2do al 50% s37",
+      "8965": "Bebidas DP s37",
+      "9078": "Alimentos y Bebidas s40",
+      "9106": "Bebidas DP s40",
+      "9110": "Especial Stockeate s41",
+      "9129": "Alimentos y Bebidas s41",
+      "9211": "Ofertas Dia",
+      "9833": "Gaseosa y Aguas s03",
+      "9843": "Alimentos y Bebidas s03",
+      "9853": "Coca Cola S03",
+      "9857": "Especial Bebidas s04",
+      "9877": "Alimentos y bebidas s04",
+      "10062": "Alimentos y Bebidas s08",
+      "10289": "Alimentos y Bebidas S13",
+      "10327": "Coca cola s14",
+      "10410": "Alimentos y bebidas s16",
+      "10438": "Alimentos y Bebidas s17",
+      "10446": "Especial Bebidas s17",
+      "10526": "Campeones de la Previa",
+      "10550": "Bebidas HS 2026",
+      "10674": "Bebidas Mayo",
+      "10686": "Alimentos y Bebidas s21",
+      "10701": "2do al 50% s21",
+      "10799": "2do al 50% fijo",
+      "10863": "Especial Dia del Padre s25",
+      "10882": "Alimentos y Bebidas s25",
+      "10918": "SD s26",
+      "10927": "alimentos y bebidas s26",
+      "10944": "2do al 70% fijo",
+      "10965": "Bebidas s27",
+      "10983": "Partido 3 de Julio Argentina",
+      "10986": "Alimentos y bebidas s27",
+      "10992": "Bebidas s27",
+      "11054": "Bebidas s29",
+      "11078": "Alimentos y bebidas s29",
+      "11096": "Especial Festival de Precios s30",
+      "11108": "Bebidas s30",
+      "11130": "Alimentos y Bebidas s30",
+      "11261": "Bebidas s35"
+    },
+    "searchableClusters": {
+      "632": "Exclusivo Online",
+      "10526": "Campeones de la Previa"
+    },
+    "categories": [
+      "/Bebidas/Aguas/Aguas con gas/",
+      "/Bebidas/Aguas/",
+      "/Bebidas/"
+    ],
+    "categoriesIds": [
+      "/164/165/167/",
+      "/164/165/",
+      "/164/"
+    ],
+    "link": "https://diaonline.supermercadosdia.com.ar/agua-de-mesa-benedictino-con-gas-15-lt-305365/p",
+    "PrecioPorUnd": [
+      "1600.00"
+    ],
+    "UnidaddeMedida": [
+      "1 LT"
+    ],
+    "IVA": [
+      "21"
+    ],
+    "InternalTax": [
+      "0"
+    ],
+    "FOOD": [
+      "PrecioPorUnd",
+      "UnidaddeMedida",
+      "IVA",
+      "InternalTax"
+    ],
+    "items": [
+      {
+        "itemId": "305365",
+        "name": "Agua De Mesa Benedictino Con Gas 1,5 Lt.",
+        "nameComplete": "Agua De Mesa Benedictino Con Gas 1,5 Lt.",
+        "complementName": "",
+        "ean": "7790895648861",
+        "referenceId": [
+          {
+            "Key": "RefId",
+            "Value": "305365"
+          }
+        ],
+        "measurementUnit": "un",
+        "unitMultiplier": 1,
+        "modalType": "",
+        "isKit": false,
+        "images": [
+          {
+            "imageId": "338768",
+            "imageLabel": "",
+            "imageTag": "<img src=\"~/arquivos/ids/338768-#width#-#height#/Agua-De-Mesa-Benedictino-Con-Gas-15-Lt-_1.jpg?v=638787026559200000\" width=\"#width#\" height=\"#height#\" alt=\"Agua-De-Mesa-Benedictino-Con-Gas-15-Lt-_1\" id=\"\" />",
+            "imageUrl": "https://ardiaprod.vteximg.com.br/arquivos/ids/338768/Agua-De-Mesa-Benedictino-Con-Gas-15-Lt-_1.jpg?v=638787026559200000",
+            "imageText": "Agua-De-Mesa-Benedictino-Con-Gas-15-Lt-_1",
+            "imageLastModified": "2025-03-27T20:04:15.9200000Z"
+          }
+        ],
+        "sellers": [
+          {
+            "sellerId": "1",
+            "sellerName": "Supermercados DIA",
+            "addToCartLink": "https://diaonline.supermercadosdia.com.ar/checkout/cart/add?sku=305365&qty=1&seller=1&sc=1&price=240000&cv=_&sc=1",
+            "sellerDefault": true,
+            "commertialOffer": {
+              "DeliverySlaSamplesPerRegion": {
+                "0": {
+                  "DeliverySlaPerTypes": [],
+                  "Region": null
+                }
+              },
+              "Installments": [
+                {
+                  "Value": 2400,
+                  "InterestRate": 0,
+                  "TotalValuePlusInterestRate": 2400,
+                  "NumberOfInstallments": 1,
+                  "PaymentSystemName": "American Express",
+                  "PaymentSystemGroupName": "creditCardPaymentGroup",
+                  "Name": "American Express à vista"
+                },
+                {
+                  "Value": 2400,
+                  "InterestRate": 0,
+                  "TotalValuePlusInterestRate": 2400,
+                  "NumberOfInstallments": 1,
+                  "PaymentSystemName": "Visa",
+                  "PaymentSystemGroupName": "creditCardPaymentGroup",
+                  "Name": "Visa à vista"
+                }
+              ],
+              "DiscountHighLight": [],
+              "Teasers": [
+                {
+                  "<Name>k__BackingField": "2do al 70%",
+                  "<GeneralValues>k__BackingField": {},
+                  "<Conditions>k__BackingField": {
+                    "<MinimumQuantity>k__BackingField": 2,
+                    "<Parameters>k__BackingField": []
+                  },
+                  "<Effects>k__BackingField": {
+                    "<Parameters>k__BackingField": []
+                  }
+                }
+              ],
+              "PromotionTeasers": [
+                {
+                  "Name": "2do al 70%",
+                  "GeneralValues": {},
+                  "Conditions": {
+                    "MinimumQuantity": 2,
+                    "Parameters": []
+                  },
+                  "Effects": {
+                    "Parameters": []
+                  }
+                }
+              ],
+              "BuyTogether": [],
+              "Price": 2400,
+              "ListPrice": 2400,
+              "PriceWithoutDiscount": 2400,
+              "FullSellingPrice": 2400,
+              "PriceToken": "eyJhbGciOiJFUzI1NiIsImtpZCI6ImNhNmYyMTcwLTZkOWYtNGQ4Zi05ODVhLWNjNjFhNDljZmJjNyIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InByaWNlIjoyNDAwMDAsInByaWNlV2l0aG91dERpc2NvdW50IjoyNDAwMDAsInNlbGxlciI6IjEiLCJpZCI6IjMwNTM2NSIsImFjY291bnROYW1lIjoiZGlhaW8iLCJzYWxlc0NoYW5uZWwiOiIxIn0sImV4cCI6MTc4NzMyNDQyMSwiaWF0IjoxNzg3MzIyNjIxLCJqdGkiOiJjNTA3MGM5ZC1iM2M4LTRiNjUtYTEwNi0wNjRiODg1OWI2MzYiLCJpc3MiOiJzZXNzaW9uL2RhdGEtc2lnbmVyIn0.aGOcBldrmBi98d-3uJw84xDnZpd0ABTQghefWCnjB0Jrs28f6NYyZZW0_UduWxgaT0VkcPxyk5VSiTsx0letPQ",
+              "PriceValidUntil": "2027-08-21T00:00:00Z",
+              "AvailableQuantity": 33,
+              "IsAvailable": true,
+              "Tax": 0,
+              "DeliverySlaSamples": [
+                {
+                  "DeliverySlaPerTypes": [],
+                  "Region": null
+                }
+              ],
+              "GetInfoErrorMessage": null
+            }
+          }
+        ],
+        "estimatedDateArrival": null
+      }
+    ]
+  },
+  {
+    "productId": "19221",
+    "productName": "Jabón Liquido Piel Sensible Dove 250 Ml.",
+    "brand": "DOVE",
+    "brandId": 445,
+    "brandImageUrl": null,
+    "linkText": "jabon-liquido-piel-sensible-dove-250-ml-19221",
+    "productReference": "7891150095694",
+    "productReferenceCode": null,
+    "categoryId": "247",
+    "productTitle": "",
+    "releaseDate": "2024-07-22T00:00:00Z",
+    "clusterHighlights": {
+      "572": "Ahorrames"
+    },
+    "productClusters": {
+      "567": "Todas las Ofertas",
+      "569": "Especial Verano",
+      "572": "Ahorrames",
+      "1332": "Unilever",
+      "1531": "rein",
+      "6415": "Flash Sale UL",
+      "6991": "ONE UL Diciembre",
+      "7130": "ONE UL Enero",
+      "7133": "PC UL Enero",
+      "7213": "Perfumeria y Limpieza s02",
+      "7220": "Hasta 2x1",
+      "7309": "Perfumeria y Limpieza s04",
+      "7377": "Perfumeria y Limpieza s05",
+      "7430": "One UL feb",
+      "7433": "PC UL feb",
+      "7495": "Perfumeria y Limpieza s08",
+      "7510": "Jabones s09",
+      "7513": "Especial Beauty Week s09",
+      "7529": "Destacado Especial Beauty Week s09",
+      "7536": "Perfumeria y Limpieza s09",
+      "7580": "Jabon liquido s11",
+      "7609": "PC UL Mar",
+      "7696": "Perfumeria y Limpieza",
+      "8102": "Super Despiertos",
+      "8313": "Dove s26",
+      "8315": "Perfumeria y Limpieza s26",
+      "8335": "Perfumeria s26",
+      "8444": "Perfumeria y Limpieza s28",
+      "8492": "Perfumeria s29",
+      "8505": "Perfumeria y Limpieza s29",
+      "8539": "Jabones s29",
+      "8837": "Perfumeria s35",
+      "8841": "Dove s35",
+      "8852": "Perfumeria y Limpieza s35",
+      "8853": "Hasta 2x1 s35",
+      "8866": "2do al 50% s35",
+      "8868": "Destacado Hasta 2x1 s35",
+      "8885": "Especial Beauty Week s36",
+      "8901": "Perfumeria y Limpieza s36",
+      "8910": "Jabones s36",
+      "9076": "Perfumeria s40",
+      "9079": "Perfumeria y Limpieza s40",
+      "9211": "Ofertas Dia",
+      "9217": "Perfumeria y Limpieza s43",
+      "9457": "Perfumeria s47",
+      "9460": "Perfumeria y Limpieza s47",
+      "9483": "Perfumeria y Limpieza DP s47",
+      "9570": "Perfumeria y Limpieza s49",
+      "9598": "Perfumeria DP s49",
+      "9600": "Perfumeria s49",
+      "9665": "Perfumeria y limpieza s51",
+      "9722": "Perfumeria y Limpieza s01",
+      "9773": "Perfumeria y Limpieza s02",
+      "9797": "Perfumeria DP s02",
+      "9816": "Dove s03",
+      "9825": "Limpieza y perfumeria s03",
+      "9859": "Perfumeria y Limpieza s04",
+      "9871": "Limpieza y perfumeria s04",
+      "9880": "Perfumería s04",
+      "9921": "Dove s05",
+      "9923": "Perfumeria y Limpieza SD s05",
+      "9931": "Perfumeria y Limpieza s05",
+      "9946": "Panaderia s05",
+      "9947": "Perfumeria s05",
+      "9971": "Especial Srockeate s06",
+      "9979": "Limpieza y Perfumeria s06",
+      "9989": "Categoría 2do al 50 s06",
+      "10009": "Carnaval s07",
+      "10017": "SD s07",
+      "10019": "SD Perfumeria s07",
+      "10027": "Limpieza y perfumeria s07",
+      "10034": "Cuidado Personal s07",
+      "10057": "Perfumeria s08",
+      "10064": "Perfumería y Limpieza s08",
+      "10092": "EO Destacados 2",
+      "10095": "Especial Beauty Week s09",
+      "10119": "Perfumeria y Limpieza s09",
+      "10125": "Perfumería s09",
+      "10172": "Dove s10",
+      "10216": "Perfumeria y Limpieza s11",
+      "10234": "Dove s11",
+      "10236": "beauty week s13",
+      "10267": "Perfumeria y Limpieza s12",
+      "10293": "Perfumeria y Limpieza S13",
+      "10306": "Dove s13",
+      "10309": "Stockeate s14",
+      "10331": "Perfumeria y Limpieza s14",
+      "10363": "Dia Recargado",
+      "10373": "Perfumeria y Limpieza s15",
+      "10411": "Limpieza y perfumería s16",
+      "10442": "Perfumeria y Limpieza s17",
+      "10484": "Perfumería y Limpieza s18",
+      "10495": "Dove S18",
+      "10526": "Campeones de la Previa",
+      "10543": "Perfumeria y Limpieza s19",
+      "10676": "Perfumeria Mayo",
+      "10682": "Jabones s21",
+      "10690": "Perfumería y Limpieza s21",
+      "10703": "Hasta 45% s21",
+      "10717": "Limpieza y perfumería s22",
+      "10733": "Perfumeria s22",
+      "10741": "Cuidado capilar s22",
+      "10764": "Especial Stockeate s23",
+      "10775": "Perfumería s23",
+      "10789": "Perfumeria y Limpieza s23",
+      "10793": "Jabones s23",
+      "10800": "Hasta 45% s23",
+      "10825": "Perfumeria y Limpieza s24",
+      "10851": "35% fijo",
+      "10859": "Perfumeria y Limpieza s24",
+      "10876": "Cuidado personal s25",
+      "10889": "Beauty week s26",
+      "10913": "Jabones s26",
+      "10918": "SD s26",
+      "10967": "Perfumería s27",
+      "10980": "Perfumeria y Limpieza s26",
+      "10999": "Jabones dr s27",
+      "11044": "Perfumeria s28",
+      "11079": "Limpieza y perfumeria s29",
+      "11140": "Perfumeria y Limpieza s31",
+      "11172": "Stockeate s32",
+      "11179": "Dove s32",
+      "11187": "Perfumeria DR s32",
+      "11194": "Jabones DR s32",
+      "11243": "Perfumeria s34"
+    },
+    "searchableClusters": {
+      "572": "Ahorrames",
+      "10526": "Campeones de la Previa"
+    },
+    "categories": [
+      "/Perfumería/Jabones/Jabones líquidos/",
+      "/Perfumería/Jabones/",
+      "/Perfumería/"
+    ],
+    "categoriesIds": [
+      "/216/244/247/",
+      "/216/244/",
+      "/216/"
+    ],
+    "link": "https://diaonline.supermercadosdia.com.ar/jabon-liquido-piel-sensible-dove-250-ml-19221/p",
+    "PrecioPorUnd": [
+      "24260.00"
+    ],
+    "UnidaddeMedida": [
+      "1 LT"
+    ],
+    "IVA": [
+      "21"
+    ],
+    "FOOD": [
+      "PrecioPorUnd",
+      "UnidaddeMedida",
+      "IVA"
+    ],
+    "items": [
+      {
+        "itemId": "19221",
+        "name": "Jabón Liquido Piel Sensible Dove 250 Ml.",
+        "nameComplete": "Jabón Liquido Piel Sensible Dove 250 Ml.",
+        "complementName": "",
+        "ean": "7891150095694",
+        "referenceId": [
+          {
+            "Key": "RefId",
+            "Value": "19221"
+          }
+        ],
+        "measurementUnit": "un",
+        "unitMultiplier": 1,
+        "modalType": "",
+        "isKit": false,
+        "images": [
+          {
+            "imageId": "307609",
+            "imageLabel": null,
+            "imageTag": "<img src=\"~/arquivos/ids/307609-#width#-#height#/Jabon-Liquido-Piel-Sensible-Dove-250-Ml-_1.jpg?v=638599332436430000\" width=\"#width#\" height=\"#height#\" alt=\"Jabon-Liquido-Piel-Sensible-Dove-250-Ml-_1\" id=\"\" />",
+            "imageUrl": "https://ardiaprod.vteximg.com.br/arquivos/ids/307609/Jabon-Liquido-Piel-Sensible-Dove-250-Ml-_1.jpg?v=638599332436430000",
+            "imageText": "Jabon-Liquido-Piel-Sensible-Dove-250-Ml-_1",
+            "imageLastModified": "2024-08-22T14:20:43.6430000Z"
+          }
+        ],
+        "sellers": [
+          {
+            "sellerId": "1",
+            "sellerName": "Supermercados DIA",
+            "addToCartLink": "https://diaonline.supermercadosdia.com.ar/checkout/cart/add?sku=19221&qty=1&seller=1&sc=1&price=454900&cv=_&sc=1",
+            "sellerDefault": true,
+            "commertialOffer": {
+              "DeliverySlaSamplesPerRegion": {
+                "0": {
+                  "DeliverySlaPerTypes": [],
+                  "Region": null
+                }
+              },
+              "Installments": [
+                {
+                  "Value": 4549,
+                  "InterestRate": 0,
+                  "TotalValuePlusInterestRate": 4549,
+                  "NumberOfInstallments": 1,
+                  "PaymentSystemName": "American Express",
+                  "PaymentSystemGroupName": "creditCardPaymentGroup",
+                  "Name": "American Express à vista"
+                },
+                {
+                  "Value": 4549,
+                  "InterestRate": 0,
+                  "TotalValuePlusInterestRate": 4549,
+                  "NumberOfInstallments": 1,
+                  "PaymentSystemName": "Visa",
+                  "PaymentSystemGroupName": "creditCardPaymentGroup",
+                  "Name": "Visa à vista"
+                }
+              ],
+              "DiscountHighLight": [],
+              "Teasers": [],
+              "PromotionTeasers": [],
+              "BuyTogether": [],
+              "Price": 4549,
+              "ListPrice": 6065,
+              "PriceWithoutDiscount": 4549,
+              "FullSellingPrice": 4549,
+              "PriceToken": "eyJhbGciOiJFUzI1NiIsImtpZCI6ImU0NTM2ODkxLTZkOWEtNDkwZi05ODA1LTYzMjQ5NDkxY2JkYyIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InByaWNlIjo0NTQ5MDAsInByaWNlV2l0aG91dERpc2NvdW50Ijo0NTQ5MDAsInNlbGxlciI6IjEiLCJpZCI6IjE5MjIxIiwiYWNjb3VudE5hbWUiOiJkaWFpbyIsInNhbGVzQ2hhbm5lbCI6IjEifSwiZXhwIjoxNzg3MzI0NDIxLCJpYXQiOjE3ODczMjI2MjEsImp0aSI6IjU1NmJlNDFmLTIyYjItNGJmMy04ODA2LWIzOWQzOTc4MmUyZSIsImlzcyI6InNlc3Npb24vZGF0YS1zaWduZXIifQ.1lbRzm9WlsAVjNK1ogdYAhFcv7nm3G3IIPxoZKsEzjEIdRkaNBPf3nXmSPR5RD8UHwVfFq3rdp59pzhNFXK9aQ",
+              "PriceValidUntil": "2027-08-21T00:00:00Z",
+              "AvailableQuantity": 23,
+              "IsAvailable": true,
+              "Tax": 0,
+              "DeliverySlaSamples": [
+                {
+                  "DeliverySlaPerTypes": [],
+                  "Region": null
+                }
+              ],
+              "GetInfoErrorMessage": null
+            }
+          }
+        ],
+        "estimatedDateArrival": null
+      }
+    ]
+  },
+  {
+    "productId": "134463",
+    "productName": "Jabón Liquido para Manos Dove Cuidado Reconfortante  220 Ml.",
+    "brand": "DOVE",
+    "brandId": 445,
+    "brandImageUrl": null,
+    "linkText": "jabon-liquido-para-manos-dove-cuidado-reconfortante-220-ml-134463",
+    "productReference": "7791293046143",
+    "productReferenceCode": null,
+    "categoryId": "247",
+    "productTitle": "",
+    "releaseDate": "2023-07-17T00:00:00Z",
+    "clusterHighlights": {
+      "572": "Ahorrames",
+      "632": "Exclusivo Online"
+    },
+    "productClusters": {
+      "567": "Todas las Ofertas",
+      "569": "Especial Verano",
+      "572": "Ahorrames",
+      "632": "Exclusivo Online",
+      "1332": "Unilever",
+      "1531": "rein",
+      "4242": "Unilever Enero",
+      "4445": "ONE UL Febrero",
+      "4446": "BPC UL Febrero",
+      "5121": "Hot Sale 2025",
+      "6274": "Beauty y PC UL9",
+      "6277": "Especial Primavera UL9",
+      "6278": "Dove UL9",
+      "6415": "Flash Sale UL",
+      "6991": "ONE UL Diciembre",
+      "7130": "ONE UL Enero",
+      "7133": "PC UL Enero",
+      "7213": "Perfumeria y Limpieza s02",
+      "7220": "Hasta 2x1",
+      "7224": "35%",
+      "7309": "Perfumeria y Limpieza s04",
+      "7377": "Perfumeria y Limpieza s05",
+      "7430": "One UL feb",
+      "7433": "PC UL feb",
+      "7495": "Perfumeria y Limpieza s08",
+      "7510": "Jabones s09",
+      "7513": "Especial Beauty Week s09",
+      "7536": "Perfumeria y Limpieza s09",
+      "7580": "Jabon liquido s11",
+      "7609": "PC UL Mar",
+      "7696": "Perfumeria y Limpieza",
+      "7847": "UL Perfumeria HS 2025",
+      "7889": "Jabones HS 2025",
+      "7907": "Perfumeria HS 2025",
+      "7911": "Unilever Perfumeria HS 2025",
+      "7968": "Perfumeria y Limpieza HS 2025",
+      "7981": "35% HS 2025",
+      "8102": "Super Despiertos",
+      "8313": "Dove s26",
+      "8315": "Perfumeria y Limpieza s26",
+      "8335": "Perfumeria s26",
+      "8444": "Perfumeria y Limpieza s28",
+      "8492": "Perfumeria s29",
+      "8505": "Perfumeria y Limpieza s29",
+      "8539": "Jabones s29",
+      "8837": "Perfumeria s35",
+      "8841": "Dove s35",
+      "8852": "Perfumeria y Limpieza s35",
+      "8853": "Hasta 2x1 s35",
+      "8866": "2do al 50% s35",
+      "8885": "Especial Beauty Week s36",
+      "8901": "Perfumeria y Limpieza s36",
+      "8910": "Jabones s36",
+      "9076": "Perfumeria s40",
+      "9079": "Perfumeria y Limpieza s40",
+      "9211": "Ofertas Dia",
+      "9217": "Perfumeria y Limpieza s43",
+      "9244": "CM_25_unilever_perfumeria",
+      "9278": "Perfumeria Cyber 25",
+      "9360": "Cybermonday 2025",
+      "9361": "Perfumeria y Limpieza Cyber 25",
+      "9365": "Promocion 30% Cyber 25",
+      "9383": "Jabones Cyber 25",
+      "9423": "Cuidado Personal Cyber 25",
+      "9457": "Perfumeria s47",
+      "9460": "Perfumeria y Limpieza s47",
+      "9483": "Perfumeria y Limpieza DP s47",
+      "9570": "Perfumeria y Limpieza s49",
+      "9598": "Perfumeria DP s49",
+      "9600": "Perfumeria s49",
+      "9665": "Perfumeria y limpieza s51",
+      "9722": "Perfumeria y Limpieza s01",
+      "9773": "Perfumeria y Limpieza s02",
+      "9797": "Perfumeria DP s02",
+      "9816": "Dove s03",
+      "9825": "Limpieza y perfumeria s03",
+      "9859": "Perfumeria y Limpieza s04",
+      "9871": "Limpieza y perfumeria s04",
+      "9880": "Perfumería s04",
+      "9921": "Dove s05",
+      "9923": "Perfumeria y Limpieza SD s05",
+      "9931": "Perfumeria y Limpieza s05",
+      "9946": "Panaderia s05",
+      "9947": "Perfumeria s05",
+      "9971": "Especial Srockeate s06",
+      "9979": "Limpieza y Perfumeria s06",
+      "9989": "Categoría 2do al 50 s06",
+      "10009": "Carnaval s07",
+      "10017": "SD s07",
+      "10019": "SD Perfumeria s07",
+      "10027": "Limpieza y perfumeria s07",
+      "10034": "Cuidado Personal s07",
+      "10057": "Perfumeria s08",
+      "10064": "Perfumería y Limpieza s08",
+      "10092": "EO Destacados 2",
+      "10095": "Especial Beauty Week s09",
+      "10119": "Perfumeria y Limpieza s09",
+      "10125": "Perfumería s09",
+      "10172": "Dove s10",
+      "10216": "Perfumeria y Limpieza s11",
+      "10234": "Dove s11",
+      "10236": "beauty week s13",
+      "10267": "Perfumeria y Limpieza s12",
+      "10293": "Perfumeria y Limpieza S13",
+      "10306": "Dove s13",
+      "10309": "Stockeate s14",
+      "10331": "Perfumeria y Limpieza s14",
+      "10363": "Dia Recargado",
+      "10373": "Perfumeria y Limpieza s15",
+      "10411": "Limpieza y perfumería s16",
+      "10442": "Perfumeria y Limpieza s17",
+      "10478": "Mas Destacados s18",
+      "10484": "Perfumería y Limpieza s18",
+      "10495": "Dove S18",
+      "10523": "Hot Sale 2026",
+      "10526": "Campeones de la Previa",
+      "10543": "Perfumeria y Limpieza s19",
+      "10551": "Perfumeria HS 2026",
+      "10593": "35%  HS 2026",
+      "10613": "UL Perfu HS 2026",
+      "10629": "35% HS 2026",
+      "10633": "Perfumería y Limpieza HotSale 2026",
+      "10676": "Perfumeria Mayo",
+      "10682": "Jabones s21",
+      "10690": "Perfumería y Limpieza s21",
+      "10701": "2do al 50% s21",
+      "10703": "Hasta 45% s21",
+      "10717": "Limpieza y perfumería s22",
+      "10722": "Destacado 2do al 50%",
+      "10733": "Perfumeria s22",
+      "10741": "Cuidado capilar s22",
+      "10764": "Especial Stockeate s23",
+      "10775": "Perfumería s23",
+      "10789": "Perfumeria y Limpieza s23",
+      "10793": "Jabones s23",
+      "10799": "2do al 50% fijo",
+      "10800": "Hasta 45% s23",
+      "10825": "Perfumeria y Limpieza s24",
+      "10859": "Perfumeria y Limpieza s24",
+      "10876": "Cuidado personal s25",
+      "10889": "Beauty week s26",
+      "10913": "Jabones s26",
+      "10918": "SD s26",
+      "10967": "Perfumería s27",
+      "10999": "Jabones dr s27",
+      "11042": "Hasta 30%",
+      "11044": "Perfumeria s28",
+      "11079": "Limpieza y perfumeria s29",
+      "11098": "Perfumeria y Limpieza s30",
+      "11140": "Perfumeria y Limpieza s31",
+      "11172": "Stockeate s32",
+      "11179": "Dove s32",
+      "11187": "Perfumeria DR s32",
+      "11194": "Jabones DR s32",
+      "11212": "Beauty Week s33",
+      "11216": "Cuidado Personal s33",
+      "11230": "Perfumeria y Limpieza SD s33",
+      "11243": "Perfumeria s34"
+    },
+    "searchableClusters": {
+      "572": "Ahorrames",
+      "632": "Exclusivo Online",
+      "9360": "Cybermonday 2025",
+      "10523": "Hot Sale 2026",
+      "10526": "Campeones de la Previa"
+    },
+    "categories": [
+      "/Perfumería/Jabones/Jabones líquidos/",
+      "/Perfumería/Jabones/",
+      "/Perfumería/"
+    ],
+    "categoriesIds": [
+      "/216/244/247/",
+      "/216/244/",
+      "/216/"
+    ],
+    "link": "https://diaonline.supermercadosdia.com.ar/jabon-liquido-para-manos-dove-cuidado-reconfortante-220-ml-134463/p",
+    "PrecioPorUnd": [
+      "18681.82"
+    ],
+    "UnidaddeMedida": [
+      "1 LT"
+    ],
+    "IVA": [
+      "21"
+    ],
+    "InternalTax": [
+      "0"
+    ],
+    "FOOD": [
+      "PrecioPorUnd",
+      "UnidaddeMedida",
+      "IVA",
+      "InternalTax"
+    ],
+    "items": [
+      {
+        "itemId": "134463",
+        "name": "Jabón Liquido para Manos Dove Cuidado Reconfortante  220 Ml.",
+        "nameComplete": "Jabón Liquido para Manos Dove Cuidado Reconfortante  220 Ml.",
+        "complementName": "",
+        "ean": "7791293046143",
+        "referenceId": [
+          {
+            "Key": "RefId",
+            "Value": "134463"
+          }
+        ],
+        "measurementUnit": "un",
+        "unitMultiplier": 1,
+        "modalType": "",
+        "isKit": false,
+        "images": [
+          {
+            "imageId": "354128",
+            "imageLabel": null,
+            "imageTag": "<img src=\"~/arquivos/ids/354128-#width#-#height#/Jabon-Liquido-para-Manos-Dove-Cuidado-Reconfortante--220-Ml-_1.jpg?v=638876515322300000\" width=\"#width#\" height=\"#height#\" alt=\"Jabon-Liquido-para-Manos-Dove-Cuidado-Reconfortante--220-Ml-_1\" id=\"\" />",
+            "imageUrl": "https://ardiaprod.vteximg.com.br/arquivos/ids/354128/Jabon-Liquido-para-Manos-Dove-Cuidado-Reconfortante--220-Ml-_1.jpg?v=638876515322300000",
+            "imageText": "Jabon-Liquido-para-Manos-Dove-Cuidado-Reconfortante--220-Ml-_1",
+            "imageLastModified": "2025-07-09T09:52:12.2300000Z"
+          }
+        ],
+        "sellers": [
+          {
+            "sellerId": "1",
+            "sellerName": "Supermercados DIA",
+            "addToCartLink": "https://diaonline.supermercadosdia.com.ar/checkout/cart/add?sku=134463&qty=1&seller=1&sc=1&price=267150&cv=_&sc=1",
+            "sellerDefault": true,
+            "commertialOffer": {
+              "DeliverySlaSamplesPerRegion": {
+                "0": {
+                  "DeliverySlaPerTypes": [],
+                  "Region": null
+                }
+              },
+              "Installments": [
+                {
+                  "Value": 2671.5,
+                  "InterestRate": 0,
+                  "TotalValuePlusInterestRate": 2671.5,
+                  "NumberOfInstallments": 1,
+                  "PaymentSystemName": "American Express",
+                  "PaymentSystemGroupName": "creditCardPaymentGroup",
+                  "Name": "American Express à vista"
+                },
+                {
+                  "Value": 2671.5,
+                  "InterestRate": 0,
+                  "TotalValuePlusInterestRate": 2671.5,
+                  "NumberOfInstallments": 1,
+                  "PaymentSystemName": "Visa",
+                  "PaymentSystemGroupName": "creditCardPaymentGroup",
+                  "Name": "Visa à vista"
+                }
+              ],
+              "DiscountHighLight": [
+                {
+                  "<Name>k__BackingField": "35%"
+                }
+              ],
+              "Teasers": [],
+              "PromotionTeasers": [],
+              "BuyTogether": [],
+              "Price": 2671.5,
+              "ListPrice": 4110,
+              "PriceWithoutDiscount": 4110,
+              "FullSellingPrice": 2671.5,
+              "PriceToken": "eyJhbGciOiJFUzI1NiIsImtpZCI6IjkyZjE2ZDFmLTgyYjUtNGRmYy1iNjNkLTIxYjRiNzZiMGQ5ZSIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InByaWNlIjoyNjcxNTAsInByaWNlV2l0aG91dERpc2NvdW50Ijo0MTEwMDAsInNlbGxlciI6IjEiLCJpZCI6IjEzNDQ2MyIsImFjY291bnROYW1lIjoiZGlhaW8iLCJzYWxlc0NoYW5uZWwiOiIxIn0sImV4cCI6MTc4NzMyNDQyMSwiaWF0IjoxNzg3MzIyNjIxLCJqdGkiOiJlMWI3MmRlZS00MjdjLTRkMzEtYjE5Zi1iYThkNGM4Zjk1YTQiLCJpc3MiOiJzZXNzaW9uL2RhdGEtc2lnbmVyIn0.RxiYSQDhvzmYeBJ0aoUZIkGw2wmqsAVaL4UPvxT8eh0Dx5chnT1kkpGa0elM29ikvgv5uI4KL0W9ymzcKf98eg",
+              "PriceValidUntil": "2027-08-21T00:00:00Z",
+              "AvailableQuantity": 57,
+              "IsAvailable": true,
+              "Tax": 0,
+              "DeliverySlaSamples": [
+                {
+                  "DeliverySlaPerTypes": [],
+                  "Region": null
+                }
+              ],
+              "GetInfoErrorMessage": null
+            }
+          }
+        ],
+        "estimatedDateArrival": null
+      }
+    ]
+  },
+  {
+    "productId": "294759",
+    "productName": "Jabón Líquido Para Manos Dove Antibacterial Cuida & Protege 250 Ml.",
+    "brand": "DOVE",
+    "brandId": 445,
+    "brandImageUrl": null,
+    "linkText": "jabon-liquido-para-manos-dove-antibacterial-cuida---protege-250-ml-294759",
+    "productReference": "7791293046129",
+    "productReferenceCode": null,
+    "categoryId": "247",
+    "productTitle": "Jabón Líquido Dove A",
+    "releaseDate": "2026-04-13T00:00:00Z",
+    "clusterHighlights": {
+      "572": "Ahorrames",
+      "632": "Exclusivo Online"
+    },
+    "productClusters": {
+      "567": "Todas las Ofertas",
+      "569": "Especial Verano",
+      "572": "Ahorrames",
+      "632": "Exclusivo Online",
+      "1332": "Unilever",
+      "1531": "rein",
+      "4242": "Unilever Enero",
+      "4445": "ONE UL Febrero",
+      "4446": "BPC UL Febrero",
+      "5121": "Hot Sale 2025",
+      "6274": "Beauty y PC UL9",
+      "6277": "Especial Primavera UL9",
+      "6278": "Dove UL9",
+      "6415": "Flash Sale UL",
+      "6991": "ONE UL Diciembre",
+      "7130": "ONE UL Enero",
+      "7133": "PC UL Enero",
+      "7213": "Perfumeria y Limpieza s02",
+      "7220": "Hasta 2x1",
+      "7309": "Perfumeria y Limpieza s04",
+      "7377": "Perfumeria y Limpieza s05",
+      "7430": "One UL feb",
+      "7433": "PC UL feb",
+      "7495": "Perfumeria y Limpieza s08",
+      "7510": "Jabones s09",
+      "7513": "Especial Beauty Week s09",
+      "7536": "Perfumeria y Limpieza s09",
+      "7580": "Jabon liquido s11",
+      "7609": "PC UL Mar",
+      "7696": "Perfumeria y Limpieza",
+      "7847": "UL Perfumeria HS 2025",
+      "7889": "Jabones HS 2025",
+      "7907": "Perfumeria HS 2025",
+      "7911": "Unilever Perfumeria HS 2025",
+      "7968": "Perfumeria y Limpieza HS 2025",
+      "7981": "35% HS 2025",
+      "8102": "Super Despiertos",
+      "8313": "Dove s26",
+      "8315": "Perfumeria y Limpieza s26",
+      "8335": "Perfumeria s26",
+      "8444": "Perfumeria y Limpieza s28",
+      "8492": "Perfumeria s29",
+      "8505": "Perfumeria y Limpieza s29",
+      "8539": "Jabones s29",
+      "8837": "Perfumeria s35",
+      "8841": "Dove s35",
+      "8852": "Perfumeria y Limpieza s35",
+      "8853": "Hasta 2x1 s35",
+      "8866": "2do al 50% s35",
+      "8885": "Especial Beauty Week s36",
+      "8901": "Perfumeria y Limpieza s36",
+      "8910": "Jabones s36",
+      "9076": "Perfumeria s40",
+      "9079": "Perfumeria y Limpieza s40",
+      "9211": "Ofertas Dia",
+      "9217": "Perfumeria y Limpieza s43",
+      "9457": "Perfumeria s47",
+      "9460": "Perfumeria y Limpieza s47",
+      "9483": "Perfumeria y Limpieza DP s47",
+      "9570": "Perfumeria y Limpieza s49",
+      "9598": "Perfumeria DP s49",
+      "9600": "Perfumeria s49",
+      "9665": "Perfumeria y limpieza s51",
+      "9722": "Perfumeria y Limpieza s01",
+      "9773": "Perfumeria y Limpieza s02",
+      "9797": "Perfumeria DP s02",
+      "9816": "Dove s03",
+      "9825": "Limpieza y perfumeria s03",
+      "9859": "Perfumeria y Limpieza s04",
+      "9871": "Limpieza y perfumeria s04",
+      "9880": "Perfumería s04",
+      "9921": "Dove s05",
+      "9923": "Perfumeria y Limpieza SD s05",
+      "9931": "Perfumeria y Limpieza s05",
+      "9946": "Panaderia s05",
+      "9947": "Perfumeria s05",
+      "9971": "Especial Srockeate s06",
+      "9979": "Limpieza y Perfumeria s06",
+      "9989": "Categoría 2do al 50 s06",
+      "10009": "Carnaval s07",
+      "10017": "SD s07",
+      "10019": "SD Perfumeria s07",
+      "10027": "Limpieza y perfumeria s07",
+      "10034": "Cuidado Personal s07",
+      "10057": "Perfumeria s08",
+      "10064": "Perfumería y Limpieza s08",
+      "10092": "EO Destacados 2",
+      "10095": "Especial Beauty Week s09",
+      "10119": "Perfumeria y Limpieza s09",
+      "10125": "Perfumería s09",
+      "10172": "Dove s10",
+      "10216": "Perfumeria y Limpieza s11",
+      "10234": "Dove s11",
+      "10236": "beauty week s13",
+      "10267": "Perfumeria y Limpieza s12",
+      "10293": "Perfumeria y Limpieza S13",
+      "10306": "Dove s13",
+      "10309": "Stockeate s14",
+      "10331": "Perfumeria y Limpieza s14",
+      "10363": "Dia Recargado",
+      "10373": "Perfumeria y Limpieza s15",
+      "10411": "Limpieza y perfumería s16",
+      "10442": "Perfumeria y Limpieza s17",
+      "10484": "Perfumería y Limpieza s18",
+      "10495": "Dove S18",
+      "10526": "Campeones de la Previa",
+      "10543": "Perfumeria y Limpieza s19",
+      "10676": "Perfumeria Mayo",
+      "10682": "Jabones s21",
+      "10690": "Perfumería y Limpieza s21",
+      "10703": "Hasta 45% s21",
+      "10717": "Limpieza y perfumería s22",
+      "10733": "Perfumeria s22",
+      "10741": "Cuidado capilar s22",
+      "10764": "Especial Stockeate s23",
+      "10775": "Perfumería s23",
+      "10789": "Perfumeria y Limpieza s23",
+      "10793": "Jabones s23",
+      "10800": "Hasta 45% s23",
+      "10825": "Perfumeria y Limpieza s24",
+      "10851": "35% fijo",
+      "10859": "Perfumeria y Limpieza s24",
+      "10876": "Cuidado personal s25",
+      "10889": "Beauty week s26",
+      "10913": "Jabones s26",
+      "10918": "SD s26",
+      "10967": "Perfumería s27",
+      "10980": "Perfumeria y Limpieza s26",
+      "10999": "Jabones dr s27",
+      "11042": "Hasta 30%",
+      "11043": "Destacado Hasta 30%",
+      "11044": "Perfumeria s28",
+      "11079": "Limpieza y perfumeria s29",
+      "11098": "Perfumeria y Limpieza s30",
+      "11140": "Perfumeria y Limpieza s31",
+      "11172": "Stockeate s32",
+      "11187": "Perfumeria DR s32",
+      "11192": "Bebes y ninos DR s32",
+      "11194": "Jabones DR s32",
+      "11205": "Perfumeria y Limpieza App s32",
+      "11212": "Beauty Week s33",
+      "11216": "Cuidado Personal s33",
+      "11230": "Perfumeria y Limpieza SD s33",
+      "11243": "Perfumeria s34"
+    },
+    "searchableClusters": {
+      "572": "Ahorrames",
+      "632": "Exclusivo Online",
+      "10526": "Campeones de la Previa"
+    },
+    "categories": [
+      "/Perfumería/Jabones/Jabones líquidos/",
+      "/Perfumería/Jabones/",
+      "/Perfumería/"
+    ],
+    "categoriesIds": [
+      "/216/244/247/",
+      "/216/244/",
+      "/216/"
+    ],
+    "link": "https://diaonline.supermercadosdia.com.ar/jabon-liquido-para-manos-dove-antibacterial-cuida---protege-250-ml-294759/p",
+    "PrecioPorUnd": [
+      "27520.00"
+    ],
+    "UnidaddeMedida": [
+      "1 LT"
+    ],
+    "IVA": [
+      "21"
+    ],
+    "FOOD": [
+      "PrecioPorUnd",
+      "UnidaddeMedida",
+      "IVA"
+    ],
+    "items": [
+      {
+        "itemId": "294759",
+        "name": "Jabón Líquido Para Manos Dove Antibacterial Cuida & Protege 250 Ml.",
+        "nameComplete": "Jabón Líquido Para Manos Dove Antibacterial Cuida & Protege 250 Ml.",
+        "complementName": "",
+        "ean": "7791293046129",
+        "referenceId": [
+          {
+            "Key": "RefId",
+            "Value": "294759"
+          }
+        ],
+        "measurementUnit": "un",
+        "unitMultiplier": 1,
+        "modalType": null,
+        "isKit": false,
+        "images": [
+          {
+            "imageId": "367771",
+            "imageLabel": "",
+            "imageTag": "<img src=\"~/arquivos/ids/367771-#width#-#height#/Jabon-Liquido-Para-Manos-Dove-Antibacterial-Cuida---Protege-250-Ml-_1.jpg?v=639117569664570000\" width=\"#width#\" height=\"#height#\" alt=\"\" id=\"\" />",
+            "imageUrl": "https://ardiaprod.vteximg.com.br/arquivos/ids/367771/Jabon-Liquido-Para-Manos-Dove-Antibacterial-Cuida---Protege-250-Ml-_1.jpg?v=639117569664570000",
+            "imageText": null,
+            "imageLastModified": "2026-04-14T09:49:26.4570000Z"
+          }
+        ],
+        "sellers": [
+          {
+            "sellerId": "1",
+            "sellerName": "Supermercados DIA",
+            "addToCartLink": "https://diaonline.supermercadosdia.com.ar/checkout/cart/add?sku=294759&qty=1&seller=1&sc=1&price=438515&cv=_&sc=1",
+            "sellerDefault": true,
+            "commertialOffer": {
+              "DeliverySlaSamplesPerRegion": {
+                "0": {
+                  "DeliverySlaPerTypes": [],
+                  "Region": null
+                }
+              },
+              "Installments": [
+                {
+                  "Value": 4385.15,
+                  "InterestRate": 0,
+                  "TotalValuePlusInterestRate": 4385.15,
+                  "NumberOfInstallments": 1,
+                  "PaymentSystemName": "American Express",
+                  "PaymentSystemGroupName": "creditCardPaymentGroup",
+                  "Name": "American Express à vista"
+                },
+                {
+                  "Value": 4385.15,
+                  "InterestRate": 0,
+                  "TotalValuePlusInterestRate": 4385.15,
+                  "NumberOfInstallments": 1,
+                  "PaymentSystemName": "Visa",
+                  "PaymentSystemGroupName": "creditCardPaymentGroup",
+                  "Name": "Visa à vista"
+                }
+              ],
+              "DiscountHighLight": [
+                {
+                  "<Name>k__BackingField": "35%"
+                }
+              ],
+              "Teasers": [],
+              "PromotionTeasers": [],
+              "BuyTogether": [],
+              "Price": 4385.15,
+              "ListPrice": 6880,
+              "PriceWithoutDiscount": 5159,
+              "FullSellingPrice": 4385.15,
+              "PriceToken": "eyJhbGciOiJFUzI1NiIsImtpZCI6IjAwMTcwYTNiLTg4M2UtNDg5Mi1hNDQzLTAwMWM1NjFkNDQ5OSIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InByaWNlIjo0Mzg1MTUsInByaWNlV2l0aG91dERpc2NvdW50Ijo1MTU5MDAsInNlbGxlciI6IjEiLCJpZCI6IjI5NDc1OSIsImFjY291bnROYW1lIjoiZGlhaW8iLCJzYWxlc0NoYW5uZWwiOiIxIn0sImV4cCI6MTc4NzMyNDQyMSwiaWF0IjoxNzg3MzIyNjIxLCJqdGkiOiI0MjAzNTYyMi1kODk4LTRkNmItYmE4Mi02NjMzMjUxZGE3ZWYiLCJpc3MiOiJzZXNzaW9uL2RhdGEtc2lnbmVyIn0.HCofK14zwjjMOKmKNidZ00LMq2PLt-ys7eYjLWbgz7WSf0OPt_iDT55kzCAPZZ_-2vzeJWfqwXrAe7P4b8dkLg",
+              "PriceValidUntil": "2027-08-21T00:00:00Z",
+              "AvailableQuantity": 16,
+              "IsAvailable": true,
+              "Tax": 0,
+              "DeliverySlaSamples": [
+                {
+                  "DeliverySlaPerTypes": [],
+                  "Region": null
+                }
+              ],
+              "GetInfoErrorMessage": null
+            }
+          }
+        ],
+        "estimatedDateArrival": null
+      }
+    ]
+  },
+  {
+    "productId": "294760",
+    "productName": "Jabón Líquido Para Manos Dove Nutrición Profunda 220 Ml Refill 220 Ml.",
+    "brand": "DOVE",
+    "brandId": 445,
+    "brandImageUrl": null,
+    "linkText": "jabon-liquido-para-manos-dove-nutricion-profunda-220-ml-refill-220-ml-294760",
+    "productReference": "7791293046136",
+    "productReferenceCode": null,
+    "categoryId": "247",
+    "productTitle": "",
+    "releaseDate": "2023-05-05T00:00:00Z",
+    "clusterHighlights": {
+      "572": "Ahorrames",
+      "632": "Exclusivo Online"
+    },
+    "productClusters": {
+      "567": "Todas las Ofertas",
+      "569": "Especial Verano",
+      "572": "Ahorrames",
+      "632": "Exclusivo Online",
+      "1332": "Unilever",
+      "1531": "rein",
+      "2840": "Perfumeria y Limpieza DP",
+      "3057": "Destacado Perfu Limpieza DP",
+      "4242": "Unilever Enero",
+      "4445": "ONE UL Febrero",
+      "4446": "BPC UL Febrero",
+      "5121": "Hot Sale 2025",
+      "6274": "Beauty y PC UL9",
+      "6277": "Especial Primavera UL9",
+      "6278": "Dove UL9",
+      "6415": "Flash Sale UL",
+      "6991": "ONE UL Diciembre",
+      "7130": "ONE UL Enero",
+      "7133": "PC UL Enero",
+      "7213": "Perfumeria y Limpieza s02",
+      "7220": "Hasta 2x1",
+      "7309": "Perfumeria y Limpieza s04",
+      "7372": "Destacado DPH s05",
+      "7377": "Perfumeria y Limpieza s05",
+      "7430": "One UL feb",
+      "7433": "PC UL feb",
+      "7495": "Perfumeria y Limpieza s08",
+      "7510": "Jabones s09",
+      "7513": "Especial Beauty Week s09",
+      "7530": "Mas destacados s09",
+      "7536": "Perfumeria y Limpieza s09",
+      "7537": "Destacado DPH s09",
+      "7580": "Jabon liquido s11",
+      "7609": "PC UL Mar",
+      "7696": "Perfumeria y Limpieza",
+      "7847": "UL Perfumeria HS 2025",
+      "7889": "Jabones HS 2025",
+      "7907": "Perfumeria HS 2025",
+      "7911": "Unilever Perfumeria HS 2025",
+      "7960": "Destacados 35% HS 2025",
+      "7968": "Perfumeria y Limpieza HS 2025",
+      "7969": "Destacado DPH HS 2025",
+      "7970": "Seleccionados Perfumeria HS 2025",
+      "7981": "35% HS 2025",
+      "8102": "Super Despiertos",
+      "8313": "Dove s26",
+      "8315": "Perfumeria y Limpieza s26",
+      "8332": "Mas Destacados s26",
+      "8335": "Perfumeria s26",
+      "8444": "Perfumeria y Limpieza s28",
+      "8447": "Mas Destacados s28",
+      "8492": "Perfumeria s29",
+      "8505": "Perfumeria y Limpieza s29",
+      "8539": "Jabones s29",
+      "8837": "Perfumeria s35",
+      "8841": "Dove s35",
+      "8852": "Perfumeria y Limpieza s35",
+      "8853": "Hasta 2x1 s35",
+      "8857": "Mas Destacados s35",
+      "8866": "2do al 50% s35",
+      "8885": "Especial Beauty Week s36",
+      "8901": "Perfumeria y Limpieza s36",
+      "8907": "Mas Destacados s36",
+      "8910": "Jabones s36",
+      "9076": "Perfumeria s40",
+      "9079": "Perfumeria y Limpieza s40",
+      "9081": "Mas Destacados s40",
+      "9211": "Ofertas Dia",
+      "9217": "Perfumeria y Limpieza s43",
+      "9219": "Mas Destacados s43",
+      "9244": "CM_25_unilever_perfumeria",
+      "9278": "Perfumeria Cyber 25",
+      "9360": "Cybermonday 2025",
+      "9361": "Perfumeria y Limpieza Cyber 25",
+      "9365": "Promocion 30% Cyber 25",
+      "9366": "Promocion Destacado 30% Cyber 25",
+      "9383": "Jabones Cyber 25",
+      "9423": "Cuidado Personal Cyber 25",
+      "9457": "Perfumeria s47",
+      "9460": "Perfumeria y Limpieza s47",
+      "9462": "Mas Destacados s47",
+      "9483": "Perfumeria y Limpieza DP s47",
+      "9570": "Perfumeria y Limpieza s49",
+      "9598": "Perfumeria DP s49",
+      "9600": "Perfumeria s49",
+      "9661": "Mas Destacados s51",
+      "9665": "Perfumeria y limpieza s51",
+      "9722": "Perfumeria y Limpieza s01",
+      "9724": "Mas Destacados s01",
+      "9763": "Mas destacados s02",
+      "9773": "Perfumeria y Limpieza s02",
+      "9797": "Perfumeria DP s02",
+      "9816": "Dove s03",
+      "9825": "Limpieza y perfumeria s03",
+      "9844": "Destacados s03",
+      "9845": "Limpieza y perfumeria destacados s03",
+      "9859": "Perfumeria y Limpieza s04",
+      "9871": "Limpieza y perfumeria s04",
+      "9875": "Destacados s04",
+      "9880": "Perfumería s04",
+      "9921": "Dove s05",
+      "9923": "Perfumeria y Limpieza SD s05",
+      "9931": "Perfumeria y Limpieza s05",
+      "9946": "Panaderia s05",
+      "9947": "Perfumeria s05",
+      "9971": "Especial Srockeate s06",
+      "9979": "Limpieza y Perfumeria s06",
+      "9980": "Mas destacados s06",
+      "9989": "Categoría 2do al 50 s06",
+      "10009": "Carnaval s07",
+      "10017": "SD s07",
+      "10019": "SD Perfumeria s07",
+      "10027": "Limpieza y perfumeria s07",
+      "10034": "Cuidado Personal s07",
+      "10038": "Mas Destacados s07",
+      "10057": "Perfumeria s08",
+      "10060": "Mas Destacados s08",
+      "10064": "Perfumería y Limpieza s08",
+      "10092": "EO Destacados 2",
+      "10095": "Especial Beauty Week s09",
+      "10116": "Mas Destacados s09",
+      "10119": "Perfumeria y Limpieza s09",
+      "10125": "Perfumería s09",
+      "10172": "Dove s10",
+      "10216": "Perfumeria y Limpieza s11",
+      "10234": "Dove s11",
+      "10236": "beauty week s13",
+      "10267": "Perfumeria y Limpieza s12",
+      "10293": "Perfumeria y Limpieza S13",
+      "10306": "Dove s13",
+      "10309": "Stockeate s14",
+      "10331": "Perfumeria y Limpieza s14",
+      "10334": "Mas Destacados s14",
+      "10363": "Dia Recargado",
+      "10373": "Perfumeria y Limpieza s15",
+      "10411": "Limpieza y perfumería s16",
+      "10426": "Mas Destacados s16",
+      "10442": "Perfumeria y Limpieza s17",
+      "10478": "Mas Destacados s18",
+      "10484": "Perfumería y Limpieza s18",
+      "10495": "Dove S18",
+      "10523": "Hot Sale 2026",
+      "10526": "Campeones de la Previa",
+      "10543": "Perfumeria y Limpieza s19",
+      "10551": "Perfumeria HS 2026",
+      "10593": "35%  HS 2026",
+      "10613": "UL Perfu HS 2026",
+      "10629": "35% HS 2026",
+      "10633": "Perfumería y Limpieza HotSale 2026",
+      "10676": "Perfumeria Mayo",
+      "10682": "Jabones s21",
+      "10690": "Perfumería y Limpieza s21",
+      "10701": "2do al 50% s21",
+      "10703": "Hasta 45% s21",
+      "10717": "Limpieza y perfumería s22",
+      "10733": "Perfumeria s22",
+      "10741": "Cuidado capilar s22",
+      "10753": "Destacado 2do al 50%",
+      "10764": "Especial Stockeate s23",
+      "10775": "Perfumería s23",
+      "10789": "Perfumeria y Limpieza s23",
+      "10793": "Jabones s23",
+      "10799": "2do al 50% fijo",
+      "10800": "Hasta 45% s23",
+      "10808": "Destacado 2do al 50% fijo",
+      "10825": "Perfumeria y Limpieza s24",
+      "10859": "Perfumeria y Limpieza s24",
+      "10876": "Cuidado personal s25",
+      "10889": "Beauty week s26",
+      "10913": "Jabones s26",
+      "10918": "SD s26",
+      "10967": "Perfumería s27",
+      "10999": "Jabones dr s27",
+      "11042": "Hasta 30%",
+      "11044": "Perfumeria s28",
+      "11079": "Limpieza y perfumeria s29",
+      "11098": "Perfumeria y Limpieza s30",
+      "11140": "Perfumeria y Limpieza s31",
+      "11172": "Stockeate s32",
+      "11179": "Dove s32",
+      "11187": "Perfumeria DR s32",
+      "11194": "Jabones DR s32",
+      "11212": "Beauty Week s33",
+      "11216": "Cuidado Personal s33",
+      "11230": "Perfumeria y Limpieza SD s33",
+      "11243": "Perfumeria s34"
+    },
+    "searchableClusters": {
+      "572": "Ahorrames",
+      "632": "Exclusivo Online",
+      "9360": "Cybermonday 2025",
+      "10523": "Hot Sale 2026",
+      "10526": "Campeones de la Previa"
+    },
+    "categories": [
+      "/Perfumería/Jabones/Jabones líquidos/",
+      "/Perfumería/Jabones/",
+      "/Perfumería/"
+    ],
+    "categoriesIds": [
+      "/216/244/247/",
+      "/216/244/",
+      "/216/"
+    ],
+    "link": "https://diaonline.supermercadosdia.com.ar/jabon-liquido-para-manos-dove-nutricion-profunda-220-ml-refill-220-ml-294760/p",
+    "PrecioPorUnd": [
+      "18681.82"
+    ],
+    "UnidaddeMedida": [
+      "1 LT"
+    ],
+    "IVA": [
+      "21"
+    ],
+    "FOOD": [
+      "PrecioPorUnd",
+      "UnidaddeMedida",
+      "IVA"
+    ],
+    "items": [
+      {
+        "itemId": "294760",
+        "name": "Jabón Líquido Para Manos Dove Nutrición Profunda 220 Ml Refill 220 Ml.",
+        "nameComplete": "Jabón Líquido Para Manos Dove Nutrición Profunda 220 Ml Refill 220 Ml.",
+        "complementName": "",
+        "ean": "7791293046136",
+        "referenceId": [
+          {
+            "Key": "RefId",
+            "Value": "294760"
+          }
+        ],
+        "measurementUnit": "un",
+        "unitMultiplier": 1,
+        "modalType": "",
+        "isKit": false,
+        "images": [
+          {
+            "imageId": "342062",
+            "imageLabel": null,
+            "imageTag": "<img src=\"~/arquivos/ids/342062-#width#-#height#/Jabon-Liquido-Para-Manos-Dove-Nutricion-Profunda-220-Ml-Refill-220-Ml-_1.jpg?v=638708913453530000\" width=\"#width#\" height=\"#height#\" alt=\"Jabon-Liquido-Para-Manos-Dove-Nutricion-Profunda-220-Ml-Refill-220-Ml-_1\" id=\"\" />",
+            "imageUrl": "https://ardiaprod.vteximg.com.br/arquivos/ids/342062/Jabon-Liquido-Para-Manos-Dove-Nutricion-Profunda-220-Ml-Refill-220-Ml-_1.jpg?v=638708913453530000",
+            "imageText": "Jabon-Liquido-Para-Manos-Dove-Nutricion-Profunda-220-Ml-Refill-220-Ml-_1",
+            "imageLastModified": "2024-12-27T10:15:45.3530000Z"
+          }
+        ],
+        "sellers": [
+          {
+            "sellerId": "1",
+            "sellerName": "Supermercados DIA",
+            "addToCartLink": "https://diaonline.supermercadosdia.com.ar/checkout/cart/add?sku=294760&qty=1&seller=1&sc=1&price=267150&cv=_&sc=1",
+            "sellerDefault": true,
+            "commertialOffer": {
+              "DeliverySlaSamplesPerRegion": {
+                "0": {
+                  "DeliverySlaPerTypes": [],
+                  "Region": null
+                }
+              },
+              "Installments": [
+                {
+                  "Value": 2671.5,
+                  "InterestRate": 0,
+                  "TotalValuePlusInterestRate": 2671.5,
+                  "NumberOfInstallments": 1,
+                  "PaymentSystemName": "American Express",
+                  "PaymentSystemGroupName": "creditCardPaymentGroup",
+                  "Name": "American Express à vista"
+                },
+                {
+                  "Value": 2671.5,
+                  "InterestRate": 0,
+                  "TotalValuePlusInterestRate": 2671.5,
+                  "NumberOfInstallments": 1,
+                  "PaymentSystemName": "Visa",
+                  "PaymentSystemGroupName": "creditCardPaymentGroup",
+                  "Name": "Visa à vista"
+                }
+              ],
+              "DiscountHighLight": [
+                {
+                  "<Name>k__BackingField": "35%"
+                }
+              ],
+              "Teasers": [],
+              "PromotionTeasers": [],
+              "BuyTogether": [],
+              "Price": 2671.5,
+              "ListPrice": 4110,
+              "PriceWithoutDiscount": 4110,
+              "FullSellingPrice": 2671.5,
+              "PriceToken": "eyJhbGciOiJFUzI1NiIsImtpZCI6ImIzNDE2NGE2LTBjMDktNDg5MC04OTA0LTA0ZTZmMDZlYWU2YSIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InByaWNlIjoyNjcxNTAsInByaWNlV2l0aG91dERpc2NvdW50Ijo0MTEwMDAsInNlbGxlciI6IjEiLCJpZCI6IjI5NDc2MCIsImFjY291bnROYW1lIjoiZGlhaW8iLCJzYWxlc0NoYW5uZWwiOiIxIn0sImV4cCI6MTc4NzMyNDQyMSwiaWF0IjoxNzg3MzIyNjIxLCJqdGkiOiI2NGM2NDFiNC0zMzVhLTQ0YjQtYTBiZC01NDUxZTI5MzdiYjkiLCJpc3MiOiJzZXNzaW9uL2RhdGEtc2lnbmVyIn0.SAcuqdS4fFCram5gJ91qb1qZ9z5-rgmFDiLgdGDULS_LHvVvYgGXdCmGmzyr2AeBbDIH0qHCs0b2dOxcTHSmOA",
+              "PriceValidUntil": "2027-08-21T14:30:21Z",
+              "AvailableQuantity": 43,
+              "IsAvailable": true,
+              "Tax": 0,
+              "DeliverySlaSamples": [
+                {
+                  "DeliverySlaPerTypes": [],
+                  "Region": null
+                }
+              ],
+              "GetInfoErrorMessage": null
+            }
+          }
+        ],
+        "estimatedDateArrival": null
+      }
+    ]
+  }
+]

@@ -179,6 +179,92 @@ Coto is one of the largest Argentine chains but is **not VTEX** — it uses **Co
 - **Origen:** adaptación de la entrega de Prácticas Profesionalizantes de Thiago Coro (2026-08), que validó la necesidad de browser real; su scraping de DOM por click se reemplazó por el BFF.
 - Fixture: `scraper-tests/fixtures/santander-brand.json` (snapshot real del BFF); unit tests `npm run test:santander-unit` (normalización pura, sin red).
 
+### Scrapers de Dia y Vea (promociones + sucursales)
+
+Los 7 scrapers VTEX de **productos** (incluidos `diaonline.js` y `vea.js`) no cambian.
+Lo que se agregó son las **promociones** de ambas cadenas y las **sucursales** de Dia.
+
+**`scrapers/promos/dia.js` (`getDiaPromotions()`)** — API pública de VTEX, sin browser.
+Recorre las colecciones de oferta (`fq=productClusterIds:567` "Todas las Ofertas" y `7220`
+"Hasta 2x1") y deriva una promoción por cada:
+- **Teaser** (fuente primaria): `commertialOffer.Teasers` es el motor de promociones de VTEX
+  y ya entrega la promo estructurada — nombre (`2x1`, `3x2`, `6x4`, `2do al 70%`) y
+  `MinimumQuantity`. ⚠️ Los teasers vienen serializados con los nombres internos de .NET
+  (`<Name>k__BackingField`), no `Name`; `teaserField()` soporta ambas formas.
+- **`clusterHighlights`** (fallback): sólo para los productos sin teaser, igual que `jumbo_promos.js`.
+
+Cada promoción viaja con `sample_products` que **incluyen el EAN** (a diferencia de
+`jumbo_promos.js`), lo que permite cruzarlas con el catálogo. ⚠️ Los `clusterHighlights` de Dia
+son heterogéneos: hay clusters de catalogación ("Productos Sin Gluten") mezclados con ofertas
+reales. Se emiten igual, marcados con `promotion_kind` (`teaser` | `cluster`); el gate de
+`needs_review` del normalizador decide qué se publica. **No agregar una lista negra de nombres**:
+sería adivinar, y es justo la clase de heurística frágil que este scraper vino a reemplazar.
+⚠️ Los ids de colección son de Dia y pueden cambiar si rearman la landing; una colección que
+devuelve 0 productos **loguea un warning explícito** en vez de fallar en silencio.
+
+**`scrapers/promos/vea.js` (`getVeaPromotions()`)** — API pública, sin browser.
+Fuente: Master Data de Cencosud, entidad `JN`, documento `bankDiscount`
+(`/api/dataentities/JN/documents/bankDiscount?_fields=value,id&an=jumboargentina`).
+- El campo `value` es un **string con JSON adentro** (doble parse → `unwrapDocument()`).
+- El documento es **compartido por Vea, Disco y Jumbo**; cada promo declara sus sitios en
+  `websites[]` (con repetidos) y se filtra por `veaargentina`. **El mismo endpoint serviría
+  para Disco y Jumbo**: hoy `jumbo_promos.js` deriva las promos de Jumbo de `clusterHighlights`
+  (títulos crípticos tipo `VEA_visaymastercardtmpinst3x-mensualfam47sar`); migrarlo a esta
+  fuente es una mejora pendiente.
+- ⚠️ **`discount` y `discountText` NO son campos independientes**: son el número y su sufijo,
+  y la tarjeta los muestra **concatenados**. `discount=3.00` + `"cuotas sin interés"` es
+  *"3 cuotas sin interés"* — **no** un 3% de descuento; `discount=12` con texto de cuotas son
+  DOCE CUOTAS. Por eso se emite `etiqueta` (concatenación fiel, vía `buildDiscountLabel()`) y
+  `descuento_porcentaje`/`cuotas` sólo se completan cuando el sufijo desambigua
+  (`splitDiscount()`); ante un sufijo mixto (`"25% y 3 cuotas sin interés"`) quedan en null a
+  propósito. Un null explícito es preferible a un número con la unidad equivocada.
+- ⚠️ **`days` (1=lunes … 6=sábado) no es totalmente confiable**: lo carga un operador en el
+  backoffice de Cencosud. Hay al menos una promo cuyo `info` dice "Viernes, Sábado y Domingo"
+  mientras `days` trae sólo `["5","6"]`, y el valor domingo no aparece nunca en el dataset. Por
+  eso se emiten `dias` (derivado) **y** `info`/`legales` crudos: la fuente de verdad ante la
+  ambigüedad es el texto libre, que es lo que normaliza la IA (mismo criterio que `diasVigencia`
+  en Coto).
+- El dataset **no trae id por promoción** (el `id` es del documento contenedor, igual para las
+  193). `buildExternalId()` hashea (sha1, 12 chars) los campos invariantes — bancos, descuento,
+  cuotas, fechas, días — excluyendo `priority` y `stores`, que varían con la operación diaria.
+  Sin eso, cada corrida duplicaría la cola de normalización (y el gasto en tokens de IA).
+- Se descartan las promos ya vencidas (el dataset arrastra registros de 2022/2023); el recorte
+  fino por mes lo hace igual `AbstractScrapperPullProvider`.
+
+**`scrapers/stores/dia_stores.js` (`getDiaStores()`)** — **requiere Chromium**.
+Fuente: Master Data de VTEX, entidad `TI`, la misma que alimenta `/tiendas`.
+- ⚠️ **Por qué Puppeteer y no axios**: la ruta vive bajo `_v/private/` y responde **404** a
+  cualquier request sin la cookie de sesión VTEX que se emite al cargar la página. Se abre la
+  landing una vez con `puppeteer-core` y la llamada se hace con `fetch()` **dentro** del
+  contexto de la página — mismo patrón y misma razón que `scrapers/promos/santander.js`.
+  No se scrapea el DOM (las clases del tema son hashes por build).
+- ⚠️ El header **`rest-range: resources=0-4999` no es opcional**: sin él la entidad responde
+  404, no un 206 truncado como sería intuitivo. Junto con el parámetro `_where` son las dos
+  condiciones para que conteste.
+- ⚠️ **`geo` es un string `"longitud,latitud"` — longitud PRIMERO**, al revés que la entidad
+  `NT` de Jumbo (que usa `"lat,lng"`). Verificado contra el bounding box de Argentina sobre los
+  970 activos: 965 caen dentro leyendo `[lon,lat]` y **0** leyendo `[lat,lon]`. Invertirlo manda
+  todas las sucursales al Índico. Hay un test unitario que lo fija.
+- Cobertura: ~1000 registros / ~970 activos en 8 provincias (CABA, Buenos Aires, Entre Ríos,
+  Salta, Corrientes, Santa Fe, Córdoba, Jujuy), ~100% con coordenadas. Se descartan inactivos,
+  `bajaTemporal` y los que no tienen geo (`geo:"0"`), igual que `jumbo_stores.js`.
+- **Horarios**: el Master Data trae `hours` en null para casi todos los registros. La API pública
+  `/api/checkout/pub/pickup-points` sí los tiene (741 con horarios) **pero sólo cubre AMBA** (745
+  puntos, todos a <50 km de CABA) y no comparte identificador con el Master Data, así que no se
+  puede cruzar de forma confiable. Queda como gap documentado, no como bug.
+
+**Consumo desde Laravel**: `App\Services\PromotionsProviders\DiaService` y `VeaService`
+(`AbstractScrapperPullProvider`, mismo patrón que Jumbo/Coto) vía `GET /api/promotions/{dia,vea}`;
+sucursales vía `GET /api/stores/dia` → `StoreSyncService` (`php artisan stores:sync dia`).
+
+**Tests**: `npm run test:dia-vea-unit` (normalización pura, con fixtures reales, sin red).
+
+**Origen**: adaptación de la entrega de Prácticas Profesionalizantes de **Joaquin Alodi** (2026-08),
+que identificó las tres fuentes (`/especial-ofertas`, `/descuentos-del-dia`, `/tiendas`) y validó
+que las dos últimas no son server-rendered. Su implementación scrapeaba el DOM con Puppeteer y
+reconstruía las tarjetas por heurística de líneas de texto; acá se reemplazó por las APIs/Master
+Data que alimentan esas mismas páginas — mismo criterio que se aplicó a la entrega de Santander.
+
 ## Important Patterns
 
 ### Adding a New Scraper

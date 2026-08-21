@@ -17,8 +17,11 @@ import { getPatagoniaPromotions } from '../scrapers/promos/patagonia.js';
 import { getJumboPromotions } from '../scrapers/promos/jumbo_promos.js';
 import { getCotoPromotions } from '../scrapers/promos/coto.js';
 import { getSantanderPromotions } from '../scrapers/promos/santander.js';
+import { getDiaPromotions } from '../scrapers/promos/dia.js';
+import { getVeaPromotions } from '../scrapers/promos/vea.js';
 import { getJumboStores } from '../scrapers/stores/jumbo_stores.js';
 import { getCotoStores } from '../scrapers/stores/coto_stores.js';
+import { getDiaStores } from '../scrapers/stores/dia_stores.js';
 
 const router = Router();
 
@@ -32,11 +35,14 @@ const PROMOTION_SOURCES = {
   jumbo: getJumboPromotions,
   coto: getCotoPromotions,
   santander: getSantanderPromotions,
+  dia: getDiaPromotions,
+  vea: getVeaPromotions,
 };
 
 const STORE_SOURCES = {
   jumbo: getJumboStores,
   coto: getCotoStores,
+  dia: getDiaStores,
 };
 
 /**
