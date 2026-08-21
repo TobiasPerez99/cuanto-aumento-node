@@ -199,6 +199,18 @@ son heterogéneos: hay clusters de catalogación ("Productos Sin Gluten") mezcla
 reales. Se emiten igual, marcados con `promotion_kind` (`teaser` | `cluster`); el gate de
 `needs_review` del normalizador decide qué se publica. **No agregar una lista negra de nombres**:
 sería adivinar, y es justo la clase de heurística frágil que este scraper vino a reemplazar.
+
+⚠️ **Esperable: TODAS las promos de Dia caen en `needs_review` con motivo `dates_defaulted`.**
+El catálogo de VTEX no expone vigencia ni de las colecciones ni de los teasers, así que este
+scraper emite `start_date`/`end_date` en null (a propósito — no inventa fechas) y el normalizador
+las completa por defecto marcando la promo para revisión. Medido en la primera corrida de
+producción (2026-08-21): 15 de 16 normalizadas, las 15 con `is_active=0` esperando revisión
+manual en el backoffice; la 16ª ("Exclusivo Online", un cluster de canal sin descuento) ni
+siquiera se pudo normalizar. **No es un bug del scraper ni del normalizador**: es el gate
+funcionando — sin vigencia real, la promo no se publica sola. Vea no tiene este problema porque
+su Master Data sí trae `dateStart`/`dateEnd`, y por eso sus 26 se publicaron directo.
+Si alguna vez se quiere publicar Dia automáticamente, hay que conseguir la vigencia en origen;
+**no alcanza con relajar el gate**.
 ⚠️ Los ids de colección son de Dia y pueden cambiar si rearman la landing; una colección que
 devuelve 0 productos **loguea un warning explícito** en vez de fallar en silencio.
 
