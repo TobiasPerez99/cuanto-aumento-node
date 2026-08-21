@@ -31,7 +31,8 @@
     "test:masonline": "node scraper-tests/test-masonline.js",
     "test:farmacity": "node scraper-tests/test-farmacity.js",
     "test:coto-unit": "node --test scraper-tests/constructor.test.js scraper-tests/coto-promos.test.js scraper-tests/coto-stores.test.js",
-    "test:santander-unit": "node --test scraper-tests/santander-promos.test.js"
+    "test:santander-unit": "node --test scraper-tests/santander-promos.test.js",
+    "test:dia-vea-unit": "node --test scraper-tests/dia-stores.test.js scraper-tests/dia-promos.test.js scraper-tests/vea-promos.test.js"
   },
   "keywords": [
     "nodejs",

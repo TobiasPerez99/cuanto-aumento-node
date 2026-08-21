@@ -58,8 +58,8 @@ app.get('/', (req, res) => {
         'POST /api/scrape/cleanup - Limpiar jobs antiguos (autenticado)'
       ],
       data: [
-        'GET /api/promotions/:source - Promociones de mercadopago|patagonia|jumbo (autenticado)',
-        'GET /api/stores/:source - Sucursales de jumbo (autenticado)'
+        'GET /api/promotions/:source - Promociones de mercadopago|patagonia|jumbo|coto|santander|dia|vea (autenticado)',
+        'GET /api/stores/:source - Sucursales de jumbo|coto|dia (autenticado)'
       ]
     },
     scrapers_available: ['disco', 'carrefour', 'jumbo', 'vea', 'dia', 'masonline', 'farmacity', 'modo', 'mercadopago', 'patagonia', 'jumbopromos', 'jumbostores']
