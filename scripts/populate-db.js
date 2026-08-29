@@ -22,6 +22,7 @@ import { getDiaMainProducts } from '../scrapers/diaonline.js';
 import { getMasonlineMainProducts } from '../scrapers/masonline.js';
 import { getFarmacityMainProducts } from '../scrapers/farmacity.js';
 import { getCotoMainProducts } from '../scrapers/coto.js';
+import { getJosimarMainProducts } from '../scrapers/josimar.js';
 import { getModoBanks } from '../scrapers/banks/modo_bank.js';
 import { getMercadoPagoPromotions } from '../scrapers/promos/mercadopago.js';
 import { getPatagoniaPromotions } from '../scrapers/promos/patagonia.js';
@@ -29,6 +30,7 @@ import { getSantanderPromotions } from '../scrapers/promos/santander.js';
 import { getJumboPromotions } from '../scrapers/promos/jumbo_promos.js';
 import { getJumboStores } from '../scrapers/stores/jumbo_stores.js';
 import { getCotoStores } from '../scrapers/stores/coto_stores.js';
+import { getJosimarStores } from '../scrapers/stores/josimar_stores.js';
 
 // Importar notificador de Slack
 import { sendScrapingNotification } from '../services/slackNotifier.js';
@@ -43,6 +45,7 @@ export const SCRAPERS = {
   masonline: { fn: getMasonlineMainProducts, name: 'Masonline' },
   farmacity: { fn: getFarmacityMainProducts, name: 'Farmacity' },
   coto: { fn: getCotoMainProducts, name: 'Coto' },
+  josimar: { fn: getJosimarMainProducts, name: 'Josimar' },
   modo: { fn: getModoBanks, name: 'Modo Banks', type: 'bank' },
   mercadopago: { fn: getMercadoPagoPromotions, name: 'MercadoPago Promos', type: 'promo' },
   patagonia: { fn: getPatagoniaPromotions, name: 'Banco Patagonia Promos', type: 'promo' },
@@ -50,6 +53,7 @@ export const SCRAPERS = {
   jumbopromos: { fn: getJumboPromotions, name: 'Jumbo Promos', type: 'promo' },
   jumbostores: { fn: getJumboStores, name: 'Jumbo Stores', type: 'stores' },
   cotostores: { fn: getCotoStores, name: 'Coto Stores', type: 'stores' },
+  josimarstores: { fn: getJosimarStores, name: 'Josimar Stores', type: 'stores' },
 };
 
 // Tipos de scraper que NO usan modo y devuelven shapes propios (no {totalProducts})

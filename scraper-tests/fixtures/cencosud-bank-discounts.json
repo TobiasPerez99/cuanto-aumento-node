@@ -1,0 +1,757 @@
+[
+  {
+    "banks": [
+      {
+        "refId": null,
+        "name": "MODO",
+        "image": "http://jumboargentina.vteximg.com.br/arquivos/LOGO-MODO-NUEVO-2024.png",
+        "order": "54"
+      }
+    ],
+    "checkout": false,
+    "collections": [],
+    "dateEnd": "1788231600",
+    "dateStart": "1782874800",
+    "days": [
+      "5"
+    ],
+    "discount": "20.00",
+    "discountText": "%",
+    "info": "Válido para pagos efectuados mediante la billetera MODO con tarjetas de débito adheridas o con tarjetas de crédito adheridas en 1 (una) cuota. El beneficio es acumulable con otras promociones vigentes que apliquen pagando con MODO. Se otorgará un reintegro conforme las condiciones de cada entidad financiera adherida, con un tope máximo de reintegro de $25.000 por banco, por usuario y por mes calendario, para compras iguales o superiores a $100.000.\r\nEl tope de reintegro es único y compartido con canal de venta, por lo que las compras efectuadas por cualquier modalidad acumularán para el mismo límite máximo de beneficio mensual.\r\nLas promociones con MODO  no se encuentran disponibles para compras realizadas en la localidad de Pilar, debido a la aplicación de la Tasa de Protección Ambiental Municipal del Partido de Pilar.",
+    "installmentsText": "en compras iguales o superiores a $100.000  ",
+    "legals": "Promoción válida en la República Argentina los días viernes, del 01/07/2026 al 31/08/2026 inclusive, para compras realizadas en comercios adheridos participantes, tanto en modalidad presencial como online. Válido para pagos efectuados mediante la billetera MODO con tarjetas de débito adheridas o con tarjetas de crédito adheridas en 1 (una) cuota. El beneficio es acumulable con otras promociones vigentes que apliquen pagando con MODO. Se otorgará un reintegro conforme las condiciones de cada entidad financiera adherida, con un tope máximo de reintegro de $25.000 por banco, por usuario y por mes calendario, para compras iguales o superiores a $100.000. La promoción aplica exclusivamente a usuarios titulares de una cuenta bancaria en la entidad emisora de la tarjeta utilizada para efectuar el pago. Los usuarios que operen a través de la aplicación MODO deberán tener asociada la cuenta bancaria correspondiente. Para más información sobre condiciones, comercios y bancos adheridos, limitaciones y exclusiones, consultar en www.modo.com.ar/promos.\r\nMODO es un servicio prestado por Play Digital S.A., CUIT 30-71682943-6, con domicilio en La Pampa 1445, Piso 13°, Ciudad Autónoma de Buenos Aires. El tope de reintegro es único y compartido con canal de venta, por lo que las compras efectuadas por cualquier modalidad acumularán para el mismo límite máximo de beneficio mensual.\r\nLas promociones con MODO  no se encuentran disponibles para compras realizadas en la localidad de Pilar, debido a la aplicación de la Tasa de Protección Ambiental Municipal del Partido de Pilar.",
+    "paymentMethod": {
+      "Débito": {
+        "type": "debit",
+        "image": null
+      }
+    },
+    "priority": "2",
+    "isExclusive": false,
+    "websites": [
+      "veaargentina",
+      "veaargentina",
+      "veaargentina",
+      "veaargentina",
+      "veaargentina",
+      "veaargentina"
+    ],
+    "stores": [],
+    "excludedStores": []
+  },
+  {
+    "banks": [
+      {
+        "refId": null,
+        "name": "CencoPay",
+        "image": "http://jumboargentina.vteximg.com.br/arquivos/cencopay1.png",
+        "order": "38"
+      }
+    ],
+    "checkout": false,
+    "collections": [],
+    "dateEnd": "1788231600",
+    "dateStart": "1782874800",
+    "days": [
+      "4"
+    ],
+    "discount": "25.00",
+    "discountText": "% y 3 cuotas sin interés",
+    "info": "PROMOCIONES VÁLIDAS PARA COMPRAS REALIZADAS LOS DÍAS JUEVES DEL 01/07/2026 AL 31/08/2026 EN LA REPÚBLICA ARGENTINA CON TARJETA DE CRÉDITO CENCOPAY.\r\n25% y 3 CUOTAS SIN INTERES EN PRODUCTOS SELECCIONADOS DE LAS SECCIONES GALLETITAS, CHOCOLATES, GOLOSINAS, CONSERVA DE FRUTAS Y VERDURAS Y CERVEZAS.",
+    "installmentsText": "en Galletitas, Chocolates y más",
+    "legals": "PARA MÁS INFORMACIÓN Y CONDICIONES O LIMITACIONES APLICABLES, CONSULTE EN CENCOPAY.AR PROMOCIONES VÁLIDAS PARA COMPRAS REALIZADAS LOS DÍAS JUEVES DEL 01/07/2026 AL 31/08/2026 EN LA REPÚBLICA ARGENTINA CON TARJETA DE CRÉDITO CENCOPAY. NO ACUMULABLES CON OTRAS PROMOCIONES Y/O DESCUENTOS. ESTAS PROMOCIONES NO APLICAN PARA CLIENTES EN MORA O INHABILITADOS, TAMPOCO APLICA PARA PAGOS REALIZADOS CON QR NI PARA COMPRAS EN LOS LOCALES \"VEA EXPRESS\". (1) PROMOCIÓN VÁLIDA EN LOS LOCALES HABILITADOS Y SITIOS WEB DE VEA, OBTENIENDO UN 25% DE DESCUENTO EN PRODUCTOS SELECCIONADOS DE LAS SECCIONES GALLETITAS, CHOCOLATES, GOLOSINAS, CONSERVA DE FRUTAS Y VERDURAS Y CERVEZAS. EN LOS LOCALES Y SITIO WEB DE VEA NO INCLUYE PRODUCTOS SEÑALIZADOS CON CARTEL PRECIAZOS. EL DESCUENTO SE EFECTIVIZARÁ EN EL CHECK OUT (2) PROMOCIÓN VÁLIDA LOS DIAS JUEVES EN LOS LOCALES HABILITADOS Y SITIOS WEB DE VEA, OBTENIENDO SOLO 3 CUOTAS SIN INTERÉS EN TODA LA COMPRA. ESTA PROMOCIÓN NO APLICA PARA CLIENTES EN MORA O INHABILITADOS. (2) PLAN 3: TASA NOMINAL ANUAL: 0,0%, TASA EFECTIVA ANUAL: 0,0%, COSTO FINANCIERO TOTAL NOMINAL ANUAL: 0,0%. SISTEMA FRANCÉS DE AMORTIZACIÓN MENSUAL EL COSTO FINANCIERO TOTAL SE EXPRESA COMO TASA NOMINAL ANUAL CORRESPONDIENTE AL FLUJO DE FONDOS CONSIDERADO. EL COSTO FINANCIERO TOTAL NOMINAL ANUAL NO INCLUYE LA COMISIÓN MENSUAL DE ADMINISTRACIÓN DE CUENTA NI COSTOS ASOCIADOS AL MANTENIMIENTO DE LA TARJETA. CONSULTE TÉRMINOS Y CONDICIONES, COMISIONES Y CARGOS VIGENTES ASOCIADOS A SU CUENTA AL 0810-9999-627 O EN CENCOPAY.AR/. EL USO INDEBIDO DE LA PROMOCIÓN PODRÁ SER SANCIONADO CON SUSPENSIÓN, INHABILITACIÓN O CESE DE LA CUENTA DIGITAL, AMPARADO EN EL APARTADO QUINTO DE LOS TÉRMINOS Y CONDICIONES. SE CONSIDERARÁ USO INDEBIDO DE LA PROMOCIÓN AQUEL USO EN EL QUE SE DETECTEN DOS O MAS CORTES TICKET DE COMPRA CON EL FIN DE SUMAR DESCUENTOS, YA HABIENDO OBTENIDO ESTE EN LA PRIMERA TRANSACCIÓN REALIZADA. SE DEJA CONSTANCIA QUE CENCOSUD S.A. SE LIMITA A OFRECER SERVICIOS DE PAGO Y NO SE ENCUENTRA AUTORIZADA A OPERAR COMO ENTIDAD FINANCIERA POR EL BANCO CENTRAL DE LA REPÚBLICA ARGENTINA. LOS FONDOS DEPOSITADOS EN CUENTAS DE PAGO NO CONSTITUYEN DEPÓSITOS EN UNA ENTIDAD FINANCIERA.  CENCOSUD S.A. CUIT 30-59036076-3, SUIPACHA 1111, PISO 18, CABA (DOM. NO COMERCIAL). ",
+    "paymentMethod": {
+      "Crédito": {
+        "type": "credit",
+        "image": null
+      }
+    },
+    "priority": "2",
+    "isExclusive": false,
+    "websites": [
+      "veaargentina",
+      "veaargentina",
+      "veaargentina",
+      "veaargentina",
+      "veaargentina"
+    ],
+    "stores": [],
+    "excludedStores": []
+  },
+  {
+    "banks": [
+      {
+        "refId": null,
+        "name": "Medios de Pago",
+        "image": "http://jumboargentina.vteximg.com.br/arquivos/jubilados-jumbo.png",
+        "order": "14"
+      }
+    ],
+    "checkout": false,
+    "collections": [],
+    "dateEnd": "1798772280",
+    "dateStart": "1617246000",
+    "days": [
+      "3"
+    ],
+    "discount": "10.00",
+    "discountText": "",
+    "info": "Comprando los días Miércoles. Exclusivo para compras presenciales  y compras telefónicas llamando al 0810-777-8888 |10% Descuento para Jubilados y mayores de 60 años. Abonando con cualquier medio de pago. Presentando tu Jumbo+ \r\nVálido en las sucursales de CÓRDOBA. Solo para consumidor final.\t\t\t\t\t\t\t\t\t\t\t\t\t\t\r\nNo acumulable con otras ofertas o promociones vigentes.\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
+    "installmentsText": "15% abonando con Cencopay",
+    "legals": "JUBILADOS: 10% de descuento exclusivo para Jubilados y mayores de 60 años, válido todos los miércoles para compras presenciales en los locales Disco habilitados de la provincia de Córdoba y para compras realizadas en Disco.com.ar. Deberán acreditar su condición presentando DNI, LC, LE, CI, documentación de ANSES o PAMI y, para menores de 60 años, recibo de haberes. Válido únicamente para consumidor final. El descuento se efectivizará en la línea de cajas para compras presenciales. No incluye productos del sector Electro ni las siguientes bodegas y marcas: La Rural, Rutini Wines, Leoncio Arizu, Chandon, Terrazas de los Andes, Valmont, Latitud 33, Catena Zapata, Mercier, Baron B, Escorihuela Gascón y vinos en BRIK.\r\nCENCOPAY: Descuento exclusivo para Jubilados. Deberán acreditar su condición presentando DNI, LC, LE, CI, documentación de ANSES o PAMI y, para menores de 60 años, recibo de haberes. Promoción válida para compras realizadas con Cencopay, con un 15% de descuento, únicamente los días miércoles, para compras presenciales en los locales Disco habilitados de la provincia de Córdoba y para compras realizadas en Disco.com.ar. No incluye productos del sector Electro ni las siguientes bodegas y marcas: Chandon, Terrazas de los Andes, La Rural, Leoncio Arizu, Rutini Wines, Valmont, Latitud 33, Catena Zapata, Mercier, Baron B, Escorihuela Gascón y vinos en BRIK. Descuento no acumulable con otras promociones y/o descuentos. El descuento se efectivizará en la línea de cajas para compras presenciales. Aplican las condiciones financieras vigentes de Cencopay.\r\n \r\nTexto resumen:\r\nTodos los miércoles, 10% de descuento para Jubilados y mayores de 60 años presentando tu Jumbo+. Válido para compras presenciales, en Disco.com.ar y telefónicas (0810-777-8888), en las sucursales de Córdoba. Exclusivo para consumidor final. No acumulable con otras ofertas o promociones vigentes.",
+    "paymentMethod": {
+      "Crédito": {
+        "type": "credit",
+        "image": null
+      },
+      "Débito": {
+        "type": "debit",
+        "image": null
+      }
+    },
+    "priority": "18",
+    "isExclusive": false,
+    "websites": [
+      "discoargentina",
+      "discoargentina",
+      "discoargentina",
+      "discoargentina",
+      "discoargentina",
+      "discoargentina"
+    ],
+    "stores": [
+      {
+        "refId": "28",
+        "name": "9028 - Disco Vélez Sarsfield.              "
+      },
+      {
+        "refId": "60",
+        "name": "9060 - Disco Córdoba Shopping.             "
+      },
+      {
+        "refId": "233",
+        "name": "9233 - Disco Carlos Paz                   "
+      },
+      {
+        "refId": "33",
+        "name": "9033 - Disco Alta Córdoba.                 _inactiva"
+      },
+      {
+        "refId": "583",
+        "name": "9583 - Disco SM 583 - Villa Allende.       "
+      },
+      {
+        "refId": "725",
+        "name": "9725 - Disco Alta Gracia.                  "
+      },
+      {
+        "refId": "842",
+        "name": "9842 - Disco Cruz del Eje.                 "
+      },
+      {
+        "refId": "843",
+        "name": "9843 - Disco Rio Ceballos.                 "
+      },
+      {
+        "refId": "954",
+        "name": "9954 - Disco Alta Gracia II                "
+      },
+      {
+        "refId": "452",
+        "name": "9452 - Disco La Falda.                     "
+      },
+      {
+        "refId": "456",
+        "name": "9456 - Disco Jesús María.                  "
+      }
+    ],
+    "excludedStores": []
+  },
+  {
+    "banks": [
+      {
+        "refId": null,
+        "name": "CencoPay Cuenta",
+        "image": "http://jumboargentina.vteximg.com.br/arquivos/cencopaycuenta1.png",
+        "order": "64"
+      }
+    ],
+    "checkout": false,
+    "collections": [],
+    "dateEnd": "1788231600",
+    "dateStart": "1778209200",
+    "days": [
+      "1"
+    ],
+    "discount": "25.00",
+    "discountText": "%",
+    "info": "PROMOCIÓN VÁLIDA CON CENCOPAY CUENTA EXCLUSIVO PRESENCIAL.TODOS LOS LUNES DESDE EL 01/07/2026 AL 31/08/2026 EN LOS LOCALES HABILITADOS.",
+    "installmentsText": "de Reintegro, con tope de $15.000",
+    "legals": "PROMOCIÓN VÁLIDA CON CENCOPAY CUENTA EXCLUSIVO PRESENCIAL. TODOS LOS LUNES DESDE EL 01/07/2026 AL 31/08/2026 EN LOS LOCALES HABILITADOS  DEL PAÍS, OBTENIENDO UN 25% DE DESCUENTO EN TODA LA COMPRA. TOPE DE REINTEGRO $15.000( QUINCE MIL PESOS ARGENTINOS) POR MES. NO INCLUYE ELECTRODOMÉSTICOS. EL REINTEGRO PODRÁ APLICAR HASTA 10 DÍAS HÁBILES POSTERIORES A LA COMPRA. ESTA PROMOCIÓN NO APLICA PARA COMPRAS REALIZADAS EN LOS LOCALES \"VEA EXPRESS Y DISCO EXPRESS\". NO ACUMULABLE CON OTRAS PROMOCIONES Y/O DESCUENTOS.",
+    "paymentMethod": {
+      "Crédito": {
+        "type": "credit",
+        "image": null
+      }
+    },
+    "priority": "3",
+    "isExclusive": false,
+    "websites": [
+      "veaargentina",
+      "veaargentina",
+      "veaargentina",
+      "discoargentina",
+      "discoargentina",
+      "discoargentina",
+      "jumboargentina",
+      "jumboargentina",
+      "jumboargentina",
+      "jumboargentinaio",
+      "jumboargentinaio"
+    ],
+    "stores": [],
+    "excludedStores": []
+  },
+  {
+    "banks": [
+      {
+        "refId": null,
+        "name": "CencoPay",
+        "image": "http://jumboargentina.vteximg.com.br/arquivos/cencopay1.png",
+        "order": "38"
+      }
+    ],
+    "checkout": false,
+    "collections": [],
+    "dateEnd": "1788231540",
+    "dateStart": "1751338800",
+    "days": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6"
+    ],
+    "discount": "3.00",
+    "discountText": ",6 y 12 Cuotas sin Interés",
+    "info": " PROMOCIÓN VÁLIDA CON LA TARJETA DE CRÉDITO FÍSICA CENCOPAY TODOS LOS DÍAS DESDE EL 01/01/2026 AL 31/08/2026. ELECTROS SELECCIONADOS.\r\n",
+    "installmentsText": "en Electrodomésticos seleccionados.",
+    "legals": "PARA MÁS INFORMACIÓN Y CONDICIONES O LIMITACIONES APLICABLES, CONSULTE EN CENCOPAY.AR PROMOCIONES VÁLIDAS PARA COMPRAS REALIZADAS DEL 01/01/2026 AL 31/08/2026 EN LA REPÚBLICA ARGENTINA CON TARJETA DE CRÉDITO FÍSICA CENCOPAY. NO ACUMULABLES CON OTRAS PROMOCIONES Y/O DESCUENTOS. ESTAS PROMOCIONES NO APLICAN PARA CLIENTES EN MORA O INHABILITADOS, TAMPOCO APLICA PARA PAGOS REALIZADOS CON QR NI PARA COMPRAS EN LOS LOCALES \"VEA EXPRESS Y DISCO EXPRESS\". (1) PROMOCIÓN VÁLIDA EN LOS LOCALES HABILITADOS Y SITIOS WEB OBTENIENDO 3, 6 Y 12 CUOTAS SIN INTERÉS EN ELECTRODOMÉSTICOS SELECCIONADOS. (1) PLAN 3, 6 Y 12 RESPECTIVAMENTE: TASA NOMINAL ANUAL: 0,0%, TASA EFECTIVA ANUAL: 0,0%, COSTO FINANCIERO TOTAL NOMINAL ANUAL: 0,0%. SISTEMA FRANCÉS DE AMORTIZACIÓN MENSUAL EL COSTO FINANCIERO TOTAL SE EXPRESA COMO TASA NOMINAL ANUAL CORRESPONDIENTE AL FLUJO DE FONDOS CONSIDERADO. EL COSTO FINANCIERO TOTAL NOMINAL ANUAL NO INCLUYE LA COMISIÓN MENSUAL DE ADMINISTRACIÓN DE CUENTA NI COSTOS ASOCIADOS AL MANTENIMIENTO DE LA TARJETA. CONSULTE TÉRMINOS Y CONDICIONES, COMISIONES Y CARGOS VIGENTES ASOCIADOS A SU CUENTA AL 0810-9999-627 O EN CENCOPAY.AR/. EL USO INDEBIDO DE LA PROMOCIÓN PODRÁ SER SANCIONADO CON SUSPENSIÓN, INHABILITACIÓN O CESE DE LA CUENTA DIGITAL, AMPARADO EN EL APARTADO QUINTO DE LOS TÉRMINOS Y CONDICIONES. SE CONSIDERARÁ USO INDEBIDO DE LA PROMOCIÓN AQUEL USO EN EL QUE SE DETECTEN DOS O MAS CORTES TICKET DE COMPRA CON EL FIN DE SUMAR DESCUENTOS, YA HABIENDO OBTENIDO ESTE EN LA PRIMERA TRANSACCIÓN REALIZADA. SE DEJA CONSTANCIA QUE CENCOSUD S.A. SE LIMITA A OFRECER SERVICIOS DE PAGO Y NO SE ENCUENTRA AUTORIZADA A OPERAR COMO ENTIDAD FINANCIERA POR EL BANCO CENTRAL DE LA REPÚBLICA ARGENTINA. LOS FONDOS DEPOSITADOS EN CUENTAS DE PAGO NO CONSTITUYEN DEPÓSITOS EN UNA ENTIDAD FINANCIERA. CENCOSUD S.A. CUIT 30-59036076-3, SUIPACHA 1111, PISO 18, CABA (DOM. NO COMERCIAL).",
+    "paymentMethod": {
+      "Crédito": {
+        "type": "credit",
+        "image": null
+      }
+    },
+    "priority": "3",
+    "isExclusive": false,
+    "websites": [
+      "veaargentina",
+      "veaargentina",
+      "veaargentina",
+      "veaargentina",
+      "veaargentina",
+      "discoargentina",
+      "discoargentina",
+      "discoargentina",
+      "discoargentina",
+      "discoargentina",
+      "discoargentina",
+      "discoargentina",
+      "jumboargentina",
+      "jumboargentina",
+      "jumboargentina",
+      "jumboargentinaio",
+      "jumboargentinaio",
+      "jumboargentinaio"
+    ],
+    "stores": [],
+    "excludedStores": []
+  },
+  {
+    "banks": [
+      {
+        "refId": null,
+        "name": "CencoPay",
+        "image": "http://jumboargentina.vteximg.com.br/arquivos/cencopay1.png",
+        "order": "38"
+      }
+    ],
+    "checkout": false,
+    "collections": [],
+    "dateEnd": "1788231600",
+    "dateStart": "1738378740",
+    "days": [
+      "4"
+    ],
+    "discount": "18.00",
+    "discountText": "CSI o 15% y 12CSI",
+    "info": "18 CSI Ó 12 CSI Y 15% EN UN PAGO EN COMPRAS REALIZADAS CON TARJETA DE CRÉDITO FÍSICA CENCOPAY. SOLO LOS DÍAS JUEVES EN LOS LOCALES HABILITADOS Y SITIOS WEB. EXCLUYE PEQUEÑOS ELECTROS Y CALEFACCIÓN.",
+    "installmentsText": "Electro",
+    "legals": "PARA MÁS INFORMACIÓN Y CONDICIONES O LIMITACIONES APLICABLES, CONSULTE EN CENCOPAY.AR PROMOCIONES VÁLIDAS PARA COMPRAS REALIZADAS LOS JUEVES DEL 01/07/2026 AL 31/08/2026 EN LA REPÚBLICA ARGENTINA CON TARJETA DE CRÉDITO FÍSICA CENCOPAY. NO ACUMULABLES CON OTRAS PROMOCIONES Y/O DESCUENTOS. ESTAS PROMOCIONES NO APLICAN PARA CLIENTES EN MORA O INHABILITADOS, TAMPOCO APLICA PARA PAGOS REALIZADOS CON QR NI PARA COMPRAS EN LOS LOCALES \"VEA EXPRESS Y DISCO EXPRESS\".  (1) PROMOCIÓN VÁLIDA EN LOS LOCALES HABILITADOS Y SITIOS WEB OBTENIENDO 18 CUOTAS SIN INTERÉS EN TODA LA COMPRA DE ELECTRODOMÉSTICOS. EXCLUYE PEQUEÑOS ELECTROS Y CALEFACCION. (2) PROMOCIÓN VÁLIDA EN LOS LOCALES HABILITADOS Y SITIOS WEB OBTENIENDO UN 15% DE DESCUENTO ABONANDO EN 12 CUOTAS SIN INTERÉS EN TU COMPRA DE ELECTRODOMÉSTICOS. EXCLUYE PEQUEÑOS ELECTROS Y CALEFACCIÓN. EL DESCUENTO SE EFECTIVIZARÁ EN EL CHECK OUT. (1)(2) PLAN 12 Y 18 RESPECTIVAMENTE: TASA NOMINAL ANUAL: 0,0%, TASA EFECTIVA ANUAL: 0,0%, COSTO FINANCIERO TOTAL NOMINAL ANUAL: 0,0%. SISTEMA FRANCÉS DE AMORTIZACIÓN MENSUAL EL COSTO FINANCIERO TOTAL SE EXPRESA COMO TASA NOMINAL ANUAL CORRESPONDIENTE AL FLUJO DE FONDOS CONSIDERADO. EL COSTO FINANCIERO TOTAL NOMINAL ANUAL NO INCLUYE LA COMISIÓN MENSUAL DE ADMINISTRACIÓN DE CUENTA NI COSTOS ASOCIADOS AL MANTENIMIENTO DE LA TARJETA. CONSULTE TÉRMINOS Y CONDICIONES, COMISIONES Y CARGOS VIGENTES ASOCIADOS A SU CUENTA AL 0810-9999-627 O EN CENCOPAY.AR/. EL USO INDEBIDO DE LA PROMOCIÓN PODRÁ SER SANCIONADO CON SUSPENSIÓN, INHABILITACIÓN O CESE DE LA CUENTA DIGITAL, AMPARADO EN EL APARTADO QUINTO DE LOS TÉRMINOS Y CONDICIONES. SE CONSIDERARÁ USO INDEBIDO DE LA PROMOCIÓN AQUEL USO EN EL QUE SE DETECTEN DOS O MAS CORTES TICKET DE COMPRA CON EL FIN DE SUMAR DESCUENTOS, YA HABIENDO OBTENIDO ESTE EN LA PRIMERA TRANSACCIÓN REALIZADA. SE DEJA CONSTANCIA QUE CENCOSUD S.A. SE LIMITA A OFRECER SERVICIOS DE PAGO Y NO SE ENCUENTRA AUTORIZADA A OPERAR COMO ENTIDAD FINANCIERA POR EL BANCO CENTRAL DE LA REPÚBLICA ARGENTINA. LOS FONDOS DEPOSITADOS EN CUENTAS DE PAGO NO CONSTITUYEN DEPÓSITOS EN UNA ENTIDAD FINANCIERA.  CENCOSUD S.A. CUIT 30-59036076-3, SUIPACHA 1111, PISO 18, CABA (DOM. NO COMERCIAL). ",
+    "paymentMethod": {
+      "Crédito": {
+        "type": "credit",
+        "image": null
+      }
+    },
+    "priority": "2",
+    "isExclusive": false,
+    "websites": [
+      "veaargentina",
+      "veaargentina",
+      "veaargentina",
+      "veaargentina",
+      "veaargentina",
+      "discoargentina",
+      "discoargentina",
+      "discoargentina",
+      "discoargentina",
+      "discoargentina",
+      "jumboargentinaio",
+      "jumboargentinaio",
+      "jumboargentinaio",
+      "jumboargentinaio",
+      "jumboargentina",
+      "jumboargentina",
+      "jumboargentina"
+    ],
+    "stores": [],
+    "excludedStores": []
+  },
+  {
+    "banks": [
+      {
+        "refId": null,
+        "name": "CencoPay",
+        "image": "http://jumboargentina.vteximg.com.br/arquivos/cencopay1.png",
+        "order": "38"
+      }
+    ],
+    "checkout": false,
+    "collections": [],
+    "dateEnd": "1788231540",
+    "dateStart": "1769914800",
+    "days": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6"
+    ],
+    "discount": "3.00",
+    "discountText": "cuotas sin interés",
+    "info": "PROMOCIONES VÁLIDAS PARA COMPRAS REALIZADAS DESDE EL 01/02/2026 AL 31/08/2026 EN LA REPÚBLICA ARGENTINA CON TARJETA DE CRÉDITO FÍSICA CENCOPAY. NO ACUMULABLES CON OTRAS PROMOCIONES Y/O DESCUENTOS.",
+    "installmentsText": "en Toda la Compra Online",
+    "legals": "PARA MÁS INFORMACIÓN Y CONDICIONES O LIMITACIONES APLICABLES, CONSULTE EN CENCOPAY.AR PROMOCIONES VÁLIDAS PARA COMPRAS REALIZADAS TODOS LOS DIAS DESDE EL 01/02/2026 AL 31/08/2026 EN LA REPÚBLICA ARGENTINA CON TARJETA DE CRÉDITO FÍSICA CENCOPAY. NO ACUMULABLES CON OTRAS PROMOCIONES Y/O DESCUENTOS. ESTAS PROMOCIONES NO APLICAN PARA CLIENTES EN MORA O INHABILITADOS, TAMPOCO APLICA PARA PAGOS REALIZADOS CON QR NI PARA COMPRAS EN LOS LOCALES \"VEA EXPRESS Y DISCO EXPRESS\".   (1) PROMOCIÓN VÁLIDA EN LOS SITIOS WEB OBTENIENDO SOLO 3 CUOTAS SIN INTERÉS EN TODA LA COMPRA. (1) PLAN 3: TASA NOMINAL ANUAL: 0,0%, TASA EFECTIVA ANUAL: 0,0%, COSTO FINANCIERO TOTAL NOMINAL ANUAL: 0,0%. SISTEMA FRANCÉS DE AMORTIZACIÓN MENSUAL EL COSTO FINANCIERO TOTAL SE EXPRESA COMO TASA NOMINAL ANUAL CORRESPONDIENTE AL FLUJO DE FONDOS CONSIDERADO. EL COSTO FINANCIERO TOTAL NOMINAL ANUAL NO INCLUYE LA COMISIÓN MENSUAL DE ADMINISTRACIÓN DE CUENTA NI COSTOS ASOCIADOS AL MANTENIMIENTO DE LA TARJETA. CONSULTE TÉRMINOS Y CONDICIONES, COMISIONES Y CARGOS VIGENTES ASOCIADOS A SU CUENTA AL 0810-9999-627 O EN CENCOPAY.AR/. EL USO INDEBIDO DE LA PROMOCIÓN PODRÁ SER SANCIONADO CON SUSPENSIÓN, INHABILITACIÓN O CESE DE LA CUENTA DIGITAL, AMPARADO EN EL APARTADO QUINTO DE LOS TÉRMINOS Y CONDICIONES. SE CONSIDERARÁ USO INDEBIDO DE LA PROMOCIÓN AQUEL USO EN EL QUE SE DETECTEN DOS O MAS CORTES TICKET DE COMPRA CON EL FIN DE SUMAR DESCUENTOS, YA HABIENDO OBTENIDO ESTE EN LA PRIMERA TRANSACCIÓN REALIZADA. SE DEJA CONSTANCIA QUE CENCOSUD S.A. SE LIMITA A OFRECER SERVICIOS DE PAGO Y NO SE ENCUENTRA AUTORIZADA A OPERAR COMO ENTIDAD FINANCIERA POR EL BANCO CENTRAL DE LA REPÚBLICA ARGENTINA. LOS FONDOS DEPOSITADOS EN CUENTAS DE PAGO NO CONSTITUYEN DEPÓSITOS EN UNA ENTIDAD FINANCIERA.  CENCOSUD S.A. CUIT 30-59036076-3, SUIPACHA 1111, PISO 18, CABA (DOM. NO COMERCIAL).",
+    "paymentMethod": {
+      "Crédito": {
+        "type": "credit",
+        "image": null
+      }
+    },
+    "priority": "10",
+    "isExclusive": true,
+    "websites": [
+      "veaargentina",
+      "veaargentina",
+      "veaargentina",
+      "veaargentina",
+      "veaargentina",
+      "veaargentina",
+      "veaargentina",
+      "discoargentina",
+      "discoargentina",
+      "discoargentina",
+      "discoargentina",
+      "jumboargentina",
+      "jumboargentina",
+      "jumboargentina",
+      "jumboargentinaio",
+      "jumboargentinaio",
+      "jumboargentinaio"
+    ],
+    "stores": [],
+    "excludedStores": []
+  },
+  {
+    "banks": [
+      {
+        "refId": null,
+        "name": "Amex",
+        "image": "http://jumboargentina.vteximg.com.br/arquivos/logo-amex-jumbo.png",
+        "order": "37"
+      }
+    ],
+    "checkout": false,
+    "collections": [],
+    "dateEnd": "1788231600",
+    "dateStart": "1769914800",
+    "days": [
+      "4"
+    ],
+    "discount": "100.00",
+    "discountText": "mil $",
+    "info": "VÁLIDO HACIENDO TU COMPRA CUALQUIER DÍA Y PROGRAMANDO LA ENTREGA LOS DÍAS JUEVES DEL MES, EN EL CASO DE COMPRAS ONLINE. VÁLIDO PARA COMPRAS POR UN UNA SUMA IGUAL O SUPERIOR A TOTAL DE $400.000 EN EL MES, ABONARLAS EN SU TOTALIDAD CON LA TARJETA Y RECIBIRÁN UN REINTEGRO POR $100.000 POR MES POR CUENTA. \r\nNO INCLUYE ELECTRO, CARNES, BODEGAS LA RURAL, RUTINI WINES, LEONCIO ARIZU, CHANDON, TERRAZAS DE LOS ANDES, VALMONT, LATITUD 33, CATENA ZAPATA, MERCIER Y BARON B, ESCORIHUELA GASCON, CLOS DE LOS SIETE, ÁLAMOS, EL ENEMIGO Y BRIK.NO ACUMULABLE CON OTRAS PROMOCIONES Y/O DESCUENTOS VIGENTES",
+    "installmentsText": "de reintegro en compras mensuales mayores a $400.000 en el mes",
+    "legals": "BENEFICIO VÁLIDO EN LA REPÚBLICA ARGENTINA PARA SOCIOS DE TARJETAS PERSONALES “THE PLATINUM CARD” –TITULARES O ADICIONALES- EMITIDAS Y ADMINISTRADAS POR AMERICAN EXPRESS ARGENTINA S.A (LOS “SOCIOS” Y LAS “TARJETAS”) ÚNICAMENTE (I) PROGRAMANDO LA ENTREGA DE LAS COMPRAS PARA LOS DÍAS JUEVES DEL MES, EN EL CASO DE COMPRAS ONLINE Y/O (II) COMPRANDO LOS DÍAS JUEVES DE MANERA PRESENCIAL. PARA ACCEDER AL BENEFICIO, LOS SOCIOS DEBERÁN REALIZAR COMPRAS POR UN UNA SUMA IGUAL O SUPERIOR A TOTAL DE $400.000 (PESOS CUATROCIENTOS MIL) EN EL MES, ABONARLAS EN SU TOTALIDAD CON LA TARJETA Y RECIBIRÁN UN REINTEGRO POR $100.000 (PESOS CIEN MIL) POR MES POR CUENTA. EL REINTEGRO SE VERÁ REFLEJADO EN LA CUENTA DEL SOCIO TITULAR DENTRO DE LOS PRÓXIMOS DOS RESÚMENES DE REALIZADA LA ÚLTIMA COMPRA. NO VÁLIDO PARA COMPRAS REALIZADAS A TRAVÉS DE PLATAFORMAS DE PAGO Y/O AGREGADORES NO INCLUYE ELECTRO, CARNES, BODEGAS LA RURAL, RUTINI WINES, LEONCIO ARIZU, CHANDON, TERRAZAS DE LOS ANDES, VALMONT, LATITUD 33, CATENA ZAPATA, MERCIER Y BARON B, ESCORIHUELA GASCON, CLOS DE LOS SIETE, ÁLAMOS, EL ENEMIGO Y BRIK. NO ACUMULABLE CON OTRAS PROMOCIONES Y/O DESCUENTOS VIGENTES. VÁLIDO PARA CONSUMIDORES FINALES. PARA MÁS INFORMACIÓN  CONSULTE EN: WWW.JUMBO.COM.AR, WWW.DISCO.COM.AR Y WWW.VEA.COM.AR. CENCOSUD S.A. CON DOMICILIO EN SUIPACHA 1111, PISO 18, C.A.B.A., CUIT 30-59036076-3. AMERICAN EXPRESS ARGENTINA S.A., CUIT 30-57481687-0, ARENALES 707 – PISO EP, CIUDAD AUTÓNOMA DE BUENOS AIRES.",
+    "paymentMethod": {
+      "Crédito": {
+        "type": "credit",
+        "image": null
+      }
+    },
+    "priority": "8",
+    "isExclusive": false,
+    "websites": [
+      "discoargentina",
+      "discoargentina",
+      "discoargentina",
+      "discoargentina",
+      "jumboargentina",
+      "jumboargentina",
+      "jumboargentina",
+      "jumboargentinaio",
+      "jumboargentinaio",
+      "jumboargentinaio"
+    ],
+    "stores": [],
+    "excludedStores": []
+  },
+  {
+    "banks": [
+      {
+        "refId": null,
+        "name": "ICBC",
+        "image": "http://jumboargentina.vteximg.com.br/arquivos/icbc.png",
+        "order": "31"
+      }
+    ],
+    "checkout": true,
+    "collections": [],
+    "dateEnd": "1672541940",
+    "dateStart": "1629342000",
+    "days": [
+      "1",
+      "4"
+    ],
+    "discount": "20.00",
+    "discountText": "",
+    "info": "Programando tu entrega para Lunes y Jueves.- Válido en la Sucursal de Venado Tuerto. Exclusivo Disco.com.ar y Venta Telefónica.\r\nTope de reintegro $1.500\r\nSe Excluye el Rubro Electro, Carnes, Pollos, Productos acordados con el Gobierno como el programa de precios cuidados, Kit Esenciales, Bodegas Chandon, La Rural, Terrazas De Los Andes, Catena Zapata, Alamos, El Enemigo, Mercier, Baron B, Valmont, Latitud 33, Clos De Los 7, Rutini, Eschorihuela, Gascon y Brik.- No acumulable con otras promociones y/o descuentos vigentes.-\r\n",
+    "installmentsText": "CON TARJETA DE CRÉDITO SÓLO 1 PAGO",
+    "legals": "PROMOCIÓN PARA CARTERA DE CONSUMO VÁLIDA PARA COMPRAS REALIZADAS CON FECHA DE ENTREGA LOS DÍAS LUNES Y JUEVES, HASTA EL 31 DE DICIEMBRE DE 2022 : (1) 20% DE AHORRO CON TARJETAS DE CRÉDITO VISA Y MASTERCARD ICBC EN UN SOLO PAGO PARA COMPRAS EN TODOS LOS PRODUCTOS INCLUÍDOS EN LA PROMOCIÓN (EXCEPTO EL RUBRO ELECTRODOMÉSTICOS) PARA COMPRAS REALIZADAS A TRAVÉS DE WWW.DISCO.COM.AR DE VENADO TUERTO Y CON ENTREGA ÚNICAMENTE LOS DÍAS LUNES Y JUEVES. TOPE DE REINTEGRO $1500 POR TRANSACCIÓN. EJEMPLO: POR LA COMPRA DE $1.000 EN PRODUCTOS INCLUIDOS EN LA PROMOCIÓN SE LE REINTEGRARAN $200. (2) 30% DE AHORRO CON TARJETAS DE CRÉDITO VISA Y MASTERCARD ICBC EN UN SOLO PAGO PARA COMPRAS EN TODOS LOS PRODUCTOS INCLUIDOS EN LA PROMOCIÓN (EXCEPTO EL RUBRO ELECTRODOMÉSTICOS PARA COMPRAS REALIZADAS A TRAVÉS DE WWW.DISCO.COM.AR Y CON ENTREGA ÚNICAMENTE LOS DÍAS LUNES Y JUEVES. EXCLUSIVO PARA CLIENTES QUE DEPOSITEN SU SUELDO EN ICBC. TOPE DE REINTEGRO $ 3000 POR TRANSACCIÓN. EJEMPLO: POR LA COMPRA DE $1000 EN PRODUCTOS INCLUIDOS EN LA PROMOCIÓN SE LE REINTEGRARAN $300 . EL BENEFICIO ES EXCLUSIVO PARA EL TARJETA HABIENTE ICBC. LOS REINTEGROS SE VERÁN ACREDITADOS DENTRO DE LOS 90 DÍAS CORRIDOS POSTERIORES A LA FECHA DE REALIZADA LA COMPRA TARJETA DE CREDITO. SÓLO PODRÁN PARTICIPAR DE LA PROMOCIÓN AQUELLOS CLIENTES QUE SE ENCUENTREN AL DÍA EN SUS PRODUCTOS. SE EXCLUYE EL RUBRO ELECTRO, CARNES, POLLOS;PRODUCTOS ACORDADOS CON EL GOBIERNO COMO EL PROGRAMA DE PRECIOS CUIDADOS,KIT ESENCIALES, BODEGAS CHANDON,LA RURAL,TERRAZAS DE LOS ANDES CATENA ZAPATA ,ALAMOS, EL ENEMIGO, MERCIER, BARON B,VALMONT,LATITUD 33,CLOS DE LOS 7, RUTINI, ESCORIHUELA GASCON Y BRIK. NO ACUMULABLE CON OTRAS PROMOCIONES Y/O DESCUENTOS VIGENTES. VALIDO PARA CONSUMIDOR FINAL. NO VALIDO PARA COMPRAS EFECTUADAS POR MERCADO PAGO, TODO PAGO, PAGO INMEDIATO O PAGO ENTRE PERSONAS. NO VÁLIDO PARA COMPRAS MAYORISTAS NI PARA TARJETAS VISA BUSINESS, VISA DISTRIBUTION, VISA PURCHASING, VISA PURCHASING CAMPO, CORPORATE, CORPORATE SIGNATURE, RECARGABLE EMPRESA Y VISA CUENTA CENTRAL. VALIDO PARA CLIENTES CON PAQUETE DE PRODUCTOS EN ICBC. NO ACUMULA CON OTROS DESCUENTOS, OFERTAS Y/O PROMOCIONES BANCARIAS. INDUSTRIAL AND COMMERCIAL BANK OF CHINA (ARGENTINA) S.A. ES UNA SOCIEDAD ANÓNIMA BAJO LA LEY ARGENTINA. SUS ACCIONISTAS LIMITAN SU RESPONSABILIDAD AL CAPITAL APORTADO.\r\n\r\nVálido para los siguientes locales:\r\n\r\nVENADO TUERTO : SAN MARTIN 760.",
+    "paymentMethod": {
+      "Crédito": {
+        "type": "credit",
+        "image": null
+      }
+    },
+    "priority": "5",
+    "isExclusive": true,
+    "websites": [
+      "discoargentina"
+    ],
+    "stores": [
+      {
+        "refId": "953",
+        "name": "9953 - Disco Venado Tuerto                 "
+      }
+    ],
+    "excludedStores": []
+  },
+  {
+    "banks": [
+      {
+        "refId": null,
+        "name": "ICBC",
+        "image": "http://jumboargentina.vteximg.com.br/arquivos/icbc.png",
+        "order": "31"
+      }
+    ],
+    "cft": "0.00",
+    "checkout": true,
+    "collections": [],
+    "dateEnd": "1672541880",
+    "dateStart": "1629342000",
+    "days": [
+      "1",
+      "4"
+    ],
+    "discount": "30.00",
+    "discountText": "",
+    "info": "Programando tu entrega para Lunes y Jueves. Válido en la Sucursal de Venado Tuerto. Exclusivo Disco.com.ar y Venta Telefónica.\r\nTope de reintegro $3.000. Para clientes que acreditan su sueldo en el banco.\r\nSe Excluye el Rubro Electro, Carnes, Pollos, Productos acordados con el Gobierno como el programa de precios cuidados, Kit Esenciales, Bodegas Chandon, La Rural, Terrazas De Los Andes, Catena Zapata, Alamos, El Enemigo, Mercier, Baron B, Valmont, Latitud 33, Clos De Los 7, Rutini, Eschorihuela, Gascon y Brik.- No acumulable con otras promociones y/o descuentos vigentes.-\r\n",
+    "installmentsText": "1 Pago | tarjeta de Crédito -Para clientes que acreditan su sueldo en el banco",
+    "legals": "PROMOCIÓN PARA CARTERA DE CONSUMO VÁLIDA PARA COMPRAS REALIZADAS CON FECHA DE ENTREGA LOS DÍAS LUNES Y JUEVES, HASTA EL 31 DE DICIEMBRE DE 2022 : (1) 20% DE AHORRO CON TARJETAS DE CRÉDITO VISA Y MASTERCARD ICBC EN UN SOLO PAGO PARA COMPRAS EN TODOS LOS PRODUCTOS INCLUÍDOS EN LA PROMOCIÓN (EXCEPTO EL RUBRO ELECTRODOMÉSTICOS) PARA COMPRAS REALIZADAS A TRAVÉS DE WWW.DISCO.COM.AR DE VENADO TUERTO Y CON ENTREGA ÚNICAMENTE LOS DÍAS LUNES Y JUEVES. TOPE DE REINTEGRO $1500 POR TRANSACCIÓN. EJEMPLO: POR LA COMPRA DE $1.000 EN PRODUCTOS INCLUIDOS EN LA PROMOCIÓN SE LE REINTEGRARAN $200. (2) 30% DE AHORRO CON TARJETAS DE CRÉDITO VISA Y MASTERCARD ICBC EN UN SOLO PAGO PARA COMPRAS EN TODOS LOS PRODUCTOS INCLUIDOS EN LA PROMOCIÓN (EXCEPTO EL RUBRO ELECTRODOMÉSTICOS PARA COMPRAS REALIZADAS A TRAVÉS DE WWW.DISCO.COM.AR Y CON ENTREGA ÚNICAMENTE LOS DÍAS LUNES Y JUEVES. EXCLUSIVO PARA CLIENTES QUE DEPOSITEN SU SUELDO EN ICBC. TOPE DE REINTEGRO $ 3.000 POR TRANSACCIÓN. EJEMPLO: POR LA COMPRA DE $1.000 EN PRODUCTOS INCLUIDOS EN LA PROMOCIÓN SE LE REINTEGRARAN $300 . EL BENEFICIO ES EXCLUSIVO PARA EL TARJETA HABIENTE ICBC. LOS REINTEGROS SE VERÁN ACREDITADOS DENTRO DE LOS 90 DÍAS CORRIDOS POSTERIORES A LA FECHA DE REALIZADA LA COMPRA TARJETA DE CREDITO. SÓLO PODRÁN PARTICIPAR DE LA PROMOCIÓN AQUELLOS CLIENTES QUE SE ENCUENTREN AL DÍA EN SUS PRODUCTOS. SE EXCLUYE EL RUBRO ELECTRO, CARNES, POLLOS;PRODUCTOS ACORDADOS CON EL GOBIERNO COMO EL PROGRAMA DE PRECIOS CUIDADOS,KIT ESENCIALES, BODEGAS CHANDON,LA RURAL,TERRAZAS DE LOS ANDES CATENA ZAPATA ,ALAMOS, EL ENEMIGO, MERCIER, BARON B,VALMONT,LATITUD 33,CLOS DE LOS 7, RUTINI, ESCORIHUELA GASCON Y BRIK. NO ACUMULABLE CON OTRAS PROMOCIONES Y/O DESCUENTOS VIGENTES. VALIDO PARA CONSUMIDOR FINAL. NO VALIDO PARA COMPRAS EFECTUADAS POR MERCADO PAGO, TODO PAGO, PAGO INMEDIATO O PAGO ENTRE PERSONAS. NO VÁLIDO PARA COMPRAS MAYORISTAS NI PARA TARJETAS VISA BUSINESS, VISA DISTRIBUTION, VISA PURCHASING, VISA PURCHASING CAMPO, CORPORATE, CORPORATE SIGNATURE, RECARGABLE EMPRESA Y VISA CUENTA CENTRAL. VALIDO PARA CLIENTES CON PAQUETE DE PRODUCTOS EN ICBC. NO ACUMULA CON OTROS DESCUENTOS, OFERTAS Y/O PROMOCIONES BANCARIAS. INDUSTRIAL AND COMMERCIAL BANK OF CHINA (ARGENTINA) S.A. ES UNA SOCIEDAD ANÓNIMA BAJO LA LEY ARGENTINA. SUS ACCIONISTAS LIMITAN SU RESPONSABILIDAD AL CAPITAL APORTADO.\r\n\r\nVálido para los siguientes locales:\r\n\r\nVENADO TUERTO : SAN MARTIN 760.",
+    "paymentMethod": {
+      "Crédito": {
+        "type": "credit",
+        "image": null
+      }
+    },
+    "priority": "5",
+    "isExclusive": true,
+    "websites": [
+      "discoargentina"
+    ],
+    "stores": [
+      {
+        "refId": "953",
+        "name": "9953 - Disco Venado Tuerto                 "
+      }
+    ],
+    "excludedStores": []
+  },
+  {
+    "banks": [
+      {
+        "refId": "Nacion",
+        "name": "banco Nacion",
+        "image": "https://www.vea.com.ar/arquivos/banco-nacion.png",
+        "order": "43"
+      }
+    ],
+    "checkout": false,
+    "collections": [],
+    "dateEnd": "1785553080",
+    "dateStart": "1713495600",
+    "days": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6"
+    ],
+    "discount": "12.00",
+    "discountText": "cuotas sin interés",
+    "info": "12 CUOTAS SIN INTERÉS EN PRODUCTOS SELECCIONADOS DE ELECTRODOMÉSTICOS ABONANDO CON TARJETAS DE CREDITO VISA/MASTERCARD DE BANCO NACION.",
+    "installmentsText": "en electros seleccionados",
+    "legals": "PROMOCIÓN VÁLIDA TODOS LOS DÍAS COMPRENDIDOS ENTRE EL 01/01/2026 Y 31/07/2026 EN LA REPÚBLICA ARGENTINA EN COMERCIOS ADHERIDOS Y SITIO WEB. 12 CUOTAS SIN INTERÉS REALIZADAS CON TARJETAS DE CRÉDITO VISA Y MASTERCARD DEL BNA EN PRODUCTOS SELECCIONADOS DE ELECTRÓNICA Y LINEA BLANCA. NO APLICA PARA PAGOS CON SALDO EN CUENTA. CARTERA DE CONSUMO. EL BNA NO SE RESPONSABILIZA POR LA CALIDAD DE LOS PRODUCTOS ADQUIRIDOS. PROMOCIÓN VÁLIDA EN LA REPÚBLICA ARGENTINA. TASA NOMINAL ANUAL (TNA) FIJA 0,00%. TASA EFECTIVA ANUAL (TEA) FIJA 0,00%. COSTO FINANCIERO TOTAL EXPRESADO EN TEA 0,00%. BANCO DE LA NACIÓN ARGENTINA – BARTOLOMÉ MITRE 326, CABA – CUIT 30-50001091-2. ",
+    "paymentMethod": {
+      "Crédito": {
+        "type": "credit",
+        "image": null
+      }
+    },
+    "priority": "15",
+    "isExclusive": false,
+    "websites": [
+      "veaargentina",
+      "veaargentina",
+      "discoargentina",
+      "discoargentina",
+      "discoargentina",
+      "discoargentina",
+      "discoargentina",
+      "discoargentina",
+      "veaargentina",
+      "veaargentina",
+      "veaargentina"
+    ],
+    "stores": [],
+    "excludedStores": []
+  },
+  {
+    "banks": [
+      {
+        "refId": null,
+        "name": "Visa y Master",
+        "image": "http://jumboargentina.vteximg.com.br/arquivos/fiserv-vtex.png",
+        "order": "41"
+      }
+    ],
+    "checkout": false,
+    "collections": [],
+    "dateEnd": "1788231540",
+    "dateStart": "1777604400",
+    "days": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6"
+    ],
+    "discount": "12.00",
+    "discountText": "Cuotas sin interés",
+    "info": "VÁLIDO PARA COMPRAS PRESENCIALES Y ONLINE DESDE EL 01/07/2026 AL 31/08/2026 EN ELECTROS. NO INCLUYE PEQUEÑOS ELECTROS.\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
+    "installmentsText": "ABONANDO CON TARJETAS DE CRÉDITO VISA Y MASTERCARD",
+    "legals": "VÁLIDO PARA COMPRAS PRESENCIALES Y ONLINE DESDE EL 01/07/2026 AL 31/08/2026, OBTENIENDO 12 CUOTAS SIN INTERÉS EN ELECTROS, ABONANDO CON TARJETAS DE CRÉDITO VISA Y MASTERCARD BANCARIAS, EN LOCALES ADHERIDOS. NO VÁLIDO PARA ACOPIO, VENTA MAYORISTA, RETIRA CLIENTE NI PAGO DE SERVICIOS. ESTA PROMOCIÓN NO APLICA PARA CLIENTES EN MORA O INHABILITADOS. NO INCLUYE PEQUEÑOS ELECTROS.",
+    "paymentMethod": {
+      "Crédito": {
+        "type": "credit",
+        "image": null
+      }
+    },
+    "priority": "11",
+    "isExclusive": false,
+    "websites": [
+      "veaargentina",
+      "veaargentina",
+      "veaargentina",
+      "veaargentina",
+      "veaargentina",
+      "veaargentina",
+      "discoargentina",
+      "discoargentina",
+      "discoargentina",
+      "discoargentina",
+      "discoargentina",
+      "discoargentina",
+      "jumboargentinaio",
+      "jumboargentinaio",
+      "jumboargentinaio",
+      "jumboargentina"
+    ],
+    "stores": [],
+    "excludedStores": []
+  },
+  {
+    "banks": [
+      {
+        "refId": null,
+        "name": " Tarjeta Naranja X",
+        "image": "http://jumboargentina.vteximg.com.br/arquivos/NaranjaX-logo.png",
+        "order": "20"
+      }
+    ],
+    "checkout": false,
+    "collections": [],
+    "dateEnd": "1788231480",
+    "dateStart": "1754017200",
+    "days": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6"
+    ],
+    "discount": "3.00",
+    "discountText": "Cuotas sin interés",
+    "info": "VÁLIDO PARA COMPRAS PRESENCIAL Y WEB DESDE EL 01/08/2026 AL 31/08/2026. Abonando con Tarjeta de Crédito Naranja X | PLAN Z",
+    "installmentsText": "Abonando con Tarjeta de Crédito Naranja X | Plan Z",
+    "legals": "VÁLIDO PARA COMPRAS PRESENCIAL Y WEB DESDE EL 01/08/2026 AL 31/08/2026 TODOS LOS DÍAS PARA COMPRAS ABONADAS CON TARJETAS DE CREDITO NARANJA X | PLAN Z, EN 3 CUOTAS SIN INTERÉS EN PRODUCTOS VENDIDOS PRESENCIAL Y WEB. NO ACUMULABLE CON OTRAS PROMOCIONES.\r\n \r\n ",
+    "paymentMethod": {
+      "Crédito": {
+        "type": "credit",
+        "image": null
+      }
+    },
+    "priority": "14",
+    "isExclusive": false,
+    "websites": [
+      "jumboargentina",
+      "discoargentina",
+      "discoargentina",
+      "discoargentina",
+      "discoargentina",
+      "discoargentina",
+      "discoargentina",
+      "jumboargentina",
+      "jumboargentinaio",
+      "jumboargentinaio"
+    ],
+    "stores": [],
+    "excludedStores": []
+  },
+  {
+    "banks": [
+      {
+        "refId": null,
+        "name": "Tarjeta Marco Juarez",
+        "image": "https://www.vea.com.ar/arquivos/tc-mj.png",
+        "order": "45"
+      }
+    ],
+    "checkout": false,
+    "collections": [],
+    "dateEnd": "1798772340",
+    "dateStart": "1740880500",
+    "days": [
+      "3"
+    ],
+    "discount": "15.00",
+    "discountText": "",
+    "info": "PROMOCIÓN VÁLIDA TODOS LOS DÍAS MIÉRCOLES DESDE EL 01/01/2026 AL 30/12/2026, EN LOS LOCALES OBTENIENDO 15% DE DESCUENTO EN LA COMPRA DE PRODUCTOS SELECCIONADOS ABONANDO CON TARJETA DE CRÉDITO MARCOS JUAREZ Y TARJETA LOCAL. VÁLIDO PRESENCIAL.",
+    "installmentsText": "EN LA COMPRA DE PRODUCTOS SELECCIONADOS",
+    "legals": "PROMOCIÓN VÁLIDA TODOS LOS DÍAS MIÉRCOLES DESDE EL 01/01/2026 AL 30/12/2026, EN LOS LOCALES OBTENIENDO 15% DE DESCUENTO EN LA COMPRA DE PRODUCTOS SELECCIONADOS ABONANDO CON TARJETA MARCOS JUAREZ Y TARJETA LOCAL, SIN TOPE DE REINTEGRO. NO VÁLIDO PARA ACOPIO, VENTA MAYORISTA, RETIRA CLIENTE Y PAGO SERVICIOS. ESTA PROMOCIÓN NO APLICA PARA CLIENTES EN MORA O INHABILITADOS. TASA NOMINAL ANUAL: 0,0%, TASA EFECTIVA ANUAL: 0,0%, COSTO FINANCIERO TOTAL NOMINAL ANUAL: 0,0%. EL DESCUENTO APLICA EN LÍNEA DE CAJA. EL ORGANIZADOR SE RESEVA EL DERECHO DE DETERMINAR Y/O MODIFICAR LOS PRODUCTOS ALCANZADOS POR LA PROMOCIÓN.",
+    "paymentMethod": {
+      "Crédito": {
+        "type": "credit",
+        "image": null
+      }
+    },
+    "priority": "8",
+    "isExclusive": false,
+    "websites": [
+      "jumboargentina",
+      "veaargentina",
+      "veaargentina",
+      "veaargentina",
+      "veaargentina",
+      "veaargentina",
+      "veaargentina"
+    ],
+    "stores": [
+      {
+        "refId": "503",
+        "name": "9503 - Vea Marcos Juarez.                "
+      }
+    ],
+    "excludedStores": []
+  },
+  {
+    "banks": [
+      {
+        "refId": null,
+        "name": "HSBC",
+        "image": "http://jumboargentina.vteximg.com.br/arquivos/logo-HSBC.png",
+        "order": "59"
+      }
+    ],
+    "checkout": false,
+    "collections": [],
+    "dateEnd": "1672541940",
+    "dateStart": "1546311600",
+    "days": [
+      "3"
+    ],
+    "discount": "25.00",
+    "discountText": "",
+    "info": "VÁLIDO EXCLUSIVO EN COMPRA PRESENCIAL - LOCALES ADHERIDOS.\r\nPAGANDO A TRAVÉS DE LA APP HSBC ARGENTINA O APP MODO.\r\nRealizando tu compra los días Miércoles.\r\nTope de reintegro $3000 por cuenta por transacción.\r\n\r\nVálido para consumidor final.\r\nQUEDAN EXCLUIDOS DE ESTA PROMOCIÓN PRODUCTOS ACORDADOS CON EL GOBIERNO COMO EL PROGRAMA DE PRECIOS CUIDADOS, ACEITE DE FIDEICOMISO, KIT ESENCIALES, BODEGAS LA RURAL, TRUMPETER, RUTINI, MONTEVIEJO, LA POSTA, LUCA, LUIGUI BOSCA, CHANDON, 33 SUR, TERRAZAS DE LOS ANDES, VALMONT, LATITUD 33, CATENA ZAPATA, MERCIER, BARON B, ESCORIHUELA GÁSCON, CLOS DE LOS SIETE, El ENEMIGO, ÁLAMOS VINOS EN CARTON, YERBAS, FIDEOS, YOGURES, ACEITES Y LECHES, HARINAS, AZÚCAR Y PRODUCTOS MAYORISTA DEL SECTOR FIAMBRERÍA. NO VÁLIDO PARA RUBRO ELECTRO.\t\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
+    "installmentsText": "1 Pago | A través de la \"App HSBC Argentina\" o App MODO",
+    "legals": "PROMOCIÓN ORGANIZADA POR HSBC BANK ARGENTINA S. A., CUIT 33-53718600-9, CON DOMICILIO EN HIPÓLITO BOUCHARD 557, PISO 20, CIUDAD AUTÓNOMA DE BUENOS AIRES, ARGENTINA. PROMOCIÓN VÁLIDA UNICAMENTE PARA LOS DÍAS MIERCOLES DESDE EL 01/11/2022 AL 31/12/2022, EXCLUSIVAMENTE PARA LOS CLIENTES DE LOS SEGMENTOS HSBC PREMIER BLACK, HSBC PREMIER, HSBC ADVANCE, HSBC PERSONAL BANKING QUE CUMPLAN CON LA TOTALIDAD DE LOS SIGUIENTES REQUISITOS:\r\nI. REALICEN UN PAGO CON QR EN LOS COMERCIOS ADHERIDOS A TRAVÉS DE LA APP HSBC ARGENTINA O APP MODO DE PLAY DIGITAL S.A.;\r\nII. QUE DICHO PAGO SEA REALIZADO CON TARJETA DE CRÉDITO Y/O DÉBITO HSBC BANK ARGENTINA;\r\nIII. DEBEN TENER UNA CUENTA ABIERTA DE HSBC Y QUE SE ENCUENTRE ASOCIADA A MODO DENTRO DE LOS 15 (QUINCE) DÍAS DE FINALIZADA LA PROMOCIÓN; \r\nIV. NO REGISTREN DEUDA O MORA EN NINGÚN PRODUCTO DE HSBC.\r\nSE OTORGARÁ UN 25% (VEINTICINCO POR CIENTO) DE DESCUENTO, CON UN TOPE DE REINTEGRO DE HASTA $3000 (PESOS ARGENTINOS TRES MIL) POR TRANSACCIÓN REALIZADA QUE CUMPLA CON LOS REQUISITOS DESCRIPTOS PRECEDENTEMENTE. EL REINTEGRO SE REALIZARÁ EN LA CUENTA HSBC ASOCIADA A MODO EN HASTA 30 (TREINTA) DÍAS CORRIDOS POSTERIORES A LA FECHA DE LA TRANSACCIÓN.\r\nQUEDAN EXCLUIDOS DE ESTA PROMOCIÓN PRODUCTOS ACORDADOS CON EL GOBIERNO COMO EL PROGRAMA DE PRECIOS CUIDADOS, ACEITE DE FIDEICOMISO, KIT ESENCIALES, BODEGAS LA RURAL, TRUMPETER, RUTINI, MONTEVIEJO, LA POSTA, LUCA, LUIGUI BOSCA, CHANDON, 33 SUR, TERRAZAS DE LOS ANDES, VALMONT, LATITUD 33, CATENA ZAPATA, MERCIER, BARON B, ESCORIHUELA GÁSCON, CLOS DE LOS SIETE, El ENEMIGO, ÁLAMOS VINOS EN CARTON, YERBAS, FIDEOS, YOGURES, ACEITES Y LECHES, HARINAS, AZÚCAR Y PRODUCTOS MAYORISTA DEL SECTOR FIAMBRERÍA. NO VÁLIDO PARA RUBRO ELECTRO.",
+    "paymentMethod": {
+      "Crédito": {
+        "type": "credit",
+        "image": null
+      },
+      "Débito": {
+        "type": "debit",
+        "image": null
+      }
+    },
+    "priority": "3",
+    "isExclusive": false,
+    "websites": [
+      "jumboargentina",
+      "disco",
+      "vea",
+      "veaargentina",
+      "veaargentina",
+      "veaargentina",
+      "veaargentina",
+      "discoargentina",
+      "discoargentina",
+      "discoargentina",
+      "discoargentina",
+      "discoargentina",
+      "jumboargentinaio"
+    ],
+    "stores": [],
+    "excludedStores": []
+  }
+]

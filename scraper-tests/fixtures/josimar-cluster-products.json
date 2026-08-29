@@ -1,0 +1,465 @@
+{
+  "385": {
+    "resources": "0-4/6",
+    "products": [
+      {
+        "productId": "40146",
+        "productName": "Gaseosa Original Coca Cola 600 cc",
+        "brand": "Coca Cola",
+        "clusterHighlights": {
+          "385": "precio--216667--6--todos---FEMSA LLEVANDO 6 ABONAS 5:llevando6.png",
+          "388": "SEMANA DEL DESCUENTAZO",
+          "517": "SEMANA DEL DESCUENTAZO",
+          "521": "🥤 Bebidas + sorpresas para tu hogar"
+        },
+        "productClusters": {
+          "385": "precio--216667--6--todos---FEMSA LLEVANDO 6 ABONAS 5:llevando6.png",
+          "388": "SEMANA DEL DESCUENTAZO",
+          "517": "SEMANA DEL DESCUENTAZO",
+          "521": "🥤 Bebidas + sorpresas para tu hogar"
+        },
+        "items": [
+          {
+            "itemId": "15158",
+            "ean": "7790895650833",
+            "sellers": [
+              {
+                "sellerId": "1",
+                "sellerDefault": true,
+                "commertialOffer": {
+                  "Price": 2600,
+                  "ListPrice": 2600,
+                  "PriceWithoutDiscount": 2600,
+                  "Teasers": [],
+                  "PromotionTeasers": [],
+                  "DiscountHighLight": [],
+                  "IsAvailable": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "productId": "40148",
+        "productName": "Gaseosa Light Coca Cola 600 cc",
+        "brand": "Coca Cola",
+        "clusterHighlights": {
+          "385": "precio--216667--6--todos---FEMSA LLEVANDO 6 ABONAS 5:llevando6.png",
+          "388": "SEMANA DEL DESCUENTAZO",
+          "517": "SEMANA DEL DESCUENTAZO",
+          "521": "🥤 Bebidas + sorpresas para tu hogar"
+        },
+        "productClusters": {
+          "385": "precio--216667--6--todos---FEMSA LLEVANDO 6 ABONAS 5:llevando6.png",
+          "388": "SEMANA DEL DESCUENTAZO",
+          "517": "SEMANA DEL DESCUENTAZO",
+          "521": "🥤 Bebidas + sorpresas para tu hogar"
+        },
+        "items": [
+          {
+            "itemId": "15165",
+            "ean": "7790895650864",
+            "sellers": [
+              {
+                "sellerId": "1",
+                "sellerDefault": true,
+                "commertialOffer": {
+                  "Price": 2600,
+                  "ListPrice": 2600,
+                  "PriceWithoutDiscount": 2600,
+                  "Teasers": [],
+                  "PromotionTeasers": [],
+                  "DiscountHighLight": [],
+                  "IsAvailable": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "productId": "40147",
+        "productName": "Gaseosa Zero Coca Cola 600 cc",
+        "brand": "Coca Cola",
+        "clusterHighlights": {
+          "385": "precio--216667--6--todos---FEMSA LLEVANDO 6 ABONAS 5:llevando6.png",
+          "388": "SEMANA DEL DESCUENTAZO",
+          "517": "SEMANA DEL DESCUENTAZO",
+          "521": "🥤 Bebidas + sorpresas para tu hogar"
+        },
+        "productClusters": {
+          "385": "precio--216667--6--todos---FEMSA LLEVANDO 6 ABONAS 5:llevando6.png",
+          "388": "SEMANA DEL DESCUENTAZO",
+          "517": "SEMANA DEL DESCUENTAZO",
+          "521": "🥤 Bebidas + sorpresas para tu hogar"
+        },
+        "items": [
+          {
+            "itemId": "15161",
+            "ean": "7790895650840",
+            "sellers": [
+              {
+                "sellerId": "1",
+                "sellerDefault": true,
+                "commertialOffer": {
+                  "Price": 2600,
+                  "ListPrice": 2600,
+                  "PriceWithoutDiscount": 2600,
+                  "Teasers": [],
+                  "PromotionTeasers": [],
+                  "DiscountHighLight": [],
+                  "IsAvailable": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "productId": "40151",
+        "productName": "Gaseosa Naranja Fanta 600 cc",
+        "brand": "Fanta",
+        "clusterHighlights": {
+          "385": "precio--216667--6--todos---FEMSA LLEVANDO 6 ABONAS 5:llevando6.png",
+          "388": "SEMANA DEL DESCUENTAZO",
+          "517": "SEMANA DEL DESCUENTAZO",
+          "521": "🥤 Bebidas + sorpresas para tu hogar"
+        },
+        "productClusters": {
+          "385": "precio--216667--6--todos---FEMSA LLEVANDO 6 ABONAS 5:llevando6.png",
+          "388": "SEMANA DEL DESCUENTAZO",
+          "517": "SEMANA DEL DESCUENTAZO",
+          "521": "🥤 Bebidas + sorpresas para tu hogar"
+        },
+        "items": [
+          {
+            "itemId": "15160",
+            "ean": "7790895650888",
+            "sellers": [
+              {
+                "sellerId": "1",
+                "sellerDefault": true,
+                "commertialOffer": {
+                  "Price": 2600,
+                  "ListPrice": 2600,
+                  "PriceWithoutDiscount": 2600,
+                  "Teasers": [],
+                  "PromotionTeasers": [],
+                  "DiscountHighLight": [],
+                  "IsAvailable": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "productId": "40150",
+        "productName": "Gaseosa Lima Limon Sprite 600 cc",
+        "brand": "Sprite",
+        "clusterHighlights": {
+          "385": "precio--216667--6--todos---FEMSA LLEVANDO 6 ABONAS 5:llevando6.png",
+          "388": "SEMANA DEL DESCUENTAZO",
+          "517": "SEMANA DEL DESCUENTAZO",
+          "521": "🥤 Bebidas + sorpresas para tu hogar"
+        },
+        "productClusters": {
+          "385": "precio--216667--6--todos---FEMSA LLEVANDO 6 ABONAS 5:llevando6.png",
+          "388": "SEMANA DEL DESCUENTAZO",
+          "517": "SEMANA DEL DESCUENTAZO",
+          "521": "🥤 Bebidas + sorpresas para tu hogar"
+        },
+        "items": [
+          {
+            "itemId": "15163",
+            "ean": "7790895650871",
+            "sellers": [
+              {
+                "sellerId": "1",
+                "sellerDefault": true,
+                "commertialOffer": {
+                  "Price": 2600,
+                  "ListPrice": 2600,
+                  "PriceWithoutDiscount": 2600,
+                  "Teasers": [],
+                  "PromotionTeasers": [],
+                  "DiscountHighLight": [],
+                  "IsAvailable": true
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "557": {
+    "resources": "0-4/28",
+    "products": [
+      {
+        "productId": "6574",
+        "productName": "eco agua 500cc",
+        "brand": "Eco de los Andes",
+        "clusterHighlights": {
+          "388": "SEMANA DEL DESCUENTAZO",
+          "521": "🥤 Bebidas + sorpresas para tu hogar",
+          "557": "AGUAS/CERVEZAS/GASEOSAS 33% OFF 14-07 a 08-09"
+        },
+        "productClusters": {
+          "388": "SEMANA DEL DESCUENTAZO",
+          "521": "🥤 Bebidas + sorpresas para tu hogar",
+          "557": "AGUAS/CERVEZAS/GASEOSAS 33% OFF 14-07 a 08-09"
+        },
+        "items": [
+          {
+            "itemId": "10774",
+            "ean": "7792799000011",
+            "sellers": [
+              {
+                "sellerId": "1",
+                "sellerDefault": true,
+                "commertialOffer": {
+                  "Price": 1382.88,
+                  "ListPrice": 2064,
+                  "PriceWithoutDiscount": 2064,
+                  "Teasers": [],
+                  "PromotionTeasers": [],
+                  "DiscountHighLight": [],
+                  "IsAvailable": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "productId": "14279",
+        "productName": "Agua Gasificada Eco de los Andes 500 ml",
+        "brand": "Eco de los Andes",
+        "clusterHighlights": {
+          "388": "SEMANA DEL DESCUENTAZO",
+          "521": "🥤 Bebidas + sorpresas para tu hogar",
+          "557": "AGUAS/CERVEZAS/GASEOSAS 33% OFF 14-07 a 08-09"
+        },
+        "productClusters": {
+          "388": "SEMANA DEL DESCUENTAZO",
+          "521": "🥤 Bebidas + sorpresas para tu hogar",
+          "557": "AGUAS/CERVEZAS/GASEOSAS 33% OFF 14-07 a 08-09"
+        },
+        "items": [
+          {
+            "itemId": "14491",
+            "ean": "7792799000035",
+            "sellers": [
+              {
+                "sellerId": "1",
+                "sellerDefault": true,
+                "commertialOffer": {
+                  "Price": 1474,
+                  "ListPrice": 2200,
+                  "PriceWithoutDiscount": 2200,
+                  "Teasers": [],
+                  "PromotionTeasers": [],
+                  "DiscountHighLight": [],
+                  "IsAvailable": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "productId": "33271",
+        "productName": "Cerveza Quilmes Can 0.0% 473 cc",
+        "brand": "Quilmes",
+        "clusterHighlights": {
+          "388": "SEMANA DEL DESCUENTAZO",
+          "521": "🥤 Bebidas + sorpresas para tu hogar",
+          "557": "AGUAS/CERVEZAS/GASEOSAS 33% OFF 14-07 a 08-09"
+        },
+        "productClusters": {
+          "244": "15off visa master amex",
+          "388": "SEMANA DEL DESCUENTAZO",
+          "521": "🥤 Bebidas + sorpresas para tu hogar",
+          "557": "AGUAS/CERVEZAS/GASEOSAS 33% OFF 14-07 a 08-09"
+        },
+        "items": [
+          {
+            "itemId": "4361",
+            "ean": "7792798009107",
+            "sellers": [
+              {
+                "sellerId": "1",
+                "sellerDefault": true,
+                "commertialOffer": {
+                  "Price": 1440.5,
+                  "ListPrice": 2150,
+                  "PriceWithoutDiscount": 2150,
+                  "Teasers": [],
+                  "PromotionTeasers": [],
+                  "DiscountHighLight": [],
+                  "IsAvailable": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "productId": "6381",
+        "productName": "Agua Glaciar 500 cc",
+        "brand": "Glaciar",
+        "clusterHighlights": {
+          "388": "SEMANA DEL DESCUENTAZO",
+          "557": "AGUAS/CERVEZAS/GASEOSAS 33% OFF 14-07 a 08-09"
+        },
+        "productClusters": {
+          "388": "SEMANA DEL DESCUENTAZO",
+          "557": "AGUAS/CERVEZAS/GASEOSAS 33% OFF 14-07 a 08-09"
+        },
+        "items": [
+          {
+            "itemId": "11530",
+            "ean": "7792931000015",
+            "sellers": [
+              {
+                "sellerId": "1",
+                "sellerDefault": true,
+                "commertialOffer": {
+                  "Price": 1496.11,
+                  "ListPrice": 2233,
+                  "PriceWithoutDiscount": 2233,
+                  "Teasers": [],
+                  "PromotionTeasers": [],
+                  "DiscountHighLight": [],
+                  "IsAvailable": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "productId": "31138",
+        "productName": "Agua Baja en Sodio Glaciar Go 750 cc",
+        "brand": "Glaciar",
+        "clusterHighlights": {
+          "388": "SEMANA DEL DESCUENTAZO",
+          "521": "🥤 Bebidas + sorpresas para tu hogar",
+          "557": "AGUAS/CERVEZAS/GASEOSAS 33% OFF 14-07 a 08-09"
+        },
+        "productClusters": {
+          "244": "15off visa master amex",
+          "388": "SEMANA DEL DESCUENTAZO",
+          "521": "🥤 Bebidas + sorpresas para tu hogar",
+          "557": "AGUAS/CERVEZAS/GASEOSAS 33% OFF 14-07 a 08-09"
+        },
+        "items": [
+          {
+            "itemId": "2976",
+            "ean": "7795930000567",
+            "sellers": [
+              {
+                "sellerId": "1",
+                "sellerDefault": true,
+                "commertialOffer": {
+                  "Price": 1735.97,
+                  "ListPrice": 2591,
+                  "PriceWithoutDiscount": 2591,
+                  "Teasers": [],
+                  "PromotionTeasers": [],
+                  "DiscountHighLight": [],
+                  "IsAvailable": true
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "565": {
+    "resources": "0-4/2",
+    "products": [
+      {
+        "productId": "37864",
+        "productName": "Leche Entera Fortificada 3% UAT Edge La Serenisima 1 lt",
+        "brand": "La Serenisima",
+        "clusterHighlights": {
+          "388": "SEMANA DEL DESCUENTAZO",
+          "542": "Frescos, Yogures y Lacteos",
+          "548": "Selección de Lácteos y Frescos",
+          "553": "🛒💳PRECIOS QUE SON IMBATIBLES 💳🛒"
+        },
+        "productClusters": {
+          "388": "SEMANA DEL DESCUENTAZO",
+          "542": "Frescos, Yogures y Lacteos",
+          "548": "Selección de Lácteos y Frescos",
+          "553": "🛒💳PRECIOS QUE SON IMBATIBLES 💳🛒",
+          "565": "Leche La Serenísima UAT (entera 3% - descremada 1%) Edge 1 lt.  IMBATIBLES"
+        },
+        "items": [
+          {
+            "itemId": "12854",
+            "ean": "7790742363008",
+            "sellers": [
+              {
+                "sellerId": "1",
+                "sellerDefault": true,
+                "commertialOffer": {
+                  "Price": 2099,
+                  "ListPrice": 2700,
+                  "PriceWithoutDiscount": 2700,
+                  "Teasers": [],
+                  "PromotionTeasers": [],
+                  "DiscountHighLight": [],
+                  "IsAvailable": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "productId": "37866",
+        "productName": "Leche Parcialmente Descremada Fortificada 1% UAT Edge La Serenisima 1 lt",
+        "brand": "La Serenisima",
+        "clusterHighlights": {
+          "388": "SEMANA DEL DESCUENTAZO",
+          "542": "Frescos, Yogures y Lacteos",
+          "548": "Selección de Lácteos y Frescos",
+          "553": "🛒💳PRECIOS QUE SON IMBATIBLES 💳🛒"
+        },
+        "productClusters": {
+          "388": "SEMANA DEL DESCUENTAZO",
+          "542": "Frescos, Yogures y Lacteos",
+          "548": "Selección de Lácteos y Frescos",
+          "553": "🛒💳PRECIOS QUE SON IMBATIBLES 💳🛒",
+          "565": "Leche La Serenísima UAT (entera 3% - descremada 1%) Edge 1 lt.  IMBATIBLES"
+        },
+        "items": [
+          {
+            "itemId": "12849",
+            "ean": "7790742363107",
+            "sellers": [
+              {
+                "sellerId": "1",
+                "sellerDefault": true,
+                "commertialOffer": {
+                  "Price": 2099,
+                  "ListPrice": 2700,
+                  "PriceWithoutDiscount": 2700,
+                  "Teasers": [],
+                  "PromotionTeasers": [],
+                  "DiscountHighLight": [],
+                  "IsAvailable": true
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

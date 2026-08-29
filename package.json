@@ -22,6 +22,8 @@
     "scrape:santander": "node scripts/populate-db.js santander",
     "scrape:jumbostores": "node scripts/populate-db.js jumbostores",
     "scrape:cotostores": "node scripts/populate-db.js cotostores",
+    "scrape:josimar": "node scripts/populate-db.js josimar",
+    "scrape:josimarstores": "node scripts/populate-db.js josimarstores",
     "extract-hash": "node scripts/extractVtexHash.js",
     "test:vea": "node scraper-tests/test-vea.js",
     "test:jumbo": "node scraper-tests/test-jumbo.js",
@@ -32,7 +34,11 @@
     "test:farmacity": "node scraper-tests/test-farmacity.js",
     "test:coto-unit": "node --test scraper-tests/constructor.test.js scraper-tests/coto-promos.test.js scraper-tests/coto-stores.test.js",
     "test:santander-unit": "node --test scraper-tests/santander-promos.test.js",
-    "test:dia-vea-unit": "node --test scraper-tests/dia-stores.test.js scraper-tests/dia-promos.test.js scraper-tests/vea-promos.test.js"
+    "test:josimar-promos-unit": "node --test scraper-tests/josimar-promos.test.js",
+    "test:dia-vea-unit": "node --test scraper-tests/dia-stores.test.js scraper-tests/dia-promos.test.js scraper-tests/vea-promos.test.js",
+    "test:disco-stores-unit": "node --test scraper-tests/disco-stores.test.js",
+    "test:josimar-unit": "node --test scraper-tests/josimar-stores.test.js scraper-tests/josimar-products.test.js",
+    "test:cencosud-unit": "node --test scraper-tests/cencosud-promos.test.js"
   },
   "keywords": [
     "nodejs",

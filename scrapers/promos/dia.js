@@ -16,8 +16,10 @@ import axios from 'axios';
  *      "6x4", "2do al 70%") y `MinimumQuantity`. Es el dato más fiel: sale del
  *      motor de promociones de VTEX, no de un cartel.
  *   2. **clusterHighlights** (fuente secundaria). Cuando el producto no tiene
- *      teaser, la promo se deriva del nombre del cluster destacado, igual que
- *      hace `jumbo_promos.js`.
+ *      teaser, la promo se deriva del nombre del cluster destacado. (Es lo que
+ *      hacía `jumbo_promos.js` hasta que se lo migró al Master Data bancario de
+ *      Cencosud; acá el cluster sigue sirviendo porque es fuente secundaria,
+ *      detrás del teaser, y no la única.)
  *
  * ⚠️ Los ids de colección son de Dia y pueden cambiar si rearman la landing.
  * Si una colección devuelve 0 productos se loguea un warning explícito en vez
@@ -147,7 +149,8 @@ function extractListPrice(product) {
 
 /**
  * Construye el "sample product" de una promoción.
- * A diferencia de jumbo_promos.js, incluye el EAN: es la PK del catálogo y
+ * A diferencia de los sample products que emitía el viejo `jumbo_promos.js`
+ * derivado de clusters, incluye el EAN: es la PK del catálogo y
  * permite cruzar la promoción con los productos que ya scrapea diaonline.js.
  */
 export function toSampleProduct(product) {

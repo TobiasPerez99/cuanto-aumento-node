@@ -277,6 +277,121 @@ que las dos últimas no son server-rendered. Su implementación scrapeaba el DOM
 reconstruía las tarjetas por heurística de líneas de texto; acá se reemplazó por las APIs/Master
 Data que alimentan esas mismas páginas — mismo criterio que se aplicó a la entrega de Santander.
 
+### Promociones bancarias de Cencosud — core compartido (Vea, Disco, Jumbo)
+
+`cores/cencosudBankDiscounts.js` es la única implementación; `scrapers/promos/{vea,disco,jumbo_promos}.js`
+son wrappers finos que sólo aportan la parametrización de cadena.
+
+- **Fuente:** un ÚNICO documento de Master Data, entidad `JN`, documento `bankDiscount`, en la cuenta
+  `jumboargentina`. Es público, sin browser y sin cookies:
+  `GET /api/dataentities/JN/documents/bankDiscount?_fields=value,id&an=jumboargentina`
+- ⚠️ **`an=jumboargentina` es obligatorio.** Con `an=discoargentina` o sin `an`, el endpoint responde
+  **200 con cuerpo vacío** (0 bytes) — un fallo que parece "no hay promos" en vez de un error.
+- Los tres hosts (disco / vea / jumbo.com.ar) devuelven el documento **idéntico byte a byte** (mismo sha1).
+  Cambiar de host no cambia nada; lo que separa a cada cadena es `websites[]`.
+- Reparto actual (193 promos): `discoargentina` 146, `jumboargentina` 138, `jumboargentinaio` 149,
+  `veaargentina` 144. Vigentes al 2026-08-29: Disco 33, Jumbo 35, Vea 25.
+- ⚠️ **El match de sitio es exacto, no `includes()`.** El dataset tiene filas con `disco`/`vea` "pelados"
+  además del nombre completo; un `includes('disco')` arrastraría promos ajenas.
+- **Jumbo mira DOS sitios** (`jumboargentina` + `jumboargentinaio`) y deduplica por `external_id`.
+  ⚠️ Contraintuitivo y ya medido: eso **no** produce duplicados, porque cada promo es UNA fila que enumera
+  sus sitios, así que el filtro la deja pasar una sola vez (35 antes y después de deduplicar). El dedupe
+  sirve por otro motivo: el documento trae 193 filas y sólo 191 fingerprints distintos.
+  **No "arreglar" esto recorriendo sitio por sitio** — se rompería lo que hoy funciona.
+
+**Por qué Jumbo migró a esta fuente.** `jumbo_promos.js` derivaba sus promos de `clusterHighlights`, que en
+Cencosud son códigos internos de campaña (`VEA_visaymastercardtmpinst3x-mensualfam47sar`,
+`DISCO_rpacpay20off-28al02sar`): ilegibles para el usuario y para el normalizador de IA. Ahora salen del
+mismo `bankDiscount`, con banco, días, cuotas y vigencia reales.
+
+**Los dos gotchas semánticos:**
+- `discount` + `discountText` son **número y sufijo de una misma etiqueta**, se muestran concatenados.
+  `discount=12` con texto "Cuotas sin interés" son DOCE CUOTAS, no un 12%. Se emite `etiqueta` ya armada y
+  `descuento_porcentaje`/`cuotas` quedan en `null` ante sufijos mixtos. Caso real que lo justifica:
+  `100` + `"mil $"` es un reintegro de $100.000 — ni 100%, ni 100 cuotas.
+- ⚠️ **El inicio y el fin NO se leen igual.** Cencosud graba en hora argentina y usa la medianoche como
+  frontera entre dos días, pero la nombra distinto según el extremo. `toEndDate` lee en ART (23:59 ART del
+  31/08 ⇒ `2026-08-31`, el día que cierra). `toStartDate` hace lo mismo **pero suma un día cuando la hora
+  cae entre las 23:00 y las 23:59 ART**, porque ahí Cencosud nombra el día que ABRE. Sin esa regla, 25 de
+  las 193 filas arrancaban un día antes y 2 cruzaban el borde de mes, ensanchando hacia atrás el filtro de
+  overlap de `AbstractScrapperPullProvider`.
+- **Riesgo latente anotado:** el fingerprint de `buildExternalId` ignora `info` y `legals`. Las 2 colisiones
+  reales del documento difieren justo en esos campos, pero son pares cruzados entre cadenas y el filtro por
+  sitio corre antes, así que hoy no se pierde nada (0 colapsos en las tres cadenas). Dos promos de la MISMA
+  cadena que sólo difieran en el texto libre sí colapsarían. No se agregó `info` al fingerprint porque un
+  retoque de texto del operador generaría un `external_id` nuevo y una fila duplicada en la cola.
+
+### Sucursales de Disco
+
+`scrapers/stores/disco_stores.js` — VTEX Master Data entidad **`NT`**, la misma que usa Jumbo, pública y sin
+browser: `GET /api/dataentities/NT/search?_fields=...&an=discoargentina`
+
+- 76 registros, **71 activos, 100% con coordenadas**, en 4 provincias.
+- ⚠️ **El header `REST-Range: resources=0-999` es obligatorio.** Sin él la API devuelve **15 filas** (el
+  `rest-content-range` de la respuesta lo canta: `resources 0-15/76`). No falla de forma evidente: parece
+  simplemente que Disco tiene 15 sucursales.
+- ⚠️ **`geocoordinates` es un string `"latitud,longitud"` — latitud PRIMERO.** Igual que la entidad NT de
+  Jumbo y **al revés que el campo `geo` de Dia**. Verificado contra el bounding box de Argentina: 76/76 caen
+  dentro leyendo `[lat,lon]` y **0/76** leyendo `[lon,lat]`. Hay un test que lo fija.
+- ⚠️ **`external_reference` debe ser `id` (uuid).** `SellerName` colisiona: 76 sucursales comparten sólo 43
+  valores (`jumboargentinad028` cubre 7 tiendas).
+- `city`/`street`/`number`/`neighborhood` existen en el esquema pero vienen **null en 76/76**. La ciudad se
+  parsea de `address`, que es un compuesto `"CALLE - CP - CIUDAD - PROVINCIA"`; sale en 75/76 y el que no
+  matchea queda en `null`, no adivinado.
+- `postalCode` es inconsistente entre filas (`"7605"` contra `"B1846dgh"`): viaja como string tal cual.
+- Callejones sin salida ya recorridos: la ruta privada `_v/private/store-services/masterdata-info/*` que usa
+  Dia responde 404 en Disco; `pickup-points` devuelve 0; y `/sucursales` **no** es server-rendered.
+
+### Scrapers de Josimar (comercio nuevo)
+
+Cadena del sur del GBA (Lanús, Lomas de Zamora, Avellaneda, Quilmes, Berazategui, Monte Grande, Barracas),
+VTEX, cuenta `arjosimarprod`. Es el **9º comercio** del proyecto y entra como **FOLLOWER** (el master sigue
+siendo Disco).
+
+**Productos — `scrapers/josimar.js`:** ~5.700 productos, **100% con EAN** (la PK del catálogo es
+`products.ean`). De una muestra de 1.798 EANs, **846 (47%) ya están en el catálogo master**, así que Josimar
+suma un competidor real en ~2.700 productos.
+- ⚠️ **Hay que recorrer por categoría.** `_from > 2500` devuelve **HTTP 400**, así que no se puede paginar el
+  catálogo entero de corrido. El árbol está en `/api/catalog_system/pub/category/tree/3` (14 departamentos).
+
+⚠️ **Precio: Josimar NO es estrictamente chain-wide.** Se publica el precio de la consulta sin `sc` y hoy
+**no** participa de `merchant_store_prices`, pero eso es una decisión pendiente, no un hecho de la fuente:
+medido sobre 140 EANs × 5 sales channels, **2 (1,4%) difieren entre sucursales**, con spreads del 15-25%
+(Coca Cola 2.25L $4.930 en tres tiendas contra $5.800 en dos). Peor: el precio sin `sc` resultó **el más
+barato de los cinco**, o sea que en esas dos tiendas el cliente paga más de lo publicado — misma clase de
+problema que BUG-073 en Coto, a escala mucho menor. Migrarlo a per-store cuesta 5× requests, mirror Prisma,
+banda de plausibilidad y selector para 5 de las 9 sucursales: es una decisión de producto.
+
+**Sucursales — `scrapers/stores/josimar_stores.js`:**
+`GET /api/checkout/pub/pickup-points?geoCoordinates=lon;lat`
+- 11 puntos (9 sucursales físicas), con dirección, CP, coordenadas y horarios por día.
+- ⚠️ El parámetro es **obligatorio** (sin él, 400) y va **`"lon;lat"`**. Hay que consultar con una coordenada
+  del **GBA sur**: desde Mar del Plata, Rosario o Córdoba devuelve **0**.
+- ⚠️ Acá `address.geoCoordinates` es un **array `[longitud, latitud]`** — longitud primero, distinto del
+  string `"lat,lon"` de la entidad NT de Disco/Jumbo. Dos formatos opuestos conviven en este repo: revisar
+  siempre cuál aplica.
+- `/files/storeSelectorConfig-master.json` agrega **teléfono** y sales channel de las 5 tiendas que venden
+  online.
+
+**Promociones — `scrapers/promos/josimar.js`:** Josimar **no tiene promos bancarias** (su Master Data da 403 y
+no participa del documento de Cencosud) y **`commertialOffer.Teasers` viene vacío en los 5.691 productos**,
+así que el enfoque de `dia.js` no sirve. Las promos salen de `clusterHighlights` (61 colecciones sobre 2.529
+productos) y del diccionario público `/files/flagsConfig-master.json` (173 flags).
+- ⚠️ Muchas etiquetas de `flagsConfig` vienen **codificadas**: `porcentaje--100--2--1---POWERADE 2X1:2X1.png`.
+  El título legible es lo que va tras el último `---` y antes del `:`.
+- **La vigencia se parsea del título** (`"CERVEZAS 20% OFF 14-07 a 08-09"`) para emitir fechas reales y evitar
+  que caigan todas en `needs_review` por `dates_defaulted`, que es lo que le pasa a Dia. El año no está en el
+  dato: se elige la ubicación más cercana a la fecha de referencia, lo que resuelve bien los rangos que cruzan
+  diciembre-enero. **Límite conocido:** una etiqueta rancia de exactamente un año cuyo rango contenga al día
+  de hoy sale como vigente. No es resoluble desde el título; ver el comentario de `parseValidity`.
+- `JosimarService` sube `clientTimeout()` a 180 s: la corrida en frío mide ~50 s (expande cada colección a
+  sus productos) y contra el default de 60 s quedaba muy poco margen.
+
+**Origen de Disco y Josimar:** adaptación de la entrega de Prácticas Profesionalizantes de **Nazareno
+Leguizamón** (2026-08), que identificó ambos sitios y sus URLs. Su implementación scrapeaba el DOM con
+Puppeteer y selectores comodín que no matcheaban nada (0 sucursales de Disco, 0 ofertas de Josimar); acá se
+reemplazó por las APIs JSON que alimentan esas mismas páginas — mismo criterio que con Santander y Dia/Vea.
+
 ## Important Patterns
 
 ### Adding a New Scraper
