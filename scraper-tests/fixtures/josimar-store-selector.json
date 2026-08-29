@@ -1,0 +1,75 @@
+{
+  "master": {
+    "provinces": [
+      {
+        "name": "Buenos Aires",
+        "stores": [
+          {
+            "name": "Josimar Pringles",
+            "state": "Buenos Aires",
+            "city": "Lanus",
+            "id": 3,
+            "sc": 3,
+            "address": "Coronel Pringles 1775",
+            "phone": "4225-2253",
+            "timetable": "Lunes a Sabados de 8 a 21hs",
+            "latitude": -34.707114,
+            "longitude": -58.378611
+          },
+          {
+            "name": "Josimar Colombres",
+            "state": "Buenos Aires",
+            "city": "Lomas de Zamora",
+            "id": 6,
+            "sc": 6,
+            "address": "Colombres 526",
+            "phone": "4239-9610",
+            "timetable": "Lunes a Sabados de 8 a 21hs",
+            "latitude": -34.76379,
+            "longitude": -58.405346
+          },
+          {
+            "name": "Josimar Quilmes",
+            "state": "Buenos AIres",
+            "city": "Quilmes",
+            "id": 11,
+            "sc": 11,
+            "address": "Av Caseros 1750 - Quilmes Plaza Shopping - Local 20 supermercado - Don Bosco - Quilmes - Bs As",
+            "phone": "+54 9 11 2283-6454",
+            "timetable": "Lunes a Domingo de 8 a 22hs",
+            "latitude": -34.699130964912726,
+            "longitude": -58.286897385860314
+          },
+          {
+            "name": "Josimar Berazategui",
+            "state": "Buenos Aires",
+            "city": "Berazategui",
+            "id": 1,
+            "sc": 1,
+            "address": "CALLE 13 4972 1880 BERAZATEGUI",
+            "phone": "1136042384",
+            "timetable": "08:00 AH 22:00",
+            "latitude": -34.7596393,
+            "longitude": -582085048049979
+          }
+        ]
+      },
+      {
+        "name": "Capital Federal",
+        "stores": [
+          {
+            "name": "Josimar Barracas",
+            "state": "Capital Federal",
+            "id": 5,
+            "sc": 5,
+            "address": "Av Montes de Oca 1597",
+            "phone": "4301-5888",
+            "timetable": "Lunes a Sabados de 8 a 21hs",
+            "latitude": -34.6456,
+            "longitude": -58.373582
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "master": {
+    "activeDefaultFlags": true,
+    "activeFlagsConfig": true,
+    "flags": [
+      {
+        "__editorItemTitle": "INTERNA 345",
+        "flagType": "collection",
+        "flagRenderType": "image",
+        "flagId": "345",
+        "imageUrl": "https://arjosimarprod.vtexassets.com/assets/vtex.file-manager-graphql/images/4e83afd4-c46b-45ab-8561-3dd1484f3498___9f8834e003a311b0125c4f75b154a1aa.png"
+      },
+      {
+        "__editorItemTitle": "porcentaje--100--2--1---POWERADE COOL CITRUS 2X1:2X1.png",
+        "flagType": "collection",
+        "flagRenderType": "image",
+        "flagId": "219",
+        "imageUrl": "https://arjosimarprod.vtexassets.com/assets/vtex.file-manager-graphql/images/e2addbed-a216-4f5b-8c64-e8e5a1983fbd___9f1454eccff036ac738dcead390fbf77.png"
+      },
+      {
+        "__editorItemTitle": "precio--166667--6--todos---FEMSA LLEVANDO 6 ABONAS 4:llevando6.png",
+        "flagType": "collection",
+        "flagRenderType": "image",
+        "flagId": "375",
+        "imageUrl": "https://arjosimarprod.vtexassets.com/assets/vtex.file-manager-graphql/images/f300a6e5-84d9-4f19-a6aa-076aad39f9d0___13c7e8a5fb4892efc83396eb0bd40dee.png"
+      },
+      {
+        "__editorItemTitle": "precio--239000--2--todos---VASCO VIEJO BCO-TTO 750CC COMBINA LLEVANDO 2:llevando2.",
+        "flagType": "collection",
+        "flagRenderType": "image",
+        "flagId": "414",
+        "imageUrl": "https://arjosimarprod.vtexassets.com/assets/vtex.file-manager-graphql/images/26a8b467-99fe-4287-832f-392b03588c23___517fb04a7028702aba8f3241c01a695a.png"
+      },
+      {
+        "__editorItemTitle": "FEMSA 15% DE DESCUENTO 06-08 a 05-09",
+        "flagType": "collection",
+        "flagRenderType": "image",
+        "flagId": "317",
+        "imageUrl": "https://arjosimarprod.vtexassets.com/assets/vtex.file-manager-graphql/images/edddf445-e9d7-452e-a6ef-de991dc015ea___9afa8a732b9348b66439f0e46b1e8633.png"
+      },
+      {
+        "__editorItemTitle": "ALWAYS 30%OFF 22/05 AL 28/05",
+        "flagType": "collection",
+        "flagRenderType": "text",
+        "flagId": "550",
+        "flagColor": "#212121"
+      },
+      {
+        "__editorItemTitle": "GILLETTE 30% OFF 07-08 A 16-08",
+        "flagType": "collection",
+        "flagRenderType": "image",
+        "flagId": "341",
+        "imageUrl": "https://arjosimarprod.vtexassets.com/assets/vtex.file-manager-graphql/images/17e7400f-6c2b-423e-9593-5341cbb1c132___853b3e2c9a1a24f395ae0e8436c0cc1f.png"
+      },
+      {
+        "__editorItemTitle": "MACRITAS NACHOS REST STYLE 250GR 25%off",
+        "flagType": "collection",
+        "flagRenderType": "image",
+        "flagId": "534",
+        "imageUrl": "https://arjosimarprod.vtexassets.com/assets/vtex.file-manager-graphql/images/d4aa3cc2-9845-445a-be1b-fe1303bc1ba4___370c45db3e54398a752719300c94e387.png"
+      },
+      {
+        "__editorItemTitle": "AGUAS/CERVEZAS/GASEOSAS 33% OFF 14-07 a 10-08",
+        "flagType": "collection",
+        "flagRenderType": "image",
+        "flagId": "557",
+        "imageUrl": "https://arjosimarprod.vtexassets.com/assets/vtex.file-manager-graphql/images/58020cad-2875-4418-9762-d071160e4a1b___6c6002ae9fcd2fce716676dcbd7a2e56.png"
+      },
+      {
+        "__editorItemTitle": "35% DE DESCUENTO EN PRODUCTOS DE CCU",
+        "flagType": "collection",
+        "flagRenderType": "image",
+        "flagId": "551",
+        "imageUrl": "https://arjosimarprod.vtexassets.com/assets/vtex.file-manager-graphql/images/4b4c0d7c-3c60-4768-93af-62e6afd38551___6550481663f6abc4fc1c9a5b83604caa.png"
+      },
+      {
+        "__editorItemTitle": "35% DE DESCUENTO EN UNILEVER",
+        "flagType": "collection",
+        "flagRenderType": "image",
+        "flagId": "551",
+        "imageUrl": "https://arjosimarprod.vtexassets.com/assets/vtex.file-manager-graphql/images/4b4c0d7c-3c60-4768-93af-62e6afd38551___6550481663f6abc4fc1c9a5b83604caa.png"
+      },
+      {
+        "__editorItemTitle": "porcentaje--100--2--1---NESTLE CHOCOLATE SEMIAM 50GR 2X1:2X1.png",
+        "flagType": "collection",
+        "flagRenderType": "image"
+      }
+    ]
+  }
+}

@@ -1,0 +1,623 @@
+{
+  "paging": {
+    "page": 1,
+    "pageSize": 30,
+    "total": 11,
+    "pages": 1
+  },
+  "items": [
+    {
+      "distance": 1.246768355369568,
+      "pickupPoint": {
+        "friendlyName": "Pringles",
+        "address": {
+          "addressId": "arjosimarprod-S003001",
+          "postalCode": "1820",
+          "city": "Lanús",
+          "state": "Buenos Aires",
+          "country": "ARG",
+          "street": "Coronel Pringles",
+          "number": "1775",
+          "neighborhood": "Lanús Este",
+          "geoCoordinates": [
+            -58.37862,
+            -34.707043
+          ]
+        },
+        "id": "1_arjosimarprod-S003001",
+        "isActive": true,
+        "businessHours": [
+          {
+            "DayOfWeek": 0,
+            "OpeningTime": "08:30:00",
+            "ClosingTime": "21:00:00"
+          },
+          {
+            "DayOfWeek": 1,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "21:30:00"
+          },
+          {
+            "DayOfWeek": 2,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "21:30:00"
+          },
+          {
+            "DayOfWeek": 3,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "21:30:00"
+          },
+          {
+            "DayOfWeek": 4,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "21:30:00"
+          },
+          {
+            "DayOfWeek": 5,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "21:30:00"
+          },
+          {
+            "DayOfWeek": 6,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "21:30:00"
+          }
+        ]
+      }
+    },
+    {
+      "distance": 2.325016736984253,
+      "pickupPoint": {
+        "friendlyName": "Piedras",
+        "address": {
+          "addressId": "arjosimarprod-S002001",
+          "postalCode": "1825",
+          "city": "Lanús",
+          "state": "Buenos Aires",
+          "country": "ARG",
+          "street": "Las Piedras",
+          "number": "2633",
+          "neighborhood": "Lanús Este",
+          "geoCoordinates": [
+            -58.376816,
+            -34.720615
+          ]
+        },
+        "id": "1_arjosimarprod-S002001",
+        "isActive": true,
+        "businessHours": [
+          {
+            "DayOfWeek": 0,
+            "OpeningTime": "08:30:00",
+            "ClosingTime": "21:00:00"
+          },
+          {
+            "DayOfWeek": 1,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "21:00:00"
+          },
+          {
+            "DayOfWeek": 2,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "21:00:00"
+          },
+          {
+            "DayOfWeek": 3,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "21:00:00"
+          },
+          {
+            "DayOfWeek": 4,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "21:00:00"
+          },
+          {
+            "DayOfWeek": 5,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "21:00:00"
+          },
+          {
+            "DayOfWeek": 6,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "21:00:00"
+          }
+        ]
+      }
+    },
+    {
+      "distance": 5.334855556488037,
+      "pickupPoint": {
+        "friendlyName": "Roldan",
+        "address": {
+          "addressId": "arjosimarprod-S004001",
+          "postalCode": "1828",
+          "city": "Lomas de Zamora",
+          "state": "Buenos Aires",
+          "country": "ARG",
+          "street": "Belisario Roldán",
+          "number": "365",
+          "neighborhood": null,
+          "geoCoordinates": [
+            -58.370583,
+            -34.74836
+          ]
+        },
+        "id": "1_arjosimarprod-S004001",
+        "isActive": true,
+        "businessHours": [
+          {
+            "DayOfWeek": 0,
+            "OpeningTime": "08:30:00",
+            "ClosingTime": "21:00:00"
+          },
+          {
+            "DayOfWeek": 1,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "21:00:00"
+          },
+          {
+            "DayOfWeek": 2,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "21:00:00"
+          },
+          {
+            "DayOfWeek": 3,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "21:00:00"
+          },
+          {
+            "DayOfWeek": 4,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "21:00:00"
+          },
+          {
+            "DayOfWeek": 5,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "21:00:00"
+          },
+          {
+            "DayOfWeek": 6,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "21:00:00"
+          }
+        ]
+      }
+    },
+    {
+      "distance": 5.414254188537598,
+      "pickupPoint": {
+        "friendlyName": "Avellaneda",
+        "address": {
+          "addressId": "arjosimarprod-S008001",
+          "postalCode": "1870",
+          "city": "Avellaneda",
+          "state": "Buenos Aires",
+          "country": "ARG",
+          "street": "Florentino Ameghino",
+          "number": "754",
+          "neighborhood": null,
+          "geoCoordinates": [
+            -58.362835,
+            -34.66104
+          ]
+        },
+        "id": "1_arjosimarprod-S008001",
+        "isActive": true,
+        "businessHours": [
+          {
+            "DayOfWeek": 0,
+            "OpeningTime": "08:30:00",
+            "ClosingTime": "21:00:00"
+          },
+          {
+            "DayOfWeek": 1,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "21:30:00"
+          },
+          {
+            "DayOfWeek": 2,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "21:30:00"
+          },
+          {
+            "DayOfWeek": 3,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "21:30:00"
+          },
+          {
+            "DayOfWeek": 4,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "21:30:00"
+          },
+          {
+            "DayOfWeek": 5,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "21:30:00"
+          },
+          {
+            "DayOfWeek": 6,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "21:30:00"
+          }
+        ]
+      }
+    },
+    {
+      "distance": 6.656670093536377,
+      "pickupPoint": {
+        "friendlyName": "Barracas",
+        "address": {
+          "addressId": "arjosimarprod-S005001",
+          "postalCode": "1271",
+          "city": "Ciudad Autónoma de Buenos Aires",
+          "state": "Ciudad Autónoma de Buenos Aires",
+          "country": "ARG",
+          "street": "Avenida Montes de Oca",
+          "number": "1597",
+          "neighborhood": "Barracas",
+          "geoCoordinates": [
+            -58.37374,
+            -34.645565
+          ]
+        },
+        "id": "1_arjosimarprod-S005001",
+        "isActive": true,
+        "businessHours": [
+          {
+            "DayOfWeek": 0,
+            "OpeningTime": "08:30:00",
+            "ClosingTime": "21:00:00"
+          },
+          {
+            "DayOfWeek": 1,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "21:30:00"
+          },
+          {
+            "DayOfWeek": 2,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "21:30:00"
+          },
+          {
+            "DayOfWeek": 3,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "21:30:00"
+          },
+          {
+            "DayOfWeek": 4,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "21:30:00"
+          },
+          {
+            "DayOfWeek": 5,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "21:30:00"
+          },
+          {
+            "DayOfWeek": 6,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "21:30:00"
+          }
+        ]
+      }
+    },
+    {
+      "distance": 6.830060005187988,
+      "pickupPoint": {
+        "friendlyName": "Colombres",
+        "address": {
+          "addressId": "arjosimarprod-S006001",
+          "postalCode": "1832",
+          "city": "Lomas de Zamora",
+          "state": "Buenos Aires",
+          "country": "ARG",
+          "street": "Avenida Colombres",
+          "number": "526",
+          "neighborhood": null,
+          "geoCoordinates": [
+            -58.405342,
+            -34.763977
+          ]
+        },
+        "id": "1_arjosimarprod-S006001",
+        "isActive": true,
+        "businessHours": [
+          {
+            "DayOfWeek": 0,
+            "OpeningTime": "08:31:00",
+            "ClosingTime": "21:00:00"
+          },
+          {
+            "DayOfWeek": 1,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "22:00:00"
+          },
+          {
+            "DayOfWeek": 2,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "22:00:00"
+          },
+          {
+            "DayOfWeek": 3,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "22:00:00"
+          },
+          {
+            "DayOfWeek": 4,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "22:00:00"
+          },
+          {
+            "DayOfWeek": 5,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "22:00:00"
+          },
+          {
+            "DayOfWeek": 6,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "22:00:00"
+          }
+        ]
+      }
+    },
+    {
+      "distance": 9.559881210327148,
+      "pickupPoint": {
+        "friendlyName": "Quilmes",
+        "address": {
+          "addressId": "S009001",
+          "postalCode": "1876",
+          "city": "Quilmes",
+          "state": "Buenos Aires",
+          "country": "ARG",
+          "street": "Avenida Caseros",
+          "number": "1750",
+          "neighborhood": null,
+          "geoCoordinates": [
+            -58.287125,
+            -34.69984
+          ]
+        },
+        "id": "1_S009001",
+        "isActive": true,
+        "businessHours": [
+          {
+            "DayOfWeek": 0,
+            "OpeningTime": "08:30:00",
+            "ClosingTime": "22:00:00"
+          },
+          {
+            "DayOfWeek": 1,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "22:00:00"
+          },
+          {
+            "DayOfWeek": 2,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "22:00:00"
+          },
+          {
+            "DayOfWeek": 3,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "22:00:00"
+          },
+          {
+            "DayOfWeek": 4,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "22:00:00"
+          },
+          {
+            "DayOfWeek": 5,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "22:00:00"
+          },
+          {
+            "DayOfWeek": 6,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "22:00:00"
+          }
+        ]
+      }
+    },
+    {
+      "distance": 9.559881210327148,
+      "pickupPoint": {
+        "friendlyName": "Quilmes",
+        "address": {
+          "addressId": "arjosimarprod-S009001",
+          "postalCode": "1876",
+          "city": "Quilmes",
+          "state": "Buenos Aires",
+          "country": "ARG",
+          "street": "Avenida Caseros",
+          "number": "1750",
+          "neighborhood": null,
+          "geoCoordinates": [
+            -58.287125,
+            -34.69984
+          ]
+        },
+        "id": "1_arjosimarprod-S009001",
+        "isActive": true,
+        "businessHours": []
+      }
+    },
+    {
+      "distance": 14.396438598632812,
+      "pickupPoint": {
+        "friendlyName": "Monte Grande",
+        "address": {
+          "addressId": "arjosimarprod-S007001",
+          "postalCode": "1842",
+          "city": "Esteban Echeverría",
+          "state": "Buenos Aires",
+          "country": "ARG",
+          "street": "Máximo Paz",
+          "number": "159",
+          "neighborhood": null,
+          "geoCoordinates": [
+            -58.472164,
+            -34.814873
+          ]
+        },
+        "id": "1_arjosimarprod-S007001",
+        "isActive": true,
+        "businessHours": [
+          {
+            "DayOfWeek": 0,
+            "OpeningTime": "08:30:00",
+            "ClosingTime": "21:00:00"
+          },
+          {
+            "DayOfWeek": 1,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "21:30:00"
+          },
+          {
+            "DayOfWeek": 2,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "21:30:00"
+          },
+          {
+            "DayOfWeek": 3,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "21:30:00"
+          },
+          {
+            "DayOfWeek": 4,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "21:30:00"
+          },
+          {
+            "DayOfWeek": 5,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "21:30:00"
+          },
+          {
+            "DayOfWeek": 6,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "21:30:00"
+          }
+        ]
+      }
+    },
+    {
+      "distance": 17.861343383789062,
+      "pickupPoint": {
+        "friendlyName": "Berazategui",
+        "address": {
+          "addressId": "arjosimarprod-S001001",
+          "postalCode": "1884",
+          "city": "Berazategui",
+          "state": "Buenos Aires",
+          "country": "ARG",
+          "street": "Calle 13",
+          "number": "4972",
+          "neighborhood": null,
+          "geoCoordinates": [
+            -58.20843,
+            -34.75965
+          ]
+        },
+        "id": "1_arjosimarprod-S001001",
+        "isActive": true,
+        "businessHours": [
+          {
+            "DayOfWeek": 0,
+            "OpeningTime": "08:30:00",
+            "ClosingTime": "21:00:00"
+          },
+          {
+            "DayOfWeek": 1,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "21:30:00"
+          },
+          {
+            "DayOfWeek": 2,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "21:30:00"
+          },
+          {
+            "DayOfWeek": 3,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "21:30:00"
+          },
+          {
+            "DayOfWeek": 4,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "21:30:00"
+          },
+          {
+            "DayOfWeek": 5,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "21:30:00"
+          },
+          {
+            "DayOfWeek": 6,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "21:30:00"
+          }
+        ]
+      }
+    },
+    {
+      "distance": 17.863525390625,
+      "pickupPoint": {
+        "friendlyName": "Berazategui",
+        "address": {
+          "addressId": "arjosimarprod-S010001",
+          "postalCode": "1880",
+          "city": "Berazategui",
+          "state": "Buenos Aires",
+          "country": "ARG",
+          "street": "Calle 13",
+          "number": "4972",
+          "neighborhood": null,
+          "geoCoordinates": [
+            -58.2084,
+            -34.75964
+          ]
+        },
+        "id": "1_arjosimarprod-S010001",
+        "isActive": false,
+        "businessHours": [
+          {
+            "DayOfWeek": 0,
+            "OpeningTime": "08:30:00",
+            "ClosingTime": "21:30:00"
+          },
+          {
+            "DayOfWeek": 1,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "21:30:00"
+          },
+          {
+            "DayOfWeek": 2,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "21:30:00"
+          },
+          {
+            "DayOfWeek": 3,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "21:30:00"
+          },
+          {
+            "DayOfWeek": 4,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "21:30:00"
+          },
+          {
+            "DayOfWeek": 5,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "21:30:00"
+          },
+          {
+            "DayOfWeek": 6,
+            "OpeningTime": "08:00:00",
+            "ClosingTime": "21:30:00"
+          }
+        ]
+      }
+    }
+  ]
+}

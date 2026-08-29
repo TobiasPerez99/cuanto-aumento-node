@@ -1,0 +1,256 @@
+[
+  {
+    "productId": "4332",
+    "productName": "Tomate Perita 500 gr",
+    "brand": "Frutas y Verduras",
+    "linkText": "tomate-perita-kg",
+    "categories": [
+      "/Frutas y Verduras/Verduras/Morron, Brocoli, Beranjena y otros/",
+      "/Frutas y Verduras/Verduras/",
+      "/Frutas y Verduras/"
+    ],
+    "link": "https://www.josimar.com.ar/tomate-perita-kg/p",
+    "description": "Tomate Perita 500 gr",
+    "items": [
+      {
+        "itemId": "4857",
+        "ean": "2304332000000",
+        "measurementUnit": "kg",
+        "unitMultiplier": 0.5,
+        "images": [
+          {
+            "imageId": "155621",
+            "imageUrl": "https://arjosimarprod.vteximg.com.br/arquivos/ids/155621/Tomate-Perita-Kg-1-6208.jpg?v=637377692966230000"
+          }
+        ],
+        "sellers": [
+          {
+            "sellerId": "1",
+            "sellerName": "Josimar SA",
+            "sellerDefault": true,
+            "commertialOffer": {
+              "Price": 2850,
+              "ListPrice": 5300,
+              "PriceWithoutDiscount": 5300,
+              "FullSellingPrice": 1425,
+              "AvailableQuantity": 1000000,
+              "IsAvailable": true,
+              "Teasers": []
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "productId": "4561",
+    "productName": "Limon 500 gr.",
+    "brand": "Frutas",
+    "linkText": "limon-kg",
+    "categories": [
+      "/Frutas y Verduras/Frutas/Naranja,Mandarina, Limon y otros/",
+      "/Frutas y Verduras/Frutas/",
+      "/Frutas y Verduras/"
+    ],
+    "link": "https://www.josimar.com.ar/limon-kg/p",
+    "description": "Limon 500 gr.",
+    "items": [
+      {
+        "itemId": "4811",
+        "ean": "2304561000000",
+        "measurementUnit": "kg",
+        "unitMultiplier": 0.5,
+        "images": [
+          {
+            "imageId": "155656",
+            "imageUrl": "https://arjosimarprod.vteximg.com.br/arquivos/ids/155656/Limon-Kg-1-6162.jpg?v=637377693682570000"
+          }
+        ],
+        "sellers": [
+          {
+            "sellerId": "1",
+            "sellerName": "Josimar SA",
+            "sellerDefault": true,
+            "commertialOffer": {
+              "Price": 1700,
+              "ListPrice": 1700,
+              "PriceWithoutDiscount": 1700,
+              "FullSellingPrice": 850,
+              "AvailableQuantity": 1000000,
+              "IsAvailable": true,
+              "Teasers": []
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "productId": "4789",
+    "productName": "Pelon Blanco",
+    "brand": "Frutas",
+    "linkText": "pelon-blanco-kg",
+    "categories": [
+      "/Frutas y Verduras/Frutas/",
+      "/Frutas y Verduras/"
+    ],
+    "link": "https://www.josimar.com.ar/pelon-blanco-kg/p",
+    "description": "Pelon Blanco",
+    "items": [
+      {
+        "itemId": "4867",
+        "ean": "2004789000000",
+        "measurementUnit": "kg",
+        "unitMultiplier": 1,
+        "images": [
+          {
+            "imageId": "165631",
+            "imageUrl": "https://arjosimarprod.vteximg.com.br/arquivos/ids/165631/Pelon-Blanco-1-6218.jpg?v=637759677644700000"
+          }
+        ],
+        "sellers": [
+          {
+            "sellerId": "1",
+            "sellerName": "Josimar SA",
+            "sellerDefault": true,
+            "commertialOffer": {
+              "Price": 320,
+              "ListPrice": 320,
+              "PriceWithoutDiscount": 320,
+              "FullSellingPrice": 320,
+              "AvailableQuantity": 0,
+              "IsAvailable": false,
+              "Teasers": []
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "productId": "24340",
+    "productName": "Tapa Pascualina Hojaldre Delicias Doradas 400 gr",
+    "brand": "Delicias Doradas",
+    "linkText": "delicias-doradas-t-pasc-hojal-400gr-2",
+    "categories": [
+      "/Pastas y Tapas/Tapas de Tarta/",
+      "/Pastas y Tapas/"
+    ],
+    "link": "https://www.josimar.com.ar/delicias-doradas-t-pasc-hojal-400gr-2/p",
+    "description": "Tapa Pascualina Hojaldre Delicias Doradas 400 gr",
+    "items": [
+      {
+        "itemId": "5496",
+        "ean": "7798105510168",
+        "measurementUnit": "un",
+        "unitMultiplier": 1,
+        "images": [
+          {
+            "imageId": "158990",
+            "imageUrl": "https://arjosimarprod.vteximg.com.br/arquivos/ids/158990/Tapa-Pascualina-Hojaldre-Delicias-Doradas-400-gr-1-6847.jpg?v=637414119787830000"
+          }
+        ],
+        "sellers": [
+          {
+            "sellerId": "1",
+            "sellerName": "Josimar SA",
+            "sellerDefault": true,
+            "commertialOffer": {
+              "Price": 2500,
+              "ListPrice": 2500,
+              "PriceWithoutDiscount": 2500,
+              "FullSellingPrice": 2500,
+              "AvailableQuantity": 81,
+              "IsAvailable": true,
+              "Teasers": []
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "productId": "5530",
+    "productName": "Tapa Pascualina Criolla Mendia 400 gr",
+    "brand": "Mendia",
+    "linkText": "mendia-pascualina-crioll-400g-2",
+    "categories": [
+      "/Pastas y Tapas/Tapas de Tarta/",
+      "/Pastas y Tapas/"
+    ],
+    "link": "https://www.josimar.com.ar/mendia-pascualina-crioll-400g-2/p",
+    "description": "Imaginá una tarta crujiente y deliciosa, con la Tapa Pascualina Criolla Mendia que le dará ese toque especial. Perfecta para preparar una cena en familia o sorprender a tus amigos en un almuerzo. Su calidad y frescura son el resultado de una tradición que se siente en cada bocado.Con esta tapa, la practicidad se une al sabor, haciendo que cocinar sea un placer. No esperes más y sumala a tu carrito para disfrutar de una experiencia única en tu mesa.",
+    "items": [
+      {
+        "itemId": "5117",
+        "ean": "7790522000802",
+        "measurementUnit": "un",
+        "unitMultiplier": 1,
+        "images": [
+          {
+            "imageId": "160763",
+            "imageUrl": "https://arjosimarprod.vteximg.com.br/arquivos/ids/160763/Tapa-Pascualina-Criolla-Mendia-400-gr-1-6468.jpg?v=637422941494430000"
+          }
+        ],
+        "sellers": [
+          {
+            "sellerId": "1",
+            "sellerName": "Josimar SA",
+            "sellerDefault": true,
+            "commertialOffer": {
+              "Price": 2150,
+              "ListPrice": 2150,
+              "PriceWithoutDiscount": 2150,
+              "FullSellingPrice": 2150,
+              "AvailableQuantity": 52,
+              "IsAvailable": true,
+              "Teasers": []
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "productId": "30493",
+    "productName": "Tapa de Empanada Super Profesional Hjaldre Delicias Doradas 48U",
+    "brand": "Delicias Doradas",
+    "linkText": "tapa-de-empanada-super-profesional-hjaldre-delicias-doradas-48u",
+    "categories": [
+      "/Pastas y Tapas/Tapas de Empanadas/",
+      "/Pastas y Tapas/"
+    ],
+    "link": "https://www.josimar.com.ar/tapa-de-empanada-super-profesional-hjaldre-delicias-doradas-48u/p",
+    "description": "Tapa de Empanada Super Profesional Hjaldre Delicias Doradas 48U",
+    "items": [
+      {
+        "itemId": "9873",
+        "ean": "7798105511226",
+        "measurementUnit": "un",
+        "unitMultiplier": 1,
+        "images": [
+          {
+            "imageId": "169890",
+            "imageUrl": "https://arjosimarprod.vteximg.com.br/arquivos/ids/169890/Tapa-de-Empanada-Super-Profesional-Hjaldre-Delicias-Doradas-48U-1-11224.jpg?v=638562333662870000"
+          }
+        ],
+        "sellers": [
+          {
+            "sellerId": "1",
+            "sellerName": "Josimar SA",
+            "sellerDefault": true,
+            "commertialOffer": {
+              "Price": 9300,
+              "ListPrice": 9300,
+              "PriceWithoutDiscount": 9300,
+              "FullSellingPrice": 9300,
+              "AvailableQuantity": 5,
+              "IsAvailable": true,
+              "Teasers": []
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

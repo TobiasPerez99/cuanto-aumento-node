@@ -19,9 +19,13 @@ import { getCotoPromotions } from '../scrapers/promos/coto.js';
 import { getSantanderPromotions } from '../scrapers/promos/santander.js';
 import { getDiaPromotions } from '../scrapers/promos/dia.js';
 import { getVeaPromotions } from '../scrapers/promos/vea.js';
+import { getDiscoPromotions } from '../scrapers/promos/disco.js';
+import { getJosimarPromotions } from '../scrapers/promos/josimar.js';
 import { getJumboStores } from '../scrapers/stores/jumbo_stores.js';
 import { getCotoStores } from '../scrapers/stores/coto_stores.js';
 import { getDiaStores } from '../scrapers/stores/dia_stores.js';
+import { getJosimarStores } from '../scrapers/stores/josimar_stores.js';
+import { getDiscoStores } from '../scrapers/stores/disco_stores.js';
 
 const router = Router();
 
@@ -37,12 +41,16 @@ const PROMOTION_SOURCES = {
   santander: getSantanderPromotions,
   dia: getDiaPromotions,
   vea: getVeaPromotions,
+  disco: getDiscoPromotions,
+  josimar: getJosimarPromotions,
 };
 
 const STORE_SOURCES = {
   jumbo: getJumboStores,
   coto: getCotoStores,
   dia: getDiaStores,
+  disco: getDiscoStores,
+  josimar: getJosimarStores,
 };
 
 /**

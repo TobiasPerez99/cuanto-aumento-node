@@ -1,198 +1,126 @@
-import axios from 'axios';
+import {
+  appliesToWebsites,
+  buildExternalId as buildCencosudExternalId,
+  getCencosudBankPromotions,
+  normalizePromotion,
+  normalizePromotions,
+} from '../../cores/cencosudBankDiscounts.js';
 
 /**
- * 🏷️ Scraper de PROMOCIONES de Jumbo
+ * 🏷️ Scraper de PROMOCIONES BANCARIAS de Jumbo
  *
- * Fuente: VTEX Catalog System (REST público, server-side, sin auth).
- * Endpoint: https://www.jumbo.com.ar/api/catalog_system/pub/products/search
+ * Wrapper fino sobre `cores/cencosudBankDiscounts.js` (mismo patrón que
+ * `vea.js` y `disco.js`): la lógica vive en el core, acá sólo se parametriza la
+ * cadena.
  *
- * Estrategia:
- *   La página /promociones de Jumbo se apoya en "clusters de highlight" de VTEX.
- *   Cada producto trae un objeto `clusterHighlights` con la forma { "<id>": "<nombre>" }.
- *   Recorremos productos (paginando con _from/_to), agrupamos por cluster id y
- *   derivamos una promoción por cada cluster distinto.
+ * ────────────────────────────────────────────────────────────────────────────
+ * ⚠️ POR QUÉ SE REEMPLAZÓ EL ENFOQUE ANTERIOR
  *
- * Supuestos sobre el paginado/params de VTEX (documentados por si cambian):
- *   - Usamos búsqueda full-text con el término "promociones" (?ft=promociones)
- *     como aproximación de lo que consulta la landing. Es un endpoint público
- *     y estable; si Jumbo cambia la colección, basta ajustar QUERY_PARAMS.
- *   - VTEX limita cada página a 50 items (rango _to-_from <= 49). Paginamos de a 50.
- *   - Cap defensivo de ~200 productos (PAGE_SIZE * MAX_PAGES) para no abusar de la API.
- *   - Precios: usamos commertialOffer.Price / PriceWithoutDiscount (NUNCA ListPrice,
- *     que en VTEX/Cencosud viene con un multiplicador erróneo).
+ * Hasta esta versión, este scraper derivaba las promociones de los
+ * `clusterHighlights` del catálogo de VTEX (`/api/catalog_system/pub/products/
+ * search?ft=promociones`), agrupando productos por cluster y usando el nombre
+ * del cluster como título de la promoción.
+ *
+ * El problema es que los `clusterHighlights` de Cencosud NO son texto para el
+ * usuario: son **códigos internos de campaña** del backoffice de marketing. Los
+ * títulos que salían de ahí eran literalmente así:
+ *
+ *   "VEA_visaymastercardtmpinst3x-mensualfam47sar"
+ *   "DISCO_rpacpay20off-28al02sar"
+ *
+ * Inservibles por partida doble: ilegibles para el usuario final e imposibles de
+ * normalizar para la IA, que no tiene de dónde sacar banco, porcentaje, cuotas,
+ * días ni vigencia — el cluster no los expone en ningún campo. Encima el nombre
+ * arrastra la cadena equivocada ("VEA_", "DISCO_") aunque el producto se haya
+ * leído del catálogo de Jumbo, y el catálogo tampoco expone vigencia de los
+ * clusters, así que TODA promo derivada así caía en `needs_review` por
+ * `dates_defaulted`.
+ *
+ * El Master Data `bankDiscount` —que ya usaba Vea— tiene las mismas promociones
+ * pero **estructuradas**: banco, descuento, cuotas, medio de pago, días, vigencia
+ * y legales. Es la misma fuente que alimenta la página de descuentos del sitio.
+ * Migrar era la mejora pendiente anotada desde que se escribió `vea.js`.
+ * ────────────────────────────────────────────────────────────────────────────
+ *
+ * ⚠️ **Jumbo tiene DOS identificadores de sitio** en `websites[]`:
+ * `jumboargentina` (138 promos de las 193) y `jumboargentinaio` (149, la tienda
+ * online). Hay que aceptar los dos: al 2026-08-29 dan 35 y 34 vigentes, y la
+ * unión da 35 — filtrar por uno solo perdería promos de la otra vitrina.
+ *
+ * Contra la intuición, ese solapamiento NO produce duplicados: cada promo es
+ * UNA fila que enumera sus sitios, así que declarar los dos no la hace pasar dos
+ * veces (medido: 35 antes y después de deduplicar). Y el dedupe por
+ * `external_id` tampoco está tapando un duplicado real: medido el 2026-08-29 no
+ * colapsa nada en ninguna cadena. Las 2 colisiones de fingerprint que sí tiene
+ * el documento (193 filas, 191 fingerprints) son pares CRUZADOS entre cadenas,
+ * que el filtro por sitio separa antes del dedupe. Queda como red de seguridad;
+ * el detalle y por qué esas colisiones igual incomodan está en el core.
  *
  * NO lanza excepciones al caller: ante error devuelve { success:false, ... }.
  */
 
-const BASE_URL = 'https://www.jumbo.com.ar';
-const SEARCH_ENDPOINT = `${BASE_URL}/api/catalog_system/pub/products/search`;
+/**
+ * Los dos ids de sitio de Jumbo. Se aceptan ambos porque una promo puede estar
+ * declarada sólo en la tienda online.
+ */
+const JUMBO_WEBSITES = ['jumboargentina', 'jumboargentinaio'];
 
-// Término full-text que aproxima la landing de promociones.
-const QUERY_PARAMS = 'ft=promociones';
+const SOURCE = 'jumbo';
 
-const PAGE_SIZE = 50; // VTEX: máximo 50 items por request (_to - _from <= 49)
-const MAX_PAGES = 4; // cap defensivo → ~200 productos
-const MAX_SAMPLE_PRODUCTS = 5; // productos de muestra por promoción
-
-const USER_AGENT =
-  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 ' +
-  '(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
+const JUMBO_HOST = 'https://www.jumbo.com.ar';
 
 /**
- * Genera un slug simple a partir de un texto (sin acentos, kebab-case).
+ * ¿Aplica esta promoción a alguno de los dos sitios de Jumbo?
  */
-function slugify(text) {
-  return String(text ?? '')
-    .normalize('NFD')
-    .replace(/\p{Diacritic}/gu, '') // quitar diacríticos
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '')
-    .slice(0, 80);
+export function appliesToJumbo(raw) {
+  return appliesToWebsites(raw, JUMBO_WEBSITES);
 }
 
 /**
- * GET con 1 reintento ante error de red / timeout.
+ * external_id de Jumbo: `jumbo-<sha1[0..12]>` de los campos invariantes.
+ *
+ * El hash NO incluye el sitio, y eso es deliberado: es exactamente lo que hace
+ * que la misma promo vista desde `jumboargentina` y desde `jumboargentinaio`
+ * colapse en una sola al deduplicar.
  */
-async function getWithRetry(url, config, retries = 1) {
-  try {
-    return await axios.get(url, config);
-  } catch (error) {
-    const isNetwork = !error.response; // timeout / ENOTFOUND / ECONNRESET / etc.
-    if (isNetwork && retries > 0) {
-      console.warn(`⚠️ Error de red consultando promos Jumbo, reintentando... (${error.code || error.message})`);
-      await new Promise((r) => setTimeout(r, 1000));
-      return getWithRetry(url, config, retries - 1);
-    }
-    throw error;
-  }
+export function buildExternalId(raw) {
+  return buildCencosudExternalId(raw, SOURCE);
 }
 
 /**
- * Extrae el precio de venta de un producto VTEX desde el primer seller disponible.
- * Usa commertialOffer.Price (y PriceWithoutDiscount como fallback). Nunca ListPrice.
+ * Normaliza un registro crudo al contrato de promoción. Función pura.
  */
-function extractPrice(product) {
-  const item = product?.items?.[0];
-  const seller = item?.sellers?.find((s) => s?.sellerDefault) || item?.sellers?.[0];
-  const offer = seller?.commertialOffer;
-  if (!offer) return null;
-  const price = offer.Price ?? offer.PriceWithoutDiscount ?? null;
-  return typeof price === 'number' ? price : null;
+export function normalizeJumboPromotion(raw) {
+  return normalizePromotion(raw, { source: SOURCE, externalIdPrefix: SOURCE });
 }
 
 /**
- * Construye un objeto "sample product" a partir de un producto VTEX.
+ * Filtra por sitio + vigencia, normaliza y deduplica el lote. Función pura.
+ *
+ * @param {Array} records  promociones crudas del Master Data
+ * @param {Date}  now      referencia temporal (inyectable para tests)
  */
-function toSampleProduct(product) {
-  const item = product?.items?.[0];
-  return {
-    ean: item?.ean ?? null,
-    id: product?.productId ?? null,
-    name: product?.productName ?? null,
-    price: extractPrice(product),
-  };
-}
-
-/**
- * Descarga una página de productos. Devuelve [] ante cualquier problema de shape.
- */
-async function fetchProductsPage(from, to) {
-  const url = `${SEARCH_ENDPOINT}?${QUERY_PARAMS}&_from=${from}&_to=${to}`;
-  const response = await getWithRetry(url, {
-    headers: {
-      'User-Agent': USER_AGENT,
-      Accept: 'application/json',
-    },
-    timeout: 20000,
-    // La API devuelve 206 (Partial Content) con el header REST-Content-Range en paginados.
-    validateStatus: (status) => status >= 200 && status < 300,
+export function normalizeJumboPromotions(records, now = new Date()) {
+  return normalizePromotions(records, {
+    websites: JUMBO_WEBSITES,
+    source: SOURCE,
+    externalIdPrefix: SOURCE,
+    now,
   });
-  return Array.isArray(response.data) ? response.data : [];
 }
 
 /**
- * 🎯 FUNCIÓN PRINCIPAL - Promociones de Jumbo
+ * 🎯 FUNCIÓN PRINCIPAL - Promociones bancarias de Jumbo
+ *
+ * El nombre se conserva porque `routes/dataRoutes.js` lo importa tal cual para
+ * el endpoint `GET /api/promotions/jumbo`; sólo cambió la fuente por detrás.
  */
 export async function getJumboPromotions() {
-  console.log('🏷️ Iniciando scraper de promociones de Jumbo...');
-
-  // Map<clusterId, { name, product_count, sample_products[] }>
-  const promosByCluster = new Map();
-
-  try {
-    for (let page = 0; page < MAX_PAGES; page++) {
-      const from = page * PAGE_SIZE;
-      const to = from + PAGE_SIZE - 1;
-
-      let products = [];
-      try {
-        products = await fetchProductsPage(from, to);
-      } catch (err) {
-        // Un fallo de página no debe tumbar todo el scraping: logueamos y cortamos el paginado.
-        console.error(`❌ Error en página ${page} (_from=${from}): ${err.message}`);
-        break;
-      }
-
-      if (products.length === 0) break; // no hay más resultados
-
-      for (const product of products) {
-        // clusterHighlights: objeto { "<id>": "<nombre>" }. Puede faltar (optional chaining).
-        const highlights = product?.clusterHighlights;
-        if (!highlights || typeof highlights !== 'object') continue;
-
-        for (const [clusterId, clusterName] of Object.entries(highlights)) {
-          let promo = promosByCluster.get(clusterId);
-          if (!promo) {
-            promo = { name: clusterName, product_count: 0, sample_products: [] };
-            promosByCluster.set(clusterId, promo);
-          }
-          promo.product_count++;
-          if (promo.sample_products.length < MAX_SAMPLE_PRODUCTS) {
-            promo.sample_products.push(toSampleProduct(product));
-          }
-        }
-      }
-
-      // Si la página vino incompleta, ya no hay más para pedir.
-      if (products.length < PAGE_SIZE) break;
-
-      // Pequeña pausa entre páginas para no saturar la API.
-      if (page < MAX_PAGES - 1) {
-        await new Promise((r) => setTimeout(r, 200));
-      }
-    }
-
-    const promotions = Array.from(promosByCluster.entries()).map(([clusterId, data]) => ({
-      external_id: `jum-${clusterId}`,
-      slug: slugify(`${data.name}-${clusterId}`),
-      title: data.name,
-      source: 'jumbo',
-      product_count: data.product_count,
-      sample_products: data.sample_products,
-      // La API de catálogo no expone vigencia de los clusters de highlight.
-      start_date: null,
-      end_date: null,
-    }));
-
-    console.log(`🎉 Promociones de Jumbo derivadas: ${promotions.length}`);
-
-    return {
-      success: true,
-      source: 'jumbo',
-      total: promotions.length,
-      promotions,
-      timestamp: new Date().toISOString(),
-    };
-  } catch (error) {
-    console.error('❌ Error en scraper de promociones Jumbo:', error.message);
-    return {
-      success: false,
-      source: 'jumbo',
-      total: 0,
-      promotions: [],
-      error: error.message,
-      timestamp: new Date().toISOString(),
-    };
-  }
+  return getCencosudBankPromotions({
+    websites: JUMBO_WEBSITES,
+    source: SOURCE,
+    externalIdPrefix: SOURCE,
+    host: JUMBO_HOST,
+    label: 'Jumbo',
+  });
 }
