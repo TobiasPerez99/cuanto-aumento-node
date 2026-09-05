@@ -154,18 +154,22 @@ function formatExecutionTime(milliseconds) {
  * Formats category statistics from product list
  */
 function formatCategoryStats(result) {
-  if (!result.products || result.products.length === 0) return null;
+  // El core de VTEX ya no devuelve la lista de productos (retenerla causaba el
+  // OOM del 2026-09-04): ahora entrega el desglose ya sumado en categoryStats.
+  // Se conserva el camino viejo por si algún scraper todavía devuelve products.
+  const categoryCount = new Map(result.categoryStats ?? []);
 
-  const categoryCount = new Map();
+  if (categoryCount.size === 0) {
+    if (!result.products || result.products.length === 0) return null;
 
-  // Count products per category (use first/primary category)
-  for (const product of result.products) {
-    const primaryCategory = product.categories?.[0];
-    if (primaryCategory) {
-      categoryCount.set(
-        primaryCategory,
-        (categoryCount.get(primaryCategory) || 0) + 1
-      );
+    for (const product of result.products) {
+      const primaryCategory = product.categories?.[0];
+      if (primaryCategory) {
+        categoryCount.set(
+          primaryCategory,
+          (categoryCount.get(primaryCategory) || 0) + 1
+        );
+      }
     }
   }
 

@@ -109,26 +109,47 @@ const USER_AGENT =
   'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 ' +
   '(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
 
+/** Espera base entre reintentos; crece linealmente con el intento. */
+const RETRY_DELAY_MS = 1500;
+
 const REQUEST_CONFIG = {
   headers: { 'User-Agent': USER_AGENT, Accept: 'application/json' },
   timeout: 20000,
 };
 
 /**
- * GET con 1 reintento ante error de red / timeout.
- * No reintenta ante respuesta HTTP: un 400 por `_from` fuera de rango o un 404
- * no se arreglan repitiendo, y reintentarlos sólo esconde el problema.
+ * ¿Vale la pena reintentar este error?
+ *
+ * Sí para errores de red (sin respuesta HTTP) y para 5xx: el VTEX de Josimar
+ * devuelve 500 de forma intermitente y la misma URL responde 206 un minuto
+ * después. El 2026-09-05 UN solo 500 en la primera categoría mató la corrida
+ * entera.
+ *
+ * No para 4xx: un 400 por `_from` fuera de rango o un 404 son deterministas,
+ * repetirlos no los arregla y sólo esconde el problema. El 429 tampoco se
+ * reintenta acá: si Josimar nos limita, el reintento inmediato empeora las
+ * cosas — hay que bajar el ritmo, no insistir.
  */
-async function getWithRetry(url, config = REQUEST_CONFIG, retries = 1) {
+export function isRetryableError(error) {
+  const status = error?.response?.status;
+  if (status === undefined) return true; // error de red / timeout
+  return status >= 500 && status < 600;
+}
+
+/**
+ * GET con reintentos ante error de red o 5xx, con backoff lineal.
+ */
+async function getWithRetry(url, config = REQUEST_CONFIG, retries = 2) {
   try {
     return await axios.get(url, config);
   } catch (error) {
-    const isNetwork = !error.response;
-    if (isNetwork && retries > 0) {
+    if (isRetryableError(error) && retries > 0) {
+      const status = error?.response?.status;
       console.warn(
-        `⚠️ Error de red consultando el catálogo de Josimar, reintentando... (${error.code || error.message})`
+        `⚠️ ${status ? `HTTP ${status}` : `Error de red (${error.code || error.message})`} ` +
+          `consultando el catálogo de Josimar, reintentando... (${retries} restantes)`
       );
-      await new Promise((r) => setTimeout(r, 1000));
+      await sleep(RETRY_DELAY_MS * (3 - retries));
       return getWithRetry(url, config, retries - 1);
     }
     throw error;
@@ -474,6 +495,8 @@ export async function getJosimarMainProducts(mode = 'categories', options = {}) 
 
     let visitedCategories = 0;
 
+    const failedCategories = [];
+
     if (mode === 'eans') {
       if (productEans.length === 0) {
         throw new Error('Modo "eans" sin EANs: definí PRODUCT_EANS en el entorno');
@@ -507,8 +530,23 @@ export async function getJosimarMainProducts(mode = 'categories', options = {}) 
         const label = target.name ? `${target.name} (${target.id})` : target.id;
         console.log(`[${visitedCategories}/${targets.length}] 🔍 Categoría: ${label}`);
 
-        const fetched = await walkCategory(target, handleBatch);
-        console.log(`   ✅ ${fetched} productos recorridos (${seenEans.size} únicos acumulados)`);
+        /*
+         * Una categoría que falla NO aborta la corrida.
+         *
+         * Los otros 8 comercios degradan por categoría y siguen; Josimar era el
+         * único que propagaba el error hasta arriba, así que un 500 transitorio
+         * de VTEX en la primera de 14 categorías tiraba las ~5.700 fichas.
+         * Ahora se cuenta el fallo, se sigue, y al final se avisa: una corrida
+         * incompleta tiene que ser visible, pero vale mucho más que ninguna.
+         */
+        let fetched = 0;
+        try {
+          fetched = await walkCategory(target, handleBatch);
+          console.log(`   ✅ ${fetched} productos recorridos (${seenEans.size} únicos acumulados)`);
+        } catch (error) {
+          failedCategories.push({ id: target.id, name: target.name, error: error.message });
+          console.error(`   ❌ Categoría ${label} falló y se saltea: ${error.message}`);
+        }
 
         await sleep(REQUEST_DELAY_MS);
       }
@@ -518,6 +556,12 @@ export async function getJosimarMainProducts(mode = 'categories', options = {}) 
 
     console.log('\n🎉 Scraping completado para Josimar:');
     console.log(`   📊 Productos únicos encontrados: ${totalProducts}`);
+    if (failedCategories.length > 0) {
+      console.warn(
+        `   ⚠️ ${failedCategories.length} categoría(s) fallaron y quedaron sin scrapear: ` +
+          failedCategories.map((c) => c.name || c.id).join(', ')
+      );
+    }
     console.log(`   💾 Guardados en DB: ${savedCount}`);
     if (skippedCount > 0) console.log(`   ⏭️ Ignorados (no están en el maestro): ${skippedCount}`);
     if (discardedCount > 0) console.log(`   🗑️ Descartados (sin EAN o sin precio): ${discardedCount}`);

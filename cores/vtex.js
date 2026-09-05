@@ -20,6 +20,21 @@ export async function getMerchantId(name) {
   }
 }
 /**
+ * Suma 1 al contador de la categoría primaria del producto.
+ *
+ * Reemplaza al conteo que antes se hacía al final recorriendo la lista completa
+ * de productos retenidos. Acumular al vuelo permite no guardar ni un producto.
+ * Un producto sin categoría se ignora en vez de romper: la fuente no siempre la
+ * trae y perder el desglose es preferible a tirar la corrida.
+ */
+export function tallyProductCategory(counts, product) {
+  const primary = product?.categories?.[0];
+  if (!primary) return counts;
+  counts.set(primary, (counts.get(primary) ?? 0) + 1);
+  return counts;
+}
+
+/**
  * Función genérica para scrapear un supermercado VTEX
  * @param {Object} config - Configuración del scraper
  * @param {string} config.merchantName - Nombre del supermercado (ej: 'Disco')
@@ -44,7 +59,22 @@ export async function scrapeVtexMerchant({ merchantName, baseUrl, categories, on
   }
   console.log(`📋 Buscando en ${categories.length} categorías`);
   
-  const allProducts = new Map();
+  /*
+   * Sólo se retienen los EAN vistos, no los productos.
+   *
+   * Antes esto era un Map<ean, producto> con el objeto entero (nombre, marca,
+   * images[], categories[], descripción). Se usaba únicamente para deduplicar y
+   * para contar, pero el resultado terminaba guardado en el Map en memoria del
+   * jobManager, así que cada corrida dejaba ~9.000 productos retenidos por
+   * comercio. Con 6 corridas diarias × 8 comercios y sin limpieza periódica, el
+   * proceso llegó al techo de heap de V8 y murió (OOM del 2026-09-04).
+   *
+   * Un Set de EAN da la misma deduplicación con dos órdenes de magnitud menos
+   * de memoria, y el desglose por categoría que consumía Slack se acumula al
+   * vuelo en .
+   */
+  const seenEans = new Set();
+  const categoryCounts = new Map();
   let successfulQueries = 0;
   let savedCount = 0;
   let skippedCount = 0; // Para contar productos ignorados (ej: no en maestro)
@@ -68,8 +98,9 @@ export async function scrapeVtexMerchant({ merchantName, baseUrl, categories, on
 
     if (products.length > 0) {
       for (const product of products) {
-        if (!allProducts.has(product.ean)) {
-          allProducts.set(product.ean, product);
+        if (!seenEans.has(product.ean)) {
+          seenEans.add(product.ean);
+          tallyProductCategory(categoryCounts, product);
           
           // Ejecutar lógica específica de guardado si hay conexión
           if (merchantId && onProductFound) {
@@ -94,9 +125,8 @@ export async function scrapeVtexMerchant({ merchantName, baseUrl, categories, on
       await new Promise(resolve => setTimeout(resolve, 200));
     }
   }
-  const uniqueProducts = Array.from(allProducts.values());
   console.log(`\n🎉 Scraping completado para ${merchantName}:`);
-  console.log(`   📊 Total productos únicos encontrados: ${uniqueProducts.length}`);
+  console.log(`   📊 Total productos únicos encontrados: ${seenEans.size}`);
   console.log(`   💾 Operaciones exitosas en DB: ${savedCount}`);
   console.log(`   ✅ Queries exitosas: ${successfulQueries}/${categories.length}`);
   if (skippedCount > 0) {
@@ -109,13 +139,15 @@ export async function scrapeVtexMerchant({ merchantName, baseUrl, categories, on
     success: !aborted,
     aborted: aborted ? { kind: aborted.diag?.kind, hint: aborted.diag?.hint, message: aborted.message } : null,
     source: sourceName,
-    totalProducts: uniqueProducts.length,
+    totalProducts: seenEans.size,
     savedProducts: savedCount,
     skippedProducts: skippedCount,
     successfulQueries,
     totalQueries: categories.length,
     timestamp: new Date().toISOString(),
-    products: uniqueProducts
+    // Desglose liviano por categoría (lo consume slackNotifier). NO se devuelve
+    // la lista de productos: retenerla es lo que causó el OOM.
+    categoryStats: Array.from(categoryCounts.entries())
   };
 }
 // Hash VTEX desde variables de entorno

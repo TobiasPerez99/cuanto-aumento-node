@@ -38,7 +38,8 @@
     "test:dia-vea-unit": "node --test scraper-tests/dia-stores.test.js scraper-tests/dia-promos.test.js scraper-tests/vea-promos.test.js",
     "test:disco-stores-unit": "node --test scraper-tests/disco-stores.test.js",
     "test:josimar-unit": "node --test scraper-tests/josimar-stores.test.js scraper-tests/josimar-products.test.js",
-    "test:cencosud-unit": "node --test scraper-tests/cencosud-promos.test.js"
+    "test:cencosud-unit": "node --test scraper-tests/cencosud-promos.test.js",
+    "test:memory-retry-unit": "node --test scraper-tests/scraper-memory-and-retry.test.js"
   },
   "keywords": [
     "nodejs",
