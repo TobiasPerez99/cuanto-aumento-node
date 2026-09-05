@@ -170,5 +170,29 @@ export function getJobStats() {
   return stats;
 }
 
-// Auto-cleanup on module initialization
+/*
+ * Limpieza periódica, no sólo al importar el módulo.
+ *
+ * Antes `cleanupOldJobs()` corría UNA vez, al arrancar: con el contenedor
+ * levantado durante días, cada job terminado quedaba en el Map para siempre,
+ * con su `result` adentro. Sumado a que el core de VTEX devolvía la lista
+ * completa de productos, el proceso llegó al techo de heap de V8 y murió
+ * (OOM del 2026-09-04, tras 6 días arriba).
+ *
+ * `unref()` es lo que permite que el proceso pueda terminar solo: sin eso, el
+ * timer mantendría vivo el event loop y los scrapers de un solo uso
+ * (`npm run scrape:x`) nunca saldrían.
+ */
+const CLEANUP_INTERVAL_MS = 60 * 60 * 1000; // 1 hora
+
 cleanupOldJobs();
+
+const cleanupTimer = setInterval(() => {
+  try {
+    cleanupOldJobs();
+  } catch (error) {
+    console.error('Error en la limpieza periódica de jobs:', error.message);
+  }
+}, CLEANUP_INTERVAL_MS);
+
+cleanupTimer.unref();
