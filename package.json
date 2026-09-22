@@ -39,7 +39,9 @@
     "test:disco-stores-unit": "node --test scraper-tests/disco-stores.test.js",
     "test:josimar-unit": "node --test scraper-tests/josimar-stores.test.js scraper-tests/josimar-products.test.js",
     "test:cencosud-unit": "node --test scraper-tests/cencosud-promos.test.js",
-    "test:memory-retry-unit": "node --test scraper-tests/scraper-memory-and-retry.test.js"
+    "test:memory-retry-unit": "node --test scraper-tests/scraper-memory-and-retry.test.js",
+    "catalog:dry": "node scripts/vtexCatalogDryRun.js",
+    "test:vtex-catalog-unit": "node --test scraper-tests/vtex-catalog.test.js scraper-tests/vtex-products.test.js"
   },
   "keywords": [
     "nodejs",

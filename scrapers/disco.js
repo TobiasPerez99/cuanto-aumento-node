@@ -1,19 +1,12 @@
-import { scrapeVtexMerchant } from '../cores/vtex.js';
-import { saveMasterProduct } from '../cores/saveHandlers.js';
-import { DETAILED_CATEGORIES, productEans } from '../cores/categories.js';
-
-const BASE_URL = 'https://www.disco.com.ar';
+import { scrapeVtexProducts } from '../cores/vtexProducts.js';
 
 /**
  * 🎯 FUNCIÓN PRINCIPAL - Disco (MAESTRO)
+ *
+ * Recorre el catálogo REST de VTEX (ver `cores/vtexProducts.js` y
+ * `cores/vtexCatalog.js`). Modos: `categories` (default), `eans` y `search`
+ * (la búsqueda de texto de GraphQL, como vuelta atrás).
  */
 export async function getDiscoMainProducts(mode = 'categories') {
-  const useEans = mode === 'eans';
-  return await scrapeVtexMerchant({
-    merchantName: 'Disco',
-    baseUrl: BASE_URL,
-    categories: useEans ? productEans : DETAILED_CATEGORIES,
-    onProductFound: saveMasterProduct,
-    count: useEans ? 1 : 50
-  });
+  return scrapeVtexProducts('disco', mode);
 }

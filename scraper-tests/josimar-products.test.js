@@ -18,9 +18,9 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import {
   parseResourcesTotal,
-  topLevelCategories,
   normalizeJosimarProduct,
   normalizeJosimarProducts,
+  getJosimarMainProducts,
 } from '../scrapers/josimar.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -81,33 +81,6 @@ test('parseResourcesTotal nunca inventa un total', () => {
   assert.equal(parseResourcesTotal('0-49'), null, 'sin barra no hay total');
   assert.equal(parseResourcesTotal('muchos'), null);
   assert.equal(parseResourcesTotal(2260), null, 'un número no es el header');
-});
-
-/* ----------------------------- topLevelCategories ------------------------- */
-
-test('topLevelCategories normaliza el árbol y conserva los hijos', () => {
-  const tree = [
-    { id: 1, name: 'Almacen', children: [{ id: 2, name: 'Aceites', children: [] }] },
-    { id: 79, name: 'Bebidas', children: [] },
-    { id: null, name: 'Rota' },
-  ];
-
-  const nodes = topLevelCategories(tree);
-
-  assert.equal(nodes.length, 2, 'el nodo sin id se descarta');
-  assert.deepEqual(nodes[0], {
-    id: '1',
-    name: 'Almacen',
-    children: [{ id: 2, name: 'Aceites', children: [] }],
-  });
-  assert.equal(typeof nodes[1].id, 'string', 'el id viaja como string');
-  assert.deepEqual(nodes[1].children, []);
-});
-
-test('topLevelCategories no explota con entradas no-array', () => {
-  assert.deepEqual(topLevelCategories(null), []);
-  assert.deepEqual(topLevelCategories(undefined), []);
-  assert.deepEqual(topLevelCategories({}), []);
 });
 
 /* -------------------------- normalizeJosimarProduct ----------------------- */
@@ -299,4 +272,62 @@ test('normalizeJosimarProducts no explota con entradas no-array', () => {
   assert.deepEqual(normalizeJosimarProducts(null), []);
   assert.deepEqual(normalizeJosimarProducts(undefined), []);
   assert.deepEqual(normalizeJosimarProducts({}), []);
+});
+
+/* ------------------------- getJosimarMainProducts ------------------------- */
+
+/**
+ * Josimar recorre su catálogo con el core compartido (`cores/vtexCatalog.js`), sin
+ * canal ni filtro de disponibilidad: su catálogo no es compartido con otra cadena y
+ * se sigue recorriendo también lo que está sin stock.
+ *
+ * Y fija el bug latente del recorrido propio que tenía: al bajar a las
+ * subcategorías de un departamento que no entra en la ventana de 2.550, consultaba
+ * `fq=C:/17/` (el hijo suelto), que en VTEX devuelve 0. El departamento entero se
+ * habría perdido sin aviso el día que Almacén (2.260 hoy) pasara el tope.
+ */
+test('getJosimarMainProducts baja por path completo, sin canal y sin filtro de disponibilidad', async () => {
+  const tree = [{
+    id: 1,
+    name: 'Almacen',
+    children: [
+      { id: 17, name: 'Aceites', children: [] },
+      { id: 18, name: 'Aderezos', children: [] },
+    ],
+  }];
+  const porCategoria = { '/1/17/': ['7790001', '7790002'], '/1/18/': ['7790003'] };
+  const totales = { '/1/': 3000, '/1/17/': 2, '/1/18/': 1 };
+  const requests = [];
+
+  const httpGet = async (url) => {
+    requests.push(url);
+    const u = new URL(url);
+    if (u.pathname.endsWith('/category/tree/3')) return { status: 200, data: tree, headers: {} };
+
+    const cat = u.searchParams.getAll('fq').find((f) => f.startsWith('C:'))?.slice(2) ?? null;
+    const total = cat ? totales[cat] ?? 0 : 3000;
+    const from = Number(u.searchParams.get('_from'));
+    const to = Number(u.searchParams.get('_to'));
+    const data = (porCategoria[cat] ?? []).slice(from, to + 1).map((ean) => {
+      const raw = structuredClone(records[0]);
+      raw.items[0].ean = ean;
+      return raw;
+    });
+    return { status: 206, data, headers: { resources: `${from}-${to}/${total}` } };
+  };
+
+  const out = await getJosimarMainProducts('categories', {
+    onProductFound: null,
+    httpGet,
+    sleep: async () => {},
+  });
+
+  assert.equal(out.success, true);
+  assert.equal(out.complete, true);
+  assert.equal(out.source, 'josimar');
+  assert.equal(out.totalProducts, 3);
+  assert.ok(requests.some((u) => u.includes('fq=C:/1/17/')), 'el hijo va con el path del padre');
+  assert.ok(!requests.some((u) => u.includes('fq=C:/17/')), 'nunca el id suelto, que da 0');
+  assert.ok(requests.every((u) => !u.includes('sc=') && !u.includes('isAvailable')), 'Josimar usa el canal del host');
+  assert.ok(!requests.some((u) => u.includes('/api/segments')));
 });

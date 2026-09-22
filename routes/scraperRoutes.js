@@ -5,7 +5,7 @@
 
 import { Router } from 'express';
 import { authMiddleware } from '../middlewares/authMiddleware.js';
-import { SCRAPERS } from '../scripts/populate-db.js';
+import { SCRAPERS, PRODUCT_MODES } from '../scripts/populate-db.js';
 import {
   createJob,
   getJob,
@@ -45,7 +45,7 @@ router.post('/scrape/:scraperName', authMiddleware, async (req, res) => {
     // Validate mode (only for scrapers que usan modo; bank/promo/stores no lo usan)
     const modelessTypes = ['bank', 'promo', 'stores'];
     if (!modelessTypes.includes(scraper.type)) {
-      const validModes = ['categories', 'eans'];
+      const validModes = PRODUCT_MODES;
       if (!validModes.includes(mode)) {
         return res.status(400).json({
           success: false,
@@ -103,7 +103,7 @@ router.post('/scrape/:scraperName', authMiddleware, async (req, res) => {
 router.post('/scrape/all', authMiddleware, async (req, res) => {
   try {
     const mode = req.body?.mode || 'categories';
-    const validModes = ['categories', 'eans'];
+    const validModes = PRODUCT_MODES;
 
     if (!validModes.includes(mode)) {
       return res.status(400).json({

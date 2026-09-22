@@ -1,19 +1,12 @@
-import { scrapeVtexMerchant } from '../cores/vtex.js';
-import { saveFollowerProduct } from '../cores/saveHandlers.js';
-import { DETAILED_CATEGORIES, productEans } from '../cores/categories.js';
-
-const BASE_URL = 'https://www.masonline.com.ar';
+import { scrapeVtexProducts } from '../cores/vtexProducts.js';
 
 /**
  * 🎯 FUNCIÓN PRINCIPAL - Masonline (FOLLOWER)
+ *
+ * Recorre el catálogo REST de VTEX (ver `cores/vtexProducts.js` y
+ * `cores/vtexCatalog.js`). Modos: `categories` (default), `eans` y `search`
+ * (la búsqueda de texto de GraphQL, como vuelta atrás).
  */
 export async function getMasonlineMainProducts(mode = 'categories') {
-  const useEans = mode === 'eans';
-  return await scrapeVtexMerchant({
-    merchantName: 'Masonline',
-    baseUrl: BASE_URL,
-    categories: useEans ? productEans : DETAILED_CATEGORIES,
-    onProductFound: saveFollowerProduct,
-    count: useEans ? 1 : 50
-  });
+  return scrapeVtexProducts('masonline', mode);
 }

@@ -41,8 +41,20 @@ npm run test:carrefour
 # etc...
 ```
 
-### VTEX Hash Management
-When Carrefour/VTEX scrapers fail with GraphQL errors, the sha256Hash likely expired:
+### Catalog dry run (sin tocar la base)
+```bash
+npm run catalog:dry -- disco          # recorre el catálogo real de Disco y no escribe nada
+npm run catalog:dry -- all            # los 7 VTEX + Josimar
+npm run test:vtex-catalog-unit        # tests del recorrido (sin red)
+```
+Imprime, por comercio, cuánto declara el catálogo en su canal, cuánto se recorrió, cuántas requests
+hizo y si la corrida habría contado como **completa**. En producción: `./devops.sh scraper-catalog-dry`.
+
+### VTEX Hash Management (sólo modo `search`)
+El hash de la persisted query `productSuggestions` **sólo lo usa el modo `search`** (la búsqueda de
+texto que quedó como vuelta atrás). El modo por defecto recorre el Catalog System REST y no lo necesita;
+su ausencia ya no tumba el servicio al importar `cores/vtex.js`. Si hace falta volver a `search` y el
+hash expiró:
 ```bash
 node scripts/extractVtexHash.js
 ```
@@ -61,19 +73,27 @@ The codebase uses a **master/follower architecture** for product management:
 
 ### Scraping Modes
 
-Scrapers support two modes (passed as argument):
-- **`categories` (default):** Scrapes broad product categories from `cores/categories.js` (50 products per category)
-- **`eans`:** Scrapes specific EAN codes from `PRODUCT_EANS` env variable (1 product per EAN)
+Scrapers support three modes (passed as argument; `PRODUCT_MODES` in `scripts/populate-db.js`):
+- **`categories` (default):** recorre el catálogo entero. Los 7 VTEX y Josimar, por el Catalog System REST
+  (`cores/vtexCatalog.js`); Coto, por Constructor.io.
+- **`eans`:** sólo los EAN de `PRODUCT_EANS`. **Nunca es una corrida completa**: Laravel no vence
+  precios con ella.
+- **`search`:** los 7 VTEX vuelven a la búsqueda de texto de GraphQL (`productSuggestions`, top 50 por
+  término de `cores/categories.js`, necesita `VTEX_SHA256_HASH`). Es la vuelta atrás, seleccionable desde
+  el backoffice de Laravel (`scrapper.schedule_mode`), por si el WAF de un comercio bloquea el recorrido
+  REST. Coto y Josimar lo tratan como `categories`.
 
 Example: `npm run scrape:disco categories` or via API: `POST /api/scrape/disco` with body `{ "mode": "eans" }`
 
 ### Core Scraping Flow
 
-1. **Scraper files** (`scrapers/*.js`): Thin wrappers that call `scrapeVtexMerchant()` with config
-2. **VTEX core** (`cores/vtex.js`): Generic VTEX GraphQL scraper
-   - Fetches products via `fetchVtexProducts()`
-   - Normalizes VTEX response to standard format via `normalizeProduct()`
-   - Calls `onProductFound` callback for each product
+1. **Scraper files** (`scrapers/*.js`): los 7 VTEX son wrappers de una línea sobre
+   `scrapeVtexProducts(key, mode)` (`cores/vtexProducts.js`), que tiene el registro `VTEX_MERCHANTS`
+   (dominio, canal de respaldo, maestro/follower) y despacha según el modo.
+2. **VTEX catalog core** (`cores/vtexCatalog.js`) — el camino por defecto, ver "VTEX Integration".
+   El core viejo de GraphQL (`cores/vtex.js`, `scrapeVtexMerchant`/`fetchVtexProducts`/`normalizeProduct`)
+   sigue vivo sólo para el modo `search` y para `scripts/updatePrices.js`.
+   - Ambos llaman `onProductFound(product, merchantId)` una vez por EAN, con el mismo contrato de producto.
 3. **Save handlers** (`cores/saveHandlers.js`):
    - `saveMasterProduct()`: Upserts into `products`, `merchant_products`, and `price_history`
    - `saveFollowerProduct()`: Only upserts if EAN exists in `products` table
@@ -110,22 +130,74 @@ Scrapers run asynchronously via `services/jobManager.js`:
 - Auto-cleanup after `JOB_RETENTION_HOURS` (default: 24h)
 - Webhook notifications sent on `started` and `completed` events (see `services/webhookService.js`)
 
-### VTEX Integration
+### VTEX Integration — recorrido del catálogo REST (SCRAPER-001)
 
-VTEX stores require a **sha256Hash** for GraphQL queries (set via `VTEX_SHA256_HASH` env var). This hash:
-- Is extracted from browser DevTools (see `COMO_OBTENER_HASH.md`)
-- Changes periodically (expires every few weeks/months)
-- Used in `cores/vtex.js` to construct GraphQL queries
+Hasta 2026-09 los 7 comercios VTEX **no recorrían el catálogo**: pedían el top 50 del autocompletado
+(`productSuggestions`) para cada uno de 279 términos, sin paginar. Lo que veían dependía del ranking del
+buscador, variaba de corrida en corrida y dependía de un hash que caduca solo. Ahora
+`scrapeVtexCatalog()` (`cores/vtexCatalog.js`) recorre el árbol entero:
 
-**VTEX Query Structure:**
 ```
-GET /_v/segment/graphql/v1/?operationName=productSuggestions&extensions={persistedQuery: {sha256Hash: "...", ...}}
+GET /api/segments                                      → canal de venta de la tienda
+GET /api/catalog_system/pub/category/tree/3            → árbol de categorías
+GET /api/catalog_system/pub/products/search?fq=C:/1/17/&fq=isAvailablePerSalesChannel_33:1&sc=33&_from=0&_to=49
 ```
 
-The `normalizeProduct()` function handles VTEX-specific quirks:
-- Extracts EAN from `items[0].ean`
-- Uses `seller.commertialOffer.Price` (not `priceRange` which can be incorrect)
-- Calculates reference prices (e.g., price per liter) from `unitMultiplier`
+Medido el 2026-09-22 (spec: `docs/superpowers/specs/2026-09-22-vtex-catalog-walk-design.md` del repo Laravel):
+
+| Comercio | Canal | Disponibles en su canal | Requests por corrida |
+|---|---|---|---|
+| Disco | 33 | 10.738 | ~278 |
+| Jumbo | 32 | 16.071 | ~397 |
+| Vea | 34 | 8.406 | ~206 |
+| Carrefour | 1 | 29.853 | ~666 |
+| Dia | 1 | 4.906 | ~120 |
+| Masonline | 1 | 13.929 | ~445 |
+| Farmacity | 4 | 14.666 | ~343 |
+
+Gotchas que cuestan caro:
+- ⚠️ **Disco, Jumbo y Vea comparten UN catálogo** (mismo árbol, 381.255 productos). Lo que separa a cada
+  cadena es el **sales channel**. Sin `fq=isAvailablePerSalesChannel_{canal}:1` el recorrido serían
+  cientos de miles de productos que la cadena no vende (y el maestro los crearía). Es la misma semántica
+  que `hideUnavailableItems: true` del camino viejo.
+- ⚠️ **Con un canal equivocado el filtro no es más laxo: el catálogo sale VACÍO** (`isAvailablePerSalesChannel_1`
+  en el host de Disco da 0). Por eso el canal se relee de `/api/segments` en cada corrida (el de
+  `VTEX_MERCHANTS` es sólo el respaldo), y una corrida cuyo catálogo declara 0 productos **falla** en vez de
+  reportar un éxito vacío.
+- ⚠️ **`fq=C:` lleva el path completo**: `C:/17/` (una subcategoría sola) devuelve 0; `C:/1/17/` devuelve
+  sus 167. El descenso arma el path desde la raíz.
+- Ventana de paginación: `_to - _from ≤ 49` y `_from ≤ 2500` → 2.550 productos por consulta. El recorrido
+  baja a los hijos sólo cuando un nodo no entra; una hoja que no entra queda en `oversizedCategories`.
+  Hoy ninguna de los 7 la supera.
+- El precio REST coincide con el de Intelligent Search (lo que muestra el storefront) en 1.392 de 1.394
+  cruces, **descuentos incluidos** (`PriceWithoutDiscount`). Cencosud no usa ese campo: sus rebajas son promos.
+- ⚠️ **`ListPrice` viene multiplicado (×90 en Disco).** Se usa `PriceWithoutDiscount`.
+- La API tira **500 en ráfagas** (medido en Carrefour y Masonline): la misma URL responde 206 segundos
+  después. Por eso cada request se reintenta (1,5 s / 3 s; 429 y 403 con 15 s / 30 s) y, al final, las
+  categorías que fallaron sueltas se vuelven a intentar una vez tras 30 s.
+- `items[0]`: se toma el primer SKU, igual que el camino viejo. El link se arma con el dominio recorrido +
+  `linkText` (el catálogo es compartido: el `link` absoluto podría ser de otra cadena).
+
+**Resultado: "exitosa" no es "completa".** Además de `success`, cada corrida reporta `complete` con su porqué en
+`incompleteReasons` (`eans_mode`, `partial`, `failed_categories`, `oversized_categories`, `node_cap`),
+`expectedTotal`, `failedCategories`, `oversizedCategories`, `unreachableProducts`, `salesChannel` y `requestCount`.
+`unreachableProducts` son los que ninguna consulta alcanza (fuera del árbol, o colgados de un padre sin estar en
+ningún hijo): su precio no se refresca, así que **no** vuelven incompleta la corrida y vencen como cualquier otro.
+El modo `search` pasa por `markSearchResult()` (`cores/vtexProducts.js`) y sale siempre `complete: false`
+(`search_mode`): el top 50 por término nunca recorre el catálogo. Una categoría
+que falla después de los reintentos **no** aborta la corrida (los precios que llegaron se guardan) pero la deja
+`complete: false`, igual que el modo `eans` o una corrida acotada con `categoryPaths`. Laravel no cuenta
+ausencias de una corrida incompleta (`SweepUnseenProducts`, ver CLAUDE.md del repo Laravel). Tres categorías
+seguidas caídas (reintentos incluidos) cortan la corrida con `success: false`: eso ya no es un 500 pasajero
+sino un bloqueo, y seguir golpeando sólo lo empeora.
+
+**Lo que NO resuelve** (ver `docs/BACKLOG.md` del repo Laravel): un producto sin stock sigue sin volver en el
+recorrido (el filtro de disponibilidad es obligatorio en el catálogo compartido), así que se cuenta como
+ausencia y no como "sin stock" (SCRAPER-002).
+
+**El camino viejo de GraphQL** (`cores/vtex.js`, modo `search`): `GET /_v/segment/graphql/v1/?operationName=productSuggestions&extensions={persistedQuery: {sha256Hash: "...", ...}}`,
+con el hash de `VTEX_SHA256_HASH`. `normalizeProduct()` toma `items[0].ean`, `commertialOffer.Price` y el precio
+de referencia de `unitMultiplier`, igual que `normalizeCatalogProduct()`.
 
 ### Scraper de Coto (no-VTEX)
 
@@ -351,8 +423,13 @@ siendo Disco).
 **Productos — `scrapers/josimar.js`:** ~5.700 productos, **100% con EAN** (la PK del catálogo es
 `products.ean`). De una muestra de 1.798 EANs, **846 (47%) ya están en el catálogo master**, así que Josimar
 suma un competidor real en ~2.700 productos.
+- Recorre con el core compartido `cores/vtexCatalog.js` (que nació de este archivo), **sin canal y sin filtro de
+  disponibilidad**: su catálogo no es compartido, y recorrer también lo que está sin stock permite escribir
+  `is_available = false`. Sin `sc` la API usa el canal por defecto del host (el 5).
 - ⚠️ **Hay que recorrer por categoría.** `_from > 2500` devuelve **HTTP 400**, así que no se puede paginar el
   catálogo entero de corrido. El árbol está en `/api/catalog_system/pub/category/tree/3` (14 departamentos).
+- ⚠️ El recorrido propio que tenía antes bajaba a las subcategorías con el id suelto (`C:/17/`), que da 0: el
+  día que Almacén (2.260) pasara la ventana, se habría perdido entero sin aviso. El core usa el path completo.
 
 ⚠️ **Precio: Josimar NO es estrictamente chain-wide.** Se publica el precio de la consulta sin `sc` y hoy
 **no** participa de `merchant_store_prices`, pero eso es una decisión pendiente, no un hecho de la fuente:
@@ -396,22 +473,19 @@ reemplazó por las APIs JSON que alimentan esas mismas páginas — mismo criter
 
 ### Adding a New Scraper
 
-1. Create `scrapers/new-store.js`:
+1. Si es VTEX: agregar la entrada a `VTEX_MERCHANTS` en `cores/vtexProducts.js` (dominio y canal de
+   `GET https://<dominio>/api/segments` → `channel`), medirlo con `npm run catalog:dry -- <clave>` y crear
+   `scrapers/new-store.js`:
 ```javascript
-import { scrapeVtexMerchant } from '../cores/vtex.js';
-import { saveFollowerProduct } from '../cores/saveHandlers.js'; // or saveMasterProduct if new master
+import { scrapeVtexProducts } from '../cores/vtexProducts.js';
 
 export async function getNewStoreMainProducts(mode = 'categories') {
-  const useEans = mode === 'eans';
-  return await scrapeVtexMerchant({
-    merchantName: 'NewStore',
-    baseUrl: 'https://www.newstore.com.ar',
-    categories: useEans ? productEans : DETAILED_CATEGORIES,
-    onProductFound: saveFollowerProduct, // or saveMasterProduct
-    count: useEans ? 1 : 50
-  });
+  return scrapeVtexProducts('newstore', mode);
 }
 ```
+   Antes de decidir el filtro de disponibilidad, comparar el total del catálogo con y sin
+   `fq=isAvailablePerSalesChannel_{canal}:1`: si el catálogo es compartido con otra cadena (Cencosud), el
+   filtro es obligatorio.
 
 2. Add to `scripts/populate-db.js` SCRAPERS object
 3. Add npm script to `package.json`: `"scrape:newstore": "node scripts/populate-db.js newstore"`
@@ -456,7 +530,7 @@ Optional:
 
 ## Known Issues & Quirks
 
-- **VTEX hash expiration:** When scrapers fail with GraphQL errors, re-extract hash (see `COMO_OBTENER_HASH.md`)
+- **VTEX hash expiration:** sólo afecta al modo `search`. Si ese modo falla con `PersistedQueryNotFound`, re-extract hash (see `COMO_OBTENER_HASH.md`)
 - **ListPrice bug:** VTEX's `ListPrice` field is incorrect (82x multiplier). Use `PriceWithoutDiscount` instead (handled in `normalizeProduct()`)
 - **EAN filtering:** Products without EAN codes are discarded (`normalizeProduct` returns `null`)
 - **Master catalog dependency:** Follower scrapers silently skip products not in master catalog (check logs for `not_in_master` entries)

@@ -1,0 +1,335 @@
+[
+  {
+    "productId": "19417",
+    "productName": "Palta Hass Elegida X Un",
+    "brand": "VERDULERIA PROPIA",
+    "linkText": "palta-hass-elegida-x-un",
+    "link": "https://www.disco.com.ar/palta-hass-elegida-x-un/p",
+    "description": "<h2>Palta Hass x 1 Un</h2> <p>Vas a incorporar un insumo de alta calidad en tus preparaciones diarias, ideal para complementar diversas recetas en tu casa.</p> <ul> <li>Variedad: Hass.</li> <li>Peso a",
+    "categories": [
+      "/Frutas y Verduras/Frutas/Frutas Sueltas/",
+      "/Frutas y Verduras/Frutas/",
+      "/Frutas y Verduras/"
+    ],
+    "items": [
+      {
+        "itemId": "16484",
+        "ean": "2947607000003",
+        "nameComplete": "Palta Hass Elegida X Un Palta Hass x 1 Un",
+        "measurementUnit": "un",
+        "unitMultiplier": 1,
+        "images": [
+          {
+            "imageUrl": "https://jumboargentina.vteximg.com.br/arquivos/ids/763476/Palta-Hass-Elegida-Unidad-1-17215.jpg?v=638080005645570000"
+          }
+        ],
+        "sellers": [
+          {
+            "sellerId": "1",
+            "sellerDefault": true,
+            "commertialOffer": {
+              "Price": 1199,
+              "ListPrice": 108507,
+              "PriceWithoutDiscount": 1199,
+              "AvailableQuantity": 99999,
+              "IsAvailable": true
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "productId": "12978",
+    "productName": "Banana Ecuador X Kg",
+    "brand": "SIN MARCA.",
+    "linkText": "banana-ecuador-x-kg-2",
+    "link": "https://www.disco.com.ar/banana-ecuador-x-kg-2/p",
+    "description": "",
+    "categories": [
+      "/Frutas y Verduras/Frutas/Frutas Sueltas/",
+      "/Frutas y Verduras/Frutas/",
+      "/Frutas y Verduras/"
+    ],
+    "items": [
+      {
+        "itemId": "10198",
+        "ean": "2999239000005",
+        "nameComplete": "Banana Ecuador X Kg",
+        "measurementUnit": "kg",
+        "unitMultiplier": 0.5,
+        "images": [
+          {
+            "imageUrl": "https://jumboargentina.vteximg.com.br/arquivos/ids/790316/Banana-Ecuador-Por-Kg-1-10885.jpg?v=638272137671900000"
+          }
+        ],
+        "sellers": [
+          {
+            "sellerId": "1",
+            "sellerDefault": true,
+            "commertialOffer": {
+              "Price": 3599,
+              "ListPrice": 325701,
+              "PriceWithoutDiscount": 3599,
+              "AvailableQuantity": 99999,
+              "IsAvailable": true
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "productId": "719939",
+    "productName": "Rollo de cocina Sussex clásico 50 paños 3 uni",
+    "brand": "Sussex",
+    "linkText": "rollo-de-cocina-sussex-clasico-50-panos-3-uni-719939",
+    "link": "https://www.carrefour.com.ar/rollo-de-cocina-sussex-clasico-50-panos-3-uni-719939/p",
+    "description": "",
+    "categories": [
+      "/Limpieza/Rollos de cocina y servilletas/",
+      "/Limpieza/"
+    ],
+    "items": [
+      {
+        "itemId": "142225",
+        "ean": "7790250056881",
+        "nameComplete": "Rollo de cocina Sussex clásico 50 paños 3 uni",
+        "measurementUnit": "un",
+        "unitMultiplier": 1,
+        "images": [
+          {
+            "imageUrl": "https://carrefourar.vteximg.com.br/arquivos/ids/342558/7790250056881_01.jpg?v=638224260020300000"
+          },
+          {
+            "imageUrl": "https://carrefourar.vteximg.com.br/arquivos/ids/320563/7790250056881_02.jpg?v=638835347712330000"
+          }
+        ],
+        "sellers": [
+          {
+            "sellerId": "1",
+            "sellerDefault": true,
+            "commertialOffer": {
+              "Price": 2064.3,
+              "ListPrice": 2949,
+              "PriceWithoutDiscount": 2949,
+              "AvailableQuantity": 99999,
+              "IsAvailable": true
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "productId": "244802",
+    "productName": "Corrector de Ojeras Maybelline Instant Age Rewind Eraser x 6 ml",
+    "brand": "Maybelline",
+    "linkText": "corrector-de-ojeras-instant-age-rewind-eraser-x-6-ml-02",
+    "link": "https://www.farmacity.com/corrector-de-ojeras-instant-age-rewind-eraser-x-6-ml-02/p",
+    "description": "<h3>Descripción:</h3>Conocé los nuevos tonos de Instant Age Rewind, verde para corregir rojeces, naranja para contrarrestar decoloración en pieles medias a oscuras, neutralizer para difuminar imperfec",
+    "categories": [
+      "/Maquillaje/Rostro/Correctores/",
+      "/Maquillaje/Rostro/",
+      "/Maquillaje/"
+    ],
+    "items": [
+      {
+        "itemId": "135340",
+        "ean": "41554259254",
+        "nameComplete": "Corrector de Ojeras Maybelline Instant Age Rewind Eraser x 6 ml",
+        "measurementUnit": "un",
+        "unitMultiplier": 1,
+        "images": [
+          {
+            "imageUrl": "https://farmacityar.vteximg.com.br/arquivos/ids/272253/135340_corrector-iar-eraser-light-x-30-gr__imagen-1.jpg?v=638840314334200000"
+          },
+          {
+            "imageUrl": "https://farmacityar.vteximg.com.br/arquivos/ids/272254/135340_corrector-iar-eraser-light-x-30-gr__imagen-2.jpg?v=638840314334330000"
+          }
+        ],
+        "sellers": [
+          {
+            "sellerId": "1",
+            "sellerDefault": true,
+            "commertialOffer": {
+              "Price": 27293,
+              "ListPrice": 41990,
+              "PriceWithoutDiscount": 41990,
+              "AvailableQuantity": 100,
+              "IsAvailable": true
+            }
+          }
+        ]
+      },
+      {
+        "itemId": "135341",
+        "ean": "41554259261",
+        "nameComplete": "Corrector de Ojeras Maybelline Instant Age Rewind Eraser x 6 ml",
+        "measurementUnit": "un",
+        "unitMultiplier": 1,
+        "images": [
+          {
+            "imageUrl": "https://farmacityar.vteximg.com.br/arquivos/ids/272270/135341_corrector-iar-eraser-medium-x-30-gr__imagen-1.jpg?v=638840348056430000"
+          },
+          {
+            "imageUrl": "https://farmacityar.vteximg.com.br/arquivos/ids/272271/135341_corrector-iar-eraser-medium-x-30-gr__imagen-2.jpg?v=638840348056600000"
+          }
+        ],
+        "sellers": [
+          {
+            "sellerId": "1",
+            "sellerDefault": true,
+            "commertialOffer": {
+              "Price": 27293,
+              "ListPrice": 41990,
+              "PriceWithoutDiscount": 41990,
+              "AvailableQuantity": 100,
+              "IsAvailable": true
+            }
+          }
+        ]
+      },
+      {
+        "itemId": "135343",
+        "ean": "41554259247",
+        "nameComplete": "Corrector de Ojeras Maybelline Instant Age Rewind Eraser x 6 ml",
+        "measurementUnit": "un",
+        "unitMultiplier": 1,
+        "images": [
+          {
+            "imageUrl": "https://farmacityar.vteximg.com.br/arquivos/ids/272237/135343_corrector-iar-erase-fair-x-30-gr__imagen-1.jpg?v=638839728608070000"
+          },
+          {
+            "imageUrl": "https://farmacityar.vteximg.com.br/arquivos/ids/272238/135343_corrector-iar-erase-fair-x-30-gr__imagen-2.jpg?v=638839728608200000"
+          }
+        ],
+        "sellers": [
+          {
+            "sellerId": "1",
+            "sellerDefault": true,
+            "commertialOffer": {
+              "Price": 27293,
+              "ListPrice": 41990,
+              "PriceWithoutDiscount": 41990,
+              "AvailableQuantity": 100,
+              "IsAvailable": true
+            }
+          }
+        ]
+      },
+      {
+        "itemId": "206876",
+        "ean": "41554259278",
+        "nameComplete": "Corrector de Ojeras Maybelline Instant Age Rewind Eraser x 6 ml",
+        "measurementUnit": "un",
+        "unitMultiplier": 1,
+        "images": [
+          {
+            "imageUrl": "https://farmacityar.vteximg.com.br/arquivos/ids/272278/206876_corrector-age-rewind-eraser-dark-circles-honey__imagen-1.jpg?v=638840351724630000"
+          },
+          {
+            "imageUrl": "https://farmacityar.vteximg.com.br/arquivos/ids/272279/206876_corrector-age-rewind-eraser-dark-circles-honey__imagen-2.jpg?v=638840351724630000"
+          }
+        ],
+        "sellers": [
+          {
+            "sellerId": "1",
+            "sellerDefault": true,
+            "commertialOffer": {
+              "Price": 27293,
+              "ListPrice": 41990,
+              "PriceWithoutDiscount": 41990,
+              "AvailableQuantity": 100,
+              "IsAvailable": true
+            }
+          }
+        ]
+      },
+      {
+        "itemId": "206879",
+        "ean": "41554546798",
+        "nameComplete": "Corrector de Ojeras Maybelline Instant Age Rewind Eraser x 6 ml",
+        "measurementUnit": "un",
+        "unitMultiplier": 1,
+        "images": [
+          {
+            "imageUrl": "https://farmacityar.vteximg.com.br/arquivos/ids/272262/206879_corrector-iar-eraser-dark-circles-sand__imagen-1.jpg?v=638840319408530000"
+          },
+          {
+            "imageUrl": "https://farmacityar.vteximg.com.br/arquivos/ids/272263/206879_corrector-iar-eraser-dark-circles-sand__imagen-2.jpg?v=638840319408530000"
+          }
+        ],
+        "sellers": [
+          {
+            "sellerId": "1",
+            "sellerDefault": true,
+            "commertialOffer": {
+              "Price": 27293,
+              "ListPrice": 41990,
+              "PriceWithoutDiscount": 41990,
+              "AvailableQuantity": 100,
+              "IsAvailable": true
+            }
+          }
+        ]
+      },
+      {
+        "itemId": "213356",
+        "ean": "041554267198",
+        "nameComplete": "Corrector de Ojeras Maybelline Instant Age Rewind Eraser x 6 ml",
+        "measurementUnit": "un",
+        "unitMultiplier": 1,
+        "images": [
+          {
+            "imageUrl": "https://farmacityar.vteximg.com.br/arquivos/ids/265646/213356_corrector-de-ojeras-instant-age-rewind-eraser-x-6-ml-244110_imagen-1.jpg.jpg?v=638781827026200000"
+          },
+          {
+            "imageUrl": "https://farmacityar.vteximg.com.br/arquivos/ids/265647/213356_corrector-de-ojeras-instant-age-rewind-eraser-x-6-ml-244110_imagen-2.jpg.jpg?v=638781827026200000"
+          }
+        ],
+        "sellers": [
+          {
+            "sellerId": "1",
+            "sellerDefault": true,
+            "commertialOffer": {
+              "Price": 27293,
+              "ListPrice": 41990,
+              "PriceWithoutDiscount": 41990,
+              "AvailableQuantity": 100,
+              "IsAvailable": true
+            }
+          }
+        ]
+      },
+      {
+        "itemId": "213357",
+        "ean": "041554267204",
+        "nameComplete": "Corrector de Ojeras Maybelline Instant Age Rewind Eraser x 6 ml",
+        "measurementUnit": "un",
+        "unitMultiplier": 1,
+        "images": [
+          {
+            "imageUrl": "https://farmacityar.vteximg.com.br/arquivos/ids/280394/213357_corrector-de-ojeras-instant-age-rewind-eraser-x-6-ml-02_imagen-1.jpg?v=638917284445130000"
+          },
+          {
+            "imageUrl": "https://farmacityar.vteximg.com.br/arquivos/ids/280395/213357_corrector-de-ojeras-instant-age-rewind-eraser-x-6-ml-02_imagen-2.jpg?v=638917284445430000"
+          }
+        ],
+        "sellers": [
+          {
+            "sellerId": "1",
+            "sellerDefault": true,
+            "commertialOffer": {
+              "Price": 27293,
+              "ListPrice": 41990,
+              "PriceWithoutDiscount": 41990,
+              "AvailableQuantity": 100,
+              "IsAvailable": true
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

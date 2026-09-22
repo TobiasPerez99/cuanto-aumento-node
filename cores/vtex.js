@@ -150,10 +150,25 @@ export async function scrapeVtexMerchant({ merchantName, baseUrl, categories, on
     categoryStats: Array.from(categoryCounts.entries())
   };
 }
-// Hash VTEX desde variables de entorno
-const VTEX_SHA256_HASH = process.env.VTEX_SHA256_HASH;
-if (!VTEX_SHA256_HASH) {
-  throw new Error('❌ VTEX_SHA256_HASH no está configurado en las variables de entorno');
+/**
+ * Hash de la persisted query `productSuggestions`, leído recién cuando se lo usa.
+ *
+ * Sólo lo necesita el modo `search` (este camino de GraphQL, que quedó como vuelta
+ * atrás): el recorrido normal de productos va por el Catalog System REST
+ * (`cores/vtexCatalog.js`), que no usa persisted queries. Antes esto tiraba al
+ * importar el módulo, y como todo el servicio lo importa, un hash faltante tumbaba
+ * también promos y sucursales.
+ */
+function requireVtexHash() {
+  const hash = process.env.VTEX_SHA256_HASH;
+  if (hash) return hash;
+  const err = new Error('Abort: VTEX_SHA256_HASH no está configurado y el modo "search" lo necesita');
+  err.vtexAbort = true;
+  err.diag = {
+    kind: 'missing_hash',
+    hint: 'Configurá VTEX_SHA256_HASH (node scripts/extractVtexHash.js) o usá el modo "categories", que no lo necesita.',
+  };
+  throw err;
 }
 /**
  * Codifica una cadena a Base64
@@ -184,12 +199,12 @@ function getVariablesWithQuery(query, count = 60) {
 /**
  * Genera las extensiones con la query para VTEX
  */
-function getExtensionsWithQuery(query, count) {
+function getExtensionsWithQuery(query, count, hash) {
   const variables = getVariablesWithQuery(query, count);
   return {
     persistedQuery: {
       version: 1,
-      sha256Hash: VTEX_SHA256_HASH,
+      sha256Hash: hash,
       sender: "vtex.store-resources@0.x",
       provider: "vtex.search-graphql@0.x"
     },
@@ -209,8 +224,8 @@ function encodeQueryParams(params) {
 /**
  * Codifica la query completa para la URL
  */
-function encodeQuery(query, count) {
-  const extensions = JSON.stringify(getExtensionsWithQuery(query, count));
+function encodeQuery(query, count, hash) {
+  const extensions = JSON.stringify(getExtensionsWithQuery(query, count, hash));
   const params = {
     workspace: "master",
     maxAge: "medium",
@@ -383,10 +398,12 @@ const consecutiveErrorCounters = new Map();
 const ABORT_AFTER_CONSECUTIVE = 5;
 
 export async function fetchVtexProducts(baseUrl, query, source, count = 50) {
+  // Sin hash no hay nada que pedir: se aborta la corrida entera, no categoría por categoría.
+  const hash = requireVtexHash();
   // Asegurar que baseUrl no tenga barra al final
   const cleanBaseUrl = baseUrl.endsWith('/') ? baseUrl.slice(0, -1) : baseUrl;
   const endpoint = `${cleanBaseUrl}/_v/segment/graphql/v1/`;
-  const url = endpoint + encodeQuery(query, count);
+  const url = endpoint + encodeQuery(query, count, hash);
   try {
     const response = await axios.get(url, {
       headers: {
@@ -436,7 +453,7 @@ export async function fetchVtexProducts(baseUrl, query, source, count = 50) {
       `\n   ↳ hint: ${diag.hint}` +
       `\n   ↳ endpoint: ${endpoint}` +
       (diag.kind === 'persisted_query_not_found'
-        ? `\n   ↳ sha256Hash en uso: ${VTEX_SHA256_HASH ? VTEX_SHA256_HASH.slice(0, 12) + '…' : '(vacío!)'}`
+        ? `\n   ↳ sha256Hash en uso: ${hash.slice(0, 12)}…`
         : '')
     );
 

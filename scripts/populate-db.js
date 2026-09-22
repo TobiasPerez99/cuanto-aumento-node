@@ -56,6 +56,16 @@ export const SCRAPERS = {
   josimarstores: { fn: getJosimarStores, name: 'Josimar Stores', type: 'stores' },
 };
 
+/**
+ * Modos de los scrapers de productos.
+ *   categories → recorrer el catálogo entero (el default)
+ *   eans       → sólo los EANs de PRODUCT_EANS
+ *   search     → los 7 VTEX vuelven a la búsqueda de texto de GraphQL (necesita
+ *                VTEX_SHA256_HASH). Es la vuelta atrás si el WAF bloquea el catálogo
+ *                REST; Coto y Josimar lo tratan como `categories`.
+ */
+export const PRODUCT_MODES = ['categories', 'eans', 'search'];
+
 // Tipos de scraper que NO usan modo y devuelven shapes propios (no {totalProducts})
 const MODELESS_TYPES = ['bank', 'promo', 'stores'];
 
@@ -63,7 +73,7 @@ const MODELESS_TYPES = ['bank', 'promo', 'stores'];
 const args = process.argv.slice(2);
 const targetScraper = args[0]; // ej: "disco", "carrefour", "all"
 const DEFAULT_MODE = 'categories';
-const cliMode = args[1] || DEFAULT_MODE; // "categories" (default) o "eans"
+const cliMode = args[1] || DEFAULT_MODE; // uno de PRODUCT_MODES
 
 export async function runScraper(key, scraper, mode = DEFAULT_MODE) {
   const label = scraper.isMaster ? `${scraper.name} (MAESTRO)` : scraper.name;
