@@ -172,6 +172,11 @@ Gotchas que cuestan caro:
 - El precio REST coincide con el de Intelligent Search (lo que muestra el storefront) en 1.392 de 1.394
   cruces, **descuentos incluidos** (`PriceWithoutDiscount`). Cencosud no usa ese campo: sus rebajas son promos.
 - ⚠️ **`ListPrice` viene multiplicado (×90 en Disco).** Se usa `PriceWithoutDiscount`.
+- ⚠️ **La API devuelve páginas cortas en el medio de una categoría** (medido en producción en Masonline:
+  páginas de 49 con el header diciendo que había más). Tomarlas como el final cortó "Desayunos y Meriendas"
+  en 499 de 1.060 y la corrida se reportó completa. Con total conocido `walkTarget` pagina por **posición**
+  hasta el total del header (el más reciente) y lo que faltó se informa en `pageGaps`; sólo sin total una
+  página corta es el final. No lo detecta una corrida en seco desde otra IP: en seco las páginas vinieron llenas.
 - La API tira **500 en ráfagas** (medido en Carrefour y Masonline): la misma URL responde 206 segundos
   después. Por eso cada request se reintenta (1,5 s / 3 s; 429 y 403 con 15 s / 30 s) y, al final, las
   categorías que fallaron sueltas se vuelven a intentar una vez tras 30 s.
