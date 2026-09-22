@@ -528,7 +528,7 @@ test('walkTarget pagina hasta el total y no pide de más', async () => {
 
   assert.deepEqual(froms, [0, 50, 100]);
   assert.equal(seen.length, 120);
-  assert.deepEqual(out, { fetched: 120, truncated: false });
+  assert.deepEqual(out, { fetched: 120, missing: 0, truncated: false });
 });
 
 test('walkTarget corta en la página corta aunque no sepa el total', async () => {
@@ -544,6 +544,61 @@ test('walkTarget corta en la página corta aunque no sepa el total', async () =>
   assert.equal(out.fetched, 70);
 });
 
+/**
+ * Medido en producción el 2026-09-22: Masonline devolvió páginas de 49 en medio de
+ * categorías de 1.060 y 644 productos. Tomar la página corta como el final cortaba la
+ * categoría por la mitad sin avisar (499 de 1.060). Con el total conocido, se pagina
+ * por posición hasta el total, y lo que faltó en las páginas cortas se informa.
+ */
+test('walkTarget no corta en una página corta si el total dice que hay más', async () => {
+  const froms = [];
+  const fetchPage = async (path, from) => {
+    froms.push(from);
+    const total = 160;
+    const full = Math.max(0, Math.min(50, total - from));
+    // La página de from=50 viene con uno de menos.
+    const count = from === 50 ? full - 1 : full;
+    return { products: Array.from({ length: count }, (_, i) => ({ n: from + i })), total };
+  };
+
+  const out = await walkTarget({ path: '/200039/', total: 160 }, { fetchPage, onBatch: noSleep, sleep: noSleep });
+
+  assert.deepEqual(froms, [0, 50, 100, 150]);
+  assert.equal(out.fetched, 159);
+  assert.equal(out.missing, 1, 'lo que faltó en la página corta queda contado');
+});
+
+test('walkTarget sigue después de una página vacía si el total dice que hay más', async () => {
+  const froms = [];
+  const fetchPage = async (path, from) => {
+    froms.push(from);
+    const count = from === 50 ? 0 : Math.max(0, Math.min(50, 120 - from));
+    return { products: Array.from({ length: count }, () => ({})), total: 120 };
+  };
+
+  const out = await walkTarget({ path: '/9/', total: 120 }, { fetchPage, onBatch: noSleep, sleep: noSleep });
+
+  assert.deepEqual(froms, [0, 50, 100]);
+  assert.equal(out.fetched, 70);
+  assert.equal(out.missing, 50);
+});
+
+test('walkTarget sigue el total más reciente si el catálogo encoge a mitad de camino', async () => {
+  const froms = [];
+  const fetchPage = async (path, from) => {
+    froms.push(from);
+    const total = from === 0 ? 200 : 90; // entre la primera y la segunda página, se agotaron productos
+    const count = Math.max(0, Math.min(50, total - from));
+    return { products: Array.from({ length: count }, () => ({})), total };
+  };
+
+  const out = await walkTarget({ path: '/9/', total: 200 }, { fetchPage, onBatch: noSleep, sleep: noSleep });
+
+  assert.deepEqual(froms, [0, 50], 'no pide páginas que ya no existen');
+  assert.equal(out.fetched, 90);
+  assert.equal(out.missing, 0);
+});
+
 test('walkTarget llega hasta _from=2500 y declara el truncado', async () => {
   const { froms, fetchPage } = pager(3000);
 
@@ -551,7 +606,7 @@ test('walkTarget llega hasta _from=2500 y declara el truncado', async () => {
 
   assert.equal(froms.at(-1), 2500, 'la última página pedida es la del tope');
   assert.ok(!froms.includes(2550), 'nunca pide un _from que VTEX rechaza con 400');
-  assert.deepEqual(out, { fetched: 2550, truncated: true });
+  assert.deepEqual(out, { fetched: 2550, missing: 0, truncated: true });
 });
 
 test('walkTarget propaga la falla de una página (ya guardó las anteriores)', async () => {
@@ -900,6 +955,23 @@ test('scrapeVtexCatalog dice por qué una corrida no es completa', async () => {
   ));
   assert.equal(sana.complete, true);
   assert.deepEqual(sana.incompleteReasons, []);
+});
+
+test('scrapeVtexCatalog recorre la categoría entera aunque una página venga corta, y lo informa', async () => {
+  const eans = Array.from({ length: 60 }, (_, i) => `m${i}`);
+  const vtex = fakeVtex({ tree: [{ id: 1, name: 'Desayunos', children: [] }], catalog: { '/1/': eans } });
+  // La primera página del recorrido llega con uno de menos, como las de Masonline en prod.
+  const httpGet = async (url) => {
+    const res = await vtex.httpGet(url);
+    if (url.includes('fq=C:/1/') && url.includes('_from=0&_to=49')) return { ...res, data: res.data.slice(0, 49) };
+    return res;
+  };
+
+  const out = await scrapeVtexCatalog(baseOptions({ httpGet }, { onProductFound: null }));
+
+  assert.equal(out.totalProducts, 59, 'la segunda página se pidió igual');
+  assert.equal(out.pageGaps, 1);
+  assert.equal(out.complete, true);
 });
 
 test('scrapeVtexCatalog informa lo que el árbol no alcanza, sin declarar la corrida incompleta', async () => {

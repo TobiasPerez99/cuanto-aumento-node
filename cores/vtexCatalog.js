@@ -397,22 +397,38 @@ export async function resolveCategoryTargets(
  * Recorre una categoría paginando hasta agotarla o hasta el tope de la ventana.
  * Llama `onBatch` con los productos crudos de cada página. Una página que falla
  * propaga el error: las anteriores ya se procesaron.
+ *
+ * ⚠️ **Con el total conocido se pagina por POSICIÓN, no hasta la primera página
+ * corta.** VTEX devuelve a veces menos de 50 productos en una página del medio
+ * (medido en producción el 2026-09-22: Masonline cortó "Desayunos y Meriendas" en
+ * 499 de 1.060 y "Cuidado del Cabello" en 199 de 644, con páginas de 49). Tomar la
+ * página corta como el final perdía la cola de la categoría sin avisar. Ahora se
+ * sigue hasta el total del header (el más reciente: si el catálogo encoge a mitad de
+ * camino, no se piden páginas que ya no existen) y lo que no vino en las páginas
+ * cortas se cuenta en `missing`. Sólo sin total conocido una página corta es el final.
  */
 export async function walkTarget(target, { fetchPage, onBatch, sleep = defaultSleep, delayMs = REQUEST_DELAY_MS }) {
   let from = 0;
   let fetched = 0;
+  let missing = 0;
   let truncated = false;
 
   for (;;) {
     const { products, total } = await fetchPage(target.path, from);
-    if (products.length === 0) break;
 
-    await onBatch(products);
-    fetched += products.length;
+    if (products.length > 0) {
+      await onBatch(products);
+      fetched += products.length;
+    }
 
     const knownTotal = total ?? target.total;
-    if (knownTotal != null && from + products.length >= knownTotal) break;
-    if (products.length < PAGE_SIZE) break;
+    if (knownTotal != null) {
+      const expected = Math.max(0, Math.min(PAGE_SIZE, knownTotal - from));
+      missing += Math.max(0, expected - products.length);
+      if (from + PAGE_SIZE >= knownTotal) break;
+    } else if (products.length < PAGE_SIZE) {
+      break;
+    }
 
     if (from + PAGE_SIZE > MAX_FROM) {
       truncated = true;
@@ -423,7 +439,7 @@ export async function walkTarget(target, { fetchPage, onBatch, sleep = defaultSl
     await sleep(delayMs);
   }
 
-  return { fetched, truncated };
+  return { fetched, missing, truncated };
 }
 
 /** `/1/17/` → `/1/`: el path del padre, para volver a resolver un nodo suelto. */
@@ -489,6 +505,8 @@ export async function scrapeVtexCatalog({
   let discardedCount = 0;
   let rawCount = 0;
   let requestCount = 0;
+  // Productos que el header prometía y no vinieron en páginas cortas (ver walkTarget).
+  let pageGaps = 0;
 
   let channel = null;
   let expectedTotal = null;
@@ -542,6 +560,7 @@ export async function scrapeVtexCatalog({
       incompleteReasons,
       truncatedByCap,
       unreachableProducts,
+      pageGaps,
       requestCount,
       durationSeconds: Math.round((Date.now() - startedAt) / 1000),
       // Desglose liviano por categoría (lo consume slackNotifier). NO se devuelve la
@@ -554,6 +573,7 @@ export async function scrapeVtexCatalog({
     console.log(`\n🎉 Recorrido de ${merchantName} terminado (${result.durationSeconds}s, ${requestCount} requests):`);
     console.log(`   📊 Productos únicos: ${seenEans.size}${expectedTotal != null ? ` de ${expectedTotal} que declara el catálogo` : ''}`);
     console.log(`   💾 Guardados: ${savedCount}${skippedCount ? ` · ⏭️ fuera del maestro: ${skippedCount}` : ''}${discardedCount ? ` · 🗑️ descartados: ${discardedCount}` : ''}`);
+    if (pageGaps > 0) console.warn(`   ⚠️ ${pageGaps} productos faltaron en páginas cortas de la API (se siguió paginando)`);
     if (unreachableProducts > 0) console.log(`   🔒 ${unreachableProducts} productos que ninguna consulta alcanza (fuera del árbol o colgados de un padre)`);
     if (failed.length) console.warn(`   ⚠️ ${failed.length} categoría(s) sin recorrer: ${failed.map((f) => f.name || f.path).join(', ')}`);
     if (!success) console.error(`   ❌ ${error}`);
@@ -682,9 +702,13 @@ export async function scrapeVtexCatalog({
       visitedPaths.add(target.path);
       const label = target.name ? `${target.name} (${target.path})` : target.path;
       try {
-        const { fetched, truncated } = await guarded(() =>
+        const { fetched, missing, truncated } = await guarded(() =>
           walkTarget(target, { fetchPage, onBatch: handleBatch, sleep, delayMs })
         );
+        if (missing > 0) {
+          pageGaps += missing;
+          console.warn(`   ⚠️ ${label}: ${missing} productos que el catálogo declara no vinieron en páginas cortas`);
+        }
         if (truncated && !oversized.some((o) => o.path === target.path)) {
           oversized.push({ path: target.path, name: target.name, total: target.total });
         }

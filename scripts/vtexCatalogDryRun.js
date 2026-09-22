@@ -68,6 +68,7 @@ for (const key of targets) {
     categorias: result.totalCategories,
     fallidas: result.failedCategories?.length ?? 0,
     truncadas: result.oversizedCategories?.length ?? 0,
+    huecos: result.pageGaps ?? 0,
     requests: result.requestCount,
     segundos: result.durationSeconds,
     error: result.error ?? '',
