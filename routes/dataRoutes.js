@@ -17,6 +17,7 @@ import { getPatagoniaPromotions } from '../scrapers/promos/patagonia.js';
 import { getJumboPromotions } from '../scrapers/promos/jumbo_promos.js';
 import { getCotoPromotions } from '../scrapers/promos/coto.js';
 import { getSantanderPromotions } from '../scrapers/promos/santander.js';
+import { getGaliciaPromotions } from '../scrapers/promos/galicia.js';
 import { getDiaPromotions } from '../scrapers/promos/dia.js';
 import { getVeaPromotions } from '../scrapers/promos/vea.js';
 import { getDiscoPromotions } from '../scrapers/promos/disco.js';
@@ -43,6 +44,7 @@ const PROMOTION_SOURCES = {
   vea: getVeaPromotions,
   disco: getDiscoPromotions,
   josimar: getJosimarPromotions,
+  galicia: getGaliciaPromotions,
 };
 
 const STORE_SOURCES = {
@@ -76,6 +78,11 @@ router.get(
 
     try {
       const result = await scraperFn();
+      // Un scraper que falla devuelve { success: false }. Con 200 el middleware lo
+      // cacheaba 6 h y Laravel lo leía como "0 promos": 502 no se cachea y hace fallar el pull.
+      if (result?.success === false) {
+        return res.status(502).json(result);
+      }
       res.json(result);
     } catch (error) {
       console.error(`Error scraping promotions for "${source}":`, error);

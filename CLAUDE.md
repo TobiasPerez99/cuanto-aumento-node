@@ -256,6 +256,61 @@ Coto is one of the largest Argentine chains but is **not VTEX** — it uses **Co
 - **Origen:** adaptación de la entrega de Prácticas Profesionalizantes de Thiago Coro (2026-08), que validó la necesidad de browser real; su scraping de DOM por click se reemplazó por el BFF.
 - Fixture: `scraper-tests/fixtures/santander-brand.json` (snapshot real del BFF); unit tests `npm run test:santander-unit` (normalización pura, sin red).
 
+### Contrato de fechas (todos los scrapers de promos)
+
+`start_date`/`end_date` salen SIEMPRE como `YYYY-MM-DD` o `null` — nunca el formato crudo de la
+fuente. Cada scraper es responsable de convertir el suyo (`dd/mm/yyyy` en Galicia,
+`fullWeek`/timestamps ISO en Santander, etc.); Laravel tiene un parser estricto de fechas como
+**segunda línea de defensa**, no como la primera — confiar en que el parser de Laravel arregla
+lo que el scraper mandó mal es el mismo error que llevó al bug de `Carbon::parse()` con
+`m/d/Y` (ver `AGENTS`/spec del normalizador en el repo Laravel). Un valor que no matchea el
+formato esperado se emite `null`, nunca una fecha adivinada.
+
+### Scraper de promociones de Banco Galicia (BFF de "Quiero!")
+
+`scrapers/promos/galicia.js` (`getGaliciaPromotions()`), PULL provider consumido por Laravel vía
+`GET /api/promotions/galicia`. Relevamiento completo:
+`docs/superpowers/research/2026-09-23-fuentes-de-promos/galicia.md` (repo Laravel).
+
+- **Fuente:** el buscador de promociones de www.galicia.ar es un iframe a beneficios.galicia.ar
+  (Next.js), que consume un BFF JSON público **sin token**: `GET
+  {BFF}/personalizacion/v1/promociones/catalogo?page=&pageSize=` (listado, sólo sirve para saber
+  qué ids hay) y `GET {BFF}/catalogo/v1/promociones/idPromocion/{id}` (detalle: %, cuotas, tope
+  con periodicidad, compra mínima, días, tarjetas, segmento y legales). `BFF =
+  https://loyalty.bff.bancogalicia.com.ar/api/portal`.
+- **Agrupado de segmentos:** Galicia publica **un id por segmento** de la misma promo (Masivo
+  20%, Eminent 25% del mismo comercio y vigencia). `groupKey()` agrupa los detalles que comparten
+  comercio, vigencia, días, tarjetas, QR/NFC y tipo de beneficio (ahorro/cuotas) en un registro
+  con `segments: [...]`, que la IA convierte en niveles del lado de Laravel (ver "Promotion
+  tiers" en el CLAUDE.md del repo Laravel). Dos detalles del MISMO segmento (mismo
+  `modeloAtencion`+`haberes`) dentro del mismo grupo **no** se fusionan: el segundo abre su
+  propio grupo (la clave incluye su id), porque son dos promos distintas que casualmente
+  comparten comercio y vigencia.
+- **`external_id`** = `gal-` + sha1(groupKey) recortado a 12 chars — estable entre corridas y
+  ante cualquier orden de llegada de los detalles (no depende de qué id sea "el primero").
+- **Concurrencia:** `GALICIA_DETAIL_CONCURRENCY` (default 3) controla cuántos detalles se piden
+  en paralelo; cada detalle reintenta 2 veces (500ms/1000ms) antes de contarse como fallido. Un
+  detalle fallido no aborta la corrida — se cuenta en `failed_details` y se sigue.
+- **Falla fuerte ante bloqueo, nunca "0 promos":** `parseBffResponse()` distingue un 403/429/503
+  o un cuerpo que no parsea como JSON (challenge HTML) de un error de datos — ambos casos lanzan
+  `GaliciaBlockedError`, que aborta toda la corrida con `{success:false, blocked:true}` en vez de
+  devolver una lista vacía como si no hubiera promos. Si el BFF empieza a exigir un challenge
+  real (WAF tipo F5), el plan B es el mismo patrón que Santander: `fetch()` desde
+  `puppeteer-core` dentro del contexto de una página real — no se agregó acá porque a
+  2026-09-23 el BFF responde directo sin browser.
+- Fixture: `scraper-tests/fixtures/galicia-promos.json` (snapshot real del BFF, 2026-09-23);
+  unit tests `scraper-tests/galicia-promos.test.js` (agrupado, fechas, ids y manejo de fallas con
+  un `get` inyectado — sin red).
+
+### El route de promos no cachea fallas
+
+`routes/dataRoutes.js` (`GET /api/promotions/:source`): si el scraper devuelve `{success:
+false}` (bloqueado, excepción atrapada, lo que sea), el handler responde **502**, no 200. Con
+200, `cacheMiddleware` guarda esa falla 6 horas en Redis y Laravel la lee como "0 promos" hasta
+que expire el cache — un scraper caído se ve igual que un comercio sin promos ese día. 502 nunca
+se cachea (`cacheMiddleware` sólo cachea `res.statusCode` en `[200,300)`) y hace fallar el pull
+del lado de Laravel de inmediato, en vez de silenciarlo.
+
 ### Scrapers de Dia y Vea (promociones + sucursales)
 
 Los 7 scrapers VTEX de **productos** (incluidos `diaonline.js` y `vea.js`) no cambian.

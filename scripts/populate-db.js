@@ -27,6 +27,7 @@ import { getModoBanks } from '../scrapers/banks/modo_bank.js';
 import { getMercadoPagoPromotions } from '../scrapers/promos/mercadopago.js';
 import { getPatagoniaPromotions } from '../scrapers/promos/patagonia.js';
 import { getSantanderPromotions } from '../scrapers/promos/santander.js';
+import { getGaliciaPromotions } from '../scrapers/promos/galicia.js';
 import { getJumboPromotions } from '../scrapers/promos/jumbo_promos.js';
 import { getJumboStores } from '../scrapers/stores/jumbo_stores.js';
 import { getCotoStores } from '../scrapers/stores/coto_stores.js';
@@ -50,6 +51,7 @@ export const SCRAPERS = {
   mercadopago: { fn: getMercadoPagoPromotions, name: 'MercadoPago Promos', type: 'promo' },
   patagonia: { fn: getPatagoniaPromotions, name: 'Banco Patagonia Promos', type: 'promo' },
   santander: { fn: getSantanderPromotions, name: 'Banco Santander Promos', type: 'promo' },
+  galicia: { fn: getGaliciaPromotions, name: 'Banco Galicia Promos', type: 'promo' },
   jumbopromos: { fn: getJumboPromotions, name: 'Jumbo Promos', type: 'promo' },
   jumbostores: { fn: getJumboStores, name: 'Jumbo Stores', type: 'stores' },
   cotostores: { fn: getCotoStores, name: 'Coto Stores', type: 'stores' },
