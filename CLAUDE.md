@@ -33,7 +33,7 @@ npm run scrape:vea         # Vea
 npm run scrape:dia         # Dia Online
 npm run scrape:masonline   # Masonline
 npm run scrape:farmacity   # Farmacity
-npm run scrape:all         # Run all scrapers sequentially
+npm run scrape:all         # Run all PRODUCT scrapers sequentially (promos/stores only by name)
 
 # Test scrapers (without DB writes)
 npm run test:disco
@@ -115,7 +115,12 @@ Example: `npm run scrape:disco categories` or via API: `POST /api/scrape/disco` 
 
 **Scraper endpoints** (`routes/scraperRoutes.js`) - **Require API_TOKEN auth**:
 - `POST /api/scrape/:scraperName` - Run single scraper (body: `{ "mode": "categories" | "eans" }`)
-- `POST /api/scrape/all` - Run all scrapers
+- `POST /api/scrape/all` - Run all **product** scrapers (masters first, then followers). Promo
+  (`type: 'promo'`) and store (`type: 'stores'`) scrapers are **excluded** — they only run by name
+  (`/api/scrape/:scraperName`); Laravel pulls them on its own. Before this, every 3-hour product cron
+  also ran the full Galicia scrape (~1,630 requests) and threw the result away. The selection lives in
+  `scripts/scraperSelection.js` (`productEntries()`, shared with `runAll()`); `modo` (`type: 'bank'`)
+  stays in.
 - `GET /api/scrape/status/:jobId` - Check job status
 - `GET /api/scrape/jobs` - List all jobs
 - `GET /api/scrape/running` - List running scrapers
@@ -258,13 +263,22 @@ Coto is one of the largest Argentine chains but is **not VTEX** — it uses **Co
 
 ### Contrato de fechas (todos los scrapers de promos)
 
-`start_date`/`end_date` salen SIEMPRE como `YYYY-MM-DD` o `null` — nunca el formato crudo de la
-fuente. Cada scraper es responsable de convertir el suyo (`dd/mm/yyyy` en Galicia,
-`fullWeek`/timestamps ISO en Santander, etc.); Laravel tiene un parser estricto de fechas como
-**segunda línea de defensa**, no como la primera — confiar en que el parser de Laravel arregla
-lo que el scraper mandó mal es el mismo error que llevó al bug de `Carbon::parse()` con
-`m/d/Y` (ver `AGENTS`/spec del normalizador en el repo Laravel). Un valor que no matchea el
-formato esperado se emite `null`, nunca una fecha adivinada.
+**El objetivo** es que `start_date`/`end_date` salgan siempre como `YYYY-MM-DD` o `null` — nunca
+el formato crudo de la fuente — y que un valor que no matchea el formato esperado se emita
+`null`, no una fecha adivinada. Cada scraper es responsable de convertir el suyo (`dd/mm/yyyy` en
+Galicia, timestamps ISO en Santander, etc.); Laravel tiene un parser estricto (`StrictDate`) como
+**segunda línea de defensa**, no como la primera — confiar en que Laravel arregla lo que el
+scraper mandó mal es el mismo error que llevó al bug de `Carbon::parse()` con `m/d/Y` (ver
+"Promotion tiers, benefits and eligibility" en el CLAUDE.md del repo Laravel).
+
+**No todos lo cumplen todavía.** Excepciones conocidas:
+- `scrapers/promos/patagonia.js` — `toIso()` arma la fecha con `Date.UTC` sin verificar que el
+  resultado sea el mismo día/mes/año (sin round-trip): `31/02/2026` sale como `2026-03-03` en vez
+  de `null`.
+- `scrapers/promos/mercadopago.js` — la vigencia viene como texto sin año ("del 3 al 9 de
+  octubre"); cuando el texto no trae "de 2026", el año se **infiere** del año en curso.
+
+Galicia (`ddmmyyyyToIso()`, con round-trip) es la referencia para los scrapers nuevos.
 
 ### Scraper de promociones de Banco Galicia (BFF de "Quiero!")
 
@@ -288,13 +302,25 @@ formato esperado se emite `null`, nunca una fecha adivinada.
   comparten comercio y vigencia.
 - **`external_id`** = `gal-` + sha1(groupKey) recortado a 12 chars — estable entre corridas y
   ante cualquier orden de llegada de los detalles (no depende de qué id sea "el primero").
-- **Concurrencia:** `GALICIA_DETAIL_CONCURRENCY` (default 3) controla cuántos detalles se piden
-  en paralelo; cada detalle reintenta 2 veces (500ms/1000ms) antes de contarse como fallido. Un
-  detalle fallido no aborta la corrida — se cuenta en `failed_details` y se sigue.
-- **Falla fuerte ante bloqueo, nunca "0 promos":** `parseBffResponse()` distingue un 403/429/503
-  o un cuerpo que no parsea como JSON (challenge HTML) de un error de datos — ambos casos lanzan
-  `GaliciaBlockedError`, que aborta toda la corrida con `{success:false, blocked:true}` en vez de
-  devolver una lista vacía como si no hubiera promos. Si el BFF empieza a exigir un challenge
+- **Concurrencia y reintentos:** `GALICIA_DETAIL_CONCURRENCY` (default 3) controla cuántos
+  detalles se piden en paralelo; cada detalle reintenta 2 veces (1 s / 3 s) ante 429/503, 5xx o
+  error de red. Lo que sigue fallando se reintenta **una vez más en una pasada final en serie**
+  (300 ms entre ids). El listado reintenta una vez (1 s).
+- **Un detalle que no llegó no muta una promo agrupada.** El `external_id` no depende de qué
+  segmentos hay adentro del grupo: publicar Elten sin su Eminent cambiaría la huella (la IA la
+  re-normaliza, pago), le faltaría un nivel un día y al siguiente volvería a cambiar. Por eso, por
+  cada id que falla también en la pasada final, `dropGroupsOfFailed()` saca **todos** los grupos de
+  su comercio (`m{idMarca}` del listado) o, si la promo es por categoría (sin `idMarca`), todos los
+  grupos por categoría (`c…`). Esas promos no salen esa corrida y la staging de Laravel conserva la
+  fila de ayer (ausente no es cambiada). El resultado trae `failed_details` (cuántos), `failed_ids`
+  y `dropped_groups`.
+- **Falla fuerte ante bloqueo, nunca "0 promos":** `parseBffResponse()` separa tres casos. Un
+  **403** o un cuerpo que no parsea como JSON (challenge HTML) lanza `GaliciaBlockedError`: no se
+  reintenta, los demás workers dejan de tomar ids (flag `aborted`) y la corrida termina con
+  `{success:false, blocked:true}` en vez de devolver una lista vacía como si no hubiera promos. Un
+  **429 o 503** lanza `GaliciaTransientError`: el BFF pide aire, se reintenta con backoff y, si no
+  se recupera, el detalle cuenta como fallido (en el listado, la corrida falla con
+  `blocked:false`). Cualquier otro status no-2xx es un error común. Si el BFF empieza a exigir un challenge
   real (WAF tipo F5), el plan B es el mismo patrón que Santander: `fetch()` desde
   `puppeteer-core` dentro del contexto de una página real — no se agregó acá porque a
   2026-09-23 el BFF responde directo sin browser.
