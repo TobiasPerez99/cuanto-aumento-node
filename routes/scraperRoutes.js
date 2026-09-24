@@ -6,6 +6,7 @@
 import { Router } from 'express';
 import { authMiddleware } from '../middlewares/authMiddleware.js';
 import { SCRAPERS, PRODUCT_MODES } from '../scripts/populate-db.js';
+import { productEntries } from '../scripts/scraperSelection.js';
 import {
   createJob,
   getJob,
@@ -99,6 +100,8 @@ router.post('/scrape/:scraperName', authMiddleware, async (req, res) => {
  *  2) Recién entonces lanza los FOLLOWERS en paralelo.
  * Si arrancamos todo en paralelo, los followers descartan productos que
  * Disco todavía no creó (reason: "not_in_master") y la corrida queda vacía.
+ * Sólo scrapers de productos: promos y sucursales se piden por nombre
+ * (ver scripts/scraperSelection.js).
  */
 router.post('/scrape/all', authMiddleware, async (req, res) => {
   try {
@@ -113,9 +116,11 @@ router.post('/scrape/all', authMiddleware, async (req, res) => {
       });
     }
 
-    // Check which scrapers are already running
+    const entries = productEntries(SCRAPERS);
+
+    // Check which scrapers are already running (sólo los que esta corrida lanzaría)
     const alreadyRunning = [];
-    for (const [key, scraper] of Object.entries(SCRAPERS)) {
+    for (const [key, scraper] of entries) {
       if (isScraperRunning(key)) {
         alreadyRunning.push(scraper.name);
       }
@@ -131,8 +136,8 @@ router.post('/scrape/all', authMiddleware, async (req, res) => {
     }
 
     // Partir SCRAPERS en maestros y followers preservando el orden de inserción
-    const masterEntries = Object.entries(SCRAPERS).filter(([, s]) => s.isMaster);
-    const followerEntries = Object.entries(SCRAPERS).filter(([, s]) => !s.isMaster);
+    const masterEntries = entries.filter(([, s]) => s.isMaster);
+    const followerEntries = entries.filter(([, s]) => !s.isMaster);
 
     // Crear los jobs de antemano para devolver los IDs en la respuesta
     const jobs = [];

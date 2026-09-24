@@ -35,6 +35,7 @@ import { getJosimarStores } from '../scrapers/stores/josimar_stores.js';
 
 // Importar notificador de Slack
 import { sendScrapingNotification } from '../services/slackNotifier.js';
+import { productEntries } from './scraperSelection.js';
 
 // Configuración de scrapers
 export const SCRAPERS = {
@@ -154,8 +155,10 @@ export async function runAll(mode = DEFAULT_MODE) {
   // Primero ejecutar el MAESTRO (Disco) para crear productos base.
   // Es crítico que el MAESTRO termine antes de lanzar los FOLLOWERS:
   // los followers descartan productos que no existan todavía en el catálogo.
-  const masterEntries = Object.entries(SCRAPERS).filter(([, s]) => s.isMaster);
-  const followerEntries = Object.entries(SCRAPERS).filter(([, s]) => !s.isMaster);
+  // Promos y sucursales no entran: se corren por nombre (ver scraperSelection.js).
+  const entries = productEntries(SCRAPERS);
+  const masterEntries = entries.filter(([, s]) => s.isMaster);
+  const followerEntries = entries.filter(([, s]) => !s.isMaster);
 
   console.log('\n⭐ PASO 1: Ejecutando scraper(s) MAESTRO...');
   for (const [key, scraper] of masterEntries) {
