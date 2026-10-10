@@ -39,8 +39,10 @@ const router = Router();
 // TTL de cache para estos endpoints: 6 horas
 const DATA_CACHE_TTL = 6 * 60 * 60;
 
-// Whitelist de fuentes válidas -> función scraper correspondiente
-const PROMOTION_SOURCES = {
+// Whitelist de fuentes válidas -> función scraper correspondiente.
+// Se exportan para el test que verifica que todo scraper de promos/sucursales
+// registrado en populate-db.js también se pueda pedir por acá.
+export const PROMOTION_SOURCES = {
   mercadopago: getMercadoPagoPromotions,
   patagonia: getPatagoniaPromotions,
   jumbo: getJumboPromotions,
@@ -51,14 +53,20 @@ const PROMOTION_SOURCES = {
   disco: getDiscoPromotions,
   josimar: getJosimarPromotions,
   galicia: getGaliciaPromotions,
+  carrefour: getCarrefourPromotions,
+  masonline: getMasonlinePromotions,
+  farmacity: getFarmacityPromotions,
+  naranjax: getNaranjaXPromotions,
+  cuentadni: getCuentaDniPromotions,
 };
 
-const STORE_SOURCES = {
+export const STORE_SOURCES = {
   jumbo: getJumboStores,
   coto: getCotoStores,
   dia: getDiaStores,
   disco: getDiscoStores,
   josimar: getJosimarStores,
+  farmacity: getFarmacityStores,
 };
 
 /**

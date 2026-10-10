@@ -46,7 +46,7 @@
     "test:josimar-unit": "node --test scraper-tests/josimar-stores.test.js scraper-tests/josimar-products.test.js",
     "test:cencosud-unit": "node --test scraper-tests/cencosud-promos.test.js",
     "test:memory-retry-unit": "node --test scraper-tests/scraper-memory-and-retry.test.js",
-    "test:promo-sources-unit": "node --test scraper-tests/promo-text.test.js scraper-tests/valtech-promos.test.js scraper-tests/farmacity-promos.test.js scraper-tests/farmacity-stores.test.js scraper-tests/naranjax-promos.test.js scraper-tests/cuentadni-promos.test.js",
+    "test:promo-sources-unit": "node --test scraper-tests/promo-text.test.js scraper-tests/valtech-promos.test.js scraper-tests/farmacity-promos.test.js scraper-tests/farmacity-stores.test.js scraper-tests/naranjax-promos.test.js scraper-tests/cuentadni-promos.test.js scraper-tests/data-routes-registry.test.js",
     "catalog:dry": "node scripts/vtexCatalogDryRun.js",
     "test:vtex-catalog-unit": "node --test scraper-tests/vtex-catalog.test.js scraper-tests/vtex-products.test.js"
   },

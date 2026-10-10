@@ -658,6 +658,9 @@ export async function getNewStoreMainProducts(mode = 'categories') {
 2. Add to `scripts/populate-db.js` SCRAPERS object
 3. Add npm script to `package.json`: `"scrape:newstore": "node scripts/populate-db.js newstore"`
 4. Add route handler in `routes/scraperRoutes.js`
+5. Si es de **promos o sucursales**, registrarlo además en `PROMOTION_SOURCES`/`STORE_SOURCES` de
+   `routes/dataRoutes.js`: es lo que pide Laravel, y sin la entrada responde 404 aunque el scraper ande
+   (pasó con las cinco fuentes de la etapa 2). Lo verifica `scraper-tests/data-routes-registry.test.js`.
 
 ### Modifying Database Schema
 
