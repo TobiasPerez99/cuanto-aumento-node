@@ -1,0 +1,247 @@
+{
+ "captured_at": "2026-09-08T08:22:36Z",
+ "source": "farmacity",
+ "total_products": 15180,
+ "teasers": [
+  {
+   "name": "2x1 Combinable#01/09 - 21/09 // ID: 250079 (Bot carga: 28-08)",
+   "product_count": 13,
+   "sample_products": [
+    {
+     "ean": "7791000000000",
+     "name": "Producto de ejemplo 0"
+    }
+   ]
+  },
+  {
+   "name": "2x1 Combinable Tu Farmacity#01/09 - 21/09 // ID: 250077 (Bot carga: 28-08)",
+   "product_count": 63,
+   "sample_products": [
+    {
+     "ean": "7791000000001",
+     "name": "Producto de ejemplo 1"
+    }
+   ]
+  },
+  {
+   "name": "2x1 Tu Farmacity#01/09 - 21/09 (Bot carga: 28-08)",
+   "product_count": 234,
+   "sample_products": [
+    {
+     "ean": "7791000000002",
+     "name": "Producto de ejemplo 2"
+    }
+   ]
+  },
+  {
+   "name": "2x1#01/09 - 21/09 (Bot carga: 28-08)",
+   "product_count": 167,
+   "sample_products": [
+    {
+     "ean": "7791000000003",
+     "name": "Producto de ejemplo 3"
+    }
+   ]
+  },
+  {
+   "name": "2x1 Solo Web#01/09 - 30/09 (Bot carga: 28-08)",
+   "product_count": 30,
+   "sample_products": [
+    {
+     "ean": "7791000000004",
+     "name": "Producto de ejemplo 4"
+    }
+   ]
+  },
+  {
+   "name": "-80% 2da unidad Tu Farmacity#01/09 - 21/09 (Bot carga: 28-08)",
+   "product_count": 2,
+   "sample_products": [
+    {
+     "ean": "7791000000005",
+     "name": "Producto de ejemplo 5"
+    }
+   ]
+  },
+  {
+   "name": "2x1 Solo Web#07/09 - 10/09 (Bot carga: 28-08)",
+   "product_count": 250,
+   "sample_products": [
+    {
+     "ean": "7791000000006",
+     "name": "Producto de ejemplo 6"
+    }
+   ]
+  },
+  {
+   "name": "3x2 Solo Web#07/09 - 10/09 (Bot carga: 28-08)",
+   "product_count": 5,
+   "sample_products": [
+    {
+     "ean": "7791000000007",
+     "name": "Producto de ejemplo 7"
+    }
+   ]
+  },
+  {
+   "name": "2x1 Tu Farmacity#01/09 - 30/09 (Bot carga: 28-08)",
+   "product_count": 31,
+   "sample_products": [
+    {
+     "ean": "7791000000008",
+     "name": "Producto de ejemplo 8"
+    }
+   ]
+  },
+  {
+   "name": "3x2 Solo Web#01/09 - 30/09 (Bot carga: 28-08)",
+   "product_count": 1,
+   "sample_products": [
+    {
+     "ean": "7791000000009",
+     "name": "Producto de ejemplo 9"
+    }
+   ]
+  },
+  {
+   "name": "-70% 2da unidad Solo Web#07/09 - 10/09 (Bot carga: 28-08)",
+   "product_count": 4,
+   "sample_products": [
+    {
+     "ean": "7791000000010",
+     "name": "Producto de ejemplo 10"
+    }
+   ]
+  },
+  {
+   "name": "-70% 2da unidad#01/09 - 21/09 (Bot carga: 28-08)",
+   "product_count": 7,
+   "sample_products": [
+    {
+     "ean": "7791000000011",
+     "name": "Producto de ejemplo 11"
+    }
+   ]
+  },
+  {
+   "name": "3x2#01/09 - 21/09 (Bot carga: 28-08)",
+   "product_count": 5,
+   "sample_products": [
+    {
+     "ean": "7791000000012",
+     "name": "Producto de ejemplo 12"
+    }
+   ]
+  },
+  {
+   "name": "-50% 2da unidad#01/09 - 21/09 (Bot carga: 28-08)",
+   "product_count": 4,
+   "sample_products": [
+    {
+     "ean": "7791000000013",
+     "name": "Producto de ejemplo 13"
+    }
+   ]
+  },
+  {
+   "name": "-50% 2da unidad Tu Farmacity#01/09 - 21/09 (Bot carga: 28-08)",
+   "product_count": 7,
+   "sample_products": [
+    {
+     "ean": "7791000000014",
+     "name": "Producto de ejemplo 14"
+    }
+   ]
+  },
+  {
+   "name": "3x2 Tu Farmacity#01/09 - 21/09 (Bot carga: 28-08)",
+   "product_count": 21,
+   "sample_products": [
+    {
+     "ean": "7791000000015",
+     "name": "Producto de ejemplo 15"
+    }
+   ]
+  },
+  {
+   "name": "-50% 2da unidad Tu Farmacity#01/09 - 13/09 (emergente)",
+   "product_count": 1,
+   "sample_products": [
+    {
+     "ean": "7791000000016",
+     "name": "Producto de ejemplo 16"
+    }
+   ]
+  },
+  {
+   "name": "2x1#01/09 - 30/09 (Bot carga: 28-08)",
+   "product_count": 12,
+   "sample_products": [
+    {
+     "ean": "7791000000017",
+     "name": "Producto de ejemplo 17"
+    }
+   ]
+  },
+  {
+   "name": "-50% 2da unidad Solo Web#07/09 - 10/09 (Bot carga: 28-08)",
+   "product_count": 4,
+   "sample_products": [
+    {
+     "ean": "7791000000018",
+     "name": "Producto de ejemplo 18"
+    }
+   ]
+  },
+  {
+   "name": "2x1 Solo Web#01/09 - 09/09 (emergente)",
+   "product_count": 1,
+   "sample_products": [
+    {
+     "ean": "7791000000019",
+     "name": "Producto de ejemplo 19"
+    }
+   ]
+  },
+  {
+   "name": "2x1 Solo Web#01/09 - 21/09 (Bot carga: 28-08)",
+   "product_count": 2,
+   "sample_products": [
+    {
+     "ean": "7791000000020",
+     "name": "Producto de ejemplo 20"
+    }
+   ]
+  },
+  {
+   "name": "-80% 2da unidad Solo Web#07/09 - 10/09 (Bot carga: 28-08)",
+   "product_count": 11,
+   "sample_products": [
+    {
+     "ean": "7791000000021",
+     "name": "Producto de ejemplo 21"
+    }
+   ]
+  },
+  {
+   "name": "-70% 2da unidad Tu Farmacity#01/09 - 30/09 (Bot carga: 28-08)",
+   "product_count": 4,
+   "sample_products": [
+    {
+     "ean": "7791000000022",
+     "name": "Producto de ejemplo 22"
+    }
+   ]
+  },
+  {
+   "name": "-70% 2da unidad Tu Farmacity#01/09 - 21/09 (Bot carga: 28-08)",
+   "product_count": 1,
+   "sample_products": [
+    {
+     "ean": "7791000000023",
+     "name": "Producto de ejemplo 23"
+    }
+   ]
+  }
+ ]
+}

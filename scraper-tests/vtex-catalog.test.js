@@ -726,6 +726,24 @@ test('scrapeVtexCatalog recorre el árbol entero y reporta una corrida completa'
   assert.ok(saved.every((s) => s.merchantId === 7));
 });
 
+test('scrapeVtexCatalog entrega cada página cruda a onRawProducts, también en seco', async () => {
+  const vtex = fakeVtex({
+    tree: TREE,
+    catalog: { '/1/': ['a1', 'a2'], '/2/': ['b1'], '/5/': ['c1'] },
+  });
+  const pages = [];
+
+  const out = await scrapeVtexCatalog(
+    baseOptions(vtex, { onProductFound: null, onRawProducts: async (raw) => pages.push(raw) })
+  );
+
+  assert.equal(out.success, true);
+  // Crudos: con `commertialOffer` y todo, que el producto normalizado ya no trae.
+  const eans = pages.flat().map((p) => p.items[0].ean).sort();
+  assert.deepEqual(eans, ['a1', 'a2', 'b1', 'c1']);
+  assert.ok(pages.flat().every((p) => p.items[0].sellers[0].commertialOffer));
+});
+
 test('scrapeVtexCatalog manda el canal y el filtro de disponibilidad en cada consulta de productos', async () => {
   const vtex = fakeVtex({ tree: TREE, catalog: { '/1/': ['a1'], '/2/': ['b1'], '/5/': ['c1'] } });
 

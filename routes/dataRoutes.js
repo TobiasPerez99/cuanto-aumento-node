@@ -22,11 +22,17 @@ import { getDiaPromotions } from '../scrapers/promos/dia.js';
 import { getVeaPromotions } from '../scrapers/promos/vea.js';
 import { getDiscoPromotions } from '../scrapers/promos/disco.js';
 import { getJosimarPromotions } from '../scrapers/promos/josimar.js';
+import { getCarrefourPromotions } from '../scrapers/promos/carrefour.js';
+import { getMasonlinePromotions } from '../scrapers/promos/masonline.js';
+import { getFarmacityPromotions } from '../scrapers/promos/farmacity.js';
+import { getNaranjaXPromotions } from '../scrapers/promos/naranjax.js';
+import { getCuentaDniPromotions } from '../scrapers/promos/cuentadni.js';
 import { getJumboStores } from '../scrapers/stores/jumbo_stores.js';
 import { getCotoStores } from '../scrapers/stores/coto_stores.js';
 import { getDiaStores } from '../scrapers/stores/dia_stores.js';
 import { getJosimarStores } from '../scrapers/stores/josimar_stores.js';
 import { getDiscoStores } from '../scrapers/stores/disco_stores.js';
+import { getFarmacityStores } from '../scrapers/stores/farmacity_stores.js';
 
 const router = Router();
 

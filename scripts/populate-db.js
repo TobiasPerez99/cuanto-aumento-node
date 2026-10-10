@@ -32,6 +32,12 @@ import { getJumboPromotions } from '../scrapers/promos/jumbo_promos.js';
 import { getJumboStores } from '../scrapers/stores/jumbo_stores.js';
 import { getCotoStores } from '../scrapers/stores/coto_stores.js';
 import { getJosimarStores } from '../scrapers/stores/josimar_stores.js';
+import { getFarmacityStores } from '../scrapers/stores/farmacity_stores.js';
+import { getCarrefourPromotions } from '../scrapers/promos/carrefour.js';
+import { getMasonlinePromotions } from '../scrapers/promos/masonline.js';
+import { getFarmacityPromotions } from '../scrapers/promos/farmacity.js';
+import { getNaranjaXPromotions } from '../scrapers/promos/naranjax.js';
+import { getCuentaDniPromotions } from '../scrapers/promos/cuentadni.js';
 
 // Importar notificador de Slack
 import { sendScrapingNotification } from '../services/slackNotifier.js';
@@ -54,9 +60,15 @@ export const SCRAPERS = {
   santander: { fn: getSantanderPromotions, name: 'Banco Santander Promos', type: 'promo' },
   galicia: { fn: getGaliciaPromotions, name: 'Banco Galicia Promos', type: 'promo' },
   jumbopromos: { fn: getJumboPromotions, name: 'Jumbo Promos', type: 'promo' },
+  carrefourpromos: { fn: getCarrefourPromotions, name: 'Carrefour Promos', type: 'promo' },
+  masonlinepromos: { fn: getMasonlinePromotions, name: 'Masonline Promos', type: 'promo' },
+  farmacitypromos: { fn: getFarmacityPromotions, name: 'Farmacity Promos', type: 'promo' },
+  naranjax: { fn: getNaranjaXPromotions, name: 'Naranja X Promos', type: 'promo' },
+  cuentadni: { fn: getCuentaDniPromotions, name: 'Cuenta DNI Promos', type: 'promo' },
   jumbostores: { fn: getJumboStores, name: 'Jumbo Stores', type: 'stores' },
   cotostores: { fn: getCotoStores, name: 'Coto Stores', type: 'stores' },
   josimarstores: { fn: getJosimarStores, name: 'Josimar Stores', type: 'stores' },
+  farmacitystores: { fn: getFarmacityStores, name: 'Farmacity Stores', type: 'stores' },
 };
 
 /**

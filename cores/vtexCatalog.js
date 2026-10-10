@@ -473,6 +473,10 @@ function indexTree(tree, parent = '/', index = new Map()) {
  * @param {boolean}  [options.onlyAvailable] filtrar por disponibilidad en el canal
  * @param {boolean}  [options.requireImage] descartar productos sin imagen (el maestro)
  * @param {Function|null} [options.onProductFound] `null` = corrida en seco, sin tocar la base
+ * @param {Function|null} [options.onRawProducts] recibe cada página CRUDA tal como la
+ *                   devuelve VTEX (con `commertialOffer.Teasers`, que el producto
+ *                   normalizado no trae). Corre también en seco. Lo usa Farmacity para
+ *                   juntar sus promos de producto sin recorrer el catálogo dos veces.
  * @param {'categories'|'eans'} [options.mode]
  * @param {string[]} [options.eans]         EANs del modo `eans`
  * @param {string[]|null} [options.categoryPaths] recorrer sólo estas categorías ('/1/', '/1/17/')
@@ -485,6 +489,7 @@ export async function scrapeVtexCatalog({
   onlyAvailable = false,
   requireImage = false,
   onProductFound = null,
+  onRawProducts = null,
   mode = 'categories',
   eans = [],
   categoryPaths = null,
@@ -636,6 +641,7 @@ export async function scrapeVtexCatalog({
 
     const handleBatch = async (rawProducts) => {
       rawCount += rawProducts.length;
+      if (onRawProducts) await onRawProducts(rawProducts);
       for (const raw of rawProducts) {
         const product = normalizeCatalogProduct(raw, { baseUrl: base, source, requireImage });
         if (!product) {

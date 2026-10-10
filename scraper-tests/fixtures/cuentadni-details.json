@@ -1,0 +1,533 @@
+{
+ "captured_at": "2026-10-10",
+ "details": {
+  "519": {
+   "Entity": {
+    "Rubros": [
+     {
+      "id": 1,
+      "nombre": "Varios",
+      "orden": 1,
+      "icono": "marcas_destacadas",
+      "estado": 1
+     }
+    ],
+    "Beneficio": {
+     "id": 519,
+     "titulo": "Tarjeteá con Cuenta DNI",
+     "subtitulo": "Todos los días, en comercios adheridos",
+     "porcentaje": 3,
+     "logo": "pictograma_cuotas",
+     "bajada": "Adherí tus tarjetas de crédito y pagá, desde la app, mediante QR.",
+     "legal": "COSTO FINANCIERO TOTAL NOMINAL ANUAL 0,00%. INTERÉS: TASA NOMINAL ANUAL 0,00%. TASA EFECTIVA ANUAL 0,00%. PROMOCIÓN VÁLIDA TODOS LOS DÍAS DESDE EL 1 DE JUNIO, HASTA EL 31 DE OCTUBRE DE 2026, EN EL ÁMBITO DE CABA, GRAN BUENOS AIRES Y DE LA PROVINCIA DE BUENOS AIRES. BENEFICIO DE HASTA TRES (3) CUOTAS SIN INTERÉS PARA COMPRAS REALIZADAS A TRAVÉS DE LA APLICACIÓN CUENTA DNI CON LAS TARJETAS DE CRÉDITO VISA Y/O MASTERCARD EMITIDAS POR EL BANCO PROVINCIA EN COMERCIOS ADHERIDOS. NO ACUMULABLE CON OTRAS PROMOCIONES Y/O DESCUENTOS VIGENTES. EL PROGRAMA \"CUOTA SIMPLE\" NO ES ACUMULABLES CON PROMOCIONES BANCARIAS. LA PROMOCIÓN NO APLICA EN COMPRAS REALIZADAS CON TARJETA A TRAVÉS DE MPOS Y/O BOTÓN DE PAGO S.A. Y COMPRAS CON BILLETERAS VIRTUALES, PLATAFORMAS DE PAGO, Y/O PORTALES DE PAGO ON-LINE. EJEMPLO REPRESENTATIVO: EN UNA COMPRA DE $30.000.- EN TRES CUOTAS SIN INTERÉS, EL CLIENTE ABONARÁ TRES CUOTAS MENSUALES DE $10.000.- CADA UNA. PARA MÁS INFORMACIÓN COMUNÍQUESE AL 0810-222-2776. BANCO DE LA PROVINCIA DE BUENOS AIRES. CUIT 33-99924210-9. CALLE 7 N° 726. LA PLATA. PROVINCIA DE BUENOS AIRES. CARTERA DE CONSUMO",
+     "fecha_desde": "/Date(1780282800000)/",
+     "fecha_hasta": "/Date(1793502000000)/",
+     "url": "tarjeteaconcuentadni",
+     "titulo_fecha": "Todos los días",
+     "orden": 123,
+     "boton_pdf": "",
+     "oculto": 0,
+     "tipo": 2,
+     "urlPagina": null
+    },
+    "Imagenes": [],
+    "Condiciones": [
+     {
+      "id": 1935,
+      "id_beneficio": 519,
+      "texto": "El beneficio NO aplica en pagos realizados a través del código QR de Mercado Pago u otras billeteras digitales.",
+      "orden": 42
+     },
+     {
+      "id": 1936,
+      "id_beneficio": 519,
+      "texto": "Beneficio exclusivo para compras realizadas únicamente mediante tarjetas de crédito adheridas a Cuenta DNI, en los comercios adheridos.",
+      "orden": 36
+     },
+     {
+      "id": 2026,
+      "id_beneficio": 519,
+      "texto": "Se excluyen de la promoción los comercios de los rubros alimentos, carnicerías, granjas y pescaderías y grandes cadenas de supermercados.",
+      "orden": 41
+     }
+    ],
+    "Botones": [
+     {
+      "id": 1688,
+      "tipo": "link",
+      "texto": "Conocé los comercios adheridos, acá",
+      "link": "https://www.bancoprovincia.com.ar/cuentadni/buscadores/tarjeteaconcuentadni",
+      "contenido": null,
+      "idBeneficio": 519,
+      "orden": 5
+     },
+     {
+      "id": 1740,
+      "tipo": "link",
+      "texto": "¿No tenés tus tarjetas? Pedilas acá",
+      "link": "https://www.bancoprovincia.com.ar/formulario/SemiPresencial/TarjetasCredito",
+      "contenido": null,
+      "idBeneficio": 519,
+      "orden": 4
+     }
+    ]
+   },
+   "Success": true,
+   "Message": ""
+  },
+  "1052": {
+   "Entity": {
+    "Rubros": [
+     {
+      "id": 34,
+      "nombre": "Promo Acumulable",
+      "orden": 1,
+      "icono": "promo_acumulable",
+      "estado": 1
+     }
+    ],
+    "Beneficio": {
+     "id": 1052,
+     "titulo": "¡Los martes y miércoles al super con Cuenta DNI!",
+     "subtitulo": "Acumulá este beneficio con el de Comercios de Cercanía.",
+     "porcentaje": 15,
+     "logo": "supermercado_verde",
+     "bajada": "Tope de reintegro unificado: $6.000 por semana y por persona.",
+     "legal": "PROMOCIÓN VÁLIDA TODOS LOS MARTES Y MIÉRCOLES DE OCTUBRE DEL 2026, PARA COMPRAS REALIZADAS A TRAVÉS DE LA FUNCIONALIDAD \"PAGO CLAVE DNI\" Y/O QR DE LA APLICACIÓN CUENTA DNI EN COMERCIOS ADHERIDOS. LA NÓMINA SE PODRÁ CONSULTAR EN WWW.BANCOPROVINCIA.COM.AR. BONIFICACIÓN DEL 15% CON UN TOPE DE REINTEGRO DE $6.000 - POR SEMANA Y POR CUENTA. EL DESCUENTO APLICARÁ CONSIDERANDO QUE EL MÍNIMO DE COMPRA SEA DE $30.000. A SU VEZ, EL TOPE SE OTORGARÁ ATRIBUYENDO EL TOTAL DE COMPRAS REALIZADAS POR CUENTA DURANTE LA ACCIÓN DE LA PROMOCIÓN EN TODOS LOS LOCALES ADHERIDOS A LA MISMA. EL REINTEGRO SE VERÁ REFLEJADO EN LOS MOVIMIENTOS DE LA CUENTA ASOCIADA A CUENTA DNI DENTRO DE LOS DIEZ (10) DÍAS HÁBILES SIGUIENTES DE REALIZADA LA COMPRA. EL BENEFICIO NO APLICA A CLIENTES QUE REGISTRAN ATRASO EN EL PAGO DE SUS OBLIGACIONES CON EL BANCO. VÁLIDA ÚNICAMENTE PARA VENTA MINORISTA, SE EXCLUYEN DE LA PROMOCIÓN LAS BEBIDAS CON ALCOHOL Y ELECTRODOMÉSTICOS. ACUMULABLE CON LA ACCIÓN DE COMERCIOS DE CERCANÍA. LA PROMOCIÓN NO APLICA A COMPRAS REALIZADAS CON CUENTA DNI MEDIANTE LA LECTURA DEL CÓDIGO QR DE MERCADO PAGO U OTRAS BILLETERAS DIGITALES, NI LAS ABONADAS CON TARJETA DE CRÉDITO VISA Y/O MASTERCARD Y/O VISA DÉBITO O TRANSFERENCIAS A TRAVÉS DE LA APLICACIÓN. EL DESCUENTO PROMOCIONADO APLICARÁ SOBRE EL PRECIO CONTADO EN CONCORDANCIA CON RESOLUCIÓN 51 Y 240 /2017 MINISTERIO DE PRODUCCIÓN DE LA NACIÓN SECRETARÍA DE COMERCIO. EJEMPLOS REPRESENTATIVOS: (1) QUIEN REALICE UNA COMPRA DE $30.000.- RECIBIRÁ UN REINTEGRO DE $4.500.- (2) QUIEN REALICE, EN LOS DÍAS DE LA PROMOCIÓN, UNA COMPRA DE $60.000, RECIBIRÁ UN REINTEGRO DE $6.000.- PARA MÁS INFORMACIÓN COMUNÍQUESE AL 0810 666 2364. BANCO DE LA PROVINCIA DE BUENOS AIRES. CUIT 33-99924210-9 CALLE 7 N°726. LA PLATA. BUENOS AIRES. WWW.BANCOPROVINCIA.COM.AR.",
+     "fecha_desde": "/Date(1788145200000)/",
+     "fecha_hasta": "/Date(1793242800000)/",
+     "url": "supermercados_martesymiercoles",
+     "titulo_fecha": "Martes y miércoles",
+     "orden": 7,
+     "boton_pdf": "",
+     "oculto": 0,
+     "tipo": 1,
+     "urlPagina": null
+    },
+    "Imagenes": [
+     {
+      "id": 1442,
+      "id_beneficio": 1052,
+      "url": "logo_cdni_chacabuco_200x122",
+      "orden": 17
+     },
+     {
+      "id": 1443,
+      "id_beneficio": 1052,
+      "url": "sabor_criollo",
+      "orden": 16
+     },
+     {
+      "id": 1444,
+      "id_beneficio": 1052,
+      "url": "logo_laamistad",
+      "orden": 11
+     },
+     {
+      "id": 1445,
+      "id_beneficio": 1052,
+      "url": "logo_donluis",
+      "orden": 10
+     },
+     {
+      "id": 1447,
+      "id_beneficio": 1052,
+      "url": "superguemes",
+      "orden": 20
+     },
+     {
+      "id": 1448,
+      "id_beneficio": 1052,
+      "url": "5COMENTARIOS",
+      "orden": 18
+     },
+     {
+      "id": 1449,
+      "id_beneficio": 1052,
+      "url": "logo_conectadistribucion",
+      "orden": 23
+     },
+     {
+      "id": 1450,
+      "id_beneficio": 1052,
+      "url": "autoservicio_228",
+      "orden": 24
+     },
+     {
+      "id": 1451,
+      "id_beneficio": 1052,
+      "url": "logo_super8",
+      "orden": 25
+     }
+    ],
+    "Condiciones": [
+     {
+      "id": 2498,
+      "id_beneficio": 1052,
+      "texto": "El beneficio NO aplica en pagos realizados a través del código QR de Mercado Pago u otras billeteras digitales.",
+      "orden": 23
+     },
+     {
+      "id": 2499,
+      "id_beneficio": 1052,
+      "texto": "El beneficio no aplica a clientes que registran atraso en el pago de sus obligaciones con el Banco.",
+      "orden": 21
+     },
+     {
+      "id": 2500,
+      "id_beneficio": 1052,
+      "texto": "El descuento aplicará considerando que el mínimo de compra sea de $30.000.",
+      "orden": 20
+     },
+     {
+      "id": 2501,
+      "id_beneficio": 1052,
+      "texto": "Beneficio exclusivo para compras realizadas con la aplicación Cuenta DNI con dinero en cuenta.",
+      "orden": 22
+     }
+    ],
+    "Botones": [
+     {
+      "id": 1766,
+      "tipo": "link",
+      "texto": "Conocé los super adheridos",
+      "link": "https://www.bancoprovincia.com.ar/cuentadni/buscadores/supermercados",
+      "contenido": null,
+      "idBeneficio": 1052,
+      "orden": 2
+     },
+     {
+      "id": 1767,
+      "tipo": "link",
+      "texto": "Conocé dónde acumular con otro beneficio",
+      "link": "https://www.bancoprovincia.com.ar/web/CDNI_especial_localidades",
+      "contenido": null,
+      "idBeneficio": 1052,
+      "orden": 3
+     }
+    ]
+   },
+   "Success": true,
+   "Message": ""
+  },
+  "1069": {
+   "Entity": {
+    "Rubros": [
+     {
+      "id": 34,
+      "nombre": "Promo Acumulable",
+      "orden": 1,
+      "icono": "promo_acumulable",
+      "estado": 1
+     }
+    ],
+    "Beneficio": {
+     "id": 1069,
+     "titulo": "Disfrutá de promociones exclusivas en tu localidad",
+     "subtitulo": "Hasta abril",
+     "porcentaje": 15,
+     "logo": "3arroyosespecial",
+     "bajada": "Tope de reintegro: hasta $7.000 por vigencia y por persona.",
+     "legal": "PROMOCIÓN VÁLIDA DEL",
+     "fecha_desde": "/Date(1790737200000)/",
+     "fecha_hasta": "/Date(1793502000000)/",
+     "url": "especiallocalidades",
+     "titulo_fecha": "Lunes a jueves",
+     "orden": 4,
+     "boton_pdf": "",
+     "oculto": 0,
+     "tipo": 1,
+     "urlPagina": "/web/CDNI_especial_localidades"
+    },
+    "Imagenes": [],
+    "Condiciones": [
+     {
+      "id": 2563,
+      "id_beneficio": 1069,
+      "texto": "El uso de este beneficio, no excluye el consumo de otros beneficios de Cuenta DNI. Promociones no acumulables.",
+      "orden": 24
+     },
+     {
+      "id": 2564,
+      "id_beneficio": 1069,
+      "texto": "No aplica a pagos con Tarjeta de Crédito, ni Tarjeta de Débito, ni con QR de Mercado Pago u otras billeteras.",
+      "orden": 22
+     },
+     {
+      "id": 2565,
+      "id_beneficio": 1069,
+      "texto": "No aplica a pagos con la función \"Transferencia\" o \"Envío de dinero\".",
+      "orden": 23
+     },
+     {
+      "id": 2566,
+      "id_beneficio": 1069,
+      "texto": "Beneficio exclusivo para pagos realizados con la app, en los puestos adheridos.",
+      "orden": 21
+     },
+     {
+      "id": 2567,
+      "id_beneficio": 1069,
+      "texto": "Buscá los puestos adheridos, con el material gráfico de la promoción.",
+      "orden": 26
+     }
+    ],
+    "Botones": []
+   },
+   "Success": true,
+   "Message": ""
+  },
+  "1072": {
+   "Entity": {
+    "Rubros": [
+     {
+      "id": 27,
+      "nombre": "Supermercados",
+      "orden": 1,
+      "icono": "supermercado_verde",
+      "estado": 1
+     }
+    ],
+    "Beneficio": {
+     "id": 1072,
+     "titulo": "¡Al super con Cuenta DNI!",
+     "subtitulo": "¡Sin tope de reintegro y con descuento en el momento!",
+     "porcentaje": 10,
+     "logo": "iconoc_carrefour_front",
+     "bajada": "Mínimo de compra de $15.000",
+     "legal": "Promoción válida todos los miércoles de octubre del 2026, para compras realizadas a través de la funcionalidad \"Pago Clave DNI\" y/o QR de la aplicación CUENTA DNI en todos los locales del país de Carrefour, tanto los MAXI, MARKET, EXPRESS e HIPER, exceptuando el Digital. La nómina de adheridos se podrá consultar en WWW.BANCOPROVINCIA.COM.AR. Bonificación del 10%. Sin tope de reintegro. El beneficio aplicará considerando que el mínimo de compra sea de $15.000. A su vez, el mismo estará a cargo de Carrefour. EL DESCUENTO se realizará en el momento de la compra, en el mismo instante en que se cobre al cliente por la línea de caja del establecimiento.  Válida únicamente para venta minorista, se excluyen de la promoción productos de los rubros carnicería, frutas, verduras, electrodomésticos, bazar, textil, productos de venta al bulto, como así tampoco a los packs familiares. Acumulable con productos en oferta. No acumulable con otras promociones y/o descuentos vigentes. La promoción no aplica a compras realizadas con CUENTA DNI mediante la lectura del código QR de Mercado Pago u otras billeteras digitales, ni las abonadas con tarjeta de crédito VISA y/o MASTERCARD y/o VISA DÉBITO o transferencias a través de la aplicación. El descuento promocionado aplicará sobre el precio contado en concordancia con Resolución 51 y 240 /2017 Ministerio de Producción de la Nación Secretaría de Comercio. Ejemplos representativos: (1) Quien realice una compra de $30.000.- recibirá un reintegro de $3.000.- (2) Quien realice una compra de $80.000.- recibirá un reintegro de $8.000.- Para más información comuníquese al 0810 666 2364. Banco de la Provincia de Buenos Aires. CUIT 33-99924210-9 Calle 7 N°726. La Plata. Buenos Aires.  www.bancoprovincia.com.ar",
+     "fecha_desde": "/Date(1790737200000)/",
+     "fecha_hasta": "/Date(1793502000000)/",
+     "url": "carrefour",
+     "titulo_fecha": "Miércoles ",
+     "orden": 9,
+     "boton_pdf": "",
+     "oculto": 0,
+     "tipo": 1,
+     "urlPagina": null
+    },
+    "Imagenes": [
+     {
+      "id": 1471,
+      "id_beneficio": 1072,
+      "url": "carrefour_200_122",
+      "orden": 1
+     },
+     {
+      "id": 1472,
+      "id_beneficio": 1072,
+      "url": "carrefourmaxi__200_122",
+      "orden": 4
+     },
+     {
+      "id": 1473,
+      "id_beneficio": 1072,
+      "url": "logo_carrefour_express",
+      "orden": 2
+     },
+     {
+      "id": 1474,
+      "id_beneficio": 1072,
+      "url": "logo_carrefour_market",
+      "orden": 3
+     }
+    ],
+    "Condiciones": [
+     {
+      "id": 2572,
+      "id_beneficio": 1072,
+      "texto": "El beneficio no aplica en pagos realizados a través del código QR de Mercado Pago u otras billeteras digitales.",
+      "orden": 36
+     },
+     {
+      "id": 2573,
+      "id_beneficio": 1072,
+      "texto": "Beneficio exclusivo para compras realizadas con la aplicación Cuenta DNI con dinero en cuenta.",
+      "orden": 35
+     },
+     {
+      "id": 2574,
+      "id_beneficio": 1072,
+      "texto": "Aplican exclusiones.",
+      "orden": 37
+     },
+     {
+      "id": 2575,
+      "id_beneficio": 1072,
+      "texto": "(*)El descuento se hará en el momento del pago, en línea de caja.",
+      "orden": 32
+     },
+     {
+      "id": 2576,
+      "id_beneficio": 1072,
+      "texto": "(**)Si sos jubilado/a y cobrás en el Banco Provincia, tenés un 5% de reintegro adicional con un tope de $5.000.",
+      "orden": 33
+     }
+    ],
+    "Botones": [
+     {
+      "id": 1793,
+      "tipo": "link",
+      "texto": "Conocé dónde comprar, acá",
+      "link": "https://www.carrefour.com.ar/sucursales?srsltid=AfmBOopDjYZ0wRg0kvjv213N3_U8fI08uKa5G6KTu2sY3gW6ti0jUPnu",
+      "contenido": null,
+      "idBeneficio": 1072,
+      "orden": 2
+     }
+    ]
+   },
+   "Success": true,
+   "Message": ""
+  },
+  "1073": {
+   "Entity": {
+    "Rubros": [
+     {
+      "id": 27,
+      "nombre": "Supermercados",
+      "orden": 1,
+      "icono": "supermercado_verde",
+      "estado": 1
+     }
+    ],
+    "Beneficio": {
+     "id": 1073,
+     "titulo": "Vamos al super sin excusas ",
+     "subtitulo": "¡Sin tope de reintegro!",
+     "porcentaje": 20,
+     "logo": "logo_changomas",
+     "bajada": "Y sin mínimo de compra. Podés pagar con la app, mediante NFC o con dinero en cuenta.",
+     "legal": "PROMOCIÓN VÁLIDA TODOS LOS JUEVES COMPRENDIDOS ENTRE EL 1 DE OCTUBRE y EL 31 DE DICIEMBRE DE 2026, AMBAS FECHAS INCLUSIVE. 1- 20% DE REINTEGRO, SIN TOPE, PARA LAS COMPRAS REALIZADAS DE MANERA PRESENCIAL CON CUENTA DNI DINERO EN CUENTA EN LOCALES HIPER CHANGO MÂS, CHANGO MÂS Y MÂSGO. APLICARÁ CONSIDERANDO LA TOTALIDAD DE LAS COMPRAS ALCANZADAS POR LA PROMOCIÓN REALIZADAS LOS DÍAS JUEVES DE CADA SEMANA EN TODOS LOS LOCALES HIPER CHANGO MÂS, CHANGO MÂS Y MÂSGO. 2- 20% DE REINTEGRO, SIN TOPE, PARA LAS COMPRAS REALIZADAS DE MANERA PRESENCIAL A TRAVÉS DE CUENTA DNI CON TECNOLOGÍA SIN CONTACTO (NFC) UTILIZANDO TARJETAS VISA CRÉDITO, EN LOCALES HIPER CHANGO MÂS, CHANGO MÂS Y MÂSGO. APLICARÁ CONSIDERANDO LA TOTALIDAD DE LAS COMPRAS ALCANZADAS POR LA PROMOCIÓN REALIZADAS CON TARJETAS VISA CRÉDITO MEDIANTE TECNOLOGÍA SIN CONTACTO (NFC) LOS DÍAS JUEVES DE CADA SEMANA EN TODOS LOS LOCALES HIPER CHANGO MÂS, CHANGO MÂS Y MÂSGO. LA MODALIDAD DE PAGO MEDIANTE TECNOLOGÍA SIN CONTACTO (NFC) SERÁ VÁLIDA ÚNICAMENTE PARA TARJETAS VISA CRÉDITO HABILITADAS EN CUENTA DNI Y DISPONIBLES EN DISPOSITIVOS CON SISTEMA OPERATIVO ANDROID. LOS LOCALES ADHERIDOS PARTICIPANTES PODRÁN CONSULTARSE EN WWW.BANCOPROVINCIA.COM.AR. VÁLIDO ÚNICAMENTE PARA CONSUMO FAMILIAR. PARA LAS COMPRAS REALIZADAS CON CUENTA DNI DINERO EN CUENTA, EL REINTEGRO SE VERÁ REFLEJADO EN LOS MOVIMIENTOS DE LA CUENTA VINCULADA A CUENTA DNI DENTRO DE LOS PRIMEROS 10 DÍAS HÁBILES DE EFECTUADA LA COMPRA. PARA LAS COMPRAS REALIZADAS CON CUENTA DNI NFC TARJETA DE CRÉDITO, EL REINTEGRO SE VERÁ REFLEJADO, COMO BONIFICACIÓN HASTA EN EL RESUMEN SIGUIENTE A AQUEL EN EL QUE INGRESE EL CONSUMO. NO ACUMULABLE CON OTRAS PROMOCIONES Y/O DESCUENTOS VIGENTES SOBRE LA MISMA COMPRA. EJEMPLOS REPRESENTATIVOS: (1) QUIEN REALICE UNA COMPRA CON CUENTA DNI DINERO EN CUENTA DE $40.000 RECIBIRÁ UN REINTEGRO DE $8.000. (2) QUIEN REALICE UNA COMPRA CON CUENTA DNI NFC DE $60.000 RECIBIRÁ UN REINTEGRO DE $12.000. PARA MÁS INFORMACIÓN COMUNÍQUESE AL 0810-666-2364. BANCO DE LA PROVINCIA DE BUENOS AIRES. CUIT 33-99924210-9. CALLE 7 N° 726, LA PLATA, PROVINCIA DE BUENOS AIRES. WWW.BANCOPROVINCIA.COM.AR. CARTERA DE CONSUMO.",
+     "fecha_desde": "/Date(1790737200000)/",
+     "fecha_hasta": "/Date(1798772400000)/",
+     "url": "changomas",
+     "titulo_fecha": "Jueves",
+     "orden": 17,
+     "boton_pdf": "",
+     "oculto": 0,
+     "tipo": 1,
+     "urlPagina": null
+    },
+    "Imagenes": [
+     {
+      "id": 1475,
+      "id_beneficio": 1073,
+      "url": "logo_changomas",
+      "orden": 2
+     },
+     {
+      "id": 1476,
+      "id_beneficio": 1073,
+      "url": "logo_masgo",
+      "orden": 3
+     }
+    ],
+    "Condiciones": [
+     {
+      "id": 2577,
+      "id_beneficio": 1073,
+      "texto": "Aplican exclusiones.",
+      "orden": 27
+     },
+     {
+      "id": 2578,
+      "id_beneficio": 1073,
+      "texto": "Activá NFC ahora: tocá el ícono Tarjetas y buscá tu tarjeta Visa crédito. Tocá los puntos de la derecha y activala para pagos NFC. Solo disponible para Android.",
+      "orden": 23
+     },
+     {
+      "id": 2579,
+      "id_beneficio": 1073,
+      "texto": "¿No tenés NFC? Pagá con dinero en cuenta y ahorrá un 20% ¡sin tope y sin mínimo de compra!",
+      "orden": 25
+     }
+    ],
+    "Botones": [
+     {
+      "id": 1794,
+      "tipo": "link",
+      "texto": "Conocé dónde comprar",
+      "link": "https://www.bancoprovincia.com.ar/CDN/Get/adheridos_changomas",
+      "contenido": null,
+      "idBeneficio": 1073,
+      "orden": 2
+     }
+    ]
+   },
+   "Success": true,
+   "Message": ""
+  },
+  "1076": {
+   "Entity": {
+    "Rubros": [
+     {
+      "id": 27,
+      "nombre": "Supermercados",
+      "orden": 1,
+      "icono": "supermercado_verde",
+      "estado": 1
+     }
+    ],
+    "Beneficio": {
+     "id": 1076,
+     "titulo": "Al super con Cuenta DNI",
+     "subtitulo": "¡Los lunes no hay tope!",
+     "porcentaje": 20,
+     "logo": "dia_200_122",
+     "bajada": "¡Activá NFC ahora!",
+     "legal": "PROMOCIÓN VÁLIDA TODOS LOS LUNES COMPRENDIDOS ENTRE EL 1 DE OCTUBRE Y EL 31 DE DICIEMBRE DE 2026, AMBAS FECHAS INCLUSIVE. 1- 20% DE REINTEGRO, SIN TOPE, PARA LAS COMPRAS REALIZADAS DE MANERA PRESENCIAL A TRAVÉS DE CUENTA DNI CON TECNOLOGÍA SIN CONTACTO (NFC) UTILIZANDO TARJETAS VISA CRÉDITO, EN LOCALES DÍA%. 2- 10% DE REINTEGRO, SIN TOPE, PARA LAS COMPRAS REALIZADAS DE MANERA PRESENCIAL CON CUENTA DNI DINERO EN CUENTA CON CLAVE DNI EN LOCALES DÍA%. APLICARÁ CONSIDERANDO LA TOTALIDAD DE LAS COMPRAS ALCANZADAS POR LA PROMOCIÓN REALIZADAS CON TARJETAS VISA CRÉDITO MEDIANTE TECNOLOGÍA SIN CONTACTO (NFC) LOS DÍAS LUNES DE CADA SEMANA EN TODOS LOS LOCALES DÍA%. LA MODALIDAD DE PAGO MEDIANTE TECNOLOGÍA SIN CONTACTO (NFC) SERÁ VÁLIDA ÚNICAMENTE PARA TARJETAS VISA CRÉDITO HABILITADAS EN CUENTA DNI Y DISPONIBLES EN DISPOSITIVOS CON SISTEMA OPERATIVO ANDROID. LOS LOCALES ADHERIDOS PARTICIPANTES PODRÁN CONSULTARSE EN WWW.BANCOPROVINCIA.COM.AR. VÁLIDO ÚNICAMENTE PARA CONSUMO FAMILIAR. PARA LAS COMPRAS REALIZADAS CON CUENTA DNI DINERO EN CUENTA, EL REINTEGRO SE VERÁ REFLEJADO EN LOS MOVIMIENTOS DE LA CUENTA VINCULADA A CUENTA DNI DENTRO DE LOS PRIMEROS 10 DÍAS HÁBILES DE EFECTUADA LA COMPRA. PARA LAS COMPRAS REALIZADAS CON CUENTA DNI NFC TARJETA DE CRÉDITO, EL REINTEGRO SE VERÁ REFLEJADO, COMO BONIFICACIÓN HASTA EN EL RESUMEN SIGUIENTE A AQUEL EN EL QUE INGRESE EL CONSUMO. NO ACUMULABLE CON OTRAS PROMOCIONES Y/O DESCUENTOS VIGENTES SOBRE LA MISMA COMPRA. EJEMPLOS REPRESENTATIVOS: (1) QUIEN REALICE UNA COMPRA CON CUENTA DNI DINERO EN CUENTA DE $40.000 RECIBIRÁ UN REINTEGRO DE $4.000. (2) QUIEN REALICE UNA COMPRA CON CUENTA DNI NFC DE $60.000 RECIBIRÁ UN REINTEGRO DE $12.000. PARA MÁS INFORMACIÓN COMUNÍQUESE AL 0810-666-2364. BANCO DE LA PROVINCIA DE BUENOS AIRES. CUIT 33-99924210-9. CALLE 7 N° 726, LA PLATA, PROVINCIA DE BUENOS AIRES. WWW.BANCOPROVINCIA.COM.AR. CARTERA DE CONSUMO.",
+     "fecha_desde": "/Date(1790737200000)/",
+     "fecha_hasta": "/Date(1798772400000)/",
+     "url": "dia",
+     "titulo_fecha": "Lunes ",
+     "orden": 2,
+     "boton_pdf": "",
+     "oculto": 0,
+     "tipo": 1,
+     "urlPagina": null
+    },
+    "Imagenes": [
+     {
+      "id": 1487,
+      "id_beneficio": 1076,
+      "url": "dia_200_122",
+      "orden": 1
+     }
+    ],
+    "Condiciones": [
+     {
+      "id": 2589,
+      "id_beneficio": 1076,
+      "texto": "El beneficio no aplica a clientes que registran atraso en el pago de sus obligaciones con el Banco.",
+      "orden": 34
+     },
+     {
+      "id": 2590,
+      "id_beneficio": 1076,
+      "texto": "¿No tenés NFC? Ahorrás igual: disfrutá de un 10% de ahorro sin tope pagando con dinero en cuenta en todas las sucursales de DIA.",
+      "orden": 33
+     },
+     {
+      "id": 2591,
+      "id_beneficio": 1076,
+      "texto": "Activá NFC ahora: tocá el ícono Tarjetas y buscá tu tarjeta de crédito Visa. Tocá los puntos de la derecha y activala para pagos NFC. Solo disponible para Android.",
+      "orden": 31
+     }
+    ],
+    "Botones": [
+     {
+      "id": 1798,
+      "tipo": "link",
+      "texto": "Conocé dónde comprar",
+      "link": "https://diaonline.supermercadosdia.com.ar/tiendas",
+      "contenido": null,
+      "idBeneficio": 1076,
+      "orden": 2
+     }
+    ]
+   },
+   "Success": true,
+   "Message": ""
+  }
+ }
+}

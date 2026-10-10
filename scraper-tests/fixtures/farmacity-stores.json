@@ -1,0 +1,421 @@
+{
+ "captured_at": "2026-10-10",
+ "all": {
+  "total": 6,
+  "sucursales": [
+   {
+    "Id": 2,
+    "Name": "CENTRO [Pellegrini 457]",
+    "Latitude": "-58.37982",
+    "Longitude": "-34.60239"
+   },
+   {
+    "Id": 4,
+    "Name": "Malabia [Corrientes 5258]",
+    "Latitude": "-58.439673",
+    "Longitude": "-34.599610"
+   },
+   {
+    "Id": 173,
+    "Name": "Santiago del Estero [Tucuman 244]",
+    "Latitude": "-64.261909",
+    "Longitude": "-27.784205"
+   },
+   {
+    "Id": 170,
+    "Name": "CDC CBA AEROPUERTO [Bv. Cristobal Berritella 7230]",
+    "Latitude": "-64.213619",
+    "Longitude": "-31.334152"
+   },
+   {
+    "Id": 200,
+    "Name": "E-Commerce [Av. Militar 4106]",
+    "Latitude": "-58.5523535",
+    "Longitude": "-34.6258013"
+   },
+   {
+    "Id": 395,
+    "Name": "Paseo Aldrey GTL[Sarmiento 2685 Local 211]",
+    "Latitude": "-38.01211",
+    "Longitude": "-38.01211"
+   }
+  ]
+ },
+ "details": [
+  {
+   "Id": 2,
+   "Name": "CENTRO [Pellegrini 457]",
+   "Latitude": "-34.60239",
+   "Longitude": "-58.37982",
+   "Address": "Pellegrini",
+   "AddressNumber": 457,
+   "Telephone": "4326-0235",
+   "IdCity": 1,
+   "City": "Capital Federal",
+   "IdProvince": 1,
+   "Province": "Capital Federal",
+   "FormatId": 3,
+   "TimeTables": [
+    {
+     "Id": 3875,
+     "DayOfWeek": 1,
+     "Open1": "08:30:00.0000000",
+     "Close1": "20:00:00.0000000",
+     "Open2": "00:00:00.0000000",
+     "Close2": "00:00:00.0000000",
+     "is24hs": false
+    },
+    {
+     "Id": 3876,
+     "DayOfWeek": 2,
+     "Open1": "08:30:00.0000000",
+     "Close1": "20:00:00.0000000",
+     "Open2": "00:00:00.0000000",
+     "Close2": "00:00:00.0000000",
+     "is24hs": false
+    },
+    {
+     "Id": 3877,
+     "DayOfWeek": 3,
+     "Open1": "08:30:00.0000000",
+     "Close1": "20:00:00.0000000",
+     "Open2": "00:00:00.0000000",
+     "Close2": "00:00:00.0000000",
+     "is24hs": false
+    },
+    {
+     "Id": 3878,
+     "DayOfWeek": 4,
+     "Open1": "08:30:00.0000000",
+     "Close1": "20:00:00.0000000",
+     "Open2": "00:00:00.0000000",
+     "Close2": "00:00:00.0000000",
+     "is24hs": false
+    },
+    {
+     "Id": 3879,
+     "DayOfWeek": 5,
+     "Open1": "08:30:00.0000000",
+     "Close1": "20:00:00.0000000",
+     "Open2": "00:00:00.0000000",
+     "Close2": "00:00:00.0000000",
+     "is24hs": false
+    },
+    {
+     "Id": 3880,
+     "DayOfWeek": 6,
+     "Open1": "09:00:00.0000000",
+     "Close1": "20:00:00.0000000",
+     "Open2": "00:00:00.0000000",
+     "Close2": "00:00:00.0000000",
+     "is24hs": false
+    },
+    {
+     "Id": 3881,
+     "DayOfWeek": 7,
+     "Open1": "10:00:00.0000000",
+     "Close1": "19:00:00.0000000",
+     "Open2": "00:00:00.0000000",
+     "Close2": "00:00:00.0000000",
+     "is24hs": false
+    },
+    {
+     "Id": 3882,
+     "DayOfWeek": 8,
+     "Open1": "10:00:00.0000000",
+     "Close1": "19:00:00.0000000",
+     "Open2": "00:00:00.0000000",
+     "Close2": "00:00:00.0000000",
+     "is24hs": false
+    }
+   ]
+  },
+  {
+   "Id": 4,
+   "Name": "Malabia [Corrientes 5258]",
+   "Latitude": "-34.599610",
+   "Longitude": "-58.439673",
+   "Address": "Av. Corrientes",
+   "AddressNumber": 5258,
+   "Telephone": "4857-3651",
+   "IdCity": 1,
+   "City": "Capital Federal",
+   "IdProvince": 1,
+   "Province": "Capital Federal",
+   "FormatId": 3,
+   "TimeTables": [
+    {
+     "Id": 2444,
+     "DayOfWeek": 1,
+     "Open1": "00:00:00.0000000",
+     "Close1": "00:00:00.0000000",
+     "Open2": "00:00:00.0000000",
+     "Close2": "00:00:00.0000000",
+     "is24hs": true
+    },
+    {
+     "Id": 2445,
+     "DayOfWeek": 2,
+     "Open1": "00:00:00.0000000",
+     "Close1": "00:00:00.0000000",
+     "Open2": "00:00:00.0000000",
+     "Close2": "00:00:00.0000000",
+     "is24hs": true
+    },
+    {
+     "Id": 2446,
+     "DayOfWeek": 3,
+     "Open1": "00:00:00.0000000",
+     "Close1": "00:00:00.0000000",
+     "Open2": "00:00:00.0000000",
+     "Close2": "00:00:00.0000000",
+     "is24hs": true
+    },
+    {
+     "Id": 2447,
+     "DayOfWeek": 4,
+     "Open1": "00:00:00.0000000",
+     "Close1": "00:00:00.0000000",
+     "Open2": "00:00:00.0000000",
+     "Close2": "00:00:00.0000000",
+     "is24hs": true
+    },
+    {
+     "Id": 2448,
+     "DayOfWeek": 5,
+     "Open1": "00:00:00.0000000",
+     "Close1": "00:00:00.0000000",
+     "Open2": "00:00:00.0000000",
+     "Close2": "00:00:00.0000000",
+     "is24hs": true
+    },
+    {
+     "Id": 2449,
+     "DayOfWeek": 6,
+     "Open1": "00:00:00.0000000",
+     "Close1": "00:00:00.0000000",
+     "Open2": "00:00:00.0000000",
+     "Close2": "00:00:00.0000000",
+     "is24hs": true
+    },
+    {
+     "Id": 2450,
+     "DayOfWeek": 7,
+     "Open1": "00:00:00.0000000",
+     "Close1": "00:00:00.0000000",
+     "Open2": "00:00:00.0000000",
+     "Close2": "00:00:00.0000000",
+     "is24hs": true
+    },
+    {
+     "Id": 2451,
+     "DayOfWeek": 8,
+     "Open1": "00:00:00.0000000",
+     "Close1": "00:00:00.0000000",
+     "Open2": "00:00:00.0000000",
+     "Close2": "00:00:00.0000000",
+     "is24hs": true
+    }
+   ]
+  },
+  {
+   "Id": 173,
+   "Name": "Santiago del Estero [Tucuman 244]",
+   "Latitude": "-27.784205",
+   "Longitude": "-64.261909",
+   "Address": "Tucuman ",
+   "AddressNumber": 244,
+   "Telephone": "(0385) 4283236",
+   "IdCity": 23323,
+   "City": " Santiago Del Estero",
+   "IdProvince": 20,
+   "Province": "Sgo del Estero",
+   "FormatId": 3,
+   "TimeTables": [
+    {
+     "Id": 1309,
+     "DayOfWeek": 1,
+     "Open1": "07:30:00.0000000",
+     "Close1": "23:30:00.0000000",
+     "Open2": "00:00:00.0000000",
+     "Close2": "00:00:00.0000000",
+     "is24hs": false
+    },
+    {
+     "Id": 1310,
+     "DayOfWeek": 2,
+     "Open1": "07:30:00.0000000",
+     "Close1": "23:30:00.0000000",
+     "Open2": "00:00:00.0000000",
+     "Close2": "00:00:00.0000000",
+     "is24hs": false
+    },
+    {
+     "Id": 1311,
+     "DayOfWeek": 3,
+     "Open1": "07:30:00.0000000",
+     "Close1": "23:30:00.0000000",
+     "Open2": "00:00:00.0000000",
+     "Close2": "00:00:00.0000000",
+     "is24hs": false
+    },
+    {
+     "Id": 1312,
+     "DayOfWeek": 4,
+     "Open1": "07:30:00.0000000",
+     "Close1": "23:30:00.0000000",
+     "Open2": "00:00:00.0000000",
+     "Close2": "00:00:00.0000000",
+     "is24hs": false
+    },
+    {
+     "Id": 1313,
+     "DayOfWeek": 5,
+     "Open1": "07:30:00.0000000",
+     "Close1": "23:30:00.0000000",
+     "Open2": "00:00:00.0000000",
+     "Close2": "00:00:00.0000000",
+     "is24hs": false
+    },
+    {
+     "Id": 1314,
+     "DayOfWeek": 6,
+     "Open1": "09:00:00.0000000",
+     "Close1": "14:00:00.0000000",
+     "Open2": "18:00:00.0000000",
+     "Close2": "22:00:00.0000000",
+     "is24hs": false
+    },
+    {
+     "Id": 1315,
+     "DayOfWeek": 8,
+     "Open1": "10:00:00.0000000",
+     "Close1": "22:00:00.0000000",
+     "Open2": "00:00:00.0000000",
+     "Close2": "00:00:00.0000000",
+     "is24hs": false
+    }
+   ]
+  },
+  {
+   "Id": 170,
+   "Name": "CDC CBA AEROPUERTO [Bv. Cristobal Berritella 7230]",
+   "Latitude": "-31.334152",
+   "Longitude": "-64.213619",
+   "Address": "Bv. Cristobal Berritella",
+   "AddressNumber": 7230,
+   "Telephone": "03514751999",
+   "IdCity": 2,
+   "City": "Córdoba",
+   "IdProvince": 2,
+   "Province": "Córdoba",
+   "FormatId": 2,
+   "TimeTables": []
+  },
+  {
+   "Id": 200,
+   "Name": "E-Commerce [Av. Militar 4106]",
+   "Latitude": "-34.6258013",
+   "Longitude": "-58.5523535",
+   "Address": "Av. Militar",
+   "AddressNumber": 4106,
+   "Telephone": "Teléfono",
+   "IdCity": 0,
+   "City": "Indeterminado",
+   "IdProvince": 0,
+   "Province": "Indeterminado",
+   "FormatId": 7,
+   "TimeTables": [
+    {
+     "Id": 4088,
+     "DayOfWeek": 1,
+     "Open1": "09:00:00.0000000",
+     "Close1": "17:00:00.0000000",
+     "Open2": "00:00:00.0000000",
+     "Close2": "00:00:00.0000000",
+     "is24hs": false
+    },
+    {
+     "Id": 4089,
+     "DayOfWeek": 2,
+     "Open1": "09:00:00.0000000",
+     "Close1": "17:00:00.0000000",
+     "Open2": "00:00:00.0000000",
+     "Close2": "00:00:00.0000000",
+     "is24hs": false
+    },
+    {
+     "Id": 4090,
+     "DayOfWeek": 3,
+     "Open1": "09:00:00.0000000",
+     "Close1": "17:00:00.0000000",
+     "Open2": "00:00:00.0000000",
+     "Close2": "00:00:00.0000000",
+     "is24hs": false
+    },
+    {
+     "Id": 4091,
+     "DayOfWeek": 4,
+     "Open1": "09:00:00.0000000",
+     "Close1": "17:00:00.0000000",
+     "Open2": "00:00:00.0000000",
+     "Close2": "00:00:00.0000000",
+     "is24hs": false
+    },
+    {
+     "Id": 4092,
+     "DayOfWeek": 5,
+     "Open1": "09:00:00.0000000",
+     "Close1": "17:00:00.0000000",
+     "Open2": "00:00:00.0000000",
+     "Close2": "00:00:00.0000000",
+     "is24hs": false
+    },
+    {
+     "Id": 4093,
+     "DayOfWeek": 6,
+     "Open1": "09:00:00.0000000",
+     "Close1": "17:00:00.0000000",
+     "Open2": "00:00:00.0000000",
+     "Close2": "00:00:00.0000000",
+     "is24hs": false
+    },
+    {
+     "Id": 4094,
+     "DayOfWeek": 7,
+     "Open1": "09:00:00.0000000",
+     "Close1": "17:00:00.0000000",
+     "Open2": "00:00:00.0000000",
+     "Close2": "00:00:00.0000000",
+     "is24hs": false
+    },
+    {
+     "Id": 4095,
+     "DayOfWeek": 8,
+     "Open1": "09:00:00.0000000",
+     "Close1": "15:00:00.0000000",
+     "Open2": "00:00:00.0000000",
+     "Close2": "00:00:00.0000000",
+     "is24hs": false
+    }
+   ]
+  },
+  {
+   "Id": 395,
+   "Name": "Paseo Aldrey GTL[Sarmiento 2685 Local 211]",
+   "Latitude": "-38.01211",
+   "Longitude": "-38.01211",
+   "Address": "Sarmiento 2685 Local",
+   "AddressNumber": 211,
+   "Telephone": "Teléfono",
+   "IdCity": 2241,
+   "City": "MAR DEL PLATA",
+   "IdProvince": 3,
+   "Province": "Buenos Aires",
+   "FormatId": 6,
+   "TimeTables": []
+  }
+ ],
+ "bundle_snippet": "n={\"Content-type\":\"application/json\",Authorization:\"Bearer fc24a657-c4ba-347a-b051-8703fca93b47\"},o=p(Object(r.useState)([]),2)",
+ "page_snippet": "&files=react~farmacityar.branch-and-services@0.0.8,AppGeneralApp&files="
+}

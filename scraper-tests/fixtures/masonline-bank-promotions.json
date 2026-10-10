@@ -1,0 +1,721 @@
+{
+ "captured_at": "2026-10-10",
+ "bp": [
+  {
+   "id": "146b6061-e761-4a77-aef4-2efc3edc13c4",
+   "title": "Exclusivo MasGo ¡SIN TOPE!",
+   "sub_title": "Promoción exclusiva para socios de masclub. No acumulable con otras promociones.  Consulte detalles y legales en Masclub.com.ar (MC)*",
+   "discount_percentage": 20,
+   "discounts_amount_installments": null,
+   "discounts_text_installments": null,
+   "discount_text_info": "de descuento",
+   "order": 0,
+   "active_from": "2026-08-01T00:00:00+00:00",
+   "active_to": "2026-12-31T00:00:00+00:00",
+   "active": true,
+   "validText": "Todos los Miércoles y Jueves - MasGo",
+   "hyper": null,
+   "market": true,
+   "ecommerce": false,
+   "express": false,
+   "maxi": null,
+   "legal": "Promoción exclusiva para todos los socios de MâsClub. Válida del 01/04/2026 al 31/12/2026 únicamente para compras realizadas los días Miércoles y Jueves. No acumulable con otras promociones. Sin tope de descuento. Exclusivo para consumidores finales. EXCLUIDOS-NO INCLUYE: CARNICERIA, GRANJA, Elaborados, Embutidos, Quesos: (Quesos Blandos, Quesos Duros, Quesos Feteados, Quesos Rallados, Quesos Semiduros), Frutas Y Verduras, Huevos. Aceites Comestibles, Harinas, Leches Fluidas, Leches frescas, Azúcares. Bebidas Blancas, Vinos, Fernet, Cervezas Y Gaseosas De “Cerveceria Y Malteria Quilmes” (Stella Artois, Budweiser, Corona, Quilmes, Brahma, Michelob, Patagonia, Eazy, Goose Island, Andes, Temple, Pepsi, Seven Up, Paso De Los Toros, Gatorade, Glaciar, Eco De Los Andes, H20, Aguas Nestlé, Awafrut, Mirinda, Red Bull, Rockstar), Línea Coca Cola (Original, Light, Zero Sin Azucar, Sabor Liviano), Fanta, Sprite (Original, Sin Azúcar), Schweppes, Powerade, Cepita, Ades, Aquarius, Benedictino, Bonaqua, Smart Water, Monster, Crush. Electrodomésticos Y Electrónicos, Rodados, Informática, Celulares Y Climatización, Línea Blanca, Medicamentos. NO ACUMULABLE CON OTRAS PROMOCIONES VIGENTES Y/O PRODUCTOS EN LIQUIDACIÓN. SOLO PARA CONSUMO FAMILIAR..",
+   "valid": null,
+   "monday": false,
+   "tuesday": false,
+   "wednesday": true,
+   "thursday": true,
+   "friday": false,
+   "saturday": false,
+   "sunday": false,
+   "idBank": "8fab960f-8b29-11ef-b37f-98380ffd16cd",
+   "idCard": null,
+   "img_card": "masclubmasgo2.png",
+   "isMasClub": true,
+   "express_ecommerce_all": false
+  },
+  {
+   "id": "f5296ce0-dffe-11ef-b37f-87fa2b74005f",
+   "title": "SIN TOPE DE REINTEGRO",
+   "sub_title": "Pagando con QR. No acumulable con otras promociones.  Aplican exclusiones. (MP)*",
+   "discount_percentage": 15,
+   "discounts_amount_installments": null,
+   "discounts_text_installments": null,
+   "discount_text_info": "de descuento",
+   "order": 0,
+   "active_from": "2025-12-02T00:00:00+00:00",
+   "active_to": "2026-11-01T00:00:00+00:00",
+   "active": true,
+   "validText": "Todos los Martes",
+   "hyper": null,
+   "market": false,
+   "ecommerce": false,
+   "express": true,
+   "maxi": null,
+   "legal": "PARA PAGOS REALIZADOS LOS DIAS VIERNES, SABADOS Y DOMINGOS DE OCTUBRE 2026 A TRAVÉS DEL SERVICIO DE PROCESAMIENTO DE PAGOS DE MERCADO PAGO OPERADO POR MERCADOLIBRE S.R.L. (“MERCADO PAGO.”) MEDIANTE EL ESCANEO DEL CÓDIGO QR CON LA APP DE MERCADO PAGO (LA “APP”) EL BENEFICIO CONSISTE EN UN 15% DE DESCUENTO SIN TOPE, COMPRANDO EN TODAS LAS SUCURSALES DE HIPERCHANGOMAS, CHANGOMAS Y MASGO, DE FORMA PRESENCIAL Y A TRAVÉS DE MASONLINE ÚNICAMENTE ELIGIENDO LA OPCIÓN PAGO ONLINE, APLICA PARA TIENDAS. EL BENEFICIO ESTARÁ A CARGO DE DORINKA S.R.L. Y SE REALIZARÁ SOBRE EL PRECIO DE CONTADO. MERCADO PAGO NO ES UNA ENTIDAD FINANCIERA. LOS FONDOS EN CUENTAS DE PAGO NO SON DEPÓSITOS GARANTIZADOS. MERCADOLIBRE S.R.L. CUIT 30-70308853-4, CASEROS 3039, PISO 2º, CABA”. EXCLUIDOS- CARNICERIA, GRANJA, ELABORADOS, EMBUTIDOS, QUESOS: (QUESOS BLANDOS, QUESOS DUROS, QUESOS FETEADOS, QUESOS RALLADOS, QUESOS SEMIDUROS), FRUTAS Y VERDURAS, HUEVOS. ACEITES COMESTIBLES, HARINAS, LECHES FLUIDAS, AZÚCARES. BEBIDAS BLANCAS, VINOS, FERNET, CERVEZAS Y GASEOSAS DE “CERVECERIA Y MALTERIA QUILMES” (STELLA ARTOIS, BUDWEISER, CORONA, QUILMES, BRAHMA, MICHELOB, PATAGONIA, EAZY, GOOSE ISLAND, ANDES, TEMPLE, PEPSI, SEVEN UP, PASO DE LOS TOROS, GATORADE, GLACIAR, ECO DE LOS ANDES, H20, AGUAS NESTLÉ, AWAFRUT, MIRINDA, RED BULL, ROCKSTAR), LÍNEA COCA COLA (ORIGINAL, LIGHT, ZERO SIN AZUCAR, SABOR LIVIANO), FANTA, SPRITE (ORIGINAL, SIN AZÚCAR), SCHWEPPES, POWERADE, CEPITA, ADES, AQUARIUS, BENEDICTINO, BONAQUA, SMART WATER, MONSTER, CRUSH, FIGURITAS Y ÁLBUM MUNDIAL 2026. ELECTRODOMÉSTICOS Y ELECTRÓNICOS, RODADOS, INFORMÁTICA, CELULARES Y CLIMATIZACIÓN, LÍNEA BLANCA, MEDICAMENTOS DE FARMACIA, SERVICIOS DE AUTOCENTER, BATERÍAS Y NEUMÁTICOS. NO ACUMULABLE CON OTRAS PROMOCIONES VIGENTES Y/O PRODUCTOS EN LIQUIDACIÓN. SOLO PARA CONSUMO FAMILIAR.",
+   "valid": null,
+   "monday": false,
+   "tuesday": true,
+   "wednesday": false,
+   "thursday": false,
+   "friday": false,
+   "saturday": false,
+   "sunday": false,
+   "idBank": "8ccbdf0d-905d-11ee-8452-0eb8fa5466a5",
+   "idCard": null,
+   "img_card": "logo mercado pago valido.png",
+   "isMasClub": false,
+   "express_ecommerce_all": false
+  },
+  {
+   "id": "f72bdebb-262f-11f0-b37f-a7f7ce43e163",
+   "title": "SIN TOPE DE REINTEGRO",
+   "sub_title": "Pagando con QR de todas las billeteras virtuales. No acumulable con otras promociones. Aplican exclusiones. (BV)",
+   "discount_percentage": 15,
+   "discounts_amount_installments": null,
+   "discounts_text_installments": null,
+   "discount_text_info": "de descuento",
+   "order": 0,
+   "active_from": "2025-12-06T00:00:00+00:00",
+   "active_to": "2026-11-01T00:00:00+00:00",
+   "active": true,
+   "validText": "Viernes, Sábados y Domingos",
+   "hyper": null,
+   "market": false,
+   "ecommerce": false,
+   "express": true,
+   "maxi": null,
+   "legal": "PARA PAGOS REALIZADOS LOS DIAS VIERNES, SABADOS Y DOMINGOS DE OCTUBRE 2026 A TRAVÉS DEL SERVICIO DE PROCESAMIENTO DE PAGOS DE MERCADO PAGO OPERADO POR MERCADOLIBRE S.R.L. (“MERCADO PAGO.”) MEDIANTE EL ESCANEO DEL CÓDIGO QR CON LA APP DE MERCADO PAGO (LA “APP”) EL BENEFICIO CONSISTE EN UN 15% DE DESCUENTO SIN TOPE, COMPRANDO EN TODAS LAS SUCURSALES DE HIPERCHANGOMAS, CHANGOMAS Y MASGO, DE FORMA PRESENCIAL Y A TRAVÉS DE MASONLINE ÚNICAMENTE ELIGIENDO LA OPCIÓN PAGO ONLINE, APLICA PARA TIENDAS. EL BENEFICIO ESTARÁ A CARGO DE DORINKA S.R.L. Y SE REALIZARÁ SOBRE EL PRECIO DE CONTADO. MERCADO PAGO NO ES UNA ENTIDAD FINANCIERA. LOS FONDOS EN CUENTAS DE PAGO NO SON DEPÓSITOS GARANTIZADOS. MERCADOLIBRE S.R.L. CUIT 30-70308853-4, CASEROS 3039, PISO 2º, CABA”. EXCLUIDOS- CARNICERIA, GRANJA, ELABORADOS, EMBUTIDOS, QUESOS: (QUESOS BLANDOS, QUESOS DUROS, QUESOS FETEADOS, QUESOS RALLADOS, QUESOS SEMIDUROS), FRUTAS Y VERDURAS, HUEVOS. ACEITES COMESTIBLES, HARINAS, LECHES FLUIDAS, AZÚCARES. BEBIDAS BLANCAS, VINOS, FERNET, CERVEZAS Y GASEOSAS DE “CERVECERIA Y MALTERIA QUILMES” (STELLA ARTOIS, BUDWEISER, CORONA, QUILMES, BRAHMA, MICHELOB, PATAGONIA, EAZY, GOOSE ISLAND, ANDES, TEMPLE, PEPSI, SEVEN UP, PASO DE LOS TOROS, GATORADE, GLACIAR, ECO DE LOS ANDES, H20, AGUAS NESTLÉ, AWAFRUT, MIRINDA, RED BULL, ROCKSTAR), LÍNEA COCA COLA (ORIGINAL, LIGHT, ZERO SIN AZUCAR, SABOR LIVIANO), FANTA, SPRITE (ORIGINAL, SIN AZÚCAR), SCHWEPPES, POWERADE, CEPITA, ADES, AQUARIUS, BENEDICTINO, BONAQUA, SMART WATER, MONSTER, CRUSH, FIGURITAS Y ÁLBUM MUNDIAL 2026. ELECTRODOMÉSTICOS Y ELECTRÓNICOS, RODADOS, INFORMÁTICA, CELULARES Y CLIMATIZACIÓN, LÍNEA BLANCA, MEDICAMENTOS DE FARMACIA, SERVICIOS DE AUTOCENTER, BATERÍAS Y NEUMÁTICOS. NO ACUMULABLE CON OTRAS PROMOCIONES VIGENTES Y/O PRODUCTOS EN LIQUIDACIÓN. SOLO PARA CONSUMO FAMILIAR.",
+   "valid": null,
+   "monday": false,
+   "tuesday": false,
+   "wednesday": false,
+   "thursday": false,
+   "friday": true,
+   "saturday": true,
+   "sunday": true,
+   "idBank": "15ff1c4e-2630-11f0-b37f-93b1d8eaa315",
+   "idCard": null,
+   "img_card": "04_BilleterasVirtuales_grande 8.webp",
+   "isMasClub": false,
+   "express_ecommerce_all": false
+  },
+  {
+   "id": "1612a3c1-4982-4e72-9d55-074a23635b1b",
+   "title": "SIN TOPE | Abonando con NFC con Tarjeta de Crédito Visa",
+   "sub_title": "Promoción no acumulable con otras promociones. Abonando sin contacto (NFC) con tarjetas Visa crédito habilitadas en Cuenta DNI y dispositivos con sistema operativo Android.  ((BP-DNI)*",
+   "discount_percentage": 20,
+   "discounts_amount_installments": null,
+   "discounts_text_installments": null,
+   "discount_text_info": "descuento",
+   "order": 0,
+   "active_from": "2026-09-01T00:00:00+00:00",
+   "active_to": "2027-01-01T00:00:00+00:00",
+   "active": true,
+   "validText": "Todos los jueves",
+   "hyper": null,
+   "market": true,
+   "ecommerce": false,
+   "express": false,
+   "maxi": null,
+   "legal": "PROMOCIÓN VÁLIDA TODOS LOS JUEVES COMPRENDIDOS ENTRE EL 01\r\nDE OCTUBRE Y EL 31 DE DICIEMBRE DE 2026, AMBAS FECHAS\r\nINCLUSIVE. 20% DE REINTEGRO, SIN TOPE, PARA LAS COMPRAS\r\nREALIZADAS DE MANERA PRSENCIAL A TRAVÉS DE CUENTA DNI CON\r\nTECNOLOGÍA SIN CONTACTO (NFC) UTILIZANDO TARJETAS DE CRÉDITO VISA, EN\r\nLOCALES ADHERIDOS DE “HIPER CHANGOMAS, CHANGOMAS Y\r\nMASGO”. LA MODALIDAD DE PAGO MEDIANTE TECNOLOGÍA SIN\r\nCONTACTO (NFC) SERÁ VÁLIDA ÚNICAMENTE PARA TARJETAS VISA\r\nCRÉDITO HABILITADAS EN CUENTA DNI Y DISPONIBLES EN\r\nDISPOSITIVOS CON SISTEMA OPERATIVO ANDROID. LOS LOCALES\r\nADHERIDOS PARTICIPANTES PODRÁN CONSULTARSE EN\r\nWWW.BANCOPROVINCIA.COM.AR. VÁLIDO ÚNICAMENTE PARA\r\nCONSUMO FAMILIAR. EL REINTEGRO SE VERÁ REFLEJADO COMO\r\nBONIFICACIÓN HASTA EN EL RESUMEN SIGUIENTE A AQUEL EN EL QUE\r\nINGRESE EL CONSUMO. NO ACUMULABLE CON OTRAS PROMOCIONES\r\nY/O DESCUENTOS VIGENTES SOBRE LA MISMA COMPRA. EJEMPLO\r\nREPRESENTATIVO: QUIEN REALICE UNA COMPRA CON CUENTA DNI\r\nNFC DE $50.000 RECIBIRÁ UN REINTEGRO DE $10.000. PARA MÁS\r\nINFORMACIÓN COMUNÍQUESE AL 0810-666-2364. BANCO DE LA\r\nPROVINCIA DE BUENOS AIRES. CUIT 33-99924210-9. CALLE 7 N° 726, LA\r\nPLATA, PROVINCIA DE BUENOS AIRES.\r\nWWW.BANCOPROVINCIA.COM.AR. CARTERA DE CONSUMO.",
+   "valid": null,
+   "monday": false,
+   "tuesday": false,
+   "wednesday": false,
+   "thursday": true,
+   "friday": false,
+   "saturday": false,
+   "sunday": false,
+   "idBank": "f9315b48-4f81-11ef-8452-121b3ce95f81",
+   "idCard": null,
+   "img_card": "BcoProv_Grande-01.png",
+   "isMasClub": false,
+   "express_ecommerce_all": false
+  },
+  {
+   "id": "248970a3-8b2a-11ef-b37f-e25d0cbe8412",
+   "title": "Presencial y online ¡SIN TOPE!",
+   "sub_title": "Promoción exclusiva para socios de masclub. No acumulable con otras promociones. Consulta detalles y legales en Masclub.com.ar (MC)*",
+   "discount_percentage": 15,
+   "discounts_amount_installments": null,
+   "discounts_text_installments": null,
+   "discount_text_info": "de descuento",
+   "order": 0,
+   "active_from": "2025-12-25T00:00:00+00:00",
+   "active_to": "2026-12-31T00:00:00+00:00",
+   "active": true,
+   "validText": "Todos los Miércoles y Jueves",
+   "hyper": null,
+   "market": false,
+   "ecommerce": false,
+   "express": true,
+   "maxi": null,
+   "legal": "Promoción exclusiva para todos los socios de MâsClub válida desde el 07/10/2026 al 31/10/2026 únicamente para compras realizadas los días Miércoles y Jueves.\r\nNO ACUMULABLE CON OTRAS PROMOCIONES VIGENTES Y/O PRODUCTOS EN LIQUIDACIÓN.\r\nSin tope de descuento. Exclusivo para consumidores finales. Solo para consumo Familiar. \r\nEXCLUIDOS - NO INCLUYE:\r\nQuesos: (Quesos Blandos, Quesos Duros, Quesos Feteados, Quesos Rallados, Quesos Semiduros), Frutas Y Verduras, Huevos. Aceites Comestibles, Harinas, Leches Fluidas, Leches frescas, Azúcares, Panes de molde, Panes de viena y Tortillas.\r\nBebidas Blancas, Vinos, Fernet, Cervezas Y Gaseosas De “Cervecería Y Malteria Quilmes” (Stella Artois, Budweiser, Corona, Quilmes, Brahma, Michelob, Patagonia, Eazy, Goose Island, Andes, Temple, Pepsi, Seven Up, Paso De Los Toros, Gatorade, Glaciar, Eco De Los Andes, H20, Aguas Nestlé, Awafrut, Mirinda, Red Bull, Rockstar), Línea Coca Cola (Original, Light, Zero Sin Azucar, Sabor Liviano), Fanta, Sprite (Original, Sin Azúcar), Schweppes, Powerade, Cepita, Ades, Aquarius, Benedictino, Bonaqua, Smart Water, Monster, Crush.\r\nElectrodomésticos Y Electrónicos, Rodados, Informática, Celulares Y Climatización, Línea Blanca, Medicamentos.",
+   "valid": null,
+   "monday": false,
+   "tuesday": false,
+   "wednesday": true,
+   "thursday": true,
+   "friday": false,
+   "saturday": false,
+   "sunday": false,
+   "idBank": "8fab960f-8b29-11ef-b37f-98380ffd16cd",
+   "idCard": null,
+   "img_card": "Masclub_Changopng.png",
+   "isMasClub": true,
+   "express_ecommerce_all": false
+  },
+  {
+   "id": "6b62e23c-340a-4d90-8d6a-1722a14c6d3d",
+   "title": "Carnicería y panadería | ¡SIN TOPE!",
+   "sub_title": "Promoción exclusiva para socios de masclub. No acumulable con otras promociones. Consulte detalles y legales en Masclub.com.ar (MC)*",
+   "discount_percentage": 15,
+   "discounts_amount_installments": null,
+   "discounts_text_installments": null,
+   "discount_text_info": "de descuento",
+   "order": 0,
+   "active_from": "2026-10-07T00:00:00+00:00",
+   "active_to": "2026-11-01T00:00:00+00:00",
+   "active": true,
+   "validText": "Miércoles y Jueves",
+   "hyper": null,
+   "market": true,
+   "ecommerce": false,
+   "express": false,
+   "maxi": null,
+   "legal": "Promoción exclusiva para todos los socios de MâsClub. Válida del 07/10/2026 al 31/10/2026 únicamente para compras realizadas los días Miércoles y Jueves. No acumulable con otras promociones vigentes y/o productos en liquidación. Sin tope de descuento. Exclusivo para consumidores finales. Solo para consumo familiar. EXCLUIDOS - NO INCLUYE: Frutas Y Verduras, Huevos, Panes de molde, Panes de viena y Tortillas, Electrodomésticos Y Electrónicos, Rodados, Informática, Celulares Y Climatización, Línea Blanca, Medicamentos.",
+   "valid": null,
+   "monday": false,
+   "tuesday": false,
+   "wednesday": true,
+   "thursday": true,
+   "friday": false,
+   "saturday": false,
+   "sunday": false,
+   "idBank": "8fab960f-8b29-11ef-b37f-98380ffd16cd",
+   "idCard": null,
+   "img_card": "Masclub_Masgo.png",
+   "isMasClub": true,
+   "express_ecommerce_all": false
+  },
+  {
+   "id": "1d9b9763-f05e-4372-856d-689223036472",
+   "title": "Con Singular Crédito Visa y MasterCard",
+   "sub_title": "Tope: $15.000 mensual. (P3)*",
+   "discount_percentage": 30,
+   "discounts_amount_installments": null,
+   "discounts_text_installments": null,
+   "discount_text_info": "de reintegro",
+   "order": 1,
+   "active_from": "2026-01-01T00:00:00+00:00",
+   "active_to": "2026-12-31T00:00:00+00:00",
+   "active": true,
+   "validText": "Todos los sábados",
+   "hyper": null,
+   "market": false,
+   "ecommerce": false,
+   "express": true,
+   "maxi": null,
+   "legal": "PROMOCIÓN VALIDA EN LA REPÚBLICA ARGENTINA LOS DÍAS SABADO DESDE EL 01/06/2026 AL 31/12/2026. APLICA A COMPRAS REALIZADAS EN 1 PAGO EN LOS SUPERMERCADOS CHANGOMAS LOS DÍAS JUEVES; O PAGANDO CON MODO EL DÍA DE LA PROMOCIÓN Y COORDINANDO EL RETIRO Y/O ENVÍO A DOMICILIO PARA CUALQUIER DÍA. (1) LOS CLIENTES ASOCIADOS A LOS PRODUCTOS CLÁSICA Y PLUS RECIBIRÁN UN 15% DE DESCUENTO POR COMPRAS EFECTUADAS CON LAS TARJETAS DE CRÉDITO VISA Y MASTERCARD DE BANCO PATAGONIA. TOPE POR CUENTA Y POR MES $10.000.LOS CLIENTES ASOCIADOS A LOS PRODUCTOS PLUS RECIBIRÁN UN 20% DE DESCUENTO POR COMPRAS EFECTUADAS CON LAS TARJETAS DE CRÉDITO VISA Y MASTERCARD DE BANCO PATAGONIA. TOPE POR CUENTA Y POR MES $10.000.LOS CLIENTES ASOCIADOS A LOS PRODUCTOS SINGULAR ABONADO CON TODAS LAS TARJETAS DE CRÉDITO VISA Y MASTERCARD DE BANCO PATAGONIA RECIBIRÁN UN 25% DE DESCUENTO CON TOPE POR CUENTA Y POR MES DE DE $15000. PARA ACCEDER Y OPERAR EN PATAGONIA MÓVIL, DEBERÁ ENCONTRARSE PREVIAMENTE ADHERIDO AL SERVICIO PATAGONIA EBANK PERSONAS. EL USO DE PATAGONIA MÓVIL REQUIERE UN TELÉFONO CELULAR CON SISTEMA OPERATIVO ANDROID O IOS (IPHONE) CON ACCESO A INTERNET Y SERVICIO DE DATOS. PARA UTILIZAR DICHO SERVICIO DEBERÁ ACEPTAR PREVIAMENTE SUS TÉRMINOS Y CONDICIONES, LOS CUALES PODRÁN SER CONSULTADOS EN WWW.BANCOPATAGONIA.COM.AR O EN CUALQUIERA DE NUESTRAS SUCURSALES. SIEMPRE DESCARGUE LA APLICACIÓN PATAGONIA MÓVIL DE TIENDAS OFICIALES, NO ACCEDA DESDE LINKS QUE PROVENGAN DE MAILS O SMS. LOS COSTOS DE LA DESCARGA, DE LA UTILIZACIÓN DE LA APLICACIÓN Y EL DE LA NAVEGACIÓN, SERÁN LOS QUE COBRE LA EMPRESA DE TELEFONÍA CELULAR UTILIZADA POR EL CLIENTE Y SERÁN A SU EXCLUSIVO CARGO. BANCO PATAGONIA S.A. NO SERÁ RESPONSABLE POR LOS ERRORES EN EL SOFTWARE DE LA APLICACIÓN, NI POR LA SUSPENSIÓN, INTERRUPCIÓN O FALLA DEL SERVICIO PROVENIENTE DE UNA MEDIDA UNILATERAL DE LA EMPRESA DE TELEFONÍA CELULAR. PARA MÁS INFORMACIÓN SOBRE EL SERVICIO DE MODO INGRESE A WWW.MODO.COM.AR. PARA TODAS LAS PROMOCIONES ABONADAS CON LAS TARJETAS DE CRÉDITO, EL PORCENTAJE DE BONIFICACIÓN SERÁ ACREDITADO EN EL MISMO RESUMEN EN QUE INGRESE EL CONSUMO, O EN EL INMEDIATO POSTERIOR. NO ACUMULABLES CON OTRAS PROMOCIONES Y NO VÁLIDAS PARA TARJETAS CORPORATIVAS. BANCO PATAGONIA NO SE RESPONSABILIZA POR LOS CUPONES PRESENTADOS FUERA DE LAS FECHAS DE VIGENCIA DE LAS PROMOCIONES. LAS CUENTAS NO DEBERÁN REGISTRAR MORA. LOS ACCIONISTAS DE BANCO PATAGONIA S.A. LIMITAN SU RESPONSABILIDAD A LA INTEGRACIÓN DE LAS ACCIONES SUSCRIPTAS. EN VIRTUD DE ELLO, NI LOS ACCIONISTAS MAYORITARIOS DE CAPITAL EXTRANJERO NI LOS ACCIONISTAS LOCALES O EXTRANJEROS, RESPONDEN EN EXCESO DE LA CITADA INTEGRACIÓN ACCIONARIA POR LAS OBLIGACIONES EMERGENTES DE LAS OPERACIONES CONCERTADAS POR LA ENTIDAD FINANCIERA. NO APLICA PARA AQUELLOS PAGOS Y/O CONSUMOS ABONADOS CON TARJETAS DE DÉBITO Y CRÉDITO EMITIDAS POR BANCO PATAGONIA S.A. A TRAVÉS DE BILLETERAS VIRTUALES A EXCEPCIÓN DE MODO.",
+   "valid": null,
+   "monday": false,
+   "tuesday": false,
+   "wednesday": false,
+   "thursday": false,
+   "friday": false,
+   "saturday": true,
+   "sunday": false,
+   "idBank": "fdfcc594-907a-11ed-83ab-0ab135d7cee1",
+   "idCard": null,
+   "img_card": "Banco_Patagonia_grande.png",
+   "isMasClub": false,
+   "express_ecommerce_all": false
+  },
+  {
+   "id": "98f3f842-8ea7-441a-9a2f-551f9a350f7d",
+   "title": "Con Crédito visa y mastercard",
+   "sub_title": "Tope: $15.000 semanal. No acumulable con otras promociones. Aplican exclusiones. (N1)*",
+   "discount_percentage": 35,
+   "discounts_amount_installments": null,
+   "discounts_text_installments": null,
+   "discount_text_info": "de descuento",
+   "order": 1,
+   "active_from": "2026-04-01T00:00:00+00:00",
+   "active_to": "2026-11-01T00:00:00+00:00",
+   "active": true,
+   "validText": "Todos los Miércoles",
+   "hyper": null,
+   "market": true,
+   "ecommerce": false,
+   "express": false,
+   "maxi": null,
+   "legal": "PROMOCIÓN VÁLIDA EN LA REPÚBLICA ARGENTINA TODOS LOS MIÉRCOLES DE OCTUBRE 2026 EN COMERCIOS HIPERCHANGOMAS, CHANGOMAS Y MASGO DE LA REPÚBLICA ARGENTINA ADHERIDOS. PARA COMPRAS PRESENCIALES ABONADAS CON TARJETAS DE CRÉDITO VISA Y MASTERCARD DEL BNA EXCLUSIVAMENTE, APLICA PAGANDO A TRAVÉS DE MODO BNA+, ESCANEANDO EL QR DE MODO Y SELECCIONANDO COMO MEDIO DE PAGO LAS TARJETAS PARTICIPANTES, TARJETAS DE CRÉDITO FÍSICAS DEL BNA. NO APLICA PARA PAGOS CON SALDO EN CUENTA Y TAMPOCO APLICA PAGANDO CON LA MODALIDAD NFC. TOPE DE DESCUENTO SEMANAL: $15.000 POR CLIENTE. EL BENEFICIO ESTARÁ A CARGO DE DORINKA S.R.L. Y SE REALIZARÁ SOBRE EL PRECIO DE CONTADO. DESCUENTO DIRECTO Y REINTEGRADO EN BOCA DE CAJA EXCLUIDOS-NO INCLUYE: CARNICERIA, GRANJA, ELABORADOS, EMBUTIDOS, QUESOS: (QUESOS BLANDOS, QUESOS DUROS, QUESOS FETEADOS, QUESOS RALLADOS, QUESOS SEMIDUROS), FRUTAS Y VERDURAS, HUEVOS. ACEITES COMESTIBLES, HARINAS, LECHES FLUIDAS, AZÚCARES. BEBIDAS BLANCAS, VINOS, FERNET, CERVEZAS Y GASEOSAS DE “CERVECERIA Y MALTERIA QUILMES” (STELLA ARTOIS, BUDWEISER, CORONA, QUILMES, BRAHMA, MICHELOB, PATAGONIA, EAZY, GOOSE ISLAND, ANDES, TEMPLE, PEPSI, SEVEN UP, PASO DE LOS TOROS, GATORADE, GLACIAR, ECO DE LOS ANDES, H20, AGUAS NESTLÉ, AWAFRUT, MIRINDA, RED BULL, ROCKSTAR), LÍNEA COCA COLA (ORIGINAL, LIGHT, ZERO SIN AZUCAR, SABOR LIVIANO), FANTA, SPRITE (ORIGINAL, SIN AZÚCAR), SCHWEPPES, POWERADE, CEPITA, ADES, AQUARIUS, BENEDICTINO, BONAQUA, SMART WATER, MONSTER, CRUSH, FIGURITAS Y ÁLBUM MUNDIAL 2026. ELECTRODOMÉSTICOS Y ELECTRÓNICOS, RODADOS, INFORMÁTICA, CELULARES Y CLIMATIZACIÓN, LÍNEA BLANCA, MEDICAMENTOS DE FARMACIA, SERVICIOS DE AUTOCENTER, BATERÍAS Y NEUMÁTICOS. NO ACUMULABLE CON OTRAS PROMOCIONES VIGENTES Y/O PRODUCTOS EN LIQUIDACIÓN. SOLO PARA CONSUMO FAMILIAR. NO ACUMULABLE CON OTRAS PROMOCIONES VIGENTES Y/O PRODUCTOS EN LIQUIDACIÓN. SOLO PARA CONSUMO FAMILIAR. EL BNA NO SE RESPONSABILIZA POR LA CALIDAD DE LOS PRODUCTOS ADQUIRIDOS. BANCO DE LA NACIÓN ARGENTINA – BARTOLOMÉ MITRE 326, CABA – CUIT 30-50001091-2.",
+   "valid": null,
+   "monday": false,
+   "tuesday": false,
+   "wednesday": true,
+   "thursday": false,
+   "friday": false,
+   "saturday": false,
+   "sunday": false,
+   "idBank": "e9570b46-44c8-11ed-83ab-0a7e73da0665",
+   "idCard": null,
+   "img_card": "LOGO_OK_MODOBNA-57.png",
+   "isMasClub": false,
+   "express_ecommerce_all": false
+  },
+  {
+   "id": "13cef3cf-9fed-4b09-ba60-10d74eeb9fc7",
+   "title": "Con tarjeta de crédito SOL",
+   "sub_title": "Tope: $10.000 semanal. Válido en las provincias de Córdoba, Santiago del Estero, Tucumán, Catamarca, Salta y Jujuy. (SL)*",
+   "discount_percentage": 20,
+   "discounts_amount_installments": "4",
+   "discounts_text_installments": "Sin Interés",
+   "discount_text_info": "de descuento",
+   "order": 7,
+   "active_from": "2026-02-01T00:00:00+00:00",
+   "active_to": "2026-11-01T00:00:00+00:00",
+   "active": true,
+   "validText": "Todos los jueves",
+   "hyper": null,
+   "market": true,
+   "ecommerce": false,
+   "express": false,
+   "maxi": null,
+   "legal": "LEGAL: Valido para todas las operaciones realizadas con TARJETA SOL en las provincias de CORDOBA, SANTIAGO, TUCUMAN, CATAMARCA, SALTA Y JUJUY, en 4 CUOTAS los días JUEVES de OCTUBRE. El reintegro será del 20%  TOPE DE REINTEGRO $10.000. El reintegro se realiza en el resumen del usuario",
+   "valid": null,
+   "monday": false,
+   "tuesday": false,
+   "wednesday": false,
+   "thursday": true,
+   "friday": false,
+   "saturday": false,
+   "sunday": false,
+   "idBank": "a58230b6-3575-11ef-8452-0affd045eab9",
+   "idCard": null,
+   "img_card": "Logo Banco Sol Grande.png",
+   "isMasClub": false,
+   "express_ecommerce_all": false
+  }
+ ],
+ "fb": [
+  {
+   "id": "39e1d6f8-2703-4761-afc1-d36e8193e58b",
+   "name": "Modo NFC Visa",
+   "image": "Modo_NFC_Visa.png"
+  },
+  {
+   "id": "9a9c3703-2fe8-11ee-83ab-0ecaeb3d03b5",
+   "name": "NaranjaX",
+   "image": "Logo_Naranjax_final.png"
+  },
+  {
+   "id": "e9570b46-44c8-11ed-83ab-0a7e73da0665",
+   "name": "Banco Nación BNA",
+   "image": "Banco nacion_chico.png"
+  },
+  {
+   "id": "f48a1f9c-a16b-11ed-83ab-0ef4775110c3",
+   "name": "Prex",
+   "image": "Prex.png"
+  },
+  {
+   "id": "9aaffc2e-c6e8-11ef-b37f-ae0c136d4eca",
+   "name": "Banco Santa Cruz",
+   "image": "Banco Santa Cruz Id.png"
+  },
+  {
+   "id": "ab6abe23-54fd-11ef-8452-1211a9021aa7",
+   "name": "Yoy_MODO",
+   "image": "Logo Id - MODO3_YOY.png"
+  },
+  {
+   "id": "d5dacc60-b7bb-11ef-b37f-9585c9b32ee6",
+   "name": "Galicia Mas MODO",
+   "image": "Logo Id - MODO3_GaliciaMAS.png"
+  },
+  {
+   "id": "f9315b48-4f81-11ef-8452-121b3ce95f81",
+   "name": "Banco Provincia - Cuenta DNI",
+   "image": "CuentaDNI_chico.png"
+  },
+  {
+   "id": "8f371641-7ed1-11f0-b37f-e06006048cd3",
+   "name": "Banco Corrientes",
+   "image": "Logo Id - MODOv2_BanCo.png"
+  },
+  {
+   "id": "f6fba14c-44c7-11ed-83ab-02d917ba0623",
+   "name": "Banco Santa Fé",
+   "image": "1BancoSantaFe.png"
+  },
+  {
+   "id": "653009d6-2635-11f0-b37f-943eaf0ed75d",
+   "name": "Crédito",
+   "image": "Todas_LasTarjetas_Cred_Deb-07.png"
+  },
+  {
+   "id": "118be8a9-44c8-11ed-83ab-0a397beaf21f",
+   "name": "Banco San Juan",
+   "image": "2BancoSanJuan.png"
+  },
+  {
+   "id": "a76cad6e-906f-11ee-8452-1250174cdd55",
+   "name": "Banco Provincia",
+   "image": "Banco Provincia 2.png"
+  },
+  {
+   "id": "a234c39c-7f5a-11ef-b37f-f2e65af65faa",
+   "name": "Banco_Comafi_MODO",
+   "image": "Logo Id - MODO3_Comafi.png"
+  },
+  {
+   "id": "590547af-9549-11ee-8452-123b31b6fca9",
+   "name": "Santander MODO",
+   "image": "Logo Id - MODO3_Santander.png"
+  },
+  {
+   "id": "c40d38d3-1a7a-11ee-83ab-0263dabe290f",
+   "name": "Hipotecario_Modo",
+   "image": "Copia de Logo Id - MODO2_Hipotecario.png"
+  },
+  {
+   "id": "19ecc670-8a29-11ee-83ab-1292be90af55",
+   "name": "BBVA",
+   "image": "Component 25.png"
+  },
+  {
+   "id": "9ac9f15c-1f68-11ef-8452-0afff9ace095",
+   "name": "AmericanExpress",
+   "image": "amex2.jpg"
+  },
+  {
+   "id": "9fd0d80e-7eb6-11f0-b37f-912e5f31bac5",
+   "name": "BancoCorrientes-solo",
+   "image": "Logo Id _BanCo.png"
+  },
+  {
+   "id": "069303be-44c8-11ed-83ab-12159628b38f",
+   "name": "Banco Entre Ríos",
+   "image": "BancoEntreRios.png"
+  },
+  {
+   "id": "e76d3025-ec80-11ee-8452-0affe7cb5e03",
+   "name": "amex",
+   "image": "amex.png"
+  },
+  {
+   "id": "a0ed3a6e-52a2-11f0-b37f-9d1e77f928b3",
+   "name": "3 CSI",
+   "image": "Logo-Id---3CSI.png"
+  },
+  {
+   "id": "290f2cd1-b0c7-11ef-b37f-f5492445af17",
+   "name": "Banco San Juan MODO",
+   "image": "Logo Id - MODO3_SanJuan.png"
+  },
+  {
+   "id": "6167861a-a593-11ee-8452-0af780f66fd5",
+   "name": "Banco Galicia",
+   "image": "GaliciaMini.png"
+  },
+  {
+   "id": "62913526-f5e0-11ef-b37f-940e7c6d2e3e",
+   "name": "Banco Columbia",
+   "image": "LogoId  Banco Columbia.png"
+  },
+  {
+   "id": "00cd7c3f-4aa8-11ed-83ab-0a93975ab7ef",
+   "name": "Banco Credicoop",
+   "image": "Credicoop.png"
+  },
+  {
+   "id": "c7025517-3067-11ee-83ab-125c839bfdf1",
+   "name": "Patagonia 365",
+   "image": "Patagonia365.png"
+  },
+  {
+   "id": "3ddd4093-ad06-11ef-b37f-bf7dbda24d27",
+   "name": "Santander",
+   "image": "Santander Id.png"
+  },
+  {
+   "id": "aef2aadd-a16c-11ed-83ab-16d82d91ce6b",
+   "name": "Supervielle Modo",
+   "image": "Logo Id - MODOv3_Supervielle.png"
+  },
+  {
+   "id": "7daf51ea-1f6b-11ef-8452-0e6ca8a392fd",
+   "name": "Yoy",
+   "image": "YOY_Chico.png"
+  },
+  {
+   "id": "8ccbdf0d-905d-11ee-8452-0eb8fa5466a5",
+   "name": "Mercado Pago",
+   "image": "Mercado-Pago-Logo 2.png"
+  },
+  {
+   "id": "312e3e96-a16d-11ed-83ab-0ad4fc017505",
+   "name": "Santander Women",
+   "image": "Component 15.png"
+  },
+  {
+   "id": "dc065a49-97b9-11ef-b37f-fdf0fa4418d1",
+   "name": "Banco Entre Ríos MODO",
+   "image": "Logo Id - MODO3_EntreRios.png"
+  },
+  {
+   "id": "02daa9b6-95cc-11ee-8452-0a0b0e24c229",
+   "name": "Mastercard MODO",
+   "image": "MastercadMODO_chico.png"
+  },
+  {
+   "id": "d0dceb87-7f84-11f0-b37f-8239365697b6",
+   "name": "Semana_MODO",
+   "image": "SemanaMODO_logo_chico.png"
+  },
+  {
+   "id": "5c6cb9f1-499e-11ed-83ab-123e64de4401",
+   "name": "Banco Hipotecario",
+   "image": "Hipotecario.png"
+  },
+  {
+   "id": "d585680a-9d92-11ed-83ab-0a794dc91933",
+   "name": "Banco Ciudad",
+   "image": "CiudadModo.png"
+  },
+  {
+   "id": "a3269cdd-dbbd-11ee-8452-0affdcc27b45",
+   "name": "Galicia_MODO",
+   "image": "Logo Id - MODO3_Galicia.png"
+  },
+  {
+   "id": "22a45902-1a96-11ee-83ab-169fb8ba5f77",
+   "name": "Patagonia Modo",
+   "image": "Logo Id - MODO3_Patagonia.png"
+  },
+  {
+   "id": "3eb523db-979f-11ef-b37f-be7c01b3cba4",
+   "name": "Banco Santa Fé MODO",
+   "image": "Logo Id - MODO3_SantaFe.png"
+  },
+  {
+   "id": "e43bc2d0-db32-11ee-8452-0eda7c795b93",
+   "name": "Tuya",
+   "image": "Tuya.png"
+  },
+  {
+   "id": "b7409f62-44f4-11ed-83ab-1600502170e1",
+   "name": "Banco Supervielle",
+   "image": "1Supervielle.png"
+  },
+  {
+   "id": "b872d7fb-44bb-11ed-83ab-16d7dad998c5",
+   "name": "BancoCorrientes-buep-modo",
+   "image": "Logo Id - MODOv2_Ciudad.png"
+  },
+  {
+   "id": "06fc4208-78d8-11ee-83ab-0a1649dfa6b1",
+   "name": "ICBC Modo",
+   "image": "Logo Id - MODO3_ICBC.png"
+  },
+  {
+   "id": "629005ac-8eba-11ee-8452-1277ff185e0d",
+   "name": "Personal Pay",
+   "image": "Personal Pay  - Logo.png"
+  },
+  {
+   "id": "9157b3f1-4aa7-11ed-83ab-0a20d042589b",
+   "name": "Banco Comafi",
+   "image": "Comafi.png"
+  },
+  {
+   "id": "f0d91ab6-f1e1-11ee-8452-0affc684e5f9",
+   "name": "Banco Nacion MODO",
+   "image": "Logo Id - MODOv2_Nación.png"
+  },
+  {
+   "id": "66fafc02-4f80-11ef-8452-0e40b0c7d291",
+   "name": "Uala",
+   "image": "Uala_chico.png"
+  },
+  {
+   "id": "4f276639-cc41-11ef-b37f-edb121024588",
+   "name": "Beneficios Anses",
+   "image": "Beneficios Anses Id.png"
+  },
+  {
+   "id": "e286173a-8b80-11ed-83ab-02f88e9cccf5",
+   "name": "Macro Modo",
+   "image": "Logo Id - MODO3_Macro.png"
+  },
+  {
+   "id": "8fab960f-8b29-11ef-b37f-98380ffd16cd",
+   "name": "MasClub",
+   "image": "MasClub Logo Pequeno Id1.png"
+  },
+  {
+   "id": "4c17e597-2433-11ee-83ab-022e1a1c38db",
+   "name": "MercadoCredito",
+   "image": "1MercadoCredito.png"
+  },
+  {
+   "id": "d247d13c-0881-11ef-8452-0affe9b94723",
+   "name": "Empleados Públicos",
+   "image": "Banco Id Empleados Municipales Publicos_OK-01.png"
+  },
+  {
+   "id": "714a1399-2635-11f0-b37f-a2e156ae0a97",
+   "name": "Débito",
+   "image": "Todas_LasTarjetas_Cred_Deb-06.png"
+  },
+  {
+   "id": "a58230b6-3575-11ef-8452-0affd045eab9",
+   "name": "Sol",
+   "image": "LogoId  Banco Sol.png"
+  },
+  {
+   "id": "61ad5152-356a-11ef-8452-0affe3f54c3d",
+   "name": "Yoy_icbc",
+   "image": "logo_Yoy.png"
+  },
+  {
+   "id": "6f09af46-1a80-11ee-83ab-127bf6a685f5",
+   "name": "CiudadModo",
+   "image": "Logo Id - MODO3_Ciudad.png"
+  },
+  {
+   "id": "6bbbedf1-ab40-11ee-8452-127334bd7427",
+   "name": "Modo",
+   "image": "modo.png"
+  },
+  {
+   "id": "0623ee71-4584-11ed-83ab-1635f03ccccf",
+   "name": "Banco Macro",
+   "image": "1Macro.png"
+  },
+  {
+   "id": "2484999f-4be7-11ee-83ab-0a7010bcbbcd",
+   "name": "Todos los Bancos",
+   "image": null
+  },
+  {
+   "id": "302ecb7a-4585-11ed-83ab-165b1ff4f95f",
+   "name": "Banco ICBC",
+   "image": "1ICBC.png"
+  },
+  {
+   "id": "fdfcc594-907a-11ed-83ab-0ab135d7cee1",
+   "name": "Banco Patagonia",
+   "image": "1BancoPatagonia.png"
+  },
+  {
+   "id": "e84dd2b9-c682-4852-a91a-1d266766f876",
+   "name": "Naranja_logo",
+   "image": "Logo_Naranja.png"
+  },
+  {
+   "id": "32f07815-982d-11ee-8452-1288a753a239",
+   "name": "Anses",
+   "image": "Anses_chico.png"
+  },
+  {
+   "id": "b85efce4-f099-435a-8168-fa44d46cc86e",
+   "name": "Tarjeta Cordobesa",
+   "image": "Tarjeta Cordobesa_chico.png"
+  },
+  {
+   "id": "2f59e6b6-b357-430a-9e82-3781b870bc52",
+   "name": "ICBC_Sueldos",
+   "image": "Logo Id - MODOv2_ICBC.png"
+  },
+  {
+   "id": "ec7714dc-2866-405a-843a-8f8476c47b01",
+   "name": "BANCOR",
+   "image": "BANCOR_chico.png"
+  },
+  {
+   "id": "53c54ed1-da58-11ee-8452-12ab6da9ba85",
+   "name": "delete mercado pago",
+   "image": null
+  },
+  {
+   "id": "0956bf6c-983a-11ee-8452-1298279711fd",
+   "name": "Banco Credicoop MODO",
+   "image": "Logo Id - MODO3_Credicoop.png"
+  },
+  {
+   "id": "1ca7093d-5c03-45ef-8550-a8f06cd46921",
+   "name": "Credicuotas",
+   "image": "Logo_Credicuotas.png"
+  },
+  {
+   "id": "acffb209-c19e-4cd2-a8b8-5c08b0d2dabd",
+   "name": "BNA+MODO",
+   "image": "bnamodo.png"
+  },
+  {
+   "id": "15ff1c4e-2630-11f0-b37f-93b1d8eaa315",
+   "name": "Billeteras Virtuales",
+   "image": "04_BilleterasVirtuales_chico 7.webp"
+  },
+  {
+   "id": "6db380e1-bb9d-4ed9-82ef-15a799aec451",
+   "name": "Buepp Banco Ciudad",
+   "image": "Buepp Banco Ciudad Masgo_chico.png"
+  },
+  {
+   "id": "00000000-0000-4000-8000-000000000475",
+   "name": "Banco",
+   "image": null
+  },
+  {
+   "id": "00000000-0000-4000-8000-000000000000",
+   "name": "kimi-probe",
+   "image": null
+  }
+ ],
+ "fc": [
+  {
+   "id": "aae3945d-b1b4-11ec-835d-0a957990020d",
+   "name": "Naranja",
+   "image": "Logo_Naranjax_final.png"
+  },
+  {
+   "id": "7979a09c-b1b4-11ec-835d-1280ec99064f",
+   "name": "Cabal",
+   "image": "Cabal.png"
+  },
+  {
+   "id": "37acaa56-b1b4-11ec-835d-0e6deb8a84a7",
+   "name": "Visa",
+   "image": "VISA.png"
+  },
+  {
+   "id": "5b8c17b8-4583-11ed-83ab-165b1ff4f95f",
+   "name": "MODO tarjeta",
+   "image": "logo_Modo.png"
+  },
+  {
+   "id": "f3b3d01d-b1b4-11ec-835d-022414791081",
+   "name": "Mastercard",
+   "image": "Master.png"
+  },
+  {
+   "id": "47d35edd-b1b4-11ec-835d-02dc9b5c4633",
+   "name": "American Express",
+   "image": "Amex.png"
+  },
+  {
+   "id": "00000000-0000-4000-8000-000000000475",
+   "name": "Tarjeta",
+   "image": null
+  },
+  {
+   "id": "00000000-0000-4000-8000-000000000000",
+   "name": "kimi-probe-inert-please-ignore",
+   "image": null
+  }
+ ]
+}

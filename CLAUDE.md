@@ -280,6 +280,17 @@ scraper mandó mal es el mismo error que llevó al bug de `Carbon::parse()` con 
 
 Galicia (`ddmmyyyyToIso()`, con round-trip) es la referencia para los scrapers nuevos.
 
+**`cores/promoText.js` es el núcleo compartido desde la etapa 2** (Carrefour, Masonline,
+Farmacity, Naranja X, Cuenta DNI): `clean`, `stripHtml`, `ddmmyyyyToIso`, `utcDateOnly`,
+`exclusiveEndToInclusive`, `shortHash` y **`parseValidityText(text, reference)`**, que lee la
+vigencia escrita en castellano dentro de un legal ("todos los miércoles de octubre del 2026",
+"entre el 13 de agosto y el 11 de diciembre de 2026", "los martes 1, 8, 15 y 29 de septiembre",
+"de los meses de septiembre y octubre", "desde 01/10/2025 hasta el 30/09/2026", y los rangos sin
+año "Vigencia 08.10 al 10.10" / "#01/09 - 21/09", que se ubican cerca de la fecha de referencia).
+Se queda con la frase que aparece **primero** en el texto; si arma una fecha imposible devuelve
+null, no sigue buscando otra frase. Contrastado el 2026-10-10 contra los 20 legales completos de
+Cuenta DNI: 20/20. Un scraper nuevo usa esto, no un parser propio.
+
 ### Scraper de promociones de Banco Galicia (BFF de "Quiero!")
 
 `scrapers/promos/galicia.js` (`getGaliciaPromotions()`), PULL provider consumido por Laravel vía
@@ -327,6 +338,77 @@ Galicia (`ddmmyyyyToIso()`, con round-trip) es la referencia para los scrapers n
 - Fixture: `scraper-tests/fixtures/galicia-promos.json` (snapshot real del BFF, 2026-09-23);
   unit tests `scraper-tests/galicia-promos.test.js` (agrupado, fechas, ids y manejo de fallas con
   un `get` inyectado — sin red).
+
+### Fuentes de promos — etapa 2 (Carrefour, Masonline, Farmacity, Naranja X, Cuenta DNI)
+
+Implementadas el 2026-10-10. Relevamiento: `docs/superpowers/research/2026-09-23-fuentes-de-promos/`
+(repo Laravel); diseño y decisiones: `docs/superpowers/specs/2026-10-10-fuentes-de-promos-etapa2-design.md`.
+Todas siguen el contrato de las demás: `{ success, promotions[] }`, `start_date`/`end_date` en
+`YYYY-MM-DD` o null, nunca lanzan al caller, y una falla de la fuente es `success:false` (→ 502),
+nunca "0 promos". Tests: `npm run test:promo-sources-unit` (sin red, fixtures reales).
+
+**Carrefour y Masonline — `cores/valtechBankPromotions.js`** (wrappers `scrapers/promos/{carrefour,masonline}.js`).
+Las dos usan el mismo componente de Valtech, que lee tres entidades del Master Data por REST, sin auth:
+`BP` (promos), `FB` (bancos/billeteras, `idBank`) y `FC` (tarjetas, `idCard`).
+- ⚠️ **`REST-Range: resources=0-999` es obligatorio**: sin él devuelve 15 filas con un 200 silencioso.
+  El core pagina si `rest-content-range` declara más.
+- ⚠️ **Fechas en UTC con fin EXCLUSIVO**: `active_to` `2026-11-01T00:00:00+00:00` es "hasta el 31/10".
+  Leído en hora argentina el inicio se correría un día (el caso opuesto a Cencosud). Sólo el 1° de mes
+  a medianoche se toma como exclusivo: Masonline también carga fines inclusivos (`2026-12-31`).
+- Se replica el filtro del front: `active=true` y `active_from < ahora < active_to`.
+- ⚠️ **Masonline: el título no dice el banco** (sale de `idBank` → FB) **y el dato contradice al legal**
+  (días, %): viajan `legal` y `dias_texto` completos. Un diccionario FB/FC caído falla la corrida.
+  `FC` de Masonline tiene una fila basura `kimi-probe-inert-please-ignore`: se descarta.
+- No viajan `order` ni `img_card` (cambian sin que cambie la promo y alterarían la huella).
+- Medido el 2026-10-10: Carrefour 144 activas / 33 vigentes; Masonline 40 / 40.
+
+**Farmacity — `scrapers/promos/farmacity.js`**, dos tipos (`tipo`):
+- `bancaria`: la planilla de `/Farmacity/medios-de-pago`, contenido del Site Editor que viaja entero en
+  el HTML (`<template data-field="extensions">` → bloque `…/payment-methods` → `content.jsonData`, doble
+  parse). ~600 filas, ~70 con `Promoción`. ⚠️ **La planilla está desalineada**: los `Legales` de una
+  fila pueden ser de otra promo del mismo banco y la columna `Tarjeta` se asigna por posición. La promo
+  se arma del texto de `Promoción` (autocontenido), los legales viajan como `legales_de_la_fila` con un
+  `aviso`, y la tarjeta no se emite. Sin ids: `external_id` = `fcy-banco-` + hash(banco|texto). Las
+  filas sin texto de beneficio ("Pagá al contado…") y las que dicen en su texto que ya terminaron se
+  descartan. Los banners quedan afuera (texto en imagen, fechas de exhibición).
+- `producto`: los **teasers** del catálogo ("2x1 Tu Farmacity#01/09 - 21/09", identificados por la
+  pasante). ⚠️ Verlos exige recorrer el catálogo entero (378 requests, **7,5 min**), que no entra en un
+  pull. **Los junta la corrida de productos de Farmacity** (`collectTeasers` en `VTEX_MERCHANTS`, gancho
+  `onRawProducts` de `scrapeVtexCatalog`) y, sólo si fue **completa**, deja una foto en memoria del
+  proceso + Redis (`cores/teaserSnapshots.js`, vale 2 días). Sin foto (recién deployado), salen sólo
+  las bancarias. `product_count`/`sample_products` son volátiles (`FarmacityService::volatileKeys`).
+- Medido el 2026-10-10: 66 bancarias.
+
+**Sucursales de Farmacity — `scrapers/stores/farmacity_stores.js`**: la API del localizador
+(`app-landing-api-prod.azurewebsites.net`, `GET /sucursales/all` + `POST /sucursales` con lotes de 20).
+- ⚠️ Pide un **Bearer** que viaja fijo en el bundle del componente `farmacityar.branch-and-services`:
+  se lee del bundle en cada corrida (página → versión → bundle) y, si falla, se usa el último conocido.
+- ⚠️ **En `/sucursales/all` latitud y longitud vienen invertidas**; en el detalle, bien. Igual se
+  validan contra la caja de Argentina (se dan vuelta si sólo entran así; si no, null).
+- `FormatId` 2 (CDC) y 7 (e-commerce) son depósitos y se descartan. Horarios por día con segundo
+  turno y 24 hs → `{ "Lunes": "08:30 a 20:00", … }`. Medido: 385 sucursales, 384 con coordenadas, 11 s.
+
+**Naranja X — `scrapers/promos/naranjax.js`**. BFF JSON público (`bkn-promotions.naranjax.com`).
+- **Alcance (decisión del titular, 2026-10-10): sólo nuestras cadenas**, por una lista fija de
+  "binders" → comercio (`BINDERS`). Naranja X tiene ~19.000 comercios. Se descarta el **Plan Zeta
+  genérico** (sin descuento propio); "10% off y Plan Zeta" entra. Josimar no está en Naranja X.
+- ⚠️ **Cloudflare filtra el cliente: axios con User-Agent de navegador pasa; el `fetch` nativo de Node
+  recibe el challenge aunque lleve el mismo UA** (medido el 2026-10-10). No cambiar a `fetch`.
+  403 o HTML = bloqueo → `success:false, blocked:true`.
+- Una cadena son varios binders (`disco` + `disco_com_ar`): se agrupan por (comercio, plan) en una
+  promo con `comercios_nx`. El sufijo del plan (`-C` vigente / `-A` próximo) se quita del id.
+  `status` no sirve para vigencia: se filtra por `dateTo`. No viajan `commerces`, `tags` ni imágenes.
+- Medido el 2026-10-10: 14 promos, 18 s.
+
+**Cuenta DNI — `scrapers/promos/cuentadni.js`**. Grilla HTML (`div.callModalCDNI` con id
+`{slug}-{id}`) + `GET /cuentadni/Home/GetBeneficioData2?idBeneficio={id}` (JSON, sin auth).
+- ⚠️ `fecha_desde`/`fecha_hasta` son la **ventana de publicación**, no la vigencia: la vigencia sale
+  del legal (`parseValidityText`) y la ventana queda de respaldo (`vigencia_origen`).
+- ⚠️ Con `tipo = 2`, `porcentaje` son **cuotas**. Un beneficio con `urlPagina` trae el JSON incompleto
+  y se descarta. Un id inexistente responde 200 con `Success:false`. Los links de los botones traen
+  parámetros de rastreo que cambian: no viajan.
+- Medido el 2026-10-10: 21 en la grilla, 19 emitidos (2 con micrositio).
+- Origen: entrega de **Thiago Coro** (Puppeteer sobre la grilla), reemplazada por el JSON del modal.
 
 ### El route de promos no cachea fallas
 

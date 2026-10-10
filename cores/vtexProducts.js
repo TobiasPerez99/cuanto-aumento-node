@@ -2,6 +2,7 @@ import { scrapeVtexMerchant } from './vtex.js';
 import { scrapeVtexCatalog } from './vtexCatalog.js';
 import { saveMasterProduct, saveFollowerProduct } from './saveHandlers.js';
 import { DETAILED_CATEGORIES, getCategories, productEans } from './categories.js';
+import { createTeaserCollector, saveTeaserSnapshot } from './teaserSnapshots.js';
 
 /**
  * Los 7 comercios VTEX de productos y cómo se recorre cada uno.
@@ -21,7 +22,9 @@ export const VTEX_MERCHANTS = {
   vea: { merchantName: 'Vea', baseUrl: 'https://www.vea.com.ar', salesChannel: 34 },
   dia: { merchantName: 'Dia', baseUrl: 'https://diaonline.supermercadosdia.com.ar', salesChannel: 1 },
   masonline: { merchantName: 'Masonline', baseUrl: 'https://www.masonline.com.ar', salesChannel: 1 },
-  farmacity: { merchantName: 'Farmacity', baseUrl: 'https://www.farmacity.com', salesChannel: 4 },
+  // `collectTeasers`: la corrida de productos junta los teasers ("2x1", "-50% 2da
+  // unidad") que después publica `scrapers/promos/farmacity.js` (ver cores/teaserSnapshots.js).
+  farmacity: { merchantName: 'Farmacity', baseUrl: 'https://www.farmacity.com', salesChannel: 4, collectTeasers: true },
 };
 
 /**
@@ -92,10 +95,35 @@ export function markSearchResult(result) {
   return { ...result, strategy: 'search', mode: 'search', complete: false, incompleteReasons: ['search_mode'] };
 }
 
-/** Corre los productos de un comercio VTEX. Nunca lanza: devuelve `{ success, ... }`. */
-export async function scrapeVtexProducts(key, mode = 'categories', overrides = {}) {
+/**
+ * Corre los productos de un comercio VTEX. Nunca lanza: devuelve `{ success, ... }`.
+ *
+ * Si el comercio tiene `collectTeasers`, junta los teasers al pasar y, sólo si la
+ * corrida recorrió el catálogo ENTERO, deja la foto para el scraper de promos: una
+ * corrida incompleta o en modo `eans` vio una parte y la foto diría que el resto de
+ * las promos terminó.
+ */
+export async function scrapeVtexProducts(key, mode = 'categories', overrides = {}, { saveSnapshot = saveTeaserSnapshot } = {}) {
   const { strategy, options } = await resolveVtexRun(key, mode, overrides);
-  return strategy === 'search'
-    ? markSearchResult(await scrapeVtexMerchant(options))
-    : scrapeVtexCatalog(options);
+  if (strategy === 'search') return markSearchResult(await scrapeVtexMerchant(options));
+
+  const collector = VTEX_MERCHANTS[key].collectTeasers && options.mode === 'categories' ? createTeaserCollector() : null;
+  if (!collector) return scrapeVtexCatalog(options);
+
+  const userHook = options.onRawProducts;
+  const result = await scrapeVtexCatalog({
+    ...options,
+    onRawProducts: async (raw) => {
+      collector.collect(raw);
+      if (userHook) await userHook(raw);
+    },
+  });
+
+  if (result.success && result.complete) {
+    const snapshot = collector.snapshot({ source: key, total_products: result.totalProducts });
+    await saveSnapshot(key, snapshot);
+    result.teaserSnapshot = { teasers: snapshot.teasers.length, captured_at: snapshot.captured_at };
+    console.log(`🏷️ ${snapshot.teasers.length} teasers de ${VTEX_MERCHANTS[key].merchantName} guardados para el scraper de promos`);
+  }
+  return result;
 }

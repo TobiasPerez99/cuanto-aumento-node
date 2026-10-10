@@ -1,0 +1,1794 @@
+{
+ "captured_at": "2026-10-10",
+ "binders": {
+  "disco": {
+   "binder": {
+    "nearCurrent": [],
+    "current": [
+     {
+      "url": "exclusiva_turbo-25_off-25_de_descuento-C",
+      "title": "25% off",
+      "subtitle": "Disco",
+      "tags": [
+       {
+        "description": "Online para todo el país",
+        "type": "online"
+       },
+       {
+        "description": "Los martes",
+        "type": "days"
+       },
+       {
+        "description": "Reintegro inmediato en tu cuenta",
+        "type": "accreditation"
+       },
+       {
+        "description": "$ 9.500, por persona, por semana",
+        "type": "refund"
+       }
+      ],
+      "datesDescription": "Desde: 01/OCT al 31/OCT",
+      "isGrouped": false,
+      "isGroupedParent": false,
+      "groupedKey": null,
+      "groupedPlansSummary": null,
+      "groupedPlanUrls": [],
+      "benefit": {
+       "discountPercentage": "25",
+       "code": 7,
+       "benefitType": null,
+       "name": "25% de descuento",
+       "priority": 17,
+       "shortName": "25% off",
+       "benefitDetails": null,
+       "deferredDays": null
+      },
+      "ephemeris": {
+       "code": 16,
+       "visible": true,
+       "description": "Exclusiva Turbo",
+       "url": "exclusiva-turbo"
+      },
+      "days": {
+       "weekdaysApplied": [
+        2
+       ],
+       "dateTo": "31/10/2026",
+       "type": 2,
+       "datesDescription": "Desde: 01/OCT al 31/OCT",
+       "daysApplied": [],
+       "dateFrom": "01/10/2026"
+      },
+      "paymentMethods": [
+       "debito",
+       "credito"
+      ],
+      "captureMethods": []
+     },
+     {
+      "url": "12_cuotas_cero_interes-C",
+      "title": "12 cuotas cero interés",
+      "subtitle": "Todos los días",
+      "tags": [
+       {
+        "description": "Todos los días",
+        "type": "days"
+       }
+      ],
+      "datesDescription": "Desde: 1/SEP al 31/OCT",
+      "isGrouped": false,
+      "isGroupedParent": false,
+      "groupedKey": null,
+      "groupedPlansSummary": null,
+      "groupedPlanUrls": [],
+      "benefit": {
+       "discountPercentage": null,
+       "code": 1,
+       "benefitType": "Sin beneficio",
+       "name": "Sin descuento",
+       "shortName": "Sin descuento",
+       "priority": 26,
+       "benefitDetails": null,
+       "deferredDays": null
+      },
+      "ephemeris": null,
+      "days": {
+       "dateTo": "31/10/2026",
+       "weekdaysApplied": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        1
+       ],
+       "type": 2,
+       "dateFrom": "01/09/2026",
+       "datesDescription": "Desde: 1/SEP al 31/OCT",
+       "daysApplied": []
+      },
+      "paymentMethods": [
+       "credito"
+      ],
+      "captureMethods": []
+     },
+     {
+      "url": "plan_zeta_cero_interes-C",
+      "title": "Plan Zeta cero interés",
+      "subtitle": "Todos los días",
+      "tags": [
+       {
+        "description": "Todos los días",
+        "type": "days"
+       }
+      ],
+      "datesDescription": "Desde: 31/JUL al 28/NOV",
+      "isGrouped": false,
+      "isGroupedParent": false,
+      "groupedKey": null,
+      "groupedPlansSummary": null,
+      "groupedPlanUrls": [],
+      "benefit": {
+       "discountPercentage": null,
+       "code": 1,
+       "benefitType": "Sin beneficio",
+       "name": "Sin descuento",
+       "shortName": "Sin descuento",
+       "priority": 26,
+       "benefitDetails": null,
+       "deferredDays": null
+      },
+      "ephemeris": null,
+      "days": {
+       "dateTo": "28/11/2026",
+       "weekdaysApplied": [
+        5,
+        6,
+        7,
+        1,
+        2,
+        3,
+        4
+       ],
+       "type": 2,
+       "dateFrom": "31/07/2026",
+       "datesDescription": "Desde: 31/JUL al 28/NOV",
+       "daysApplied": []
+      },
+      "paymentMethods": [
+       "credito"
+      ],
+      "captureMethods": []
+     }
+    ],
+    "active": [],
+    "binderUrl": "disco",
+    "commerceName": "Disco",
+    "category": {
+     "sectorId": 101,
+     "name": "Supermercados",
+     "id": 101,
+     "subcategory": {
+      "name": "Hipermercados",
+      "id": "3",
+      "key": "HIPERMERCADOS"
+     },
+     "key": "SUPERMERCADOS"
+    },
+    "logo": "https://merchants-api-statics.naranjax.com/commerces/logos/commerce_289069640_lW0EUrTeQ1PUwiZ0.png",
+    "backgroundImage": "https://promotion-featured-images.naranjax.com/categories/supermercados/hipermercados/hipermercados_6.webp",
+    "benefit": "25% de descuento",
+    "ephemeris": 16,
+    "daysApplied": [],
+    "weekdaysApplied": [
+     2
+    ],
+    "paymentMethods": [
+     "debito",
+     "credito"
+    ],
+    "captureMethods": []
+   },
+   "details": {
+    "exclusiva_turbo-25_off-25_de_descuento-C": {
+     "logo": "https://merchants-api-statics.naranjax.com/commerces/logos/commerce_289069640_lW0EUrTeQ1PUwiZ0.png",
+     "backgroundImage": "https://promotion-featured-images.naranjax.com/categories/supermercados/hipermercados/hipermercados_6.webp",
+     "commerceName": "Disco",
+     "category": {
+      "name": "Supermercados",
+      "key": "SUPERMERCADOS",
+      "subcategory": {
+       "name": "Hipermercados",
+       "key": "HIPERMERCADOS"
+      }
+     },
+     "benefitName": "25% off",
+     "ephemeris": {
+      "code": 16,
+      "visible": true,
+      "description": "Exclusiva Turbo",
+      "url": "exclusiva-turbo"
+     },
+     "days": {
+      "daysApplied": [],
+      "weekdaysApplied": [
+       2
+      ],
+      "dateFrom": "01/10/2026",
+      "dateTo": "31/10/2026"
+     },
+     "promotionDetails": {
+      "description": "true",
+      "forPurchasesOver": null,
+      "refundLimit": "9500",
+      "commerceWebPage": "https://www.disco.com.ar/",
+      "notCombinable": false,
+      "validOnSelectedProducts": false,
+      "appliesOnline": true,
+      "appliesInStore": true,
+      "calculateMaxBenefit": true,
+      "currency": null,
+      "renewalType": "weekly"
+     },
+     "isThirdParty": null,
+     "benefit": {
+      "discountPercentage": 25
+     },
+     "paymentMethods": [
+      "debito",
+      "credito"
+     ],
+     "captureMethods": [],
+     "commerces": [],
+     "legal": "25% de reintegro en supermercados para quienes estén adheridos al Plan Turbo y paguen con su Tarjeta de Crédito Naranja X y/o su Tarjeta de Débito Naranja X Visa. Vigencia: todos los martes del 01/10/26 al 31/10/26. Tope: $9.500 por semana. Reintegro: Únicamente en tu cuenta de Naranja X en un plazo de 10 días desde que hiciste la compra. Promoción válida únicamente en los comercios adheridos. Beneficio no válido para compras realizadas con Naranja Visa, Naranja MasterCard, Naranja Amex, ni para transacciones realizadas en agrupadores y billeteras virtuales que no sean Nx. Naranja X podrá suspender o modificar la promoción en caso de fuerza mayor, notificando a través de la app. La Cuenta es administrada por Naranja Digital Compañía Financiera S.A.U., CUIT 30-71663964-5, Tte. Gral. Juan D. Peron 430, piso 19, CABA. La Tarjeta de Crédito Naranja X y Plan Turbo son ofrecidos por Tarjeta Naranja S.A.U. CUIT 30-68537634-9. La Tablada 451, Ciudad de Córdoba.",
+     "shouldSpend": 38000,
+     "refundDestination": "account",
+     "tags": [
+      {
+       "description": "Online para todo el país",
+       "type": "online"
+      },
+      {
+       "description": "Los martes",
+       "type": "days"
+      },
+      {
+       "description": "Reintegro inmediato en tu cuenta",
+       "type": "accreditation"
+      },
+      {
+       "description": "$ 9.500, por persona, por semana",
+       "type": "refund"
+      }
+     ],
+     "isGrouped": false,
+     "isGroupedParent": false,
+     "groupedKey": null,
+     "groupedPlansSummary": null,
+     "groupedPlanUrls": [],
+     "originalPlans": []
+    },
+    "12_cuotas_cero_interes-C": {
+     "logo": "https://merchants-api-statics.naranjax.com/commerces/logos/commerce_180029401_5xqRyJGk6QY5eizM.png",
+     "backgroundImage": "https://promotion-featured-images.naranjax.com/categories/supermercados/hipermercados/hipermercados_3.webp",
+     "commerceName": "Disco",
+     "category": {
+      "name": "Supermercados",
+      "key": "SUPERMERCADOS",
+      "subcategory": {
+       "name": "Hipermercados",
+       "key": "HIPERMERCADOS"
+      }
+     },
+     "benefitName": "12 cuotas cero interés",
+     "ephemeris": null,
+     "days": {
+      "daysApplied": [],
+      "weekdaysApplied": [
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       1
+      ],
+      "dateFrom": "01/09/2026",
+      "dateTo": "31/10/2026"
+     },
+     "promotionDetails": {
+      "description": null,
+      "forPurchasesOver": null,
+      "refundLimit": null,
+      "commerceWebPage": null,
+      "notCombinable": false,
+      "validOnSelectedProducts": true,
+      "appliesOnline": false,
+      "appliesInStore": false,
+      "calculateMaxBenefit": true,
+      "currency": null,
+      "renewalType": null
+     },
+     "isThirdParty": null,
+     "benefit": {
+      "discountPercentage": null
+     },
+     "paymentMethods": [
+      "credito"
+     ],
+     "captureMethods": [],
+     "commerces": [
+      {
+       "number": 180029401,
+       "name": "DISCO SM 954",
+       "address": "Ruta Provincial Nro 5 Contrafrente Callle Publica y Reconquista 0",
+       "province": "Cordoba",
+       "locality": "Alta Gracia"
+      },
+      {
+       "number": 160024900,
+       "name": "DISCO SM 450",
+       "address": "San Martin 1127",
+       "province": "Buenos Aires",
+       "locality": "Martinez"
+      }
+     ],
+     "legal": "PLAN 12 Cuotas\nCosto Financiero Total (CFT) 0% Tasa Efectiva Anual (TEA) 0% Tasa Nominal Anual (TNA) 0%. \nBeneficio válido para titulares y adicionales de tarjeta de crédito Naranja X de todo el país que compren en PLAN 12 Cuotas: Costo Financiero Total (CFT) 0% Tasa Efectiva Anual (TEA) 0% Tasa Nominal Anual (TNA) 0%.  Válido todos los días desde el 1 de septiembre de 2026 al 31 de octubre de 2026. Válido en productos seleccionados. Válida en productos seleccionados de electro. Beneficio no válido para compras realizadas con Naranja Visa, Naranja MasterCard, Naranja Amex, ni para transacciones realizadas en agrupadores y billeteras virtuales-En caso de fuerza mayor y/o caso fortuito que genere alguna imposibilidad para llevar a cabo el beneficio o para continuar con el mismo, Naranja X podrá suspender definitivamente o transitoriamente el beneficio, como así también introducir las modificaciones pertinentes. La tarjeta de crédito es comercializada por Tarjeta Naranja S. A.U. CUIT 30685376349, La Tablada 451, Córdoba.",
+     "shouldSpend": null,
+     "refundDestination": "card",
+     "tags": [
+      {
+       "description": "Todos los días",
+       "type": "days"
+      }
+     ],
+     "isGrouped": false,
+     "isGroupedParent": false,
+     "groupedKey": null,
+     "groupedPlansSummary": null,
+     "groupedPlanUrls": [],
+     "originalPlans": []
+    }
+   }
+  },
+  "disco_com_ar": {
+   "binder": {
+    "nearCurrent": [],
+    "current": [
+     {
+      "url": "12_cuotas_cero_interes-C",
+      "title": "12 cuotas cero interés",
+      "subtitle": "Todos los días",
+      "tags": [
+       {
+        "description": "Todos los días",
+        "type": "days"
+       }
+      ],
+      "datesDescription": "Desde: 1/SEP al 31/OCT",
+      "isGrouped": false,
+      "isGroupedParent": false,
+      "groupedKey": null,
+      "groupedPlansSummary": null,
+      "groupedPlanUrls": [],
+      "benefit": {
+       "discountPercentage": null,
+       "code": 1,
+       "benefitType": "Sin beneficio",
+       "name": "Sin descuento",
+       "shortName": "Sin descuento",
+       "priority": 26,
+       "benefitDetails": null,
+       "deferredDays": null
+      },
+      "ephemeris": null,
+      "days": {
+       "dateTo": "31/10/2026",
+       "weekdaysApplied": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        1
+       ],
+       "type": 2,
+       "dateFrom": "01/09/2026",
+       "datesDescription": "Desde: 1/SEP al 31/OCT",
+       "daysApplied": []
+      },
+      "paymentMethods": [
+       "credito"
+      ],
+      "captureMethods": []
+     },
+     {
+      "url": "plan_zeta_cero_interes-C",
+      "title": "Plan Zeta cero interés",
+      "subtitle": "Todos los días",
+      "tags": [
+       {
+        "description": "Todos los días",
+        "type": "days"
+       }
+      ],
+      "datesDescription": "Desde: 31/JUL al 28/NOV",
+      "isGrouped": false,
+      "isGroupedParent": false,
+      "groupedKey": null,
+      "groupedPlansSummary": null,
+      "groupedPlanUrls": [],
+      "benefit": {
+       "discountPercentage": null,
+       "code": 1,
+       "benefitType": "Sin beneficio",
+       "name": "Sin descuento",
+       "shortName": "Sin descuento",
+       "priority": 26,
+       "benefitDetails": null,
+       "deferredDays": null
+      },
+      "ephemeris": null,
+      "days": {
+       "dateTo": "28/11/2026",
+       "weekdaysApplied": [
+        5,
+        6,
+        7,
+        1,
+        2,
+        3,
+        4
+       ],
+       "type": 2,
+       "dateFrom": "31/07/2026",
+       "datesDescription": "Desde: 31/JUL al 28/NOV",
+       "daysApplied": []
+      },
+      "paymentMethods": [
+       "credito"
+      ],
+      "captureMethods": []
+     }
+    ],
+    "active": [],
+    "binderUrl": "disco_com_ar",
+    "commerceName": "Disco. Com. Ar",
+    "category": {
+     "sectorId": 550,
+     "name": "Supermercados",
+     "id": 101,
+     "subcategory": {
+      "name": "Hipermercados",
+      "id": "3",
+      "key": "HIPERMERCADOS"
+     },
+     "key": "SUPERMERCADOS"
+    },
+    "logo": "https://merchants-api-statics.naranjax.com/commerces/logos/commerce_241028285_DIQuiKeECN2oCMtr.png",
+    "backgroundImage": "https://promotion-featured-images.naranjax.com/categories/supermercados/hipermercados/hipermercados_2.webp",
+    "benefit": "Sin descuento",
+    "ephemeris": null,
+    "daysApplied": [],
+    "weekdaysApplied": [
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     1
+    ],
+    "paymentMethods": [
+     "credito"
+    ],
+    "captureMethods": []
+   },
+   "details": {
+    "12_cuotas_cero_interes-C": {
+     "logo": "https://merchants-api-statics.naranjax.com/commerces/logos/commerce_241028285_DIQuiKeECN2oCMtr.png",
+     "backgroundImage": "https://promotion-featured-images.naranjax.com/categories/supermercados/hipermercados/hipermercados_2.webp",
+     "commerceName": "Disco. Com. Ar",
+     "category": {
+      "name": "Supermercados",
+      "key": "SUPERMERCADOS",
+      "subcategory": {
+       "name": "Hipermercados",
+       "key": "HIPERMERCADOS"
+      }
+     },
+     "benefitName": "12 cuotas cero interés",
+     "ephemeris": null,
+     "days": {
+      "daysApplied": [],
+      "weekdaysApplied": [
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       1
+      ],
+      "dateFrom": "01/09/2026",
+      "dateTo": "31/10/2026"
+     },
+     "promotionDetails": {
+      "description": null,
+      "forPurchasesOver": null,
+      "refundLimit": null,
+      "commerceWebPage": null,
+      "notCombinable": false,
+      "validOnSelectedProducts": true,
+      "appliesOnline": false,
+      "appliesInStore": false,
+      "calculateMaxBenefit": true,
+      "currency": null,
+      "renewalType": null
+     },
+     "isThirdParty": null,
+     "benefit": {
+      "discountPercentage": null
+     },
+     "paymentMethods": [
+      "credito"
+     ],
+     "captureMethods": [],
+     "commerces": [],
+     "legal": "PLAN 12 Cuotas\nCosto Financiero Total (CFT) 0% Tasa Efectiva Anual (TEA) 0% Tasa Nominal Anual (TNA) 0%. \nBeneficio válido para titulares y adicionales de tarjeta de crédito Naranja X de todo el país que compren en PLAN 12 Cuotas: Costo Financiero Total (CFT) 0% Tasa Efectiva Anual (TEA) 0% Tasa Nominal Anual (TNA) 0%.  Válido todos los días desde el 1 de septiembre de 2026 al 31 de octubre de 2026. Válido en productos seleccionados. Válida en productos seleccionados de electro. Beneficio no válido para compras realizadas con Naranja Visa, Naranja MasterCard, Naranja Amex, ni para transacciones realizadas en agrupadores y billeteras virtuales-En caso de fuerza mayor y/o caso fortuito que genere alguna imposibilidad para llevar a cabo el beneficio o para continuar con el mismo, Naranja X podrá suspender definitivamente o transitoriamente el beneficio, como así también introducir las modificaciones pertinentes. La tarjeta de crédito es comercializada por Tarjeta Naranja S. A.U. CUIT 30685376349, La Tablada 451, Córdoba.",
+     "shouldSpend": null,
+     "refundDestination": "card",
+     "tags": [
+      {
+       "description": "Todos los días",
+       "type": "days"
+      }
+     ],
+     "isGrouped": false,
+     "isGroupedParent": false,
+     "groupedKey": null,
+     "groupedPlansSummary": null,
+     "groupedPlanUrls": [],
+     "originalPlans": []
+    }
+   }
+  },
+  "farmacity": {
+   "binder": {
+    "nearCurrent": [],
+    "current": [
+     {
+      "url": "6_cuotas_cero_interes-C",
+      "title": "6 cuotas cero interés",
+      "subtitle": "Todos los días",
+      "tags": [
+       {
+        "description": "Online para todo el país",
+        "type": "online"
+       },
+       {
+        "description": "Todos los días",
+        "type": "days"
+       }
+      ],
+      "datesDescription": "Desde: 1/OCT al 31/DIC",
+      "isGrouped": false,
+      "isGroupedParent": false,
+      "groupedKey": null,
+      "groupedPlansSummary": null,
+      "groupedPlanUrls": [],
+      "benefit": {
+       "discountPercentage": null,
+       "code": 1,
+       "benefitType": "Sin beneficio",
+       "name": "Sin descuento",
+       "shortName": "Sin descuento",
+       "priority": 26,
+       "benefitDetails": null,
+       "deferredDays": null
+      },
+      "ephemeris": null,
+      "days": {
+       "dateTo": "31/12/2026",
+       "weekdaysApplied": [
+        4,
+        5,
+        6,
+        7,
+        1,
+        2,
+        3
+       ],
+       "type": 2,
+       "dateFrom": "01/10/2026",
+       "datesDescription": "Desde: 1/OCT al 31/DIC",
+       "daysApplied": []
+      },
+      "paymentMethods": [
+       "credito"
+      ],
+      "captureMethods": []
+     },
+     {
+      "url": "plan_zeta_cero_interes-C",
+      "title": "Plan Zeta cero interés",
+      "subtitle": "Todos los días",
+      "tags": [
+       {
+        "description": "Online para todo el país",
+        "type": "online"
+       },
+       {
+        "description": "Todos los días",
+        "type": "days"
+       }
+      ],
+      "datesDescription": "Desde: 1/OCT al 31/DIC",
+      "isGrouped": false,
+      "isGroupedParent": false,
+      "groupedKey": null,
+      "groupedPlansSummary": null,
+      "groupedPlanUrls": [],
+      "benefit": {
+       "discountPercentage": null,
+       "code": 1,
+       "benefitType": "Sin beneficio",
+       "name": "Sin descuento",
+       "shortName": "Sin descuento",
+       "priority": 26,
+       "benefitDetails": null,
+       "deferredDays": null
+      },
+      "ephemeris": null,
+      "days": {
+       "dateTo": "31/12/2026",
+       "weekdaysApplied": [
+        4,
+        5,
+        6,
+        7,
+        1,
+        2,
+        3
+       ],
+       "type": 2,
+       "dateFrom": "01/10/2026",
+       "datesDescription": "Desde: 1/OCT al 31/DIC",
+       "daysApplied": []
+      },
+      "paymentMethods": [
+       "credito"
+      ],
+      "captureMethods": []
+     },
+     {
+      "url": "30_off-30_de_descuento-C",
+      "title": "30% off",
+      "subtitle": "FARMACITY ",
+      "tags": [
+       {
+        "description": "Online para todo el país",
+        "type": "online"
+       },
+       {
+        "description": "Los miércoles",
+        "type": "days"
+       },
+       {
+        "description": "Reintegro inmediato en tu cuenta",
+        "type": "accreditation"
+       },
+       {
+        "description": "$ 15.000, por persona, por mes",
+        "type": "refund"
+       }
+      ],
+      "datesDescription": "Desde: 01/OCT al 31/DIC",
+      "isGrouped": false,
+      "isGroupedParent": false,
+      "groupedKey": null,
+      "groupedPlansSummary": null,
+      "groupedPlanUrls": [],
+      "benefit": {
+       "discountPercentage": "30",
+       "code": 8,
+       "benefitType": null,
+       "name": "30% de descuento",
+       "priority": 16,
+       "shortName": "30% off",
+       "benefitDetails": null,
+       "deferredDays": null
+      },
+      "ephemeris": null,
+      "days": {
+       "dateTo": "31/12/2026",
+       "weekdaysApplied": [
+        3
+       ],
+       "dateFrom": "01/10/2026",
+       "type": 2,
+       "datesDescription": "Desde: 01/OCT al 31/DIC",
+       "daysApplied": []
+      },
+      "paymentMethods": [
+       "credito"
+      ],
+      "captureMethods": []
+     },
+     {
+      "url": "plan_zeta_cero_interes-10_de_descuento-C",
+      "title": "10% off y Plan Zeta cero interés",
+      "subtitle": "Los lunes",
+      "tags": [
+       {
+        "description": "Reintegro en el resumen de tu tarjeta",
+        "type": "accreditation"
+       },
+       {
+        "description": "Sin tope",
+        "type": "refund"
+       },
+       {
+        "description": "Los lunes",
+        "type": "days"
+       }
+      ],
+      "datesDescription": "Desde: 5/OCT al 12/OCT",
+      "isGrouped": false,
+      "isGroupedParent": false,
+      "groupedKey": null,
+      "groupedPlansSummary": null,
+      "groupedPlanUrls": [],
+      "benefit": {
+       "discountPercentage": "10",
+       "code": 4,
+       "benefitType": null,
+       "name": "10% de descuento",
+       "shortName": "10% off",
+       "priority": 20,
+       "benefitDetails": null,
+       "deferredDays": null
+      },
+      "ephemeris": null,
+      "days": {
+       "dateTo": "12/10/2026",
+       "weekdaysApplied": [
+        1
+       ],
+       "type": 3,
+       "dateFrom": "05/10/2026",
+       "datesDescription": "Desde: 5/OCT al 12/OCT",
+       "daysApplied": [
+        "05/10/2026",
+        "12/10/2026"
+       ]
+      },
+      "paymentMethods": [
+       "credito"
+      ],
+      "captureMethods": []
+     }
+    ],
+    "active": [],
+    "binderUrl": "farmacity",
+    "commerceName": "Farmacity",
+    "category": {
+     "sectorId": 220,
+     "name": "Salud y bienestar",
+     "id": 103,
+     "subcategory": {
+      "name": "Farmacias",
+      "id": "16",
+      "key": "FARMACIAS"
+     },
+     "key": "SALUD_Y_BIENESTAR"
+    },
+    "logo": "https://merchants-api-statics.naranjax.com/commerces/logos/commerce_521031714_wzzf2lGbbzNsry0O.png",
+    "backgroundImage": "https://promotion-featured-images.naranjax.com/categories/salud_y_bienestar/farmacias/farmacias_3.webp",
+    "benefit": "Sin descuento",
+    "ephemeris": null,
+    "daysApplied": [],
+    "weekdaysApplied": [
+     4,
+     5,
+     6,
+     7,
+     1,
+     2,
+     3
+    ],
+    "paymentMethods": [
+     "credito"
+    ],
+    "captureMethods": []
+   },
+   "details": {
+    "6_cuotas_cero_interes-C": {
+     "logo": "https://merchants-api-statics.naranjax.com/commerces/logos/commerce_521031714_wzzf2lGbbzNsry0O.png",
+     "backgroundImage": "https://promotion-featured-images.naranjax.com/categories/salud_y_bienestar/farmacias/farmacias_3.webp",
+     "commerceName": "Farmacity",
+     "category": {
+      "name": "Salud y bienestar",
+      "key": "SALUD_Y_BIENESTAR",
+      "subcategory": {
+       "name": "Farmacias",
+       "key": "FARMACIAS"
+      }
+     },
+     "benefitName": "6 cuotas cero interés",
+     "ephemeris": null,
+     "days": {
+      "daysApplied": [],
+      "weekdaysApplied": [
+       4,
+       5,
+       6,
+       7,
+       1,
+       2,
+       3
+      ],
+      "dateFrom": "01/10/2026",
+      "dateTo": "31/12/2026"
+     },
+     "promotionDetails": {
+      "description": null,
+      "forPurchasesOver": "120000",
+      "refundLimit": null,
+      "commerceWebPage": "https://www.farmacity.com/\t",
+      "notCombinable": false,
+      "validOnSelectedProducts": false,
+      "appliesOnline": true,
+      "appliesInStore": false,
+      "calculateMaxBenefit": true,
+      "currency": null,
+      "renewalType": null
+     },
+     "isThirdParty": null,
+     "benefit": {
+      "discountPercentage": null
+     },
+     "paymentMethods": [
+      "credito"
+     ],
+     "captureMethods": [],
+     "commerces": [
+      {
+       "number": 380050781,
+       "name": "FARMACITY-SANTIAGO DEL ESTERO",
+       "address": "Av. Santa Fe 2830",
+       "province": "Ciudad Autonoma de Buenos Aires",
+       "locality": "Centro - Cap. Federal"
+      },
+      {
+       "number": 113019392,
+       "name": "FARMACITY-POSADAS II-AYACUCHO",
+       "address": "Av. Santa Fe 2755",
+       "province": "Ciudad Autonoma de Buenos Aires",
+       "locality": "B. Norte"
+      }
+     ],
+     "legal": "PLAN 6 Cuotas\nCosto Financiero Total (CFT) 0% Tasa Efectiva Anual (TEA) 0% Tasa Nominal Anual (TNA) 0%. \nBeneficio válido para titulares y adicionales de tarjeta de crédito Naranja X de todo el país que compren en PLAN 6 Cuotas: Costo Financiero Total (CFT) 0% Tasa Efectiva Anual (TEA) 0% Tasa Nominal Anual (TNA) 0%.  Válido todos los días desde el 1 de octubre de 2026 al 31 de diciembre de 2026. Aplica para venta online. En compras superiores a 120000. Exclusivo sin transacciones .  Beneficio no válido para compras realizadas con Naranja Visa, Naranja MasterCard, Naranja Amex, ni para transacciones realizadas en agrupadores y billeteras virtuales-En caso de fuerza mayor y/o caso fortuito que genere alguna imposibilidad para llevar a cabo el beneficio o para continuar con el mismo, Naranja X podrá suspender definitivamente o transitoriamente el beneficio, como así también introducir las modificaciones pertinentes. La tarjeta de crédito es comercializada por Tarjeta Naranja S. A.U. CUIT 30685376349, La Tablada 451, Córdoba.",
+     "shouldSpend": null,
+     "refundDestination": "card",
+     "tags": [
+      {
+       "description": "Online para todo el país",
+       "type": "online"
+      },
+      {
+       "description": "Todos los días",
+       "type": "days"
+      }
+     ],
+     "isGrouped": false,
+     "isGroupedParent": false,
+     "groupedKey": null,
+     "groupedPlansSummary": null,
+     "groupedPlanUrls": [],
+     "originalPlans": []
+    },
+    "30_off-30_de_descuento-C": {
+     "logo": "https://merchants-api-statics.naranjax.com/commerces/logos/cuit_0030692138747_ELFEguy4SfUtg0ED.png",
+     "backgroundImage": "https://promotion-featured-images.naranjax.com/categories/salud_y_bienestar/farmacias/farmacias_1.webp",
+     "commerceName": "FARMACITY ",
+     "category": {
+      "name": "Salud y bienestar",
+      "key": "SALUD_Y_BIENESTAR",
+      "subcategory": {
+       "name": "Farmacias",
+       "key": "FARMACIAS"
+      }
+     },
+     "benefitName": "30% off",
+     "ephemeris": null,
+     "days": {
+      "daysApplied": [],
+      "weekdaysApplied": [
+       3
+      ],
+      "dateFrom": "01/10/2026",
+      "dateTo": "31/12/2026"
+     },
+     "promotionDetails": {
+      "description": "Promoción exclusiva online",
+      "forPurchasesOver": null,
+      "refundLimit": "15000",
+      "commerceWebPage": " www.farmacity.com.ar ",
+      "notCombinable": false,
+      "validOnSelectedProducts": null,
+      "appliesOnline": true,
+      "appliesInStore": false,
+      "calculateMaxBenefit": true,
+      "currency": "ARS",
+      "renewalType": "monthly"
+     },
+     "isThirdParty": false,
+     "benefit": {
+      "discountPercentage": 30
+     },
+     "paymentMethods": [
+      "credito"
+     ],
+     "captureMethods": [],
+     "commerces": [],
+     "legal": "Beneficio del 30% de reintegro en www.farmacity.com.ar , abonando con Tarjeta de Crédito Naranja X.\nVigencia: únicamente los días Miercoles desde el 01/10 al 31/12 de 2026, o hasta agotar un stock de 30.000 reintegros. Tope: $15.000 por cliente por mes. El reintegro se acreditará únicamente en la cuenta de Naranja X en un plazo de hasta 10 días hábiles desde la fecha de compra. Naranja X se reserva el derecho de suspender o modificar la promoción por razones de fuerza mayor, notificando previamente a los usuarios a través de la app. La Cuenta es administrada por Naranja Digital Compañía Financiera S.A.U., CUIT 30-71663964-5, Tte. Gral. Juan D. Perón 430, piso 19, CABA. La Tarjeta de Crédito Naranja X y Plan Turbo son ofrecidos por Tarjeta Naranja S.A.U., CUIT 30-68537634-9, La Tablada 451, Ciudad de Córdoba.",
+     "shouldSpend": 50000,
+     "refundDestination": "account",
+     "tags": [
+      {
+       "description": "Online para todo el país",
+       "type": "online"
+      },
+      {
+       "description": "Los miércoles",
+       "type": "days"
+      },
+      {
+       "description": "Reintegro inmediato en tu cuenta",
+       "type": "accreditation"
+      },
+      {
+       "description": "$ 15.000, por persona, por mes",
+       "type": "refund"
+      }
+     ],
+     "isGrouped": false,
+     "isGroupedParent": false,
+     "groupedKey": null,
+     "groupedPlansSummary": null,
+     "groupedPlanUrls": [],
+     "originalPlans": []
+    },
+    "plan_zeta_cero_interes-10_de_descuento-C": {
+     "logo": "https://merchants-api-statics.naranjax.com/commerces/logos/commerce_521031714_wzzf2lGbbzNsry0O.png",
+     "backgroundImage": "https://promotion-featured-images.naranjax.com/categories/salud_y_bienestar/farmacias/farmacias_3.webp",
+     "commerceName": "Farmacity",
+     "category": {
+      "name": "Salud y bienestar",
+      "key": "SALUD_Y_BIENESTAR",
+      "subcategory": {
+       "name": "Farmacias",
+       "key": "FARMACIAS"
+      }
+     },
+     "benefitName": "10% off y Plan Zeta cero interés",
+     "ephemeris": null,
+     "days": {
+      "daysApplied": [
+       "05/10/2026",
+       "12/10/2026"
+      ],
+      "weekdaysApplied": [
+       1
+      ],
+      "dateFrom": "05/10/2026",
+      "dateTo": "12/10/2026"
+     },
+     "promotionDetails": {
+      "description": "Exclusivo para sucursales de la provincia de  La rioja, Santiago del Estero, Misiones, Chaco y Formosa.",
+      "forPurchasesOver": null,
+      "refundLimit": null,
+      "commerceWebPage": null,
+      "notCombinable": false,
+      "validOnSelectedProducts": false,
+      "appliesOnline": false,
+      "appliesInStore": false,
+      "calculateMaxBenefit": true,
+      "currency": null,
+      "renewalType": null
+     },
+     "isThirdParty": null,
+     "benefit": {
+      "discountPercentage": 10
+     },
+     "paymentMethods": [
+      "credito"
+     ],
+     "captureMethods": [],
+     "commerces": [
+      {
+       "number": 380050781,
+       "name": "FARMACITY-SANTIAGO DEL ESTERO",
+       "address": "Av. Santa Fe 2830",
+       "province": "Ciudad Autonoma de Buenos Aires",
+       "locality": "Centro - Cap. Federal"
+      },
+      {
+       "number": 115022421,
+       "name": "FARMACITY SUC.148",
+       "address": "Av. Santa Fe 2755",
+       "province": "Ciudad Autonoma de Buenos Aires",
+       "locality": "Centro"
+      }
+     ],
+     "legal": "PLAN Z \nCosto Financiero Total (CFT) 0% Tasa Efectiva Anual (TEA) 0% Tasa Nominal Anual (TNA) 0%. \nBeneficio válido para titulares y adicionales de tarjeta de crédito Naranja X de todo el país que compren en PLAN Z : Costo Financiero Total (CFT) 0% Tasa Efectiva Anual (TEA) 0% Tasa Nominal Anual (TNA) 0%. 10% de descuento. El descuento se verá reflejado en el resumen de cuenta dentro de los 60 días de realizada la compra. Válido 5 y  12 de octubre del 2026. Ver locales adheridos. Exclusivo para sucursales de la provincia de  La rioja, Santiago del Estero, Misiones, Chaco y Formosa..  Beneficio no válido para compras realizadas con Naranja Visa, Naranja MasterCard, Naranja Amex, ni para transacciones realizadas en agrupadores y billeteras virtuales-En caso de fuerza mayor y/o caso fortuito que genere alguna imposibilidad para llevar a cabo el beneficio o para continuar con el mismo, Naranja X podrá suspender definitivamente o transitoriamente el beneficio, como así también introducir las modificaciones pertinentes. La tarjeta de crédito es comercializada por Tarjeta Naranja S. A.U. CUIT 30685376349, La Tablada 451, Córdoba.",
+     "shouldSpend": null,
+     "refundDestination": "card",
+     "tags": [
+      {
+       "description": "Reintegro en el resumen de tu tarjeta",
+       "type": "accreditation"
+      },
+      {
+       "description": "Sin tope",
+       "type": "refund"
+      },
+      {
+       "description": "Los lunes",
+       "type": "days"
+      }
+     ],
+     "isGrouped": false,
+     "isGroupedParent": false,
+     "groupedKey": null,
+     "groupedPlansSummary": null,
+     "groupedPlanUrls": [],
+     "originalPlans": []
+    }
+   }
+  },
+  "changomas": {
+   "binder": {
+    "nearCurrent": [],
+    "current": [
+     {
+      "url": "exclusiva_turbo-25_off-25_de_descuento-C",
+      "title": "25% off",
+      "subtitle": "ChangoMas",
+      "tags": [
+       {
+        "description": "Online para todo el país",
+        "type": "online"
+       },
+       {
+        "description": "Los martes",
+        "type": "days"
+       },
+       {
+        "description": "Reintegro inmediato en tu cuenta",
+        "type": "accreditation"
+       },
+       {
+        "description": "$ 9.500, por persona, por semana",
+        "type": "refund"
+       }
+      ],
+      "datesDescription": "Desde: 01/OCT al 31/OCT",
+      "isGrouped": false,
+      "isGroupedParent": false,
+      "groupedKey": null,
+      "groupedPlansSummary": null,
+      "groupedPlanUrls": [],
+      "benefit": {
+       "discountPercentage": "25",
+       "code": 7,
+       "benefitType": null,
+       "name": "25% de descuento",
+       "shortName": "25% off",
+       "priority": 17,
+       "benefitDetails": null,
+       "deferredDays": null
+      },
+      "ephemeris": {
+       "visible": true,
+       "code": 16,
+       "description": "Exclusiva Turbo",
+       "url": "exclusiva-turbo"
+      },
+      "days": {
+       "dateTo": "31/10/2026",
+       "weekdaysApplied": [
+        2
+       ],
+       "dateFrom": "01/10/2026",
+       "datesDescription": "Desde: 01/OCT al 31/OCT",
+       "daysApplied": [],
+       "type": 2
+      },
+      "paymentMethods": [
+       "debito",
+       "credito"
+      ],
+      "captureMethods": []
+     },
+     {
+      "url": "15_off-15_de_descuento-C",
+      "title": "15% off",
+      "subtitle": "Changomas",
+      "tags": [
+       {
+        "description": "Online para todo el país",
+        "type": "online"
+       },
+       {
+        "description": "Días seleccionados",
+        "type": "days"
+       },
+       {
+        "description": "Descuento en el punto de venta",
+        "type": "accreditation"
+       },
+       {
+        "description": "Sin tope",
+        "type": "refund"
+       }
+      ],
+      "datesDescription": "Desde: 01/OCT al 31/OCT",
+      "isGrouped": false,
+      "isGroupedParent": false,
+      "groupedKey": null,
+      "groupedPlansSummary": null,
+      "groupedPlanUrls": [],
+      "benefit": {
+       "discountPercentage": "15",
+       "code": 5,
+       "benefitType": null,
+       "name": "15% de descuento",
+       "priority": 19,
+       "shortName": "15% off",
+       "benefitDetails": null,
+       "deferredDays": null
+      },
+      "ephemeris": null,
+      "days": {
+       "weekdaysApplied": [
+        4,
+        5,
+        6
+       ],
+       "dateTo": "31/10/2026",
+       "daysApplied": [],
+       "dateFrom": "01/10/2026",
+       "type": 2,
+       "datesDescription": "Desde: 01/OCT al 31/OCT"
+      },
+      "paymentMethods": [
+       "dinero"
+      ],
+      "captureMethods": [
+       {
+        "key": "qr"
+       }
+      ]
+     },
+     {
+      "url": "hasta_12_cuotas_cero_interes-C",
+      "title": "Hasta 12 cuotas cero interés",
+      "subtitle": "Todos los días",
+      "tags": [
+       {
+        "description": "Todos los días",
+        "type": "days"
+       }
+      ],
+      "datesDescription": "Desde: 1/SEP al 31/OCT",
+      "isGrouped": false,
+      "isGroupedParent": true,
+      "groupedKey": "ZERO_INTEREST_INSTALLMENTS",
+      "groupedPlansSummary": "4, 6, 8, 9, 10 y 12",
+      "groupedPlanUrls": [
+       "12_cuotas_cero_interes-C",
+       "10_cuotas_cero_interes-C",
+       "9_cuotas_cero_interes-C",
+       "8_cuotas_cero_interes-C",
+       "6_cuotas_cero_interes-C",
+       "4_cuotas_cero_interes-C"
+      ],
+      "benefit": {
+       "discountPercentage": null,
+       "code": 1,
+       "benefitType": "Sin beneficio",
+       "name": "Sin descuento",
+       "shortName": "Sin descuento",
+       "priority": 26,
+       "benefitDetails": null,
+       "deferredDays": null
+      },
+      "ephemeris": null,
+      "days": {
+       "dateTo": "31/10/2026",
+       "weekdaysApplied": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        1
+       ],
+       "type": 2,
+       "dateFrom": "01/09/2026",
+       "datesDescription": "Desde: 1/SEP al 31/OCT",
+       "daysApplied": []
+      },
+      "paymentMethods": [
+       "credito"
+      ],
+      "captureMethods": []
+     },
+     {
+      "url": "plan_zeta_cero_interes-C",
+      "title": "Plan Zeta cero interés",
+      "subtitle": "Todos los días",
+      "tags": [
+       {
+        "description": "Todos los días",
+        "type": "days"
+       }
+      ],
+      "datesDescription": "Desde: 31/JUL al 28/NOV",
+      "isGrouped": false,
+      "isGroupedParent": false,
+      "groupedKey": null,
+      "groupedPlansSummary": null,
+      "groupedPlanUrls": [],
+      "benefit": {
+       "discountPercentage": null,
+       "code": 1,
+       "benefitType": "Sin beneficio",
+       "name": "Sin descuento",
+       "shortName": "Sin descuento",
+       "priority": 26,
+       "benefitDetails": null,
+       "deferredDays": null
+      },
+      "ephemeris": null,
+      "days": {
+       "dateTo": "28/11/2026",
+       "weekdaysApplied": [
+        5,
+        6,
+        7,
+        1,
+        2,
+        3,
+        4
+       ],
+       "type": 2,
+       "dateFrom": "31/07/2026",
+       "datesDescription": "Desde: 31/JUL al 28/NOV",
+       "daysApplied": []
+      },
+      "paymentMethods": [
+       "credito"
+      ],
+      "captureMethods": []
+     }
+    ],
+    "active": [],
+    "binderUrl": "changomas",
+    "commerceName": "ChangoMas",
+    "category": {
+     "sectorId": 101,
+     "name": "Supermercados",
+     "id": 101,
+     "subcategory": {
+      "name": "Hipermercados",
+      "id": "3",
+      "key": "HIPERMERCADOS"
+     },
+     "key": "SUPERMERCADOS"
+    },
+    "logo": "https://merchants-api-statics.naranjax.com/commerces/logos/commerce_100172757_9PWc8djfgztpCph5.png",
+    "backgroundImage": "https://promotion-featured-images.naranjax.com/categories/supermercados/hipermercados/hipermercados_1.webp",
+    "benefit": "25% de descuento",
+    "ephemeris": 16,
+    "daysApplied": [],
+    "weekdaysApplied": [
+     2
+    ],
+    "paymentMethods": [
+     "debito",
+     "credito"
+    ],
+    "captureMethods": []
+   },
+   "details": {
+    "exclusiva_turbo-25_off-25_de_descuento-C": {
+     "logo": "https://merchants-api-statics.naranjax.com/commerces/logos/commerce_100172757_9PWc8djfgztpCph5.png",
+     "backgroundImage": "https://promotion-featured-images.naranjax.com/categories/supermercados/hipermercados/hipermercados_1.webp",
+     "commerceName": "ChangoMas",
+     "category": {
+      "name": "Supermercados",
+      "key": "SUPERMERCADOS",
+      "subcategory": {
+       "name": "Hipermercados",
+       "key": "HIPERMERCADOS"
+      }
+     },
+     "benefitName": "25% off",
+     "ephemeris": {
+      "visible": true,
+      "code": 16,
+      "description": "Exclusiva Turbo",
+      "url": "exclusiva-turbo"
+     },
+     "days": {
+      "daysApplied": [],
+      "weekdaysApplied": [
+       2
+      ],
+      "dateFrom": "01/10/2026",
+      "dateTo": "31/10/2026"
+     },
+     "promotionDetails": {
+      "description": "true",
+      "forPurchasesOver": null,
+      "refundLimit": "9500",
+      "commerceWebPage": "https://www.masonline.com.ar/Changomas?srsltid=AfmBOoqX7RPu6cdkmqiB_0rxUWA3SeW1xuR77VDMfea-ho7h_I7N5BNr",
+      "notCombinable": false,
+      "validOnSelectedProducts": false,
+      "appliesOnline": true,
+      "appliesInStore": true,
+      "calculateMaxBenefit": true,
+      "currency": null,
+      "renewalType": "weekly"
+     },
+     "isThirdParty": null,
+     "benefit": {
+      "discountPercentage": 25
+     },
+     "paymentMethods": [
+      "debito",
+      "credito"
+     ],
+     "captureMethods": [],
+     "commerces": [],
+     "legal": "25% de reintegro en supermercados para quienes estén adheridos al Plan Turbo y paguen con su Tarjeta de Crédito Naranja X y/o su Tarjeta de Débito Naranja X Visa. Vigencia: todos los martes del 01/10/26 al 31/10/26. Tope: $9.500 por semana. Reintegro: Únicamente en tu cuenta de Naranja X en un plazo de 10 días desde que hiciste la compra. Promoción válida únicamente en los comercios adheridos. Beneficio no válido para compras realizadas con Naranja Visa, Naranja MasterCard, Naranja Amex, ni para transacciones realizadas en agrupadores y billeteras virtuales que no sean Nx. Naranja X podrá suspender o modificar la promoción en caso de fuerza mayor, notificando a través de la app. La Cuenta es administrada por Naranja Digital Compañía Financiera S.A.U., CUIT 30-71663964-5, Tte. Gral. Juan D. Peron 430, piso 19, CABA. La Tarjeta de Crédito Naranja X y Plan Turbo son ofrecidos por Tarjeta Naranja S.A.U. CUIT 30-68537634-9. La Tablada 451, Ciudad de Córdoba.",
+     "shouldSpend": 38000,
+     "refundDestination": "account",
+     "tags": [
+      {
+       "description": "Online para todo el país",
+       "type": "online"
+      },
+      {
+       "description": "Los martes",
+       "type": "days"
+      },
+      {
+       "description": "Reintegro inmediato en tu cuenta",
+       "type": "accreditation"
+      },
+      {
+       "description": "$ 9.500, por persona, por semana",
+       "type": "refund"
+      }
+     ],
+     "isGrouped": false,
+     "isGroupedParent": false,
+     "groupedKey": null,
+     "groupedPlansSummary": null,
+     "groupedPlanUrls": [],
+     "originalPlans": []
+    },
+    "15_off-15_de_descuento-C": {
+     "logo": "https://merchants-api-statics.naranjax.com/commerces/logos/cuit_0030678138300_bUnYHfgogk3JlhWP.png",
+     "backgroundImage": "https://promotion-featured-images.naranjax.com/categories/supermercados/hipermercados/hipermercados_6.webp",
+     "commerceName": "Changomas",
+     "category": {
+      "name": "Supermercados",
+      "key": "SUPERMERCADOS",
+      "subcategory": {
+       "name": "Hipermercados",
+       "key": "HIPERMERCADOS"
+      }
+     },
+     "benefitName": "15% off",
+     "ephemeris": null,
+     "days": {
+      "daysApplied": [],
+      "weekdaysApplied": [
+       4,
+       5,
+       6
+      ],
+      "dateFrom": "01/10/2026",
+      "dateTo": "31/10/2026"
+     },
+     "promotionDetails": {
+      "description": "false",
+      "forPurchasesOver": null,
+      "refundLimit": null,
+      "commerceWebPage": "https://naranjax.com/federal",
+      "notCombinable": false,
+      "validOnSelectedProducts": true,
+      "appliesOnline": true,
+      "appliesInStore": true,
+      "calculateMaxBenefit": true,
+      "currency": null,
+      "renewalType": "monthly"
+     },
+     "isThirdParty": true,
+     "benefit": {
+      "discountPercentage": 15
+     },
+     "paymentMethods": [
+      "dinero"
+     ],
+     "captureMethods": [
+      {
+       "key": "qr"
+      }
+     ],
+     "commerces": [],
+     "legal": "VALIDO PARA PAGOS REALIZADOS LOS DIAS VIERNES, SABADOS Y DOMINGOS DEOCTUBRE 2026 A TRAVÉS DEL SERVICIO DE PROCESAMIENTO DE PAGOS DE MERCADO PAGO OPERADO POR MERCADOLIBRE S.R.L. (“MERCADO PAGO.”) MEDIANTE EL ESCANEO DEL CÓDIGO QR CON LA APP DE NARANJAX (LA “APP”) EL BENEFICIO CONSISTE EN UN 15% DE DESCUENTO SIN TOPE, COMPRANDO EN TODAS LAS SUCURSALES DE HIPERCHANGOMAS, CHANGOMAS Y MASGO, DE FORMA PRESENCIAL Y A TRAVÉS DE MASONLINE ÚNICAMENTE ELIGIENDO LA OPCIÓN PAGO ONLINE, APLICA PARA TIENDAS PUNTO MAYORISTA. EL BENEFICIO ESTARÁ A CARGO DE DORINKA S.R.L. Y SE REALIZARÁ SOBRE EL PRECIO DE CONTADO. MERCADO PAGO NO ES UNA ENTIDAD FINANCIERA. LOS FONDOS EN CUENTAS DE PAGO NO SON DEPÓSITOS GARANTIZADOS. MERCADOLIBRE S.R.L. CUIT 30-70308853-4, CASEROS 3039, PISO 2º, CABA”. EXCLUIDOS- CARNICERIA, GRANJA, ELABORADOS, EMBUTIDOS, QUESOS: (QUESOS BLANDOS, QUESOS DUROS, QUESOS FETEADOS, QUESOS RALLADOS, QUESOS SEMIDUROS), FRUTAS Y VERDURAS, HUEVOS. ACEITES COMESTIBLES, HARINAS, LECHES FLUIDAS, AZÚCARES. BEBIDAS BLANCAS, VINOS, FERNET, CERVEZAS Y GASEOSAS DE “CERVECERIA Y MALTERIA QUILMES” (STELLA ARTOIS, BUDWEISER, CORONA, QUILMES, BRAHMA, MICHELOB, PATAGONIA, EAZY, GOOSE ISLAND, ANDES, TEMPLE, PEPSI, SEVEN UP, PASO DE LOS TOROS, GATORADE, GLACIAR, ECO DE LOS ANDES, H20, AGUAS NESTLÉ, AWAFRUT, MIRINDA, RED BULL, ROCKSTAR), LÍNEA COCA COLA (ORIGINAL, LIGHT, ZERO SIN AZUCAR, SABOR LIVIANO), FANTA, SPRITE (ORIGINAL, SIN AZÚCAR), SCHWEPPES, POWERADE, CEPITA, ADES, AQUARIUS, BENEDICTINO, BONAQUA, SMART WATER, MONSTER, CRUSH, FIGURITAS Y ÁLBUM MUNDIAL 2026. ELECTRODOMÉSTICOS Y ELECTRÓNICOS, RODADOS, INFORMÁTICA, CELULARES Y CLIMATIZACIÓN, LÍNEA BLANCA, MEDICAMENTOS DE FARMACIA, SERVICIOS DE AUTOCENTER, BATERÍAS Y NEUMÁTICOS. NO ACUMULABLE CON OTRAS PROMOCIONES VIGENTES Y/O PRODUCTOS EN LIQUIDACIÓN. SOLO PARA CONSUMO FAMILIAR.",
+     "shouldSpend": null,
+     "refundDestination": "account",
+     "tags": [
+      {
+       "description": "Online para todo el país",
+       "type": "online"
+      },
+      {
+       "description": "Días seleccionados",
+       "type": "days"
+      },
+      {
+       "description": "Descuento en el punto de venta",
+       "type": "accreditation"
+      },
+      {
+       "description": "Sin tope",
+       "type": "refund"
+      }
+     ],
+     "isGrouped": false,
+     "isGroupedParent": false,
+     "groupedKey": null,
+     "groupedPlansSummary": null,
+     "groupedPlanUrls": [],
+     "originalPlans": []
+    },
+    "hasta_12_cuotas_cero_interes-C": {
+     "logo": "https://merchants-api-statics.naranjax.com/commerces/logos/commerce_142020950_X9eotAWpuAk0cFzm.png",
+     "backgroundImage": "https://promotion-featured-images.naranjax.com/categories/supermercados/hipermercados/hipermercados_2.webp",
+     "commerceName": "Changomas",
+     "category": {
+      "name": "Supermercados",
+      "key": "SUPERMERCADOS",
+      "subcategory": {
+       "name": "Hipermercados",
+       "key": "HIPERMERCADOS"
+      }
+     },
+     "benefitName": "Hasta 12 cuotas cero interés",
+     "ephemeris": null,
+     "days": {
+      "daysApplied": [],
+      "weekdaysApplied": [
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       1
+      ],
+      "dateFrom": "01/09/2026",
+      "dateTo": "31/10/2026"
+     },
+     "promotionDetails": {
+      "description": null,
+      "forPurchasesOver": null,
+      "refundLimit": null,
+      "commerceWebPage": null,
+      "notCombinable": false,
+      "validOnSelectedProducts": true,
+      "appliesOnline": false,
+      "appliesInStore": false,
+      "calculateMaxBenefit": true,
+      "currency": null,
+      "renewalType": null
+     },
+     "isThirdParty": null,
+     "benefit": {
+      "discountPercentage": null
+     },
+     "paymentMethods": [
+      "credito"
+     ],
+     "captureMethods": [],
+     "commerces": [
+      {
+       "number": 142020950,
+       "name": "CHANGOMAS",
+       "address": "Av. Juan Manuel de Ro 00000",
+       "province": "Chaco",
+       "locality": "Presidenciaroque Sae"
+      },
+      {
+       "number": 533009611,
+       "name": "CHANGOMAS",
+       "address": "Roca 3500",
+       "province": "Ciudad Autonoma de Buenos Aires",
+       "locality": "Capital Federal"
+      }
+     ],
+     "legal": "PLAN 6 Cuotas\nCosto Financiero Total (CFT) 0% Tasa Efectiva Anual (TEA) 0% Tasa Nominal Anual (TNA) 0%. \nPLAN 8 Cuotas\nCosto Financiero Total (CFT) 0% Tasa Efectiva Anual (TEA) 0% Tasa Nominal Anual (TNA) 0%. \nPLAN 9 Cuotas\nCosto Financiero Total (CFT) 0% Tasa Efectiva Anual (TEA) 0% Tasa Nominal Anual (TNA) 0%. \nPLAN 10 Cuotas\nCosto Financiero Total (CFT) 0% Tasa Efectiva Anual (TEA) 0% Tasa Nominal Anual (TNA) 0%. \nPLAN 12 Cuotas\nCosto Financiero Total (CFT) 0% Tasa Efectiva Anual (TEA) 0% Tasa Nominal Anual (TNA) 0%. \nBeneficio válido para titulares y adicionales de tarjeta de crédito Naranja X de todo el país que compren en PLAN 6 Cuotas: Costo Financiero Total (CFT) 0% Tasa Efectiva Anual (TEA) 0% Tasa Nominal Anual (TNA) 0%. PLAN 8 Cuotas: Costo Financiero Total (CFT) 0% Tasa Efectiva Anual (TEA) 0% Tasa Nominal Anual (TNA) 0%. PLAN 9 Cuotas: Costo Financiero Total (CFT) 0% Tasa Efectiva Anual (TEA) 0% Tasa Nominal Anual (TNA) 0%. PLAN 10 Cuotas: Costo Financiero Total (CFT) 0% Tasa Efectiva Anual (TEA) 0% Tasa Nominal Anual (TNA) 0%. PLAN 12 Cuotas: Costo Financiero Total (CFT) 0% Tasa Efectiva Anual (TEA) 0% Tasa Nominal Anual (TNA) 0%.  Válido todos los días desde el 1 de septiembre de 2026 al 31 de octubre de 2026. Válido en productos seleccionados. Válida en productos seleccionados de electro. Beneficio no válido para compras realizadas con Naranja Visa, Naranja MasterCard, Naranja Amex, ni para transacciones realizadas en agrupadores y billeteras virtuales-En caso de fuerza mayor y/o caso fortuito que genere alguna imposibilidad para llevar a cabo el beneficio o para continuar con el mismo, Naranja X podrá suspender definitivamente o transitoriamente el beneficio, como así también introducir las modificaciones pertinentes. La tarjeta de crédito es comercializada por Tarjeta Naranja S. A.U. CUIT 30685376349, La Tablada 451, Córdoba.\n---------------------------------------------------\nPLAN 4 Cuotas\nCosto Financiero Total (CFT) 0% Tasa Efectiva Anual (TEA) 0% Tasa Nominal Anual (TNA) 0%. \nBeneficio válido para titulares y adicionales de tarjeta de crédito Naranja X de todo el país que compren en PLAN 4 Cuotas: Costo Financiero Total (CFT) 0% Tasa Efectiva Anual (TEA) 0% Tasa Nominal Anual (TNA) 0%.  Válido todos los días desde el 1 de septiembre de 2026 al 31 de octubre de 2026.  Beneficio no válido para compras realizadas con Naranja Visa, Naranja MasterCard, Naranja Amex, ni para transacciones realizadas en agrupadores y billeteras virtuales-En caso de fuerza mayor y/o caso fortuito que genere alguna imposibilidad para llevar a cabo el beneficio o para continuar con el mismo, Naranja X podrá suspender definitivamente o transitoriamente el beneficio, como así también introducir las modificaciones pertinentes. La tarjeta de crédito es comercializada por Tarjeta Naranja S. A.U. CUIT 30685376349, La Tablada 451, Córdoba.",
+     "shouldSpend": null,
+     "refundDestination": "card",
+     "tags": [
+      {
+       "description": "Todos los días",
+       "type": "days"
+      }
+     ],
+     "isGrouped": false,
+     "isGroupedParent": true,
+     "groupedKey": "ZERO_INTEREST_INSTALLMENTS",
+     "groupedPlansSummary": "4, 6, 8, 9, 10 y 12",
+     "groupedPlanUrls": [
+      "12_cuotas_cero_interes-C",
+      "10_cuotas_cero_interes-C",
+      "9_cuotas_cero_interes-C",
+      "8_cuotas_cero_interes-C",
+      "6_cuotas_cero_interes-C",
+      "4_cuotas_cero_interes-C"
+     ],
+     "originalPlans": []
+    }
+   }
+  },
+  "coto": {
+   "binder": {
+    "nearCurrent": [],
+    "current": [
+     {
+      "url": "exclusiva_turbo-25_off-25_de_descuento-C",
+      "title": "25% off",
+      "subtitle": "Coto",
+      "tags": [
+       {
+        "description": "Online para todo el país",
+        "type": "online"
+       },
+       {
+        "description": "Los martes",
+        "type": "days"
+       },
+       {
+        "description": "Reintegro inmediato en tu cuenta",
+        "type": "accreditation"
+       },
+       {
+        "description": "$ 9.500, por persona, por semana",
+        "type": "refund"
+       }
+      ],
+      "datesDescription": "Desde: 01/OCT al 31/OCT",
+      "isGrouped": false,
+      "isGroupedParent": false,
+      "groupedKey": null,
+      "groupedPlansSummary": null,
+      "groupedPlanUrls": [],
+      "benefit": {
+       "discountPercentage": "25",
+       "code": 7,
+       "benefitType": null,
+       "name": "25% de descuento",
+       "priority": 17,
+       "shortName": "25% off",
+       "benefitDetails": null,
+       "deferredDays": null
+      },
+      "ephemeris": {
+       "visible": true,
+       "code": 16,
+       "description": "Exclusiva Turbo",
+       "url": "exclusiva-turbo"
+      },
+      "days": {
+       "dateTo": "31/10/2026",
+       "weekdaysApplied": [
+        2
+       ],
+       "datesDescription": "Desde: 01/OCT al 31/OCT",
+       "dateFrom": "01/10/2026",
+       "daysApplied": [],
+       "type": 2
+      },
+      "paymentMethods": [
+       "debito",
+       "credito"
+      ],
+      "captureMethods": []
+     },
+     {
+      "url": "plan_zeta_cero_interes-C",
+      "title": "Plan Zeta cero interés",
+      "subtitle": "Todos los días",
+      "tags": [
+       {
+        "description": "Todos los días",
+        "type": "days"
+       }
+      ],
+      "datesDescription": "Desde: 11/AGO al 28/NOV",
+      "isGrouped": false,
+      "isGroupedParent": false,
+      "groupedKey": null,
+      "groupedPlansSummary": null,
+      "groupedPlanUrls": [],
+      "benefit": {
+       "discountPercentage": null,
+       "code": 1,
+       "benefitType": "Sin beneficio",
+       "name": "Sin descuento",
+       "shortName": "Sin descuento",
+       "priority": 26,
+       "benefitDetails": null,
+       "deferredDays": null
+      },
+      "ephemeris": null,
+      "days": {
+       "dateTo": "28/11/2026",
+       "weekdaysApplied": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        1
+       ],
+       "type": 2,
+       "dateFrom": "11/08/2026",
+       "datesDescription": "Desde: 11/AGO al 28/NOV",
+       "daysApplied": []
+      },
+      "paymentMethods": [
+       "credito"
+      ],
+      "captureMethods": []
+     }
+    ],
+    "active": [],
+    "binderUrl": "coto",
+    "commerceName": "Coto",
+    "category": {
+     "sectorId": 101,
+     "name": "Supermercados",
+     "id": 101,
+     "subcategory": {
+      "name": "Hipermercados",
+      "id": "3",
+      "key": "HIPERMERCADOS"
+     },
+     "key": "SUPERMERCADOS"
+    },
+    "logo": "https://merchants-api-statics.naranjax.com/commerces/logos/commerce_112007895_2zhVIEV2Wbvsbanx.png",
+    "backgroundImage": "https://promotion-featured-images.naranjax.com/categories/supermercados/hipermercados/hipermercados_1.webp",
+    "benefit": "25% de descuento",
+    "ephemeris": 16,
+    "daysApplied": [],
+    "weekdaysApplied": [
+     2
+    ],
+    "paymentMethods": [
+     "debito",
+     "credito"
+    ],
+    "captureMethods": []
+   },
+   "details": {
+    "exclusiva_turbo-25_off-25_de_descuento-C": {
+     "logo": "https://merchants-api-statics.naranjax.com/commerces/logos/commerce_112007895_2zhVIEV2Wbvsbanx.png",
+     "backgroundImage": "https://promotion-featured-images.naranjax.com/categories/supermercados/hipermercados/hipermercados_1.webp",
+     "commerceName": "Coto",
+     "category": {
+      "name": "Supermercados",
+      "key": "SUPERMERCADOS",
+      "subcategory": {
+       "name": "Hipermercados",
+       "key": "HIPERMERCADOS"
+      }
+     },
+     "benefitName": "25% off",
+     "ephemeris": {
+      "visible": true,
+      "code": 16,
+      "description": "Exclusiva Turbo",
+      "url": "exclusiva-turbo"
+     },
+     "days": {
+      "daysApplied": [],
+      "weekdaysApplied": [
+       2
+      ],
+      "dateFrom": "01/10/2026",
+      "dateTo": "31/10/2026"
+     },
+     "promotionDetails": {
+      "description": "true",
+      "forPurchasesOver": null,
+      "refundLimit": "9500",
+      "commerceWebPage": "https://www.cotodigital.com.ar",
+      "notCombinable": false,
+      "validOnSelectedProducts": false,
+      "appliesOnline": true,
+      "appliesInStore": false,
+      "calculateMaxBenefit": true,
+      "currency": null,
+      "renewalType": "weekly"
+     },
+     "isThirdParty": null,
+     "benefit": {
+      "discountPercentage": 25
+     },
+     "paymentMethods": [
+      "debito",
+      "credito"
+     ],
+     "captureMethods": [],
+     "commerces": [
+      {
+       "number": 555396647,
+       "name": "Coto",
+       "address": "Av. San Martín 2095 - CAPITAL FEDERAL",
+       "province": "CABA",
+       "locality": "PATERNAL"
+      },
+      {
+       "number": 555396648,
+       "name": "Coto",
+       "address": "Av. La Plata 2392 - CAPITAL FEDERAL",
+       "province": "CABA",
+       "locality": "POMPEYA"
+      }
+     ],
+     "legal": "25% de reintegro en supermercados para quienes estén adheridos al Plan Turbo y paguen con su Tarjeta de Crédito Naranja X y/o su Tarjeta de Débito Naranja X Visa. Vigencia: todos los martes del 01/10/26 al 31/10/26. Tope: $9.500 por semana. Reintegro: Únicamente en tu cuenta de Naranja X en un plazo de 10 días desde que hiciste la compra. Promoción válida únicamente en los comercios adheridos. Beneficio no válido para compras realizadas con Naranja Visa, Naranja MasterCard, Naranja Amex, ni para transacciones realizadas en agrupadores y billeteras virtuales que no sean Nx. Naranja X podrá suspender o modificar la promoción en caso de fuerza mayor, notificando a través de la app. La Cuenta es administrada por Naranja Digital Compañía Financiera S.A.U., CUIT 30-71663964-5, Tte. Gral. Juan D. Peron 430, piso 19, CABA. La Tarjeta de Crédito Naranja X y Plan Turbo son ofrecidos por Tarjeta Naranja S.A.U. CUIT 30-68537634-9. La Tablada 451, Ciudad de Córdoba.",
+     "shouldSpend": 38000,
+     "refundDestination": "account",
+     "tags": [
+      {
+       "description": "Online para todo el país",
+       "type": "online"
+      },
+      {
+       "description": "Los martes",
+       "type": "days"
+      },
+      {
+       "description": "Reintegro inmediato en tu cuenta",
+       "type": "accreditation"
+      },
+      {
+       "description": "$ 9.500, por persona, por semana",
+       "type": "refund"
+      }
+     ],
+     "isGrouped": false,
+     "isGroupedParent": false,
+     "groupedKey": null,
+     "groupedPlansSummary": null,
+     "groupedPlanUrls": [],
+     "originalPlans": []
+    }
+   }
+  }
+ }
+}
