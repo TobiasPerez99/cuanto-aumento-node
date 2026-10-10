@@ -13,6 +13,7 @@ import {
   isGenericPlanZeta,
   normalizeNaranjaXPlan,
   getNaranjaXPromotions,
+  NARANJAX_HTTPS_AGENT,
 } from '../scrapers/promos/naranjax.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -44,6 +45,10 @@ function fakeHttpPost({ status = {}, calls = [] } = {}) {
 }
 
 const FAST = { sleep: async () => {}, delayMs: 0, now: NOW, binders: BINDERS };
+
+test('los pedidos no retoman sesiones TLS (Cloudflare las bloquea)', () => {
+  assert.equal(NARANJAX_HTTPS_AGENT.maxCachedSessions, 0);
+});
 
 test('planKey quita el sufijo de estado (-C vigente, -A próximo)', () => {
   assert.equal(planKey('exclusiva_turbo-25_off-25_de_descuento-C'), 'exclusiva_turbo-25_off-25_de_descuento');

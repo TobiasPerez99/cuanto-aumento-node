@@ -395,6 +395,11 @@ Las dos usan el mismo componente de Valtech, que lee tres entidades del Master D
 - ⚠️ **Cloudflare filtra el cliente: axios con User-Agent de navegador pasa; el `fetch` nativo de Node
   recibe el challenge aunque lleve el mismo UA** (medido el 2026-10-10). No cambiar a `fetch`.
   403 o HTML = bloqueo → `success:false, blocked:true`.
+- ⚠️ **Tampoco pasa una sesión TLS retomada.** En producción la primera corrida del proceso andaba y
+  todas las siguientes daban 403 desde el primer pedido: el agente global de Node reanuda la sesión TLS
+  en cada socket nuevo y ese handshake ya no parece de navegador. Los pedidos van por
+  `NARANJAX_HTTPS_AGENT` (`maxCachedSessions: 0`); medido: sin caché de sesión pasa siempre, con o sin
+  keep-alive. Si otra fuente detrás de Cloudflare "anda una vez y después no", mirar esto primero.
 - Una cadena son varios binders (`disco` + `disco_com_ar`): se agrupan por (comercio, plan) en una
   promo con `comercios_nx`. El sufijo del plan (`-C` vigente / `-A` próximo) se quita del id.
   `status` no sirve para vigencia: se filtra por `dateTo`. No viajan `commerces`, `tags` ni imágenes.

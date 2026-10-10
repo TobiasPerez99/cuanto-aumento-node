@@ -1,3 +1,4 @@
+import https from 'node:https';
 import axios from 'axios';
 import { clean, ddmmyyyyToIso } from '../../cores/promoText.js';
 
@@ -21,6 +22,11 @@ import { clean, ddmmyyyyToIso } from '../../cores/promoText.js';
  * curl responde 403 (challenge); con uno de navegador, 200. Medido el 2026-10-10:
  * el `fetch` nativo de Node recibe el challenge AUNQUE lleve User-Agent de
  * navegador, y axios con el mismo UA pasa. No cambiar a `fetch`.
+ * ⚠️ **Tampoco pasa una sesión TLS retomada** (medido en producción el 2026-10-10): la
+ * primera corrida de un proceso andaba y todas las siguientes recibían 403 desde el
+ * primer pedido, porque el agente global de Node reanuda la sesión TLS en cada socket
+ * nuevo y ese ClientHello ya no tiene la huella de un navegador. Por eso los pedidos
+ * van por un agente propio con `maxCachedSessions: 0` (`NARANJAX_HTTPS_AGENT`).
  * Un 403 o HTML en vez de JSON es un bloqueo: la corrida falla, nunca "0 promos".
  *
  * ⚠️ **Una cadena son varios binders** (`disco` es la tienda física y
@@ -79,9 +85,13 @@ const REFUND_DESTINATION = { account: 'reintegro en la cuenta Naranja X', card: 
 
 export class NaranjaXBlockedError extends Error {}
 
+/** Sin caché de sesiones TLS: Cloudflare bloquea el handshake retomado (ver arriba). */
+export const NARANJAX_HTTPS_AGENT = new https.Agent({ keepAlive: true, maxCachedSessions: 0 });
+
 const defaultSleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const defaultHttpPost = (url, body) =>
   axios.post(url, body, {
+    httpsAgent: NARANJAX_HTTPS_AGENT,
     headers: { 'User-Agent': USER_AGENT, 'Content-Type': 'application/json', Accept: 'application/json' },
     timeout: 20000,
     validateStatus: () => true,
