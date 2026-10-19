@@ -55,7 +55,12 @@ const EAN_BATCH_SIZE = 25;
 /** Pausa entre requests. Mismo ritmo que el camino de GraphQL. */
 const REQUEST_DELAY_MS = 200;
 
-const MAX_ATTEMPTS = 3;
+/**
+ * Cuatro intentos (1,5 / 3 / 4,5 s): Josimar tira 500 en ráfagas de más de dos
+ * pedidos seguidos y con tres intentos una categoría caía casi a diario (Congelados,
+ * 15 y 16/10/2026), lo que dejaba la corrida incompleta y sin vencer ausencias.
+ */
+const MAX_ATTEMPTS = 4;
 const RETRY_DELAY_MS = 1500;
 
 /** 429 y 403 son el WAF pidiendo que bajemos el ritmo: se espera bastante más. */
@@ -68,8 +73,12 @@ const COOLDOWN_DELAY_MS = 15000;
  */
 const ABORT_AFTER_CONSECUTIVE_FAILURES = 3;
 
-/** Pausa antes de la pasada final sobre las categorías que fallaron sueltas. */
-const RETRY_FAILED_PAUSE_MS = 30000;
+/**
+ * Pausas antes de cada pasada final sobre las categorías que fallaron sueltas: una
+ * tras 30 s y, si algo sigue caído, otra tras 90 s. Un 500 de Josimar puede durar
+ * más de un minuto; una sola pasada a los 30 s lo encontraba todavía caído.
+ */
+const RETRY_FAILED_PAUSES_MS = [30000, 90000];
 
 const USER_AGENT =
   'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 ' +
@@ -497,7 +506,7 @@ export async function scrapeVtexCatalog({
   sleep = defaultSleep,
   getMerchantId = defaultGetMerchantId,
   delayMs = REQUEST_DELAY_MS,
-  retryFailedPauseMs = RETRY_FAILED_PAUSE_MS,
+  retryFailedPauseMs = RETRY_FAILED_PAUSES_MS,
   maxCategoryNodes = MAX_CATEGORY_NODES,
 }) {
   const base = trimSlash(baseUrl);
@@ -760,11 +769,14 @@ export async function scrapeVtexCatalog({
 
     for (const target of targets) await walk(target);
 
-    // Pasada final: lo que falló suelto suele ser un 500 pasajero, y una sola
-    // categoría caída alcanza para que la corrida no pueda contar ausencias.
-    if (failed.length > 0) {
-      console.log(`🔁 Reintentando ${failed.length} categoría(s) en ${retryFailedPauseMs / 1000}s...`);
-      await sleep(retryFailedPauseMs);
+    // Pasadas finales: lo que falló suelto suele ser un 500 pasajero, y una sola
+    // categoría caída alcanza para que la corrida no pueda contar ausencias. Se
+    // acepta un número (una pasada) o una lista de pausas (una pasada por cada una).
+    const finalPauses = Array.isArray(retryFailedPauseMs) ? retryFailedPauseMs : [retryFailedPauseMs];
+    for (const pauseMs of finalPauses) {
+      if (failed.length === 0) break;
+      console.log(`🔁 Reintentando ${failed.length} categoría(s) en ${pauseMs / 1000}s...`);
+      await sleep(pauseMs);
       // La racha arranca de cero: dos fallos al final del recorrido más el primer
       // reintento no son "tres categorías seguidas caídas", y abortar acá tiraría a
       // "error" una corrida que ya guardó casi todos sus precios.

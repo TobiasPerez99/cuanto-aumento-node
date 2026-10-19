@@ -118,8 +118,10 @@ export function buildBankPromotions(rows, now = new Date()) {
   const byId = new Map();
   let expired = 0;
   let informative = 0;
+  const list = Array.isArray(rows) ? rows : [];
+  const bankValidity = bankValidityFromLegals(list, now);
 
-  for (const row of Array.isArray(rows) ? rows : []) {
+  for (const row of list) {
     const promocion = clean(row?.['Promoción']);
     if (!promocion) continue;
     if (!isBenefitText(promocion)) {
@@ -128,7 +130,13 @@ export function buildBankPromotions(rows, now = new Date()) {
     }
 
     const banco = clean(row?.Nombre) ?? clean(row?.Banco);
-    const { start_date, end_date } = parseValidityText(promocion, now);
+    let { start_date, end_date } = parseValidityText(promocion, now);
+    let vigencia_origen = 'promocion';
+    if (start_date === null && end_date === null) {
+      const respaldo = bankValidity.get(clean(row?.Banco) ?? '') ?? null;
+      vigencia_origen = respaldo ? 'legales_del_banco' : null;
+      if (respaldo) ({ start_date, end_date } = respaldo);
+    }
     if (end_date !== null && end_date < today) {
       expired++;
       continue;
@@ -150,10 +158,41 @@ export function buildBankPromotions(rows, now = new Date()) {
       ...(legales ? { aviso: LEGALES_AVISO } : {}),
       start_date,
       end_date,
+      vigencia_origen,
     });
   }
 
   return { promotions: [...byId.values()], expired, informative };
+}
+
+/**
+ * Vigencia de respaldo por banco (PROMO-013). 61 de las 66 promos bancarias no traen
+ * fecha en su propio texto y caían todas en revisión por `dates_defaulted`. La planilla
+ * está desalineada (los legales de una fila pueden ser de otra promo del mismo banco),
+ * pero cuando TODOS los legales de un banco que traen una vigencia legible dicen la
+ * misma, esa vigencia es la del acuerdo con el banco y vale para sus filas sin fecha.
+ * Si discrepan, no se adivina: queda null y la IA decide con los legales de la fila.
+ *
+ * @returns {Map<string, {start_date: string|null, end_date: string|null}>} por `Banco`
+ */
+export function bankValidityFromLegals(rows, now = new Date()) {
+  const seen = new Map();
+  for (const row of Array.isArray(rows) ? rows : []) {
+    const legales = stripHtml(row?.Legales, 4000);
+    if (!legales) continue;
+    const validity = parseValidityText(legales, now);
+    if (validity.start_date === null && validity.end_date === null) continue;
+    const bank = clean(row?.Banco) ?? '';
+    const found = seen.get(bank) ?? new Map();
+    found.set(`${validity.start_date}|${validity.end_date}`, validity);
+    seen.set(bank, found);
+  }
+
+  const result = new Map();
+  for (const [bank, found] of seen) {
+    if (found.size === 1) result.set(bank, [...found.values()][0]);
+  }
+  return result;
 }
 
 /**

@@ -13,6 +13,7 @@ import {
   extractPaymentRows,
   isBenefitText,
   buildBankPromotions,
+  bankValidityFromLegals,
   parseTeaserName,
   buildTeaserPromotions,
   getFarmacityPromotions,
@@ -79,9 +80,49 @@ test('la vigencia sale del texto de la promo cuando la trae', () => {
   assert.equal(ddm.start_date, '2026-10-08');
   assert.equal(ddm.end_date, '2026-10-10');
 
+  // Sin fecha en su texto: los dos legales de American Express de la planilla dicen
+  // "DESDE EL 01/05/2026 HASTA EL 31/10/2026", así que esa es la vigencia del banco.
   const sinFecha = promotions.find((p) => p.promocion.startsWith('Todos los días, 3 cuotas sin interés con Tarjetas American Express'));
-  assert.equal(sinFecha.start_date, null);
-  assert.equal(sinFecha.end_date, null);
+  assert.equal(sinFecha.start_date, '2026-05-01');
+  assert.equal(sinFecha.end_date, '2026-10-31');
+  assert.equal(sinFecha.vigencia_origen, 'legales_del_banco');
+  assert.equal(amex.vigencia_origen, 'promocion');
+});
+
+/**
+ * PROMO-013: 61 de 66 promos bancarias no traen fecha en su texto. Si todos los legales
+ * del banco que traen una vigencia legible coinciden, es la vigencia del acuerdo y vale
+ * para sus filas sin fecha; si discrepan, no se adivina.
+ */
+test('sin fecha propia, toma la vigencia de los legales del banco sólo si todos coinciden', () => {
+  const filas = [
+    { Banco: 'Galicia', Nombre: 'Banco Galicia', 'Promoción': '20% de descuento los miércoles', Legales: 'Promoción válida desde 01/10/2026 hasta el 31/10/2026 en todas las sucursales.' },
+    { Banco: 'Galicia', Nombre: 'Banco Galicia', 'Promoción': '3 cuotas sin interés todos los días', Legales: 'Vigencia desde 01/10/2026 hasta el 31/10/2026. Tope $10.000.' },
+    { Banco: 'Galicia', Nombre: 'Banco Galicia', 'Promoción': '10% de reintegro con débito', Legales: '' },
+    { Banco: 'Macro', Nombre: 'Banco Macro', 'Promoción': '25% de descuento los jueves', Legales: 'Vigencia desde 01/10/2026 hasta el 31/10/2026.' },
+    { Banco: 'Macro', Nombre: 'Banco Macro', 'Promoción': '15% de ahorro los viernes', Legales: 'Vigencia desde 01/11/2026 hasta el 30/11/2026.' },
+    { Banco: 'Nación', Nombre: 'Banco Nación', 'Promoción': '30% de descuento. Vigencia: del 05/10/2026 al 12/10/2026', Legales: 'Vigencia desde 01/10/2026 hasta el 31/10/2026.' },
+  ];
+
+  const porBanco = bankValidityFromLegals(filas, NOW);
+  assert.deepEqual(porBanco.get('Galicia'), { start_date: '2026-10-01', end_date: '2026-10-31' });
+  assert.equal(porBanco.has('Macro'), false, 'legales que discrepan no dan una vigencia');
+
+  const { promotions } = buildBankPromotions(filas, NOW);
+  const galicia = promotions.filter((p) => p.banco === 'Banco Galicia');
+  assert.equal(galicia.length, 3);
+  for (const p of galicia) {
+    assert.equal(p.start_date, '2026-10-01');
+    assert.equal(p.end_date, '2026-10-31');
+    assert.equal(p.vigencia_origen, 'legales_del_banco');
+  }
+
+  const macro = promotions.filter((p) => p.banco === 'Banco Macro');
+  assert.deepEqual(macro.map((p) => [p.start_date, p.end_date, p.vigencia_origen]), [[null, null, null], [null, null, null]]);
+
+  const nacion = promotions.find((p) => p.banco === 'Banco Nación');
+  assert.equal(nacion.vigencia_origen, 'promocion', 'la fecha del propio texto gana');
+  assert.equal(nacion.start_date, '2026-10-05');
 });
 
 test('una promo cuyo propio texto dice que terminó se descarta', () => {

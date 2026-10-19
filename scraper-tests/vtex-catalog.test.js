@@ -265,9 +265,11 @@ test('retryDelayMs no reintenta otros 4xx: son deterministas', () => {
   assert.equal(retryDelayMs({ response: { status: 404 } }, 1), null);
 });
 
-test('retryDelayMs corta a los 3 intentos', () => {
-  assert.equal(retryDelayMs({ response: { status: 500 } }, 3), null);
-  assert.equal(retryDelayMs({ response: { status: 429 } }, 3), null);
+test('retryDelayMs corta a los 4 intentos', () => {
+  assert.equal(retryDelayMs({ response: { status: 500 } }, 3), 4500);
+  assert.equal(retryDelayMs({ response: { status: 429 } }, 3), 45000);
+  assert.equal(retryDelayMs({ response: { status: 500 } }, 4), null);
+  assert.equal(retryDelayMs({ response: { status: 429 } }, 4), null);
 });
 
 test('withRetry reintenta un 5xx y devuelve la respuesta buena', async () => {
@@ -299,7 +301,7 @@ test('withRetry no insiste con un 400 y propaga el error', async () => {
   assert.equal(calls, 1);
 });
 
-test('withRetry se rinde al tercer intento', async () => {
+test('withRetry se rinde al cuarto intento', async () => {
   let calls = 0;
   await assert.rejects(
     withRetry(async () => {
@@ -307,7 +309,7 @@ test('withRetry se rinde al tercer intento', async () => {
       throw { code: 'ETIMEDOUT' };
     }, { sleep: noSleep })
   );
-  assert.equal(calls, 3);
+  assert.equal(calls, 4);
 });
 
 /* --------------------------- resolveSalesChannel -------------------------- */
@@ -816,12 +818,12 @@ test('scrapeVtexCatalog: una categoría caída no tira la corrida pero la deja i
 });
 
 test('scrapeVtexCatalog reintenta al final las categorías que fallaron sueltas', async () => {
-  // Falla 3 veces: el conteo agota sus 3 intentos y la categoría queda caída; la pasada
+  // Falla 4 veces: el conteo agota sus 4 intentos y la categoría queda caída; la pasada
   // final la encuentra recuperada. Un 500 pasajero no tiene por qué pausar el vencimiento.
   const vtex = fakeVtex({
     tree: TREE,
     catalog: { '/1/': ['a1'], '/2/': ['b1'], '/5/': ['c1'] },
-    fail: { '/2/': 3 },
+    fail: { '/2/': 4 },
   });
   const { saved, onProductFound } = collector();
 
@@ -939,6 +941,36 @@ test('scrapeVtexCatalog no arrastra la racha de fallos a la pasada final', async
   assert.equal(out.success, true);
   assert.equal(out.aborted, null);
   assert.deepEqual(out.failedCategories.map((c) => c.path).sort(), ['/2/', '/5/']);
+});
+
+/**
+ * Josimar devuelve 500 durante más de un minuto seguido: con una sola pasada final a
+ * los 30 s la categoría seguía caída. La segunda pasada (90 s) la rescata y la corrida
+ * sale completa, que es lo que habilita vencer ausencias.
+ */
+test('scrapeVtexCatalog rescata en la segunda pasada final una categoría que sigue caída tras la primera', async () => {
+  // 4 fallos en el recorrido + 4 en la primera pasada + 1 en la segunda = 9; el 10º pedido anda.
+  const vtex = fakeVtex({ tree: TREE, catalog: { '/1/': ['a1'], '/2/': ['b1'] }, failPages: { '/2/': 9 } });
+  const pauses = [];
+
+  const out = await scrapeVtexCatalog(baseOptions(vtex, {
+    onProductFound: null,
+    sleep: async (ms) => { if (ms >= 30000) pauses.push(ms); },
+  }));
+
+  assert.equal(out.complete, true);
+  assert.deepEqual(out.failedCategories, []);
+  assert.deepEqual(pauses, [30000, 90000]);
+  assert.equal(out.totalProducts, 2);
+});
+
+test('scrapeVtexCatalog acepta una sola pausa final como número (compatibilidad)', async () => {
+  const vtex = fakeVtex({ tree: TREE, catalog: { '/1/': ['a1'], '/2/': ['b1'] }, failPages: { '/2/': 9 } });
+
+  const out = await scrapeVtexCatalog(baseOptions(vtex, { onProductFound: null, retryFailedPauseMs: 1000 }));
+
+  assert.equal(out.complete, false, 'con una sola pasada la categoría sigue caída');
+  assert.deepEqual(out.failedCategories.map((c) => c.path), ['/2/']);
 });
 
 test('scrapeVtexCatalog dice por qué una corrida no es completa', async () => {

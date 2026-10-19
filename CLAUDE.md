@@ -182,9 +182,12 @@ Gotchas que cuestan caro:
   en 499 de 1.060 y la corrida se reportó completa. Con total conocido `walkTarget` pagina por **posición**
   hasta el total del header (el más reciente) y lo que faltó se informa en `pageGaps`; sólo sin total una
   página corta es el final. No lo detecta una corrida en seco desde otra IP: en seco las páginas vinieron llenas.
-- La API tira **500 en ráfagas** (medido en Carrefour y Masonline): la misma URL responde 206 segundos
-  después. Por eso cada request se reintenta (1,5 s / 3 s; 429 y 403 con 15 s / 30 s) y, al final, las
-  categorías que fallaron sueltas se vuelven a intentar una vez tras 30 s.
+- La API tira **500 en ráfagas** (medido en Carrefour y Masonline; Josimar los sostiene más de un
+  minuto): la misma URL responde segundos después. Por eso cada request se reintenta hasta 4 veces
+  (1,5 / 3 / 4,5 s; 429 y 403 con 15 / 30 / 45 s) y, al final, las categorías que fallaron sueltas se
+  vuelven a intentar en **dos pasadas**, tras 30 s y tras 90 s (`retryFailedPauseMs` acepta un número o
+  una lista). Con 3 intentos y una sola pasada, Congelados de Josimar caía casi a diario (15 y 16/10/2026)
+  y la corrida quedaba incompleta sin vencer ausencias.
 - `items[0]`: se toma el primer SKU, igual que el camino viejo. El link se arma con el dominio recorrido +
   `linkText` (el catálogo es compartido: el `link` absoluto podría ser de otra cadena).
 
@@ -371,6 +374,12 @@ Las dos usan el mismo componente de Valtech, que lee tres entidades del Master D
   `aviso`, y la tarjeta no se emite. Sin ids: `external_id` = `fcy-banco-` + hash(banco|texto). Las
   filas sin texto de beneficio ("Pagá al contado…") y las que dicen en su texto que ya terminaron se
   descartan. Los banners quedan afuera (texto en imagen, fechas de exhibición).
+  **Vigencia de respaldo por banco (PROMO-013):** 61 de 66 promos no traen fecha en su texto y caían
+  todas en revisión. `bankValidityFromLegals()` lee la vigencia de los `Legales` de cada fila y, cuando
+  **todos** los legales de un banco que traen una vigencia legible coinciden, esa es la del acuerdo y se
+  usa para las filas de ese banco sin fecha propia (`vigencia_origen: 'legales_del_banco'`; la del
+  propio texto es `'promocion'`). Si discrepan no se adivina (`null`). Medido sobre el fixture: 15 de 29
+  promos pasan a tener fecha por esta vía.
 - `producto`: los **teasers** del catálogo ("2x1 Tu Farmacity#01/09 - 21/09", identificados por la
   pasante). ⚠️ Verlos exige recorrer el catálogo entero (378 requests, **7,5 min**), que no entra en un
   pull. **Los junta la corrida de productos de Farmacity** (`collectTeasers` en `VTEX_MERCHANTS`, gancho
