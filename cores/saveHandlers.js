@@ -290,3 +290,34 @@ export async function saveCotoProduct(product, merchantId) {
     return { saved: false, reason: 'exception' };
   }
 }
+
+/**
+ * EANs de las filas que el comercio ya tiene en `merchant_products`: los candidatos de
+ * la pasada de stock de `scrapeVtexCatalog` (SCRAPER-002).
+ */
+export async function listMerchantEans(merchantId) {
+  const rows = await prisma.merchantProduct.findMany({
+    where: { merchantId },
+    select: { productEan: true },
+  });
+  return rows.map((r) => r.productEan);
+}
+
+/**
+ * Marca sin stock una fila que el recorrido no vio porque el filtro de disponibilidad la
+ * esconde. Escribe `lastCheckedAt` para que el barrido de Laravel la cuente como vista
+ * —"sin stock" lo afirma el comercio; "ausente" es que dejamos de verla— y no toca el
+ * precio ni escribe historial: sin stock VTEX lo devuelve en $0, que no es un precio.
+ */
+export async function markMerchantProductOutOfStock(ean, merchantId) {
+  try {
+    const { count } = await prisma.merchantProduct.updateMany({
+      where: { productEan: ean, merchantId },
+      data: { isAvailable: false, lastCheckedAt: new Date() },
+    });
+    return count > 0;
+  } catch (error) {
+    console.error(`❌ Error marcando sin stock ${ean}:`, error.message);
+    return false;
+  }
+}

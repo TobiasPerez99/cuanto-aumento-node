@@ -629,7 +629,7 @@ test('walkTarget propaga la falla de una página (ya guardó las anteriores)', a
  * puede estar en varias categorías (como en VTEX). `fail` mapea path → cuántas veces
  * falla antes de responder (Infinity = siempre).
  */
-function fakeVtex({ tree, catalog, channel = '33', fail = {}, failPages = {}, segmentsDown = false }) {
+function fakeVtex({ tree, catalog, channel = '33', fail = {}, failPages = {}, segmentsDown = false, outOfStock = [], failEanQueries = false }) {
   const requests = [];
   const failures = { ...fail };
   const pageFailures = { ...failPages };
@@ -637,6 +637,13 @@ function fakeVtex({ tree, catalog, channel = '33', fail = {}, failPages = {}, se
     const p = byEan(PALTA);
     p.productId = `id-${ean}`;
     p.items[0].ean = ean;
+    // Sin stock: VTEX lo devuelve sin precio y con IsAvailable en false.
+    if (outOfStock.includes(ean)) {
+      const offer = p.items[0].sellers[0].commertialOffer;
+      offer.IsAvailable = false;
+      offer.Price = 0;
+      offer.AvailableQuantity = 0;
+    }
     return p;
   };
   const httpGet = async (url) => {
@@ -665,6 +672,9 @@ function fakeVtex({ tree, catalog, channel = '33', fail = {}, failPages = {}, se
     else if (cat) eans = Object.entries(catalog).filter(([p]) => p.startsWith(cat)).flatMap(([, e]) => e);
     else eans = Object.values(catalog).flat();
     eans = [...new Set(eans)];
+    if (eanFilter.length && failEanQueries) throw { response: { status: 500 } };
+    // El filtro de disponibilidad esconde lo que está sin stock.
+    if (fqs.some((f) => f.startsWith('isAvailablePerSalesChannel_'))) eans = eans.filter((e) => !outOfStock.includes(e));
 
     const from = Number(u.searchParams.get('_from'));
     const to = Number(u.searchParams.get('_to'));
@@ -1073,4 +1083,107 @@ test('sin VTEX_SHA256_HASH el modo search aborta con un diagnóstico claro, sin 
   const result = JSON.parse(out.stdout.trim().split('\n').at(-1));
   assert.equal(result.abort, true);
   assert.match(result.message, /VTEX_SHA256_HASH/);
+});
+
+/* ------------------------- sin stock (SCRAPER-002) ------------------------ */
+
+const stockHandlers = (live) => {
+  const outOfStock = [];
+  return {
+    outOfStock,
+    listKnownEans: async (merchantId) => {
+      assert.equal(merchantId, 7);
+      return live;
+    },
+    onProductOutOfStock: async (ean, merchantId) => {
+      outOfStock.push({ ean, merchantId });
+      return true;
+    },
+  };
+};
+
+test('una corrida completa consulta por EAN, sin filtro, lo que no vio y marca lo que está sin stock', async () => {
+  const vtex = fakeVtex({
+    tree: TREE,
+    catalog: { '/1/': ['a1', 'a2', 'sin1'], '/2/': ['b1', 'sin2'] },
+    outOfStock: ['sin1', 'sin2'],
+  });
+  const { saved, onProductFound } = collector();
+  const stock = stockHandlers(['a1', 'a2', 'b1', 'sin1', 'sin2', 'borrado']);
+
+  const out = await scrapeVtexCatalog(baseOptions(vtex, { onProductFound, ...stock }));
+
+  assert.equal(out.complete, true);
+  assert.deepEqual(saved.map((s) => s.ean).sort(), ['a1', 'a2', 'b1']);
+  assert.deepEqual(stock.outOfStock.map((s) => s.ean).sort(), ['sin1', 'sin2']);
+  assert.ok(stock.outOfStock.every((s) => s.merchantId === 7));
+  assert.deepEqual(out.stockCheck, { candidates: 3, outOfStock: 2, backInStock: 0, notFound: 1, failedBatches: 0 });
+
+  // La consulta por EAN va sin el filtro de disponibilidad pero con el canal.
+  const eanQueries = vtex.requests.filter((u) => u.includes('alternateIds_Ean'));
+  assert.equal(eanQueries.length, 1);
+  assert.ok(eanQueries.every((u) => !u.includes('isAvailablePerSalesChannel') && u.includes('sc=33')));
+  assert.ok(!eanQueries[0].includes('alternateIds_Ean:a1'), 'no vuelve a pedir lo que la corrida ya vio');
+});
+
+test('lo que volvió a tener stock entre el recorrido y la pasada se guarda como un producto más', async () => {
+  const vtex = fakeVtex({ tree: TREE, catalog: { '/1/': ['a1'], '/9/': ['fuera'] } });
+  const { saved, onProductFound } = collector();
+  const stock = stockHandlers(['a1', 'fuera']);
+
+  const out = await scrapeVtexCatalog(baseOptions(vtex, { onProductFound, ...stock }));
+
+  assert.deepEqual(saved.map((s) => s.ean).sort(), ['a1', 'fuera']);
+  assert.deepEqual(stock.outOfStock, []);
+  assert.equal(out.stockCheck.backInStock, 1);
+});
+
+test('la pasada de stock se pide en lotes de 25 EAN', async () => {
+  const sinStock = Array.from({ length: 30 }, (_, i) => `s${i}`);
+  const vtex = fakeVtex({ tree: TREE, catalog: { '/1/': ['a1', ...sinStock] }, outOfStock: sinStock });
+  const stock = stockHandlers(['a1', ...sinStock]);
+
+  const out = await scrapeVtexCatalog(baseOptions(vtex, { onProductFound: collector().onProductFound, ...stock }));
+
+  assert.equal(vtex.requests.filter((u) => u.includes('alternateIds_Ean')).length, 2);
+  assert.equal(out.stockCheck.outOfStock, 30);
+});
+
+test('un lote de la pasada de stock que falla no tira la corrida ni la vuelve incompleta', async () => {
+  const vtex = fakeVtex({ tree: TREE, catalog: { '/1/': ['a1', 'sin1'] }, outOfStock: ['sin1'], failEanQueries: true });
+  const stock = stockHandlers(['a1', 'sin1']);
+
+  const out = await scrapeVtexCatalog(baseOptions(vtex, { onProductFound: collector().onProductFound, ...stock }));
+
+  assert.equal(out.success, true);
+  assert.equal(out.complete, true);
+  assert.deepEqual(stock.outOfStock, []);
+  assert.equal(out.stockCheck.failedBatches, 1);
+});
+
+test('una corrida incompleta no hace la pasada de stock: no sabe qué no vio', async () => {
+  const vtex = fakeVtex({ tree: TREE, catalog: { '/1/': ['a1'], '/2/': ['sin1'] }, outOfStock: ['sin1'], fail: { '/2/': Infinity } });
+  const stock = stockHandlers(['a1', 'sin1']);
+
+  const out = await scrapeVtexCatalog(
+    baseOptions(vtex, { onProductFound: collector().onProductFound, retryFailedPauseMs: 0, ...stock })
+  );
+
+  assert.equal(out.complete, false);
+  assert.equal(out.stockCheck, null);
+  assert.equal(vtex.requests.filter((u) => u.includes('alternateIds_Ean')).length, 0);
+});
+
+test('sin filtro de disponibilidad (Josimar) o en seco no hay pasada de stock', async () => {
+  const vtex = fakeVtex({ tree: TREE, catalog: { '/1/': ['a1'] } });
+  const stock = stockHandlers(['a1', 'otro']);
+
+  const josimar = await scrapeVtexCatalog(
+    baseOptions(vtex, { onlyAvailable: false, salesChannel: null, onProductFound: collector().onProductFound, ...stock })
+  );
+  const seco = await scrapeVtexCatalog(baseOptions(vtex, { onProductFound: null, ...stock }));
+
+  assert.equal(josimar.stockCheck, null);
+  assert.equal(seco.stockCheck, null);
+  assert.equal(vtex.requests.filter((u) => u.includes('alternateIds_Ean')).length, 0);
 });

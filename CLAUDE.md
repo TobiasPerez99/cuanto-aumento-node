@@ -204,9 +204,16 @@ ausencias de una corrida incompleta (`SweepUnseenProducts`, ver CLAUDE.md del re
 seguidas caídas (reintentos incluidos) cortan la corrida con `success: false`: eso ya no es un 500 pasajero
 sino un bloqueo, y seguir golpeando sólo lo empeora.
 
-**Lo que NO resuelve** (ver `docs/BACKLOG.md` del repo Laravel): un producto sin stock sigue sin volver en el
-recorrido (el filtro de disponibilidad es obligatorio en el catálogo compartido), así que se cuenta como
-ausencia y no como "sin stock" (SCRAPER-002).
+**Pasada de stock (SCRAPER-002).** El filtro de disponibilidad es obligatorio en el catálogo compartido, así
+que un producto sin stock no vuelve en el recorrido. Después de un recorrido **completo**, `checkUnseenStock()`
+consulta por EAN (lotes de 25, con `sc` y **sin** el filtro) las filas que el comercio ya tiene en
+`merchant_products` (`listMerchantEans`) y la corrida no vio: lo que vuelve sin stock se marca
+`isAvailable = false` + `lastCheckedAt` (`markMerchantProductOutOfStock`, sin tocar precio ni historial: sin stock
+VTEX lo da en $0), lo que vuelve disponible entra como un producto más y lo que no vuelve es una ausencia real.
+Así el barrido de Laravel la cuenta como vista y la ficha dice "Sin stock" en vez de vencerla. Sólo las filas
+conocidas: consultar sin filtro cualquier EAN de Cencosud traería productos que la cadena nunca vendió. Un lote
+que falla se cuenta (`stockCheck.failedBatches`) y no vuelve incompleta la corrida. No corre en seco, en
+corridas incompletas ni sin filtro (Josimar ya recorre lo que está sin stock).
 
 **El camino viejo de GraphQL** (`cores/vtex.js`, modo `search`): `GET /_v/segment/graphql/v1/?operationName=productSuggestions&extensions={persistedQuery: {sha256Hash: "...", ...}}`,
 con el hash de `VTEX_SHA256_HASH`. `normalizeProduct()` toma `items[0].ean`, `commertialOffer.Price` y el precio

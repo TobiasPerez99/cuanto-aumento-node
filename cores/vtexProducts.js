@@ -1,6 +1,6 @@
 import { scrapeVtexMerchant } from './vtex.js';
 import { scrapeVtexCatalog } from './vtexCatalog.js';
-import { saveMasterProduct, saveFollowerProduct } from './saveHandlers.js';
+import { saveMasterProduct, saveFollowerProduct, listMerchantEans, markMerchantProductOutOfStock } from './saveHandlers.js';
 import { DETAILED_CATEGORIES, getCategories, productEans } from './categories.js';
 import { createTeaserCollector, saveTeaserSnapshot } from './teaserSnapshots.js';
 
@@ -76,6 +76,10 @@ export async function resolveVtexRun(key, mode = 'categories', overrides = {}) {
       // producto, igual que en el camino de GraphQL. Un follower sólo escribe precio.
       requireImage: Boolean(config.master),
       onProductFound,
+      // Pasada de stock: lo que el filtro de disponibilidad escondió se marca "sin stock"
+      // en vez de contarse como ausente (SCRAPER-002).
+      listKnownEans: listMerchantEans,
+      onProductOutOfStock: markMerchantProductOutOfStock,
       mode: mode === 'eans' ? 'eans' : 'categories',
       eans: productEans,
       ...overrides,

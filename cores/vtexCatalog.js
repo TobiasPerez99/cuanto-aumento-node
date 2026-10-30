@@ -451,6 +451,56 @@ export async function walkTarget(target, { fetchPage, onBatch, sleep = defaultSl
   return { fetched, missing, truncated };
 }
 
+/**
+ * Consulta por EAN, sin el filtro de disponibilidad, las filas conocidas que el
+ * recorrido no vio. Lo que vuelve sin stock se marca con `onProductOutOfStock`; lo que
+ * vuelve disponible (repuesto entre el recorrido y la pasada, o fuera del árbol) entra
+ * por `handleBatch` como cualquier producto; lo que no vuelve es una ausencia real.
+ *
+ * Un lote que falla tras los reintentos se cuenta y se sigue: esas filas quedan como
+ * antes de esta pasada (ausentes), que es peor que "sin stock" pero no es un dato falso.
+ */
+async function checkUnseenStock({ merchantId, known, seenEans, query, handleBatch, onProductOutOfStock, sleep, delayMs }) {
+  const candidates = [...new Set(asArray(known).map((e) => String(e).trim()).filter((e) => e && !seenEans.has(e)))];
+  const result = { candidates: candidates.length, outOfStock: 0, backInStock: 0, notFound: 0, failedBatches: 0 };
+
+  for (let i = 0; i < candidates.length; i += EAN_BATCH_SIZE) {
+    const batch = candidates.slice(i, i + EAN_BATCH_SIZE);
+    let rawProducts;
+    try {
+      rawProducts = asArray((await query(batch)).data);
+    } catch (error) {
+      result.failedBatches++;
+      console.warn(`   ⚠️ Pasada de stock: el lote ${i}..${i + batch.length - 1} falló (${describeError(error)})`);
+      continue;
+    }
+
+    const available = [];
+    const answered = new Set();
+    for (const raw of rawProducts) {
+      const item = raw?.items?.[0];
+      const ean = typeof item?.ean === 'string' ? item.ean.trim() : null;
+      if (!ean || !batch.includes(ean) || answered.has(ean)) continue;
+      answered.add(ean);
+      const offer = commercialOffer(item);
+      const isAvailable =
+        typeof offer?.IsAvailable === 'boolean' ? offer.IsAvailable : Number(offer?.AvailableQuantity) > 0;
+      if (isAvailable) {
+        available.push(raw);
+        result.backInStock++;
+      } else if (await onProductOutOfStock(ean, merchantId)) {
+        result.outOfStock++;
+      }
+    }
+    if (available.length > 0) await handleBatch(available);
+    result.notFound += batch.length - answered.size;
+
+    if (i + EAN_BATCH_SIZE < candidates.length) await sleep(delayMs);
+  }
+
+  return result;
+}
+
 /** `/1/17/` → `/1/`: el path del padre, para volver a resolver un nodo suelto. */
 const parentPathOf = (path) => path.replace(/[^/]+\/$/, '');
 
@@ -486,6 +536,10 @@ function indexTree(tree, parent = '/', index = new Map()) {
  *                   devuelve VTEX (con `commertialOffer.Teasers`, que el producto
  *                   normalizado no trae). Corre también en seco. Lo usa Farmacity para
  *                   juntar sus promos de producto sin recorrer el catálogo dos veces.
+ * @param {Function|null} [options.listKnownEans] `(merchantId) → EAN[]` de las filas que el
+ *                   comercio ya tiene. Con `onProductOutOfStock`, habilita la pasada de stock.
+ * @param {Function|null} [options.onProductOutOfStock] `(ean, merchantId)`: marca sin stock
+ *                   un producto que el filtro de disponibilidad escondió (SCRAPER-002).
  * @param {'categories'|'eans'} [options.mode]
  * @param {string[]} [options.eans]         EANs del modo `eans`
  * @param {string[]|null} [options.categoryPaths] recorrer sólo estas categorías ('/1/', '/1/17/')
@@ -499,6 +553,8 @@ export async function scrapeVtexCatalog({
   requireImage = false,
   onProductFound = null,
   onRawProducts = null,
+  listKnownEans = null,
+  onProductOutOfStock = null,
   mode = 'categories',
   eans = [],
   categoryPaths = null,
@@ -533,6 +589,8 @@ export async function scrapeVtexCatalog({
   const failed = [];
   const oversized = [];
   const hanging = [];
+  // Resultado de la pasada de stock; `null` si no corrió.
+  let stockCheck = null;
 
   console.log(`🛒 Recorriendo el catálogo de ${merchantName} [modo: ${mode}]...`);
 
@@ -575,6 +633,7 @@ export async function scrapeVtexCatalog({
       truncatedByCap,
       unreachableProducts,
       pageGaps,
+      stockCheck,
       requestCount,
       durationSeconds: Math.round((Date.now() - startedAt) / 1000),
       // Desglose liviano por categoría (lo consume slackNotifier). NO se devuelve la
@@ -589,6 +648,7 @@ export async function scrapeVtexCatalog({
     console.log(`   💾 Guardados: ${savedCount}${skippedCount ? ` · ⏭️ fuera del maestro: ${skippedCount}` : ''}${discardedCount ? ` · 🗑️ descartados: ${discardedCount}` : ''}`);
     if (pageGaps > 0) console.warn(`   ⚠️ ${pageGaps} productos faltaron en páginas cortas de la API (se siguió paginando)`);
     if (unreachableProducts > 0) console.log(`   🔒 ${unreachableProducts} productos que ninguna consulta alcanza (fuera del árbol o colgados de un padre)`);
+    if (stockCheck) console.log(`   📦 Sin stock: ${stockCheck.outOfStock} de ${stockCheck.candidates} filas que el recorrido no vio${stockCheck.failedBatches ? ` (⚠️ ${stockCheck.failedBatches} lote(s) fallaron)` : ''}`);
     if (failed.length) console.warn(`   ⚠️ ${failed.length} categoría(s) sin recorrer: ${failed.map((f) => f.name || f.path).join(', ')}`);
     if (!success) console.error(`   ❌ ${error}`);
     else if (!complete) console.warn('   ⚠️ Corrida INCOMPLETA: no recorrió el catálogo entero, no sirve para inferir ausencias.');
@@ -794,6 +854,26 @@ export async function scrapeVtexCatalog({
           failed.push(entry);
         }
       }
+    }
+
+    // Pasada de stock (SCRAPER-002): el filtro de disponibilidad esconde lo que está sin
+    // stock, y sin esto esas filas quedaban como ausentes y vencían igual que un producto
+    // que el comercio dejó de vender. Sólo después de un recorrido completo —si no, "lo
+    // que no vio" incluye categorías enteras que no se recorrieron— y sólo para las filas
+    // que el comercio ya tiene: en el catálogo compartido de Cencosud, consultar sin filtro
+    // cualquier EAN traería productos que esta cadena nunca vendió.
+    const walkComplete = !partial && failed.length === 0 && oversized.length === 0 && !truncatedByCap;
+    if (walkComplete && onlyAvailable && merchantId && listKnownEans && onProductOutOfStock) {
+      stockCheck = await checkUnseenStock({
+        merchantId,
+        known: await listKnownEans(merchantId),
+        seenEans,
+        query: (batch) => get(buildSearchUrl(base, { eans: batch, salesChannel: channel })),
+        handleBatch,
+        onProductOutOfStock,
+        sleep,
+        delayMs,
+      });
     }
 
     return report({ success: true });
